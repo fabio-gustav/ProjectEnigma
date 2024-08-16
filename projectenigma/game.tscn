@@ -1,3 +1,21 @@
-[gd_scene format=3 uid="uid://c7gb08phau5v2"]
+[gd_scene load_steps=4 format=3 uid="uid://c7gb08phau5v2"]
+
+[ext_resource type="PackedScene" uid="uid://iq0r13bt8ah7" path="res://player.tscn" id="1_fo1jl"]
+[ext_resource type="Texture2D" uid="uid://cgwe0fexhcn7x" path="res://thing.png" id="1_tjpd0"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qe1um"]
+distance = -201.0
 
 [node name="Game" type="Node2D"]
+
+[node name="BG" type="Sprite2D" parent="."]
+position = Vector2(581, 276)
+texture = ExtResource("1_tjpd0")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_fo1jl")]
+position = Vector2(49, 76)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_qe1um")

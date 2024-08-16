@@ -1,0 +1,16 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1723821049
+game.tscn::PackedScene::7031377748929476381::1723820987::0::1::::<><>::uid://iq0r13bt8ah7::::res://player.tscn
+icon.svg::CompressedTexture2D::1688678992946225260::1723819720::1723819853::1::::<><>::
+knight.png::CompressedTexture2D::2963508299327950748::1723820188::1723820188::1::::<><>::
+player.gd::GDScript::-1::1723820959::0::1::::<>CharacterBody2D<>::
+player.tscn::PackedScene::596090485418510822::1723820973::0::1::::<><>::res://player.gd<>uid://bihsswky436dk::::res://knight.png
+thing.png::CompressedTexture2D::5239678522472831979::1723821049::1723821049::1::::<><>::
+::res://addons/::1723819720
+::res://addons/godot-git-plugin/::1723819720
+git_plugin.gdextension::GDExtension::-1::1723819720::0::1::::<><>::
+plugin.cfg::TextFile::-1::1723819720::0::1::::<><>::
+THIRDPARTY.md::TextFile::-1::1723819720::0::1::::<><>::
+::res://addons/godot-git-plugin/linux/::1723819720
+::res://addons/godot-git-plugin/macos/::1723819720
+::res://addons/godot-git-plugin/win64/::1723819852
