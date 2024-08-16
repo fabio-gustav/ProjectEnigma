@@ -24,6 +24,12 @@ shape = SubResource("WorldBoundaryShape2D_qe1um")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_fo1jl")]
 position = Vector2(49, 76)
+speed = null
+gravity = null
+friction = null
+acceleration = null
+coyoteTime = null
+jumpBufferTime = null
 
 [node name="Platform" type="Sprite2D" parent="."]
 position = Vector2(161, 162)

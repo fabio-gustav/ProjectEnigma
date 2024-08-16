@@ -4,13 +4,15 @@ extends CharacterBody2D
 @export var gravity = 2620
 @export var friction = .3
 @export var acceleration = .3
-@export var jump = 500;
-@export var coyoteTime:float = 0.1;
+@export var jumpForce = 500;
+@export var coyoteTime:float = 0.1
+@export var jumpBufferTime:float = 0.1
 
 @onready var coyote_timer: Timer = $coyoteTimer
 
 
 var jump_available:bool = false
+var jump_buffer:bool = false
 
 
 
@@ -37,11 +39,17 @@ func _physics_process(delta: float) -> void:
 			coyote_timer.start(coyoteTime)
 	else:
 		jump_available = true
+		coyote_timer.stop()
+		if jump_buffer:
+			jump()
+			jump_buffer = false
 	
 	
-	if Input.is_action_pressed("jump") && jump_available:
-		velocity.y = -jump;
-		jump_available = false
+	if Input.is_action_just_pressed("jump") && jump_available:
+		jump()
+		if !jump_available:
+			jump_buffer = true
+			get_tree().create_timer(jumpBufferTime).timeout.connect(on_jump_buffer_timeout)
 		
 		
 	if is_on_floor():
@@ -50,6 +58,15 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 
+func jump() -> void:
+	velocity.y = -jumpForce;
+	jump_available = false
+
+
+
 func coyoteTimeout() -> void:
 	jump_available = false
 	
+
+func on_jump_buffer_timeout()->void:
+	pass
