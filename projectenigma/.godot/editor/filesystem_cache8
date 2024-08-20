@@ -1,11 +1,15 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1723833327
-game.tscn::PackedScene::7031377748929476381::1723831753::0::1::::<><>::uid://iq0r13bt8ah7::::res://player.tscn<>uid://cgwe0fexhcn7x::::res://thing.png
+::res://::1724170042
+game.tscn::PackedScene::7031377748929476381::1724167762::0::1::::<><>::uid://iq0r13bt8ah7::::res://player.tscn<>uid://qwwnjte3cfd2::::res://plat.png<>uid://6y68vn8ykv2u::::res://grid.png
+grapple.png::CompressedTexture2D::6116805241078733360::1724170042::1724170042::1::::<><>::
+grid.png::CompressedTexture2D::2227341501455730222::1724128093::1724128093::1::::<><>::
 icon.svg::CompressedTexture2D::1688678992946225260::1723819720::1723819853::1::::<><>::
 knight.png::CompressedTexture2D::2963508299327950748::1723820188::1723820188::1::::<><>::
+plat.png::CompressedTexture2D::1169797300240137893::1724129883::1724129883::1::::<><>::
 platform.png::CompressedTexture2D::4008847363840127218::1723833327::1723833328::1::::<><>::
-player.gd::GDScript::-1::1723833245::0::1::::<>CharacterBody2D<>::
-player.tscn::PackedScene::596090485418510822::1723833249::0::1::::<><>::res://player.gd<>uid://bihsswky436dk::::res://knight.png
+player.gd::GDScript::-1::1724167759::0::1::::<>CharacterBody2D<>::
+player.tscn::PackedScene::596090485418510822::1724167762::0::1::::<><>::res://player.gd<>uid://bihsswky436dk::::res://knight.png
+grapple_node.tscn::PackedScene::4953271445572479714::1724169573::0::1::::<><>::
 thing.png::CompressedTexture2D::5239678522472831979::1723821049::1723821049::1::::<><>::
 ::res://addons/::1723819720
 ::res://addons/godot-git-plugin/::1723819720
@@ -14,4 +18,4 @@ plugin.cfg::TextFile::-1::1723819720::0::1::::<><>::
 THIRDPARTY.md::TextFile::-1::1723819720::0::1::::<><>::
 ::res://addons/godot-git-plugin/linux/::1723819720
 ::res://addons/godot-git-plugin/macos/::1723819720
-::res://addons/godot-git-plugin/win64/::1723819852
+::res://addons/godot-git-plugin/win64/::1724169486
