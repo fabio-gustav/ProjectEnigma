@@ -58,8 +58,21 @@ position = Vector2(2, 513)
 shape = SubResource("WorldBoundaryShape2D_qe1um")
 metadata/_edit_lock_ = true
 
+[node name="Platform" type="Sprite2D" parent="TileMapLayer"]
+position = Vector2(385, 289)
+texture = ExtResource("2_syxxy")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TileMapLayer/Platform"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapLayer/Platform/StaticBody2D"]
+shape = SubResource("RectangleShape2D_j4eh6")
+metadata/_edit_lock_ = true
+
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_fo1jl")]
 position = Vector2(-191, -257)
+coyoteTime = 0.1
+jumpBufferTime = 0.1
 
 [node name="Platform" type="Sprite2D" parent="."]
 position = Vector2(-126, 353)
@@ -73,18 +86,4 @@ shape = SubResource("RectangleShape2D_j4eh6")
 metadata/_edit_lock_ = true
 
 [node name="StaticBody2D" parent="." instance=ExtResource("4_lxyf3")]
-position = Vector2(1566, -861)
-
-[node name="StaticBody2D" parent="StaticBody2D" instance=ExtResource("4_lxyf3")]
-position = Vector2(1382, -61)
-
-[node name="Platform2" type="Sprite2D" parent="."]
-position = Vector2(386, 38)
-texture = ExtResource("2_syxxy")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Platform2"]
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2/StaticBody2D"]
-shape = SubResource("RectangleShape2D_j4eh6")
-metadata/_edit_lock_ = true
+position = Vector2(257, 1)

@@ -31,12 +31,12 @@ animations = [{
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_ghon7")
-coyoteTime = 0.2
-acceleration = 0.25
-airResistance = 0.01
-dashDistance = 1024.0
-speed = 1542
-friction = 0.2
+coyoteTime = 0.05
+jumpBufferTime = 0.05
+acceleration = 0.05
+airResistance = 0.025
+speed = 2056
+friction = 0.15
 
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2(-15, 13)
