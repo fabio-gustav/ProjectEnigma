@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7gb08phau5v2"]
+
+[ext_resource type="PackedScene" uid="uid://iq0r13bt8ah7" path="res://player.tscn" id="1_fo1jl"]
+[ext_resource type="Texture2D" uid="uid://cgwe0fexhcn7x" path="res://thing.png" id="1_tjpd0"]
+[ext_resource type="Texture2D" uid="uid://bxd6eoys37bdi" path="res://platform.png" id="3_ynyej"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qe1um"]
+distance = -201.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ee42b"]
+size = Vector2(920.051, 233.968)
+
+[node name="Game" type="Node2D"]
+
+[node name="BG" type="Sprite2D" parent="."]
+position = Vector2(581, 276)
+texture = ExtResource("1_tjpd0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BG"]
+position = Vector2(-581, -276)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BG/StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_qe1um")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_fo1jl")]
+position = Vector2(49, 76)
+speed = null
+gravity = null
+friction = null
+acceleration = null
+coyoteTime = null
+jumpBufferTime = null
+
+[node name="Platform" type="Sprite2D" parent="."]
+position = Vector2(161, 162)
+scale = Vector2(0.0847779, 0.0683856)
+texture = ExtResource("3_ynyej")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Platform"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/StaticBody2D"]
+shape = SubResource("RectangleShape2D_ee42b")
