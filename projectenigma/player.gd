@@ -4,7 +4,6 @@ extends CharacterBody2D
 @export var jumpBufferTime:float = 0.1
 #testing things
 
-
 @export var acceleration = .25
 @export var jumpHeight:float = 768
 @export var risingJumpTime:float = 0.4
@@ -30,6 +29,12 @@ var jump_buffer:bool = false
 var dash_available:bool = false
 var grapple_target:StaticBody2D
 
+var x_input:float = 0.0
+@onready var player_sprite = $PlayerSprite
+@onready var head = $PlayerSprite/Torso/Head
+@onready var torso = $PlayerSprite/Torso
+@onready var arm = $PlayerSprite/Torso/Arm
+@onready var aim_pivot = $AimPivot
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -37,8 +42,11 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+@warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
-	grapple_cast.look_at((10*player_look())+global_position)
+	var direction = (player_look() * 100) + self.global_position
+	aim(direction)
+	grapple_cast.look_at((100*player_look())+global_position)
 	move_and_slide()
 
 
@@ -55,3 +63,17 @@ func player_look():
 	var thing = Input.get_vector("Look Left","Look Right","Look Up","Look Down")
 	print(thing)
 	return thing
+
+func _flip_player_sprite(val: bool):
+	match val:
+		true:
+			player_sprite.scale.x = -1
+		false:
+			player_sprite.scale.x = 1
+
+func aim(pos: Vector2):
+	_flip_player_sprite(pos.x < self.global_position.x)
+	if (pos.x < self.global_position.x):
+		arm.rotation = lerp_angle(arm.rotation, -(aim_pivot.global_position - pos).angle(), (1))
+	else:
+		arm.rotation = lerp_angle(arm.rotation, (pos - aim_pivot.global_position).angle(), (1))

@@ -48,7 +48,6 @@ texture = ExtResource("4_e1iph")
 offset = Vector2(155, -30)
 
 [node name="AimPivot" type="Marker2D" parent="."]
-position = Vector2(0, -26)
 
 [node name="coyoteTimer" type="Timer" parent="."]
 
@@ -60,7 +59,6 @@ position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
 [node name="GrappleCast" type="RayCast2D" parent="."]
-position = Vector2(0, -25)
 target_position = Vector2(6400, 0)
 collision_mask = 4
 collide_with_areas = true
@@ -91,6 +89,7 @@ script = ExtResource("7_0n0rn")
 script = ExtResource("9_5opso")
 
 [node name="Sliding" type="Node2D" parent="MovementStateMachine"]
+position = Vector2(0, -27)
 script = ExtResource("10_0cq60")
 
 [connection signal="timeout" from="coyoteTimer" to="." method="coyoteTimeout"]

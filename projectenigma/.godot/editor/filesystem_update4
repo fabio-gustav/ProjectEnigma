@@ -1,7 +1,4 @@
-res://player.tscn
 res://game.tscn
+res://player.tscn
 res://grapple_node.tscn
-res://PlayerFalling.gd
 res://player.gd
-res://PlayerJump.gd
-res://PlayerGrapple.gd
