@@ -27,7 +27,7 @@ func physicsUpdate(_delta:float):
 		player.jump_buffer = true
 		player.get_tree().create_timer(player.jumpBufferTime).timeout.connect(player.on_jump_buffer_timeout)
 		
-	player.grapple_cast.look_at(player.get_global_mouse_position())
+	
 	var penits = player.grapple_cast.get_collider()
 	if penits != null:
 		print(penits)

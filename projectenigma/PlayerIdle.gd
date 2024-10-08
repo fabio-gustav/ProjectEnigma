@@ -18,6 +18,7 @@ func physicsUpdate(_delta:float):
 		Transitioned.emit("idle","falling")
 		
 	else:
+		player.player_look()
 		player.velocity.x  = lerp(player.velocity.x, 0.0, player.friction)
 		player.dash_available = true
 		player.jump_available = true

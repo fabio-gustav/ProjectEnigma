@@ -19,7 +19,6 @@ func Update():
 	pass
 
 func physicsUpdate(_delta:float):
-	player.grapple_cast.look_at(player.get_global_mouse_position())
 	var penits = player.grapple_cast.get_collider()
 	if penits != null:
 		print(penits)
@@ -30,9 +29,11 @@ func physicsUpdate(_delta:float):
 	
 	if Input.is_action_just_pressed("dash") && player.dash_available:
 		Transitioned.emit("running","dashing")
-		
-	if player.velocity.y <= 0.0:
-		player.velocity.x = lerp(player.velocity.x,player.velocity.x+(get_input()*player.airspeed),player.acceleration)
-		player.velocity.x  = lerp(player.velocity.x, 0.0, player.airResistance)
+	if Input.is_action_pressed("jump"):
+		if player.velocity.y <= 0.0:
+			player.velocity.x = lerp(player.velocity.x,player.velocity.x+(get_input()*player.airspeed),player.acceleration)
+			player.velocity.x  = lerp(player.velocity.x, 0.0, player.airResistance)
+		else: 
+			Exit()
 	else:
 		Exit()
