@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://iq0r13bt8ah7"]
+[gd_scene load_steps=14 format=3 uid="uid://iq0r13bt8ah7"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ghon7"]
 [ext_resource type="Texture2D" uid="uid://cukw88dwff46q" path="res://Illustration150.png" id="2_edqmc"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://PlayerFalling.gd" id="6_rquh8"]
 [ext_resource type="Script" path="res://PlayerDash.gd" id="7_0n0rn"]
 [ext_resource type="Script" path="res://PlayerGrapple.gd" id="9_5opso"]
+[ext_resource type="Script" path="res://PlayerSlide.gd" id="10_0cq60"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2gg4n"]
 radius = 46.0
@@ -31,12 +32,6 @@ animations = [{
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_ghon7")
-coyoteTime = 0.2
-acceleration = 0.25
-airResistance = 0.01
-dashDistance = 1024.0
-speed = 1542
-friction = 0.2
 
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2(-15, 13)
@@ -51,10 +46,11 @@ metadata/_edit_lock_ = true
 [node name="coyoteTimer" type="Timer" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.5, 0.5)
+zoom = Vector2(0.25, 0.25)
 process_callback = 0
 limit_smoothed = true
 position_smoothing_enabled = true
+position_smoothing_speed = 10.0
 
 [node name="GrappleCast" type="RayCast2D" parent="."]
 target_position = Vector2(6400, 0)
@@ -85,5 +81,8 @@ script = ExtResource("7_0n0rn")
 
 [node name="Grappling" type="Node2D" parent="MovementStateMachine"]
 script = ExtResource("9_5opso")
+
+[node name="Sliding" type="Node2D" parent="MovementStateMachine"]
+script = ExtResource("10_0cq60")
 
 [connection signal="timeout" from="coyoteTimer" to="." method="coyoteTimeout"]

@@ -15,7 +15,7 @@ func Enter():
 
 
 func Exit():
-	player.velocity = player.global_position.direction_to(targetPosition) * 1024
+	player.velocity += player.player_look() * player.grapple_pull
 	
 	Transitioned.emit("grappling","falling")
 	
@@ -29,10 +29,13 @@ func physicsUpdate(_delta:float):
 		Exit()
 	player.velocity.y += fallGravity * _delta
 	swing(_delta)
-	player.velocity *= 0.99
+	if player.is_on_floor():
+		Transitioned.emit("grappling","idle")
+	
 	if Input.is_action_just_pressed("dash") && player.dash_available:
 		Transitioned.emit("dashing","dashing")
 	
+	player.velocity *= 0.98
 
 
 
@@ -49,7 +52,7 @@ func swing(_delta):
 	#var radial_velocity = player.global_position.dot(-targetPosition) * radius.normalized()
 	var swing_nudge = 0.0
 	swing_nudge = get_input()*player.swingSpeed
-	print(radial_velocity)
+	
 	
 	#var myUp = player.global_position - targetPosition
 	#player.look_at(targetPosition)
@@ -62,3 +65,10 @@ func swing(_delta):
 		player.global_position = targetPosition + radius.normalized() * ropeLength
 		
 	player.velocity += (targetPosition - player.global_position).normalized() * (_delta) * 15000
+	
+	if Input.is_action_pressed("right") and player.velocity.x > 0:
+		player.velocity*= 1.025
+	
+	if Input.is_action_pressed("left") and player.velocity.x < 0:
+		player.velocity*= 1.025
+	print(player.velocity)
