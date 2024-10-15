@@ -1,15 +1,17 @@
 extends State
 
-class_name PlayerJump
+class_name PlayerWallJump
 
 
 
-
+@export var walljumpHeight:float = 768
+@export var risingwallJumpTime:float = 0.4
 @onready var jumpVelocity:float = ((2.0 * player.jumpHeight) / player.risingJumpTime) * -1.0
 @onready var jumpGravity:float = ((-2.0 * player.jumpHeight) / (player.risingJumpTime * player.risingJumpTime)) * -1.0
 
 func Enter():
-	player.velocity.y = jumpVelocity
+	var direction = player.player_look()
+	player.velocity = ((-player.get_wall_normal().normalized())+(-player.up_direction)) * jumpVelocity
 	player.jump_available = false
 	
 func Exit():
@@ -19,13 +21,14 @@ func Update():
 	pass
 
 func physicsUpdate(_delta:float):
+	player.velocity.y += jumpGravity * _delta
 	var penits = player.grapple_cast.get_collider()
 	if penits != null:
 		print(penits)
 	if penits != null && Input.is_action_just_pressed("grapple"):
 		player.grapple_target = penits
 		Transitioned.emit("jumping","grappling")
-	player.velocity.y += jumpGravity * _delta
+	
 	
 	if Input.is_action_just_pressed("dash") && player.dash_available:
 		Transitioned.emit("running","dashing")

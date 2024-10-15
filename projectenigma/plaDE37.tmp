@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://iq0r13bt8ah7"]
+[gd_scene load_steps=17 format=3 uid="uid://iq0r13bt8ah7"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_ghon7"]
 [ext_resource type="Script" path="res://sprite_state_machine.gd" id="2_65u56"]
@@ -10,49 +10,18 @@
 [ext_resource type="Script" path="res://Player/PlayerRunning.gd" id="4_tqm3n"]
 [ext_resource type="Script" path="res://Player/PlayerIdle.gd" id="4_v5iuh"]
 [ext_resource type="Script" path="res://Player/PlayerFalling.gd" id="6_rquh8"]
+[ext_resource type="Script" path="res://Player/PlayerDash.gd" id="7_0n0rn"]
 [ext_resource type="Script" path="res://Player/PlayerGrapple.gd" id="9_5opso"]
 [ext_resource type="Script" path="res://Player/PlayerSlide.gd" id="10_0cq60"]
 [ext_resource type="Script" path="res://Player/PlayerWalljump.gd" id="11_fi1tf"]
-[ext_resource type="Script" path="res://Player/PlayerGrapplePull.gd" id="13_yg5uo"]
-[ext_resource type="Script" path="res://Player/PlayerWallSlide.gd" id="14_l0nas"]
+[ext_resource type="Script" path="res://PlayerWallSlide.gd" id="12_jk5vp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2gg4n"]
 radius = 46.0
 height = 248.0
 
-[sub_resource type="GDScript" id="GDScript_p4wv7"]
-script/source = "extends State
-
-class_name PlayerDash
-
-@onready var dashVelocity:float = ((2.0 * player.dashDistance) / player.risingJumpTime)
-
-func Enter():
-	print(\"entering dash\")
-	player.dash_available = false
-	player.velocity += get_dash_input() * dashVelocity
-	Exit()
-
-func Exit():
-	print(\"exiting dash\")
-	Transitioned.emit(\"dashing\",\"idle\")
-
-func Update():
-	pass
-
-func physicsUpdate(_delta:float):
-	Exit()
-
-
-func get_dash_input() -> Vector2:
-	var input_direction = Input.get_vector(\"left\",\"right\",\"up\",\"down\").normalized()
-	return input_direction
-"
-
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_ghon7")
-airspeed = 1542.0
-airResistance = 0.2
 swing_speed = 0.1
 
 [node name="collider" type="CollisionShape2D" parent="."]
@@ -119,7 +88,7 @@ script = ExtResource("4_v5iuh")
 script = ExtResource("6_rquh8")
 
 [node name="Dashing" type="Node2D" parent="MovementStateMachine"]
-script = SubResource("GDScript_p4wv7")
+script = ExtResource("7_0n0rn")
 
 [node name="Grappling" type="Node2D" parent="MovementStateMachine"]
 script = ExtResource("9_5opso")
@@ -133,9 +102,6 @@ walljumpHeight = 1280.0
 risingwallJumpTime = 0.8
 
 [node name="WallSliding" type="Node2D" parent="MovementStateMachine"]
-script = ExtResource("14_l0nas")
-
-[node name="GrapplePulling" type="Node2D" parent="MovementStateMachine"]
-script = ExtResource("13_yg5uo")
+script = ExtResource("12_jk5vp")
 
 [connection signal="timeout" from="coyoteTimer" to="." method="coyoteTimeout"]

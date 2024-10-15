@@ -13,9 +13,12 @@ extends CharacterBody2D
 @export var dashDistance:float = 1024
 @export var speed = 1542
 @export var friction = .2
-@export var swingSpeed:float = 64
+@export var swing_speed:float = 64
 @export var slide_friction:float = 0.01
 @export var grapple_pull:float = 1024
+@export var wallslide_gravity:float = 5500
+@export var grapple_pull_speed:float = 800
+
 
 
 
@@ -44,6 +47,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 @warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
+	print(is_on_wall_only())
+	grapple_cast.look_at((10*player_look())+global_position)
 	move_and_slide()
 
 
@@ -57,6 +62,6 @@ func on_jump_buffer_timeout()->void:
 
 
 func player_look():
-	var thing = Input.get_vector("Look Left","Look Right","Look Up","Look Down")
+	var thing = Input.get_vector("left","right","up","down")
 	print(thing)
 	return thing

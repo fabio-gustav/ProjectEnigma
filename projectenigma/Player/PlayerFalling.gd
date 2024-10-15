@@ -18,9 +18,12 @@ func Update():
 	pass
 
 func physicsUpdate(_delta:float):
+	if player.is_on_wall_only():
+			Transitioned.emit("falling","wallsliding")
 	if Input.is_action_just_pressed("dash") && player.dash_available:
 		Transitioned.emit("running","dashing")
 	if Input.is_action_just_pressed("jump"):
+		
 		if player.jump_available:
 			Transitioned.emit("falling","jumping")
 			
