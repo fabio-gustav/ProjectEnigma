@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://iq0r13bt8ah7"]
+[gd_scene load_steps=18 format=3 uid="uid://iq0r13bt8ah7"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_ghon7"]
 [ext_resource type="Script" path="res://sprite_state_machine.gd" id="2_65u56"]
@@ -13,8 +13,8 @@
 [ext_resource type="Script" path="res://Player/PlayerGrapple.gd" id="9_5opso"]
 [ext_resource type="Script" path="res://Player/PlayerSlide.gd" id="10_0cq60"]
 [ext_resource type="Script" path="res://Player/PlayerWalljump.gd" id="11_fi1tf"]
-[ext_resource type="Script" path="res://PlayerWallSlide.gd" id="12_jk5vp"]
-[ext_resource type="Script" path="res://PlayerGrapplePull.gd" id="13_yg5uo"]
+[ext_resource type="Script" path="res://Player/PlayerGrapplePull.gd" id="13_yg5uo"]
+[ext_resource type="Script" path="res://Player/PlayerWallSlide.gd" id="14_l0nas"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2gg4n"]
 radius = 46.0
@@ -51,6 +51,8 @@ func get_dash_input() -> Vector2:
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_ghon7")
+airspeed = 1542.0
+airResistance = 0.2
 swing_speed = 0.1
 
 [node name="collider" type="CollisionShape2D" parent="."]
@@ -81,11 +83,6 @@ offset = Vector2(155, -30)
 
 [node name="AimPivot" type="Marker2D" parent="."]
 position = Vector2(0, -26)
-[node name="sprite" type="AnimatedSprite2D" parent="."]
-texture_filter = 1
-texture_repeat = 1
-sprite_frames = SubResource("SpriteFrames_8mscp")
-metadata/_edit_lock_ = true
 
 [node name="coyoteTimer" type="Timer" parent="."]
 
