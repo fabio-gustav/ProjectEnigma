@@ -43,8 +43,7 @@ shape = SubResource("CapsuleShape2D_2gg4n")
 metadata/_edit_lock_ = true
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
-texture_filter = 1
-texture_repeat = 1
+texture_filter = 4
 sprite_frames = SubResource("SpriteFrames_8mscp")
 metadata/_edit_lock_ = true
 
