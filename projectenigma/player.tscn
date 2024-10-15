@@ -13,8 +13,7 @@
 [ext_resource type="Script" path="res://Player/PlayerGrapple.gd" id="9_5opso"]
 [ext_resource type="Script" path="res://Player/PlayerSlide.gd" id="10_0cq60"]
 [ext_resource type="Script" path="res://Player/PlayerWalljump.gd" id="11_fi1tf"]
-[ext_resource type="Script" path="res://PlayerWallSlide.gd" id="12_jk5vp"]
-[ext_resource type="Script" path="res://PlayerGrapplePull.gd" id="13_yg5uo"]
+[ext_resource type="Script" path="res://Player/PlayerWallSlide.gd" id="14_l0nas"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2gg4n"]
 radius = 46.0
@@ -81,11 +80,6 @@ offset = Vector2(155, -30)
 
 [node name="AimPivot" type="Marker2D" parent="."]
 position = Vector2(0, -26)
-[node name="sprite" type="AnimatedSprite2D" parent="."]
-texture_filter = 1
-texture_repeat = 1
-sprite_frames = SubResource("SpriteFrames_8mscp")
-metadata/_edit_lock_ = true
 
 [node name="coyoteTimer" type="Timer" parent="."]
 
@@ -137,8 +131,5 @@ risingwallJumpTime = 0.8
 
 [node name="WallSliding" type="Node2D" parent="MovementStateMachine"]
 script = ExtResource("14_l0nas")
-
-[node name="GrapplePulling" type="Node2D" parent="MovementStateMachine"]
-script = ExtResource("13_yg5uo")
 
 [connection signal="timeout" from="coyoteTimer" to="." method="coyoteTimeout"]
