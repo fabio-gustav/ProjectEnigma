@@ -7,7 +7,6 @@ class_name PlayerDash
 func Enter():
 	print("entering dash")
 	player.dash_available = false
-	player.velocity.y = 0
 	player.velocity += get_dash_input() * dashVelocity
 	Exit()
 

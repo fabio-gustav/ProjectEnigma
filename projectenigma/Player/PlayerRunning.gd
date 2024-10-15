@@ -15,7 +15,6 @@ func physicsUpdate(_delta:float):
 	if Input.is_action_just_pressed("jump"):
 		if player.jump_available:
 			Transitioned.emit("idle","jumping")
-			
 		
 	if !player.is_on_floor():
 		Transitioned.emit("running","falling")
