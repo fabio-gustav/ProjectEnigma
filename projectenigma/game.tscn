@@ -60,9 +60,30 @@ metadata/_edit_lock_ = true
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_fo1jl")]
 position = Vector2(-191, -257)
+jumpHeight = 1024.0
+
+[node name="StaticBody2D" parent="." instance=ExtResource("4_lxyf3")]
+position = Vector2(1572, -1143)
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("4_lxyf3")]
+position = Vector2(3700, -950)
+
+[node name="Platform3" type="Sprite2D" parent="."]
+position = Vector2(5344, -251)
+rotation = 1.5708
+scale = Vector2(8, 1)
+texture = ExtResource("2_syxxy")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Platform3"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3/StaticBody2D"]
+shape = SubResource("RectangleShape2D_j4eh6")
+metadata/_edit_lock_ = true
 
 [node name="Platform" type="Sprite2D" parent="."]
-position = Vector2(-126, 353)
+position = Vector2(-1020, 42)
+scale = Vector2(4.99219, 1)
 texture = ExtResource("2_syxxy")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Platform"]
@@ -72,14 +93,9 @@ metadata/_edit_lock_ = true
 shape = SubResource("RectangleShape2D_j4eh6")
 metadata/_edit_lock_ = true
 
-[node name="StaticBody2D" parent="." instance=ExtResource("4_lxyf3")]
-position = Vector2(1566, -861)
-
-[node name="StaticBody2D" parent="StaticBody2D" instance=ExtResource("4_lxyf3")]
-position = Vector2(1382, -61)
-
 [node name="Platform2" type="Sprite2D" parent="."]
-position = Vector2(386, 38)
+position = Vector2(1332, -108)
+scale = Vector2(3.00391, 1)
 texture = ExtResource("2_syxxy")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Platform2"]
