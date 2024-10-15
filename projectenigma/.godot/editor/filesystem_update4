@@ -1,3 +1,13 @@
-res://game.tscn
-res://player.tscn
 res://grapple_node.tscn
+res://player.tscn
+res://game.tscn
+res://Player/player.gd
+res://Player/PlayerFalling.gd
+res://Player/PlayerGrapple.gd
+res://Player/PlayerIdle.gd
+res://Player/PlayerJump.gd
+res://Player/PlayerRunning.gd
+res://Player/PlayerSlide.gd
+res://Player/PlayerWalljump.gd
+res://Player/State.gd
+res://Player/state_machine.gd
