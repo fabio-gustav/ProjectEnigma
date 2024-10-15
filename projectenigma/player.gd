@@ -44,9 +44,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 @warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
-	var direction = (player_look() * 100) + self.global_position
-	aim(direction)
-	grapple_cast.look_at((100*player_look())+global_position)
 	move_and_slide()
 
 
@@ -63,17 +60,3 @@ func player_look():
 	var thing = Input.get_vector("Look Left","Look Right","Look Up","Look Down")
 	print(thing)
 	return thing
-
-func _flip_player_sprite(val: bool):
-	match val:
-		true:
-			player_sprite.scale.x = -1
-		false:
-			player_sprite.scale.x = 1
-
-func aim(pos: Vector2):
-	_flip_player_sprite(pos.x < self.global_position.x)
-	if (pos.x < self.global_position.x):
-		arm.rotation = lerp_angle(arm.rotation, -(aim_pivot.global_position - pos).angle(), (1))
-	else:
-		arm.rotation = lerp_angle(arm.rotation, (pos - aim_pivot.global_position).angle(), (1))

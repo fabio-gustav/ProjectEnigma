@@ -2,3 +2,4 @@ res://game.tscn
 res://player.tscn
 res://grapple_node.tscn
 res://player.gd
+res://sprite_state_machine.gd
