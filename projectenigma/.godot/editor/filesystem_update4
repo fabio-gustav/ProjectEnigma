@@ -1,5 +1,3 @@
 res://grapple_node.tscn
 res://player.tscn
 res://game.tscn
-res://Player/PlayerFalling.gd
-res://Player/PlayerJump.gd
