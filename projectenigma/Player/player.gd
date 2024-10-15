@@ -4,7 +4,6 @@ extends CharacterBody2D
 @export var jumpBufferTime:float = 0.1
 #testing things
 
-
 @export var acceleration = .25
 @export var jumpHeight:float = 768
 @export var risingJumpTime:float = 0.4
@@ -32,6 +31,12 @@ var jump_buffer:bool = false
 var dash_available:bool = false
 var grapple_target:StaticBody2D
 
+var x_input:float = 0.0
+@onready var player_sprite = $PlayerSprite
+@onready var head = $PlayerSprite/Torso/Head
+@onready var torso = $PlayerSprite/Torso
+@onready var arm = $PlayerSprite/Torso/Arm
+@onready var aim_pivot = $AimPivot
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -39,6 +44,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+@warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
 	print(is_on_wall_only())
 	grapple_cast.look_at((10*player_look())+global_position)

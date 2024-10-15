@@ -1,7 +1,6 @@
-res://player.tscn
 res://game.tscn
+res://player.tscn
 res://grapple_node.tscn
-res://PlayerFalling.gd
 res://player.gd
 res://PlayerJump.gd
 res://PlayerGrapple.gd
@@ -12,3 +11,4 @@ res://Player/PlayerRunning.gd
 res://Player/PlayerFalling.gd
 res://PlayerWallSlide.gd
 res://Player/player.gd
+res://sprite_state_machine.gd

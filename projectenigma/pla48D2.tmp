@@ -1,23 +1,18 @@
+[gd_scene load_steps=15 format=3 uid="uid://iq0r13bt8ah7"]
 
-[gd_scene load_steps=16 format=3 uid="uid://iq0r13bt8ah7"]
-
-[ext_resource type="Script" path="res://Player/player.gd" id="1_ghon7"]
-[ext_resource type="Texture2D" uid="uid://cukw88dwff46q" path="res://Illustration150.png" id="2_edqmc"]
-[ext_resource type="Script" path="res://Player/state_machine.gd" id="3_ngsr7"]
-[ext_resource type="Script" path="res://Player/PlayerJump.gd" id="4_fp44l"]
-[ext_resource type="Script" path="res://Player/PlayerRunning.gd" id="4_tqm3n"]
-[ext_resource type="Script" path="res://Player/PlayerIdle.gd" id="4_v5iuh"]
-[ext_resource type="Script" path="res://Player/PlayerFalling.gd" id="6_rquh8"]
-[ext_resource type="Script" path="res://Player/PlayerDash.gd" id="7_0n0rn"]
-[ext_resource type="Script" path="res://Player/PlayerGrapple.gd" id="9_5opso"]
-[ext_resource type="Script" path="res://Player/PlayerSlide.gd" id="10_0cq60"]
-[ext_resource type="Script" path="res://Player/PlayerWalljump.gd" id="11_fi1tf"]
-[ext_resource type="Script" path="res://PlayerWallSlide.gd" id="12_jk5vp"]
+[ext_resource type="Script" path="res://player.gd" id="1_ghon7"]
 [ext_resource type="Script" path="res://sprite_state_machine.gd" id="2_65u56"]
 [ext_resource type="Texture2D" uid="uid://badafk1coipl4" path="res://Sprites/Miriam_Body.png" id="2_hlulr"]
 [ext_resource type="Texture2D" uid="uid://dtdbwekpy8rxg" path="res://Sprites/Miriam_Head_sheet.png" id="3_847dy"]
+[ext_resource type="Script" path="res://state_machine.gd" id="3_ngsr7"]
 [ext_resource type="Texture2D" uid="uid://b8lbw2tm4ptbu" path="res://Sprites/Miriam_Ol_Reliable.png" id="4_e1iph"]
-
+[ext_resource type="Script" path="res://PlayerJump.gd" id="4_fp44l"]
+[ext_resource type="Script" path="res://PlayerRunning.gd" id="4_tqm3n"]
+[ext_resource type="Script" path="res://PlayerIdle.gd" id="4_v5iuh"]
+[ext_resource type="Script" path="res://PlayerFalling.gd" id="6_rquh8"]
+[ext_resource type="Script" path="res://PlayerDash.gd" id="7_0n0rn"]
+[ext_resource type="Script" path="res://PlayerGrapple.gd" id="9_5opso"]
+[ext_resource type="Script" path="res://PlayerSlide.gd" id="10_0cq60"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2gg4n"]
 radius = 46.0
@@ -25,7 +20,6 @@ height = 248.0
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_ghon7")
-swing_speed = 0.1
 
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2(-15, 13)
@@ -98,13 +92,5 @@ script = ExtResource("9_5opso")
 
 [node name="Sliding" type="Node2D" parent="MovementStateMachine"]
 script = ExtResource("10_0cq60")
-
-[node name="WallJumping" type="Node2D" parent="MovementStateMachine"]
-script = ExtResource("11_fi1tf")
-walljumpHeight = 1280.0
-risingwallJumpTime = 0.8
-
-[node name="WallSliding" type="Node2D" parent="MovementStateMachine"]
-script = ExtResource("12_jk5vp")
 
 [connection signal="timeout" from="coyoteTimer" to="." method="coyoteTimeout"]
