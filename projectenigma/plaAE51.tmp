@@ -1,15 +1,13 @@
 [gd_scene load_steps=17 format=3 uid="uid://iq0r13bt8ah7"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_ghon7"]
-[ext_resource type="Script" path="res://sprite_state_machine.gd" id="2_65u56"]
-[ext_resource type="Texture2D" uid="uid://badafk1coipl4" path="res://Sprites/Miriam_Body.png" id="2_hlulr"]
-[ext_resource type="Texture2D" uid="uid://dtdbwekpy8rxg" path="res://Sprites/Miriam_Head_sheet.png" id="3_847dy"]
+[ext_resource type="Texture2D" uid="uid://cukw88dwff46q" path="res://Illustration150.png" id="2_edqmc"]
 [ext_resource type="Script" path="res://Player/state_machine.gd" id="3_ngsr7"]
-[ext_resource type="Texture2D" uid="uid://b8lbw2tm4ptbu" path="res://Sprites/Miriam_Ol_Reliable.png" id="4_e1iph"]
 [ext_resource type="Script" path="res://Player/PlayerJump.gd" id="4_fp44l"]
 [ext_resource type="Script" path="res://Player/PlayerRunning.gd" id="4_tqm3n"]
 [ext_resource type="Script" path="res://Player/PlayerIdle.gd" id="4_v5iuh"]
 [ext_resource type="Script" path="res://Player/PlayerFalling.gd" id="6_rquh8"]
+[ext_resource type="Script" path="res://Player/PlayerDash.gd" id="7_0n0rn"]
 [ext_resource type="Script" path="res://Player/PlayerGrapple.gd" id="9_5opso"]
 [ext_resource type="Script" path="res://Player/PlayerSlide.gd" id="10_0cq60"]
 [ext_resource type="Script" path="res://Player/PlayerWalljump.gd" id="11_fi1tf"]
@@ -20,34 +18,20 @@
 radius = 46.0
 height = 248.0
 
-[sub_resource type="GDScript" id="GDScript_p4wv7"]
-script/source = "extends State
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgx0i"]
+atlas = ExtResource("2_edqmc")
+region = Rect2(0, 0, 256, 256)
 
-class_name PlayerDash
-
-@onready var dashVelocity:float = ((2.0 * player.dashDistance) / player.risingJumpTime)
-
-func Enter():
-	print(\"entering dash\")
-	player.dash_available = false
-	player.velocity += get_dash_input() * dashVelocity
-	Exit()
-
-func Exit():
-	print(\"exiting dash\")
-	Transitioned.emit(\"dashing\",\"idle\")
-
-func Update():
-	pass
-
-func physicsUpdate(_delta:float):
-	Exit()
-
-
-func get_dash_input() -> Vector2:
-	var input_direction = Input.get_vector(\"left\",\"right\",\"up\",\"down\").normalized()
-	return input_direction
-"
+[sub_resource type="SpriteFrames" id="SpriteFrames_8mscp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgx0i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_ghon7")
@@ -58,32 +42,8 @@ position = Vector2(-15, 13)
 shape = SubResource("CapsuleShape2D_2gg4n")
 metadata/_edit_lock_ = true
 
-[node name="SpriteStateMachine" type="Node" parent="."]
-script = ExtResource("2_65u56")
-
-[node name="PlayerSprite" type="Node2D" parent="."]
-
-[node name="Torso" type="Sprite2D" parent="PlayerSprite"]
-position = Vector2(-6.25, 38.9435)
-scale = Vector2(0.471739, 0.471739)
-texture = ExtResource("2_hlulr")
-
-[node name="Head" type="Sprite2D" parent="PlayerSprite/Torso"]
-position = Vector2(15.3687, -230.94)
-texture = ExtResource("3_847dy")
-hframes = 8
-frame = 6
-
-[node name="Arm" type="Sprite2D" parent="PlayerSprite/Torso"]
-position = Vector2(-39.7465, -141.908)
-texture = ExtResource("4_e1iph")
-offset = Vector2(155, -30)
-
-[node name="AimPivot" type="Marker2D" parent="."]
-position = Vector2(0, -26)
 [node name="sprite" type="AnimatedSprite2D" parent="."]
-texture_filter = 1
-texture_repeat = 1
+texture_filter = 4
 sprite_frames = SubResource("SpriteFrames_8mscp")
 metadata/_edit_lock_ = true
 
@@ -97,7 +57,6 @@ position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
 [node name="GrappleCast" type="RayCast2D" parent="."]
-position = Vector2(0, -25)
 target_position = Vector2(6400, 0)
 collision_mask = 4
 collide_with_areas = true
@@ -122,7 +81,7 @@ script = ExtResource("4_v5iuh")
 script = ExtResource("6_rquh8")
 
 [node name="Dashing" type="Node2D" parent="MovementStateMachine"]
-script = SubResource("GDScript_p4wv7")
+script = ExtResource("7_0n0rn")
 
 [node name="Grappling" type="Node2D" parent="MovementStateMachine"]
 script = ExtResource("9_5opso")
@@ -136,7 +95,7 @@ walljumpHeight = 1280.0
 risingwallJumpTime = 0.8
 
 [node name="WallSliding" type="Node2D" parent="MovementStateMachine"]
-script = ExtResource("14_l0nas")
+script = ExtResource("12_jk5vp")
 
 [node name="GrapplePulling" type="Node2D" parent="MovementStateMachine"]
 script = ExtResource("13_yg5uo")

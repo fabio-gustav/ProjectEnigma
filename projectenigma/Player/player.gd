@@ -17,6 +17,7 @@ extends CharacterBody2D
 @export var slide_friction:float = 0.01
 @export var grapple_pull:float = 1024
 @export var wallslide_gravity:float = 5500
+@export var grapple_pull_speed:float = 800
 
 
 
