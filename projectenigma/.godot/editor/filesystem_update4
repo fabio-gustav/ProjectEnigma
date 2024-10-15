@@ -11,3 +11,4 @@ res://Player/PlayerSlide.gd
 res://Player/PlayerWalljump.gd
 res://Player/State.gd
 res://Player/state_machine.gd
+res://Player/PlayerDash.gd
