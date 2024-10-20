@@ -11,12 +11,13 @@ var stop
 var icon : Sprite2D
 
 func Enter():
+	player.playerGrappled = true
 	targetPosition = player.grapple_target.global_position
 	ropeLength = player.global_position.distance_to(targetPosition)
 
 
 func Exit():
-	pass
+	player.playerGrappled = false
 
 func Update():
 	pass
@@ -44,7 +45,6 @@ func physicsUpdate(_delta:float):
 		Transitioned.emit("grappling","jumping")
 		
 	if Input.is_action_just_pressed("grapplepull"):
-		Exit()
 		Transitioned.emit("grappling","grapplepulling")
 	
 

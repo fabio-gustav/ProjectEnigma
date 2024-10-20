@@ -19,3 +19,4 @@ res://grapple_node.tscn
 res://Game Scenes/testlevel.tscn
 res://Components/health_component.tscn
 res://Player/Scripts/sprite_state_machine.gd
+res://Player/Scripts/PlayerGrapplePull.gd

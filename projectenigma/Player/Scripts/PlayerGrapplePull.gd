@@ -16,6 +16,7 @@ func Enter():
 	player.velocity = Vector2(0,0)
 	
 func Exit():
+	player.playerGrappled = false
 	Transitioned.emit("grapplepulling","falling")
 
 func Update():

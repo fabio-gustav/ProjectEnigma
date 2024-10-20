@@ -62,19 +62,23 @@ func _physics_process(delta: float) -> void:
 
 
 func grapple_check():
+	print(grapple_target)
 	var penits = grapple_cast.get_collider()
+	
 	if penits != null:
 		if grapple_target != penits:
+			
 			grapple_icon.position = penits.global_position
 			grapple_icon.visible = true
-			
-	else:
-		grapple_icon.visible = false
-	
-	if penits != null && Input.is_action_just_pressed("grapple"):
-		grapple_target = penits
+		else:
+			pass
+		if !playerGrappled:
+			grapple_target = penits
 		return true
 	else:
+		if !playerGrappled:
+			grapple_target = null
+		grapple_icon.visible = false
 		return false
 
 func coyoteTimeout() -> void:

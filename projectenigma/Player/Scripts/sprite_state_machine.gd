@@ -9,6 +9,7 @@ func run_state(delta):
 	
 func _physics_process(delta: float) -> void:
 	var direction = (parent.player_look() * 100) + parent.global_position
+	direction.y -= 25
 	if (parent.player_look() == Vector2.ZERO):
 		direction = Vector2(parent.global_position.x+(parent.player_sprite.scale.x * 100),parent.global_position.y-25)
 	aim(direction)

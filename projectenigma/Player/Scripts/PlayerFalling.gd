@@ -31,7 +31,7 @@ func physicsUpdate(_delta:float):
 		player.get_tree().create_timer(player.jumpBufferTime).timeout.connect(player.on_jump_buffer_timeout)
 		
 	
-	if (player.grapple_check()):
+	if (player.grapple_check() && Input.is_action_just_pressed("grapple")):
 		Transitioned.emit("jumping","grappling")
 	player.velocity.y += fallGravity * _delta
 	player.velocity.x = lerp(player.velocity.x,player.velocity.x+(get_input()*player.airspeed),player.acceleration)
