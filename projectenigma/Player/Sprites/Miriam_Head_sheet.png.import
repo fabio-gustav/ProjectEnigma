@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://badafk1coipl4"
-path="res://.godot/imported/Miriam_Body.png-03647686e7377c6ebaa29faceefea721.ctex"
+uid="uid://dtdbwekpy8rxg"
+path="res://.godot/imported/Miriam_Head_sheet.png-2e1799d0d152349b823f82dbaf3b0b36.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Miriam_Body.png"
-dest_files=["res://.godot/imported/Miriam_Body.png-03647686e7377c6ebaa29faceefea721.ctex"]
+source_file="res://Player/Sprites/Miriam_Head_sheet.png"
+dest_files=["res://.godot/imported/Miriam_Head_sheet.png-2e1799d0d152349b823f82dbaf3b0b36.ctex"]
 
 [params]
 

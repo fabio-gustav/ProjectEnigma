@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=4 uid="uid://c7gb08phau5v2"]
 
-[ext_resource type="PackedScene" uid="uid://iq0r13bt8ah7" path="res://player.tscn" id="1_fo1jl"]
-[ext_resource type="Texture2D" uid="uid://qwwnjte3cfd2" path="res://plat.png" id="2_syxxy"]
-[ext_resource type="Texture2D" uid="uid://6y68vn8ykv2u" path="res://grid.png" id="4_g8ua4"]
-[ext_resource type="PackedScene" uid="uid://cctnwlr1iq78a" path="res://grapple_node.tscn" id="4_lxyf3"]
+[ext_resource type="Texture2D" uid="uid://6y68vn8ykv2u" path="res://grid.png" id="1_w4hom"]
+[ext_resource type="PackedScene" uid="uid://iq0r13bt8ah7" path="res://Player/player.tscn" id="2_5j57l"]
+[ext_resource type="PackedScene" uid="uid://cctnwlr1iq78a" path="res://grapple_node.tscn" id="3_ti6e0"]
+[ext_resource type="Texture2D" uid="uid://qwwnjte3cfd2" path="res://plat.png" id="4_dps5h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_05mmg"]
-texture = ExtResource("4_g8ua4")
+texture = ExtResource("1_w4hom")
 texture_region_size = Vector2i(256, 256)
 0:0/0 = 0
 1:0/0 = 0
@@ -37,17 +37,17 @@ position = Vector2(2, 513)
 shape = SubResource("WorldBoundaryShape2D_qe1um")
 metadata/_edit_lock_ = true
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_fo1jl")]
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_5j57l")]
 position = Vector2(-191, -257)
 jumpHeight = 1024.0
 
-[node name="StaticBody2D" parent="." instance=ExtResource("4_lxyf3")]
+[node name="StaticBody2D" parent="." instance=ExtResource("3_ti6e0")]
 position = Vector2(1572, -1143)
 
-[node name="StaticBody2D" parent="StaticBody2D" instance=ExtResource("4_lxyf3")]
+[node name="StaticBody2D" parent="StaticBody2D" instance=ExtResource("3_ti6e0")]
 position = Vector2(1312, -1471)
 
-[node name="StaticBody2D2" parent="." instance=ExtResource("4_lxyf3")]
+[node name="StaticBody2D2" parent="." instance=ExtResource("3_ti6e0")]
 position = Vector2(3700, -950)
 
 [node name="Node" type="Node" parent="."]
@@ -56,7 +56,7 @@ position = Vector2(3700, -950)
 position = Vector2(5340, -1132.11)
 rotation = 1.5708
 scale = Vector2(13.1962, 1)
-texture = ExtResource("2_syxxy")
+texture = ExtResource("4_dps5h")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Node/Platform3"]
 metadata/_edit_lock_ = true
@@ -68,7 +68,7 @@ metadata/_edit_lock_ = true
 [node name="Platform" type="Sprite2D" parent="Node"]
 position = Vector2(-1020, 12)
 scale = Vector2(4.99219, 1)
-texture = ExtResource("2_syxxy")
+texture = ExtResource("4_dps5h")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Node/Platform"]
 metadata/_edit_lock_ = true
@@ -80,7 +80,7 @@ metadata/_edit_lock_ = true
 [node name="Platform4" type="Sprite2D" parent="Node"]
 position = Vector2(913, -2001)
 scale = Vector2(4.99219, 1)
-texture = ExtResource("2_syxxy")
+texture = ExtResource("4_dps5h")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Node/Platform4"]
 metadata/_edit_lock_ = true
@@ -92,7 +92,7 @@ metadata/_edit_lock_ = true
 [node name="Platform2" type="Sprite2D" parent="Node"]
 position = Vector2(1332, -108)
 scale = Vector2(3.00391, 1)
-texture = ExtResource("2_syxxy")
+texture = ExtResource("4_dps5h")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Node/Platform2"]
 metadata/_edit_lock_ = true

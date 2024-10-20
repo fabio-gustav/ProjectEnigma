@@ -31,6 +31,9 @@ var jump_available:bool = false
 var jump_buffer:bool = false
 var dash_available:bool = false
 var grapple_target:StaticBody2D
+var grapple_icon:Sprite2D
+
+@onready var marker = preload("res://Player/Sprites/Grapple_Point_Dot.png")
 
 var x_input:float = 0.0
 @onready var player_sprite = $PlayerSprite
@@ -40,18 +43,39 @@ var x_input:float = 0.0
 @onready var aim_pivot = $AimPivot
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	grapple_icon = Sprite2D.new()
+	grapple_icon.visible = false
+	grapple_icon.position = global_position
+	grapple_icon.texture = marker
+	grapple_icon.scale = Vector2(0.4,0.4)
+	add_sibling.call_deferred(grapple_icon)
+	
 
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 @warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
-	print(is_on_wall_only())
+	grapple_check()
 	grapple_cast.look_at((10*player_look())+global_position)
 	move_and_slide()
 
 
+func grapple_check():
+	var penits = grapple_cast.get_collider()
+	if penits != null:
+		if grapple_target != penits:
+			grapple_icon.position = penits.global_position
+			grapple_icon.visible = true
+			
+	else:
+		grapple_icon.visible = false
+	
+	if penits != null && Input.is_action_just_pressed("grapple"):
+		grapple_target = penits
+		return true
+	else:
+		return false
 
 func coyoteTimeout() -> void:
 	jump_available = false
@@ -63,5 +87,5 @@ func on_jump_buffer_timeout()->void:
 
 func player_look():
 	var thing = Input.get_vector("left","right","up","down")
-	print(thing)
+	#print(thing)
 	return thing

@@ -9,8 +9,10 @@ func run_state(delta):
 	
 func _physics_process(delta: float) -> void:
 	var direction = (parent.player_look() * 100) + parent.global_position
+	if (parent.player_look() == Vector2.ZERO):
+		direction = Vector2(parent.global_position.x+(parent.player_sprite.scale.x * 100),parent.global_position.y-25)
 	aim(direction)
-	parent.grapple_cast.look_at((100*parent.player_look())+parent.global_position)
+	parent.grapple_cast.look_at(direction)
 
 
 func _flip_player_sprite(val: bool):
@@ -21,7 +23,12 @@ func _flip_player_sprite(val: bool):
 			parent.player_sprite.scale.x = 1
 
 func aim(pos: Vector2):
-	_flip_player_sprite(pos.x < parent.global_position.x)
+	if (pos.x < parent.global_position.x):
+		_flip_player_sprite(true)
+	elif (pos.x > parent.global_position.x):
+		_flip_player_sprite(false)
+	else:
+		pass
 	if (pos.x < parent.global_position.x):
 		parent.arm.rotation = lerp_angle(parent.arm.rotation, -(parent.aim_pivot.global_position - pos).angle(), (1))
 	else:

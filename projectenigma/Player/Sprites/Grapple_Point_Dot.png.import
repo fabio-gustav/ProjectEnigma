@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8lbw2tm4ptbu"
-path="res://.godot/imported/Miriam_Ol_Reliable.png-7293af267934503145d61bf93ab3f224.ctex"
+uid="uid://bdrkn7bexo7fk"
+path="res://.godot/imported/Grapple_Point_Dot.png-06e19daf57cdc56763e4060080f3f386.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Miriam_Ol_Reliable.png"
-dest_files=["res://.godot/imported/Miriam_Ol_Reliable.png-7293af267934503145d61bf93ab3f224.ctex"]
+source_file="res://Player/Sprites/Grapple_Point_Dot.png"
+dest_files=["res://.godot/imported/Grapple_Point_Dot.png-06e19daf57cdc56763e4060080f3f386.ctex"]
 
 [params]
 
