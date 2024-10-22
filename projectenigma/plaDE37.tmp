@@ -1,8 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://iq0r13bt8ah7"]
+[gd_scene load_steps=17 format=3 uid="uid://iq0r13bt8ah7"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_ghon7"]
-[ext_resource type="Texture2D" uid="uid://cukw88dwff46q" path="res://Illustration150.png" id="2_edqmc"]
+[ext_resource type="Script" path="res://sprite_state_machine.gd" id="2_65u56"]
+[ext_resource type="Texture2D" uid="uid://badafk1coipl4" path="res://Sprites/Miriam_Body.png" id="2_hlulr"]
+[ext_resource type="Texture2D" uid="uid://dtdbwekpy8rxg" path="res://Sprites/Miriam_Head_sheet.png" id="3_847dy"]
 [ext_resource type="Script" path="res://Player/state_machine.gd" id="3_ngsr7"]
+[ext_resource type="Texture2D" uid="uid://b8lbw2tm4ptbu" path="res://Sprites/Miriam_Ol_Reliable.png" id="4_e1iph"]
 [ext_resource type="Script" path="res://Player/PlayerJump.gd" id="4_fp44l"]
 [ext_resource type="Script" path="res://Player/PlayerRunning.gd" id="4_tqm3n"]
 [ext_resource type="Script" path="res://Player/PlayerIdle.gd" id="4_v5iuh"]
@@ -17,21 +20,6 @@
 radius = 46.0
 height = 248.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fgx0i"]
-atlas = ExtResource("2_edqmc")
-region = Rect2(0, 0, 256, 256)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_8mscp"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fgx0i")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_ghon7")
 swing_speed = 0.1
@@ -41,10 +29,29 @@ position = Vector2(-15, 13)
 shape = SubResource("CapsuleShape2D_2gg4n")
 metadata/_edit_lock_ = true
 
-[node name="sprite" type="AnimatedSprite2D" parent="."]
-texture_filter = 4
-sprite_frames = SubResource("SpriteFrames_8mscp")
-metadata/_edit_lock_ = true
+[node name="SpriteStateMachine" type="Node" parent="."]
+script = ExtResource("2_65u56")
+
+[node name="PlayerSprite" type="Node2D" parent="."]
+
+[node name="Torso" type="Sprite2D" parent="PlayerSprite"]
+position = Vector2(-6.25, 38.9435)
+scale = Vector2(0.471739, 0.471739)
+texture = ExtResource("2_hlulr")
+
+[node name="Head" type="Sprite2D" parent="PlayerSprite/Torso"]
+position = Vector2(15.3687, -230.94)
+texture = ExtResource("3_847dy")
+hframes = 8
+frame = 6
+
+[node name="Arm" type="Sprite2D" parent="PlayerSprite/Torso"]
+position = Vector2(-39.7465, -141.908)
+texture = ExtResource("4_e1iph")
+offset = Vector2(155, -30)
+
+[node name="AimPivot" type="Marker2D" parent="."]
+position = Vector2(0, -26)
 
 [node name="coyoteTimer" type="Timer" parent="."]
 
@@ -56,6 +63,7 @@ position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
 [node name="GrappleCast" type="RayCast2D" parent="."]
+position = Vector2(0, -25)
 target_position = Vector2(6400, 0)
 collision_mask = 4
 collide_with_areas = true

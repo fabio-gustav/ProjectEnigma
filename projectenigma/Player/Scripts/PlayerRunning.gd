@@ -23,7 +23,7 @@ func physicsUpdate(_delta:float):
 		Transitioned.emit("running","sliding")
 		
 	player.velocity.x = lerp(player.velocity.x,(get_input()*player.speed),player.acceleration)
-	print(player.velocity.x)
+	#print(player.velocity.x)
 	if get_input() == 0.0:
 		Exit()
 

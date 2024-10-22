@@ -8,17 +8,16 @@ var target:StaticBody2D
 var targetPosition:Vector2
 var ropeLength:float
 var stop
+var icon : Sprite2D
 
 func Enter():
+	player.playerGrappled = true
 	targetPosition = player.grapple_target.global_position
 	ropeLength = player.global_position.distance_to(targetPosition)
 
 
 func Exit():
-	player.velocity += player.player_look() * player.grapple_pull
-	
-	Transitioned.emit("grappling","falling")
-	
+	player.playerGrappled = false
 
 func Update():
 	pass
@@ -27,19 +26,26 @@ func physicsUpdate(_delta:float):
 	if Input.is_action_just_pressed("grapple"):
 		stop = true
 		Exit()
+		Transitioned.emit("grappling","falling")
 		
 	
 	player.velocity.y += fallGravity * _delta
 	swing(_delta)
 	player.velocity *= 0.98
 	if player.is_on_floor():
+		Exit()
 		Transitioned.emit("grappling","idle")
 	
 	if Input.is_action_just_pressed("dash") && player.dash_available:
+		Exit()
 		Transitioned.emit("dashing","dashing")
 	
 	if Input.is_action_just_pressed("jump"):
+		Exit()
 		Transitioned.emit("grappling","jumping")
+		
+	if Input.is_action_just_pressed("grapplepull"):
+		Transitioned.emit("grappling","grapplepulling")
 	
 
 
@@ -64,7 +70,7 @@ func swing(_delta):
 	player.velocity += radius.normalized() * -(radial_velocity)
 	
 	if player.global_position.distance_to(targetPosition) != ropeLength:
-		print("adjust")
+	#print("adjust")
 		player.global_position = targetPosition + radius.normalized() * ropeLength
 		
 	player.velocity += (targetPosition - player.global_position).normalized() * (_delta) * 15000
@@ -74,4 +80,4 @@ func swing(_delta):
 	
 	if Input.is_action_pressed("left") and player.velocity.x < 0:
 		player.velocity+= player.velocity.normalized() * player.swing_speed * radius.length()
-	print(player.velocity)
+	#print(player.velocity)

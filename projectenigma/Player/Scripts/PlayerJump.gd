@@ -20,11 +20,9 @@ func Update():
 
 func physicsUpdate(_delta:float):
 	player.velocity.y += jumpGravity * _delta
-	var penits = player.grapple_cast.get_collider()
-	if penits != null:
-		print(penits)
-	if penits != null && Input.is_action_just_pressed("grapple"):
-		player.grapple_target = penits
+	player.velocity.x = lerp(player.velocity.x,player.velocity.x+(get_input()*player.airspeed),player.acceleration)
+	player.velocity.x  = lerp(player.velocity.x, 0.0, player.airResistance)
+	if (player.grapple_check() && Input.is_action_just_pressed("grapple")):
 		Transitioned.emit("jumping","grappling")
 	
 	
@@ -32,8 +30,7 @@ func physicsUpdate(_delta:float):
 		Transitioned.emit("running","dashing")
 	if Input.is_action_pressed("jump"):
 		if player.velocity.y <= 0.0:
-			player.velocity.x = lerp(player.velocity.x,player.velocity.x+(get_input()*player.airspeed),player.acceleration)
-			player.velocity.x  = lerp(player.velocity.x, 0.0, player.airResistance)
+			pass
 		else: 
 			Exit()
 	else:

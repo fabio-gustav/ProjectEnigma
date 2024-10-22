@@ -22,11 +22,7 @@ func Update():
 
 func physicsUpdate(_delta:float):
 	player.velocity.y += jumpGravity * _delta
-	var penits = player.grapple_cast.get_collider()
-	if penits != null:
-		print(penits)
-	if penits != null && Input.is_action_just_pressed("grapple"):
-		player.grapple_target = penits
+	if (player.grapple_check() && Input.is_action_just_pressed("grapple")):
 		Transitioned.emit("jumping","grappling")
 	
 	
