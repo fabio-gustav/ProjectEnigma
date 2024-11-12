@@ -62,7 +62,6 @@ func _physics_process(delta: float) -> void:
 
 
 func grapple_check():
-	print(grapple_target)
 	var penits = grapple_cast.get_collider()
 	
 	if penits != null:
