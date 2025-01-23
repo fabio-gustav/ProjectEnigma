@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://ratavwpgvlh1"]
+
+[ext_resource type="PackedScene" uid="uid://dmwkamt6017mo" path="res://Components/hurtbox_component.tscn" id="1_g66of"]
+[ext_resource type="Texture2D" uid="uid://wtlk46s0xhn2" path="res://World Objects/pngtree-simple-circle-target-template-png-image_5252610.png" id="2_j33ii"]
+[ext_resource type="Script" path="res://Components/HealthComponent.gd" id="3_caiof"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_85mpb"]
+radius = 160.012
+
+[node name="Target" type="Node2D"]
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("1_g66of")]
+collision_layer = 8
+collision_mask = 0
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+shape = SubResource("CircleShape2D_85mpb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_j33ii")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("3_caiof")
+MAX_HEALTH = 1.0

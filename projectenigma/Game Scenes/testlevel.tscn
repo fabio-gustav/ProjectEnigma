@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://c7gb08phau5v2"]
+[gd_scene load_steps=12 format=4 uid="uid://c7gb08phau5v2"]
 
 [ext_resource type="Texture2D" uid="uid://6y68vn8ykv2u" path="res://grid.png" id="1_w4hom"]
 [ext_resource type="PackedScene" uid="uid://iq0r13bt8ah7" path="res://Game Scenes/player.tscn" id="2_5j57l"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://qwwnjte3cfd2" path="res://plat.png" id="4_dps5h"]
 [ext_resource type="PackedScene" uid="uid://dgrjet1205fdx" path="res://World Objects/sign.tscn" id="5_mn586"]
 [ext_resource type="PackedScene" uid="uid://cjq7xqc1v6ssl" path="res://Components/dialog_player.tscn" id="6_s8s71"]
+[ext_resource type="PackedScene" uid="uid://ratavwpgvlh1" path="res://World Objects/target.tscn" id="7_jkqx5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_05mmg"]
 texture = ExtResource("1_w4hom")
@@ -109,3 +110,6 @@ metadata/_edit_lock_ = true
 [node name="DialogPlayer" parent="." instance=ExtResource("6_s8s71")]
 follow_viewport_enabled = false
 scene_text_file = "res://JSON/testlvl.json"
+
+[node name="Target" parent="." instance=ExtResource("7_jkqx5")]
+position = Vector2(-734, -1327)

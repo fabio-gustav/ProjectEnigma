@@ -1,6 +1,2 @@
-res://Game Scenes/player.tscn
 res://Game Scenes/testlevel.tscn
-res://Components/dialog_player.tscn
 res://Components/hitbox_component.tscn
-res://Components/DialogArea.gd
-res://Components/DialogPlayer.gd
