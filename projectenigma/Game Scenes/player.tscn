@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://iq0r13bt8ah7"]
+[gd_scene load_steps=25 format=3 uid="uid://iq0r13bt8ah7"]
 
 [ext_resource type="Script" path="res://Player/Scripts/player.gd" id="1_ghon7"]
 [ext_resource type="Script" path="res://Player/Scripts/sprite_state_machine.gd" id="2_65u56"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" path="res://Player/Scripts/PlayerWallSlide.gd" id="14_l0nas"]
 [ext_resource type="Texture2D" uid="uid://cjeyyge0rgcex" path="res://Player/Sprites/Grapple_Point_Arrow.png" id="19_4pi5e"]
 [ext_resource type="PackedScene" uid="uid://bpxbab0acltj7" path="res://Player/playercamera.tscn" id="19_pmhtr"]
+[ext_resource type="PackedScene" uid="uid://d2tevq3qomvh2" path="res://UI/StaticCamera.tscn" id="20_dhxef"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oms6v"]
 radius = 46.0
@@ -139,5 +140,26 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("RectangleShape2D_na4ea")
+
+[node name="Static Camera" type="CanvasLayer" parent="."]
+offset = Vector2(940, 520)
+scale = Vector2(0.4, 0.4)
+transform = Transform2D(0.4, 0, 0, 0.4, 940, 520)
+
+[node name="Control" type="Control" parent="Static Camera"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Camera2D" parent="Static Camera" instance=ExtResource("20_dhxef")]
 
 [connection signal="timeout" from="coyoteTimer" to="." method="coyoteTimeout"]
