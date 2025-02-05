@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1738638666
+::res://::1738719004
 grapple.png::CompressedTexture2D::6116805241078733360::1727369823::1738638669::1::::<><>::
 grid.png::CompressedTexture2D::2227341501455730222::1727369823::1738638669::1::::<><>::
 HitboxComponent.gd::GDScript::-1::1731377230::0::1::::HitboxComponent<>Area2D<>::
@@ -18,7 +18,7 @@ plugin.cfg::TextFile::-1::1727369823::0::1::::<><>::
 THIRDPARTY.md::TextFile::-1::1727369822::0::1::::<><>::
 ::res://addons/godot-git-plugin/linux/::1727369823
 ::res://addons/godot-git-plugin/macos/::1727369823
-::res://addons/godot-git-plugin/win64/::1738638655
+::res://addons/godot-git-plugin/win64/::1738718992
 ::res://Components/::1731377230
 Attack.gd::GDScript::-1::1731377230::0::1::::Attack<>RefCounted<>::
 DialogArea.gd::GDScript::-1::1731377230::0::1::::<>Area2D<>::
@@ -52,7 +52,7 @@ PlayerWallSlide.gd::GDScript::-1::1731377230::0::1::::PlayerWallSlide<>State<>::
 sprite_state_machine.gd::GDScript::-1::1731377230::0::1::::<>Node<>::
 State.gd::GDScript::-1::1731377230::0::1::::State<>Node<>::
 state_machine.gd::GDScript::-1::1731377230::0::1::::<>Node2D<>::
-::res://Player/Sprites/::1738638211
+::res://Player/Sprites/::1738638670
 Grapple_Point_Arrow.png::CompressedTexture2D::5414298860503005447::1731377230::1738638669::1::::<><>::
 Grapple_Point_Dot.png::CompressedTexture2D::2632713704179716564::1731377230::1738638670::1::::<><>::
 Miriam_Body.png::CompressedTexture2D::2392623311433132847::1731377230::1738638669::1::::<><>::
@@ -64,7 +64,7 @@ SignalBus.gd::GDScript::-1::1731377230::0::1::::<>Node<>::
 PauseMenu.gd::GDScript::-1::1738636994::0::1::::<>Control<>::
 PauseMenu.tscn::PackedScene::6748530651618534828::1738636994::0::1::::<><>::res://UI/PauseMenu.gd
 StaticCamera.tscn::PackedScene::9093865260650679581::1738636994::0::1::::<><>::uid://c3fbkw26y8tbw::::res://UI/PauseMenu.tscn
-::res://World Objects/::1738638211
+::res://World Objects/::1738638676
 download.png::CompressedTexture2D::2805879830318693958::1731377230::1738638669::1::::<><>::
 sign.tscn::PackedScene::7616044170206948849::1731377230::0::1::::<><>::uid://ck5iia1n2ip73::::res://Components/dialog_area.tscn<>uid://bnpknjh1mwt47::::res://World Objects/vecteezy_blank-road-billboard-road-sign-yellow-road-signs-blank_24971513.png
 vecteezy_blank-road-billboard-road-sign-yellow-road-signs-blank_24971513.png::CompressedTexture2D::3330472187268873910::1731377230::1738638676::1::::<><>::
