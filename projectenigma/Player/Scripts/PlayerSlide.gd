@@ -2,11 +2,14 @@ extends State
 
 class_name PlayerSlide
 
+@onready var fallGravity:float = ((-2.0 * player.jumpHeight) / (player.fallingJumpTime * player.fallingJumpTime)) * -1.0
+
 
 func Enter():
-	pass
+	player.floor_snap_length = 100.0
 
 func Exit():
+	player.floor_snap_length = 10.0
 	Transitioned.emit("sliding","idle")
 
 func Update():
@@ -22,6 +25,9 @@ func physicsUpdate(_delta:float):
 	
 	if !Input.is_action_pressed("dash"):
 		Transitioned.emit("sliding","idle")
-		
+	var floor_angle = player.get_floor_angle()
+	if (floor_angle != 0.0):
+		pass
+	print(floor_angle*(180/PI))
 	player.velocity.x = lerp(player.velocity.x,0.0,player.slide_friction)
-	print(player.velocity.x)
+	player.apply_floor_snap()
