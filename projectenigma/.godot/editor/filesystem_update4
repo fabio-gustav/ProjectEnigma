@@ -1,9 +1,6 @@
-res://Game Scenes/player.tscn
-res://Player/Scripts/player.gd
 res://Game Scenes/testlevel.tscn
+res://Player/Scripts/PlayerSlide.gd
+res://Game Scenes/player.tscn
 res://World Objects/sign.tscn
 res://UI/StaticCamera.tscn
-res://Player/Scripts/PlayerSlide.gd
-res://Player/Scripts/PlayerFalling.gd
-res://Player/Scripts/PlayerJump.gd
-res://Player/Scripts/PlayerIdle.gd
+res://Components/grapple_node.tscn

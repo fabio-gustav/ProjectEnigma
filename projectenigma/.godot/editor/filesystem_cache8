@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1739309475
+::res://::1739327555
 grapple.png::CompressedTexture2D::6116805241078733360::1727368964::1738638816::1::::<><>::
 grid.png::CompressedTexture2D::2227341501455730222::1727368964::1738638816::1::::<><>::
 HitboxComponent.gd::GDScript::-1::1738637985::0::1::::HitboxComponent<>Area2D<>::
@@ -18,7 +18,7 @@ plugin.cfg::TextFile::-1::1723816120::0::1::::<><>::
 THIRDPARTY.md::TextFile::-1::1723816120::0::1::::<><>::
 ::res://addons/godot-git-plugin/linux/::1723816120
 ::res://addons/godot-git-plugin/macos/::1723816120
-::res://addons/godot-git-plugin/win64/::1739309471
+::res://addons/godot-git-plugin/win64/::1739327544
 ::res://Components/::1738638901
 Attack.gd::GDScript::-1::1738637985::0::1::::Attack<>RefCounted<>::
 DialogArea.gd::GDScript::-1::1738637985::0::1::::<>Area2D<>::
@@ -29,23 +29,23 @@ grapple_node.tscn::PackedScene::4953271445572479714::1738637985::0::1::::<><>::u
 HealthComponent.gd::GDScript::-1::1738637985::0::1::::HealthComponent<>Node<>::
 health_component.tscn::PackedScene::7827098440747527929::1738637985::0::1::::<><>::res://Components/HealthComponent.gd
 hitbox_component.tscn::PackedScene::8047552316327122982::1738637985::0::1::::<><>::res://HitboxComponent.gd
-::res://Game Scenes/::1739309415
-player.tscn::PackedScene::596090485418510822::1739309415::0::1::::<><>::res://Player/Scripts/player.gd<>res://Player/Scripts/sprite_state_machine.gd<>uid://badafk1coipl4::::res://Player/Sprites/Miriam_Body.png<>uid://djrrfx64msbrd::::res://Components/health_component.tscn<>uid://dtdbwekpy8rxg::::res://Player/Sprites/Miriam_Head_sheet.png<>res://Player/Scripts/state_machine.gd<>uid://dmwkamt6017mo::::res://Components/hitbox_component.tscn<>uid://b8lbw2tm4ptbu::::res://Player/Sprites/Miriam_Ol_Reliable.png<>res://Player/Scripts/PlayerJump.gd<>res://Player/Scripts/PlayerRunning.gd<>res://Player/Scripts/PlayerIdle.gd<>res://Player/Scripts/PlayerFalling.gd<>res://Player/Scripts/PlayerGrapple.gd<>res://Player/Scripts/PlayerSlide.gd<>res://Player/Scripts/PlayerWalljump.gd<>res://Player/Scripts/PlayerDash.gd<>res://Player/Scripts/PlayerGrapplePull.gd<>res://Player/Scripts/PlayerWallSlide.gd<>uid://cjeyyge0rgcex::::res://Player/Sprites/Grapple_Point_Arrow.png<>uid://bpxbab0acltj7::::res://Player/playercamera.tscn<>uid://d2tevq3qomvh2::::res://UI/StaticCamera.tscn
-testlevel.tscn::PackedScene::7031377748929476381::1739308760::0::1::::<><>::uid://6y68vn8ykv2u::::res://grid.png<>uid://iq0r13bt8ah7::::res://Game Scenes/player.tscn<>uid://cctnwlr1iq78a::::res://Components/grapple_node.tscn<>uid://qwwnjte3cfd2::::res://plat.png<>uid://dgrjet1205fdx::::res://World Objects/sign.tscn<>uid://cjq7xqc1v6ssl::::res://Components/dialog_player.tscn
+::res://Game Scenes/::1739313195
+player.tscn::PackedScene::596090485418510822::1739313195::0::1::::<><>::res://Player/Scripts/player.gd<>res://Player/Scripts/sprite_state_machine.gd<>uid://badafk1coipl4::::res://Player/Sprites/Miriam_Body.png<>uid://djrrfx64msbrd::::res://Components/health_component.tscn<>uid://dtdbwekpy8rxg::::res://Player/Sprites/Miriam_Head_sheet.png<>res://Player/Scripts/state_machine.gd<>uid://dmwkamt6017mo::::res://Components/hitbox_component.tscn<>uid://b8lbw2tm4ptbu::::res://Player/Sprites/Miriam_Ol_Reliable.png<>res://Player/Scripts/PlayerJump.gd<>res://Player/Scripts/PlayerRunning.gd<>res://Player/Scripts/PlayerIdle.gd<>res://Player/Scripts/PlayerFalling.gd<>res://Player/Scripts/PlayerGrapple.gd<>res://Player/Scripts/PlayerSlide.gd<>res://Player/Scripts/PlayerWalljump.gd<>res://Player/Scripts/PlayerDash.gd<>res://Player/Scripts/PlayerGrapplePull.gd<>res://Player/Scripts/PlayerWallSlide.gd<>uid://cjeyyge0rgcex::::res://Player/Sprites/Grapple_Point_Arrow.png<>uid://bpxbab0acltj7::::res://Player/playercamera.tscn<>uid://d2tevq3qomvh2::::res://UI/StaticCamera.tscn
+testlevel.tscn::PackedScene::7031377748929476381::1739313195::0::1::::<><>::uid://6y68vn8ykv2u::::res://grid.png<>uid://iq0r13bt8ah7::::res://Game Scenes/player.tscn<>uid://cctnwlr1iq78a::::res://Components/grapple_node.tscn<>uid://qwwnjte3cfd2::::res://plat.png<>uid://dgrjet1205fdx::::res://World Objects/sign.tscn<>uid://cjq7xqc1v6ssl::::res://Components/dialog_player.tscn
 ::res://JSON/::1738637985
 testlvl.json::JSON::-1::1738637985::0::1::::<><>::
 ::res://Player/::1738638901
 playercamera.tscn::PackedScene::3486794834746315990::1738638901::0::1::::<><>::
-::res://Player/Scripts/::1739309415
-player.gd::GDScript::-1::1739309415::0::1::::<>CharacterBody2D<>::
+::res://Player/Scripts/::1739313050
+player.gd::GDScript::-1::1739310946::0::1::::<>CharacterBody2D<>::
 PlayerDash.gd::GDScript::-1::1738637985::0::1::::PlayerDash<>State<>::
-PlayerFalling.gd::GDScript::-1::1738637985::0::1::::PlayerFalling<>State<>::
+PlayerFalling.gd::GDScript::-1::1739311873::0::1::::PlayerFalling<>State<>::
 PlayerGrapple.gd::GDScript::-1::1738637985::0::1::::PlayerGrapple<>State<>::
 PlayerGrapplePull.gd::GDScript::-1::1738637985::0::1::::PlayerGrapplePull<>State<>::
-PlayerIdle.gd::GDScript::-1::1738637985::0::1::::PlayerIdle<>State<>::
-PlayerJump.gd::GDScript::-1::1738637985::0::1::::PlayerJump<>State<>::
+PlayerIdle.gd::GDScript::-1::1739311975::0::1::::PlayerIdle<>State<>::
+PlayerJump.gd::GDScript::-1::1739311580::0::1::::PlayerJump<>State<>::
 PlayerRunning.gd::GDScript::-1::1738637985::0::1::::PlayerRunning<>State<>::
-PlayerSlide.gd::GDScript::-1::1738637985::0::1::::PlayerSlide<>State<>::
+PlayerSlide.gd::GDScript::-1::1739313050::0::1::::PlayerSlide<>State<>::
 PlayerWalljump.gd::GDScript::-1::1738637985::0::1::::PlayerWallJump<>State<>::
 PlayerWallSlide.gd::GDScript::-1::1738637985::0::1::::PlayerWallSlide<>State<>::
 sprite_state_machine.gd::GDScript::-1::1738637985::0::1::::<>Node<>::
@@ -59,11 +59,11 @@ Miriam_Head_sheet.png::CompressedTexture2D::8499143444179137600::1738637985::173
 Miriam_Ol_Reliable.png::CompressedTexture2D::4725462131567829642::1738637985::1738638816::1::::<><>::
 ::res://Singletons/::1738637985
 SignalBus.gd::GDScript::-1::1738637985::0::1::::<>Node<>::
-::res://UI/::1739308760
+::res://UI/::1739313195
 PauseMenu.gd::GDScript::-1::1738637985::0::1::::<>Control<>::
 PauseMenu.tscn::PackedScene::6748530651618534828::1738638901::0::1::::<><>::res://UI/PauseMenu.gd
-StaticCamera.tscn::PackedScene::9093865260650679581::1739308760::0::1::::<><>::uid://c3fbkw26y8tbw::::res://UI/PauseMenu.tscn
-::res://World Objects/::1739308760
+StaticCamera.tscn::PackedScene::9093865260650679581::1739313195::0::1::::<><>::uid://c3fbkw26y8tbw::::res://UI/PauseMenu.tscn
+::res://World Objects/::1739313195
 download.png::CompressedTexture2D::2805879830318693958::1738637985::1738638816::1::::<><>::
-sign.tscn::PackedScene::7616044170206948849::1739308760::0::1::::<><>::uid://ck5iia1n2ip73::::res://Components/dialog_area.tscn<>uid://bnpknjh1mwt47::::res://World Objects/vecteezy_blank-road-billboard-road-sign-yellow-road-signs-blank_24971513.png
+sign.tscn::PackedScene::7616044170206948849::1739313195::0::1::::<><>::uid://ck5iia1n2ip73::::res://Components/dialog_area.tscn<>uid://bnpknjh1mwt47::::res://World Objects/vecteezy_blank-road-billboard-road-sign-yellow-road-signs-blank_24971513.png
 vecteezy_blank-road-billboard-road-sign-yellow-road-signs-blank_24971513.png::CompressedTexture2D::3330472187268873910::1738637985::1738638823::1::::<><>::

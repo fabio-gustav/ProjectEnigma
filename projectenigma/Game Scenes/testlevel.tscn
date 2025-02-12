@@ -40,6 +40,9 @@ position = Vector2(-24, 104)
 build_mode = 1
 polygon = PackedVector2Array(5398, 664, -7154, 676, -10747, 1396, -14197, 1396, 5356, 1523)
 
+[node name="StaticBody2D4" parent="." instance=ExtResource("3_ti6e0")]
+position = Vector2(-5896, -847)
+
 [node name="Sign" parent="." instance=ExtResource("5_mn586")]
 position = Vector2(-5393, -13)
 

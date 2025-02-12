@@ -26,8 +26,9 @@ func physicsUpdate(_delta:float):
 	if !Input.is_action_pressed("dash"):
 		Transitioned.emit("sliding","idle")
 	var floor_angle = player.get_floor_angle()
-	if (floor_angle != 0.0):
-		pass
-	print(floor_angle*(180/PI))
-	player.velocity.x = lerp(player.velocity.x,0.0,player.slide_friction)
+	if (floor_angle >= 0.12):
+		player.velocity.x += (player.get_floor_normal() * fallGravity * _delta).x
+	print(floor_angle)
+	if abs(player.velocity.x) >= 0.0001:
+		player.velocity.x = lerp(player.velocity.x,0.0,player.slide_friction)
 	player.apply_floor_snap()
