@@ -19,7 +19,7 @@ func physicsUpdate(_delta:float):
 	if !player.is_on_floor():
 		Transitioned.emit("running","falling")
 	
-	if Input.is_action_pressed("dash"):
+	if Input.is_action_pressed("dash") and abs(player.velocity.x) >= 0.01:
 		Transitioned.emit("running","sliding")
 		
 	player.velocity.x = lerp(player.velocity.x,(get_input()*player.speed),player.acceleration)

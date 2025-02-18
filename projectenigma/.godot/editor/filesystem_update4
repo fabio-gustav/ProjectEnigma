@@ -5,3 +5,6 @@ res://UI/PauseMenu.tscn
 res://Player/playercamera.tscn
 res://World Objects/sign.tscn
 res://UI/StaticCamera.tscn
+res://Player/playercamera.tscn
+res://UI/MoneyCounter.tscn
+res://Player/Scripts/PlayerSlide.gd

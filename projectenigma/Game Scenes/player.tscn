@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://iq0r13bt8ah7"]
+[gd_scene load_steps=26 format=3 uid="uid://iq0r13bt8ah7"]
 
 [ext_resource type="Script" path="res://Player/Scripts/player.gd" id="1_ghon7"]
 [ext_resource type="Script" path="res://Player/Scripts/sprite_state_machine.gd" id="2_65u56"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://cjeyyge0rgcex" path="res://Player/Sprites/Grapple_Point_Arrow.png" id="19_4pi5e"]
 [ext_resource type="PackedScene" uid="uid://bpxbab0acltj7" path="res://Player/playercamera.tscn" id="19_pmhtr"]
 [ext_resource type="PackedScene" uid="uid://d2tevq3qomvh2" path="res://UI/StaticCamera.tscn" id="20_dhxef"]
+[ext_resource type="PackedScene" uid="uid://cjq7xqc1v6ssl" path="res://Components/dialog_player.tscn" id="21_wnd77"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oms6v"]
 radius = 46.0
@@ -140,6 +141,10 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("RectangleShape2D_na4ea")
+
+[node name="DialogPlayer" parent="." instance=ExtResource("21_wnd77")]
+follow_viewport_enabled = false
+scene_text_file = "res://JSON/testlvl.json"
 
 [node name="Static Camera" type="CanvasLayer" parent="."]
 offset = Vector2(940, 520)
