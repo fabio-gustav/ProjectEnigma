@@ -1,0 +1,86 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3fbkw26y8tbw"]
+
+[ext_resource type="Script" path="res://UI/PauseMenu.gd" id="1_nnlwg"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -958.0
+offset_top = -384.0
+offset_right = -958.0
+offset_bottom = -384.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nnlwg")
+
+[node name="MainPauseMenu" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Resume" type="Button" parent="MainPauseMenu"]
+process_priority = 1
+z_index = 420
+layout_mode = 0
+offset_left = 224.0
+offset_top = -179.0
+offset_right = 1701.0
+offset_bottom = 85.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "Resume"
+
+[node name="Options" type="Button" parent="MainPauseMenu"]
+process_priority = 1
+z_index = 420
+layout_mode = 0
+offset_left = 232.0
+offset_top = 216.0
+offset_right = 1694.0
+offset_bottom = 473.0
+theme_override_font_sizes/font_size = 100
+text = "Options"
+
+[node name="QuitGame" type="Button" parent="MainPauseMenu"]
+process_priority = 2
+z_index = 420
+layout_mode = 0
+offset_left = 223.0
+offset_top = 599.0
+offset_right = 1711.0
+offset_bottom = 831.0
+theme_override_font_sizes/font_size = 100
+text = "Quit Game"
+
+[node name="OptionsMenu" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Back" type="Button" parent="OptionsMenu"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="SoundSettings" type="Button" parent="OptionsMenu"]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="VideoSettings" type="Button" parent="OptionsMenu"]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Controls" type="Button" parent="OptionsMenu"]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Debug" type="Button" parent="OptionsMenu"]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[connection signal="pressed" from="MainPauseMenu/Resume" to="." method="resume"]
+[connection signal="pressed" from="MainPauseMenu/Options" to="." method="options"]
+[connection signal="pressed" from="MainPauseMenu/QuitGame" to="." method="quitGame"]
