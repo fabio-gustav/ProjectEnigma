@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 SignalBus="*res://Singletons/SignalBus.gd"
+PlayerVariables="*res://Singletons/PlayerVariables.gd"
 
 [display]
 

@@ -36,5 +36,5 @@ func physicsUpdate(_delta:float):
 		if player.jump_available:
 			Transitioned.emit("idle","jumping")
 			
-	if Input.is_action_pressed("dash"):
+	if Input.is_action_pressed("dash") and abs(player.velocity.x) >= 0.001:
 		Transitioned.emit("running","sliding")

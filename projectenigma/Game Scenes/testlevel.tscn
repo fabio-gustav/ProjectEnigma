@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=4 uid="uid://c7gb08phau5v2"]
+[gd_scene load_steps=9 format=4 uid="uid://c7gb08phau5v2"]
 
 [ext_resource type="Texture2D" uid="uid://6y68vn8ykv2u" path="res://grid.png" id="1_w4hom"]
 [ext_resource type="PackedScene" uid="uid://iq0r13bt8ah7" path="res://Game Scenes/player.tscn" id="2_5j57l"]
 [ext_resource type="PackedScene" uid="uid://cctnwlr1iq78a" path="res://Components/grapple_node.tscn" id="3_ti6e0"]
 [ext_resource type="Texture2D" uid="uid://qwwnjte3cfd2" path="res://plat.png" id="4_dps5h"]
 [ext_resource type="PackedScene" uid="uid://dgrjet1205fdx" path="res://World Objects/sign.tscn" id="5_mn586"]
-[ext_resource type="PackedScene" uid="uid://cjq7xqc1v6ssl" path="res://Components/dialog_player.tscn" id="6_s8s71"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_05mmg"]
 texture = ExtResource("1_w4hom")
@@ -109,7 +108,3 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Platform2/StaticBody2D"]
 shape = SubResource("RectangleShape2D_j4eh6")
 metadata/_edit_lock_ = true
-
-[node name="DialogPlayer" parent="." instance=ExtResource("6_s8s71")]
-follow_viewport_enabled = false
-scene_text_file = "res://JSON/testlvl.json"
