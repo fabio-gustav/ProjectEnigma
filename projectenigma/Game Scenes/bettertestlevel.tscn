@@ -63,7 +63,7 @@ position = Vector2(1817, -1944)
 [node name="Node" type="Node" parent="."]
 
 [node name="Vertical_Platform" parent="Node" instance=ExtResource("6_ft7oh")]
-position = Vector2(5795, -1145)
+position = Vector2(5765, -1578)
 
 [node name="Normal_Platform" parent="Node" instance=ExtResource("7_d0ih6")]
 
@@ -71,7 +71,7 @@ position = Vector2(5795, -1145)
 position = Vector2(3601, -908)
 
 [node name="Vertical_Platform2" parent="Node" instance=ExtResource("6_ft7oh")]
-position = Vector2(4966, -1127)
+position = Vector2(4931, -1545)
 
 [node name="Short_Platform" parent="Node" instance=ExtResource("8_lkmqx")]
 

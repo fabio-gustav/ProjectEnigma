@@ -27,7 +27,7 @@ func physicsUpdate(_delta:float):
 	
 	
 	if Input.is_action_just_pressed("dash") && player.dash_available:
-		Transitioned.emit("running","dashing")
+		Transitioned.emit("jumping","dashing")
 	if Input.is_action_pressed("jump"):
 		if player.velocity.y <= 0.0:
 			pass

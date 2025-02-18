@@ -9,7 +9,7 @@ class_name PlayerFalling
 
 func Enter():
 	if player.jump_available:
-			player.coyote_timer.start(player.coyoteTime)
+		player.coyote_timer.start(player.coyoteTime)
 
 func Exit():
 	Transitioned.emit("falling","idle")
@@ -21,7 +21,7 @@ func physicsUpdate(_delta:float):
 	if player.is_on_wall_only():
 			Transitioned.emit("falling","wallsliding")
 	if Input.is_action_just_pressed("dash") && player.dash_available:
-		Transitioned.emit("running","dashing")
+		Transitioned.emit("falling","dashing")
 	if Input.is_action_just_pressed("jump"):
 		
 		if player.jump_available:
@@ -32,7 +32,7 @@ func physicsUpdate(_delta:float):
 		
 	
 	if (player.grapple_check() && Input.is_action_just_pressed("grapple")):
-		Transitioned.emit("jumping","grappling")
+		Transitioned.emit("falling","grappling")
 	player.velocity.y += fallGravity * _delta
 	player.velocity.x = lerp(player.velocity.x,player.velocity.x+(get_input()*player.airspeed),player.acceleration)
 	player.velocity.x  = lerp(player.velocity.x, 0.0, player.airResistance)
