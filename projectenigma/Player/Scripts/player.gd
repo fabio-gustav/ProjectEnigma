@@ -41,8 +41,12 @@ var x_input:float = 0.0
 @onready var torso = $PlayerSprite/Torso
 @onready var arm = $PlayerSprite/Torso/Arm
 @onready var aim_pivot = $AimPivot
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	floor_snap_length = 10.0
+	floor_stop_on_slope = false
 	grapple_icon = Sprite2D.new()
 	grapple_icon.visible = false
 	grapple_icon.position = global_position
@@ -50,9 +54,6 @@ func _ready():
 	grapple_icon.scale = Vector2(0.4,0.4)
 	add_sibling.call_deferred(grapple_icon)
 	
-
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 @warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
