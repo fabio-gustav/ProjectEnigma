@@ -60,6 +60,7 @@ func _physics_process(delta: float) -> void:
 	grapple_check()
 	grapple_cast.look_at((10*player_look())+global_position)
 	move_and_slide()
+	SignalBus.emit_signal("playerVelocity",velocity.length())
 	
 	#addition to connect with signal bus to give debug menu player movement data
 	SignalBus.emit_signal("debugData",[velocity.x, velocity.y])

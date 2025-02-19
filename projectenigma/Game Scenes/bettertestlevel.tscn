@@ -45,7 +45,7 @@ shape = SubResource("WorldBoundaryShape2D_qe1um")
 metadata/_edit_lock_ = true
 
 [node name="Sign" parent="." instance=ExtResource("3_bk7xb")]
-position = Vector2(-7678, 1232)
+position = Vector2(-7879, -157)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("4_exivl")]
 position = Vector2(-191, -257)

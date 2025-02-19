@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2tevq3qomvh2"]
+[gd_scene load_steps=4 format=3 uid="uid://d2tevq3qomvh2"]
 
 [ext_resource type="PackedScene" uid="uid://c3fbkw26y8tbw" path="res://UI/PauseMenu.tscn" id="1_ogi2g"]
+[ext_resource type="PackedScene" uid="uid://csheoqpy1xt30" path="res://UI/MoneyCounter.tscn" id="2_elwtn"]
+[ext_resource type="PackedScene" uid="uid://jdqm7clpymgb" path="res://UI/speed_watch.tscn" id="3_x6cmm"]
 
 [node name="Camera2D" type="Camera2D"]
 physics_interpolation_mode = 2
@@ -10,3 +12,10 @@ position_smoothing_enabled = true
 position_smoothing_speed = 2.7e+07
 
 [node name="PauseMenu" parent="." instance=ExtResource("1_ogi2g")]
+
+[node name="MoneyCounter" parent="." instance=ExtResource("2_elwtn")]
+position = Vector2(-2063, -1019)
+scale = Vector2(0.5, 0.5)
+
+[node name="SpeedWatch" parent="." instance=ExtResource("3_x6cmm")]
+position = Vector2(-812, 538)
