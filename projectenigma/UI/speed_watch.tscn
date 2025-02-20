@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://jdqm7clpymgb"]
 
-[ext_resource type="Texture2D" uid="uid://br8ftqx5h1cup" path="res://UI/Energy_Watch.png" id="1_sdnxu"]
-[ext_resource type="Texture2D" uid="uid://c3s6gpd1nwe6s" path="res://UI/Watch_Needle.png" id="2_xbqp8"]
+[ext_resource type="Texture2D" uid="uid://c125x8v28q05s" path="res://UI/Energy_Watch.png" id="1_sdnxu"]
+[ext_resource type="Texture2D" uid="uid://bww0yhaphmwso" path="res://UI/Watch_Needle.png" id="2_xbqp8"]
 [ext_resource type="Script" path="res://speed_watch.gd" id="3_xdcbc"]
 
 [node name="SpeedWatch" type="Node2D"]

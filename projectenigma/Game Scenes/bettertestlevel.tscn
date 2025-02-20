@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=4 uid="uid://b431iyeambykj"]
 
-[ext_resource type="Texture2D" uid="uid://b430csx81wse3" path="res://256Engima_Grid.png" id="2_5p1b3"]
-[ext_resource type="Texture2D" uid="uid://sqpoebcl31iy" path="res://TransparencyDark120.png" id="2_7ni6y"]
+[ext_resource type="Texture2D" uid="uid://cty20pk0q8of8" path="res://256Engima_Grid.png" id="2_5p1b3"]
+[ext_resource type="Texture2D" uid="uid://b6eywagxq110m" path="res://TransparencyDark120.png" id="2_7ni6y"]
 [ext_resource type="PackedScene" uid="uid://dgrjet1205fdx" path="res://World Objects/sign.tscn" id="3_bk7xb"]
 [ext_resource type="PackedScene" uid="uid://iq0r13bt8ah7" path="res://Game Scenes/player.tscn" id="4_exivl"]
 [ext_resource type="PackedScene" uid="uid://cctnwlr1iq78a" path="res://Components/grapple_node.tscn" id="5_uttmx"]

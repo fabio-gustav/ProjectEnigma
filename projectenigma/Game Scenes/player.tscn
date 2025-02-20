@@ -142,10 +142,6 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("RectangleShape2D_na4ea")
 
-[node name="DialogPlayer" parent="." instance=ExtResource("21_wnd77")]
-follow_viewport_enabled = false
-scene_text_file = "res://JSON/testlvl.json"
-
 [node name="Static Camera" type="CanvasLayer" parent="."]
 offset = Vector2(940, 520)
 scale = Vector2(0.4, 0.4)
@@ -166,5 +162,9 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Camera2D" parent="Static Camera" instance=ExtResource("20_dhxef")]
+
+[node name="DialogPlayer" parent="." instance=ExtResource("21_wnd77")]
+follow_viewport_enabled = false
+scene_text_file = "res://JSON/testlvl.json"
 
 [connection signal="timeout" from="coyoteTimer" to="." method="coyoteTimeout"]
