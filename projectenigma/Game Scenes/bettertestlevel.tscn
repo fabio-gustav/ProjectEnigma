@@ -1,14 +1,14 @@
 [gd_scene load_steps=14 format=4 uid="uid://b431iyeambykj"]
 
-[ext_resource type="Texture2D" uid="uid://cty20pk0q8of8" path="res://256Engima_Grid.png" id="2_5p1b3"]
-[ext_resource type="Texture2D" uid="uid://b6eywagxq110m" path="res://TransparencyDark120.png" id="2_7ni6y"]
-[ext_resource type="PackedScene" uid="uid://dgrjet1205fdx" path="res://World Objects/sign.tscn" id="3_bk7xb"]
+[ext_resource type="Texture2D" uid="uid://cty20pk0q8of8" path="res://Backgrounds/256Engima_Grid.png" id="2_5p1b3"]
+[ext_resource type="Texture2D" uid="uid://b6eywagxq110m" path="res://Backgrounds/TransparencyDark120.png" id="2_7ni6y"]
+[ext_resource type="PackedScene" uid="uid://dgrjet1205fdx" path="res://World Objects/Sign/sign.tscn" id="3_bk7xb"]
 [ext_resource type="PackedScene" uid="uid://iq0r13bt8ah7" path="res://Game Scenes/player.tscn" id="4_exivl"]
-[ext_resource type="PackedScene" uid="uid://cctnwlr1iq78a" path="res://Components/grapple_node.tscn" id="5_uttmx"]
-[ext_resource type="PackedScene" uid="uid://bjft6ujfjtllf" path="res://Components/vertical_platform.tscn" id="6_ft7oh"]
-[ext_resource type="PackedScene" uid="uid://cjq7xqc1v6ssl" path="res://Components/dialog_player.tscn" id="7_7krpn"]
-[ext_resource type="PackedScene" uid="uid://chvf73yoap5lr" path="res://Components/normal_platform.tscn" id="7_d0ih6"]
-[ext_resource type="PackedScene" uid="uid://bjao5ba1ukmng" path="res://Components/short_platform.tscn" id="8_lkmqx"]
+[ext_resource type="PackedScene" uid="uid://cctnwlr1iq78a" path="res://World Objects/Grapple_Node/grapple_node.tscn" id="5_uttmx"]
+[ext_resource type="PackedScene" uid="uid://bjft6ujfjtllf" path="res://World Objects/Platforms/vertical_platform.tscn" id="6_ft7oh"]
+[ext_resource type="PackedScene" uid="uid://cjq7xqc1v6ssl" path="res://Components/DialogComponent/dialog_player.tscn" id="7_7krpn"]
+[ext_resource type="PackedScene" uid="uid://chvf73yoap5lr" path="res://World Objects/Platforms/normal_platform.tscn" id="7_d0ih6"]
+[ext_resource type="PackedScene" uid="uid://bjao5ba1ukmng" path="res://World Objects/Platforms/short_platform.tscn" id="8_lkmqx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vsgeg"]
 texture = ExtResource("2_5p1b3")
@@ -83,7 +83,6 @@ position = Vector2(4931, -1545)
 [node name="Short_Platform" parent="Node" instance=ExtResource("8_lkmqx")]
 
 [node name="DialogPlayer" parent="." instance=ExtResource("7_7krpn")]
-follow_viewport_enabled = false
 scene_text_file = "res://JSON/testlvl.json"
 
 [node name="Normal_Platform" parent="." instance=ExtResource("7_d0ih6")]

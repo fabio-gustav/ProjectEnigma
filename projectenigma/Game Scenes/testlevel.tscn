@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=4 uid="uid://c7gb08phau5v2"]
 
-[ext_resource type="Texture2D" uid="uid://6y68vn8ykv2u" path="res://grid.png" id="1_w4hom"]
+[ext_resource type="Texture2D" uid="uid://bf82kk3a4dpea" path="res://Backgrounds/grid.png" id="1_w4hom"]
 [ext_resource type="PackedScene" uid="uid://iq0r13bt8ah7" path="res://Game Scenes/player.tscn" id="2_5j57l"]
-[ext_resource type="PackedScene" uid="uid://cctnwlr1iq78a" path="res://Components/grapple_node.tscn" id="3_ti6e0"]
-[ext_resource type="Texture2D" uid="uid://qwwnjte3cfd2" path="res://plat.png" id="4_dps5h"]
-[ext_resource type="PackedScene" uid="uid://dgrjet1205fdx" path="res://World Objects/sign.tscn" id="5_mn586"]
+[ext_resource type="PackedScene" uid="uid://cctnwlr1iq78a" path="res://World Objects/Grapple_Node/grapple_node.tscn" id="3_ti6e0"]
+[ext_resource type="Texture2D" uid="uid://dwhsstjo776j6" path="res://World Objects/Platforms/plat.png" id="4_dps5h"]
+[ext_resource type="PackedScene" uid="uid://dgrjet1205fdx" path="res://World Objects/Sign/sign.tscn" id="5_mn586"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_05mmg"]
 texture = ExtResource("1_w4hom")

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdpxmchqeh3cp"]
+
+[ext_resource type="Script" path="res://UI/Health_Display/health_display.gd" id="1_al5cs"]
+[ext_resource type="Texture2D" uid="uid://fdapkik0amwm" path="res://UI/Health_Display/Health_Not_Glowing.png" id="2_tfb7u"]
+[ext_resource type="Texture2D" uid="uid://dm525ikwbikku" path="res://UI/Health_Display/Health_Glowing.png" id="3_ufolt"]
+
+[node name="HealthDisplay" type="CanvasGroup"]
+script = ExtResource("1_al5cs")
+
+[node name="Uncharged" type="Sprite2D" parent="."]
+texture_repeat = 2
+texture = ExtResource("2_tfb7u")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 800, 200)
+
+[node name="Charged" type="Sprite2D" parent="Uncharged"]
+texture_repeat = 2
+texture = ExtResource("3_ufolt")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 600, 200)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2tevq3qomvh2"]
+[gd_scene load_steps=5 format=3 uid="uid://d2tevq3qomvh2"]
 
-[ext_resource type="PackedScene" uid="uid://c3fbkw26y8tbw" path="res://UI/PauseMenu.tscn" id="1_ogi2g"]
-[ext_resource type="PackedScene" uid="uid://csheoqpy1xt30" path="res://UI/MoneyCounter.tscn" id="2_elwtn"]
-[ext_resource type="PackedScene" uid="uid://jdqm7clpymgb" path="res://UI/speed_watch.tscn" id="3_x6cmm"]
+[ext_resource type="PackedScene" uid="uid://c3fbkw26y8tbw" path="res://UI/Pause_Menu/PauseMenu.tscn" id="1_ogi2g"]
+[ext_resource type="PackedScene" uid="uid://csheoqpy1xt30" path="res://UI/Money_Counter/MoneyCounter.tscn" id="2_elwtn"]
+[ext_resource type="PackedScene" uid="uid://jdqm7clpymgb" path="res://UI/Energy_Watch/speed_watch.tscn" id="3_x6cmm"]
+[ext_resource type="PackedScene" uid="uid://bdpxmchqeh3cp" path="res://UI/Health_Display/health_display.tscn" id="4_x04sl"]
 
 [node name="Camera2D" type="Camera2D"]
 physics_interpolation_mode = 2
@@ -19,3 +20,5 @@ scale = Vector2(0.5, 0.5)
 
 [node name="SpeedWatch" parent="." instance=ExtResource("3_x6cmm")]
 position = Vector2(-812, 538)
+
+[node name="HealthDisplay" parent="." instance=ExtResource("4_x04sl")]

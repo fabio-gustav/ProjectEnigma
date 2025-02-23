@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://Player/Scripts/player.gd" id="1_ghon7"]
 [ext_resource type="Script" path="res://Player/Scripts/sprite_state_machine.gd" id="2_65u56"]
 [ext_resource type="Texture2D" uid="uid://badafk1coipl4" path="res://Player/Sprites/Miriam_Body.png" id="2_hlulr"]
-[ext_resource type="PackedScene" uid="uid://djrrfx64msbrd" path="res://Components/health_component.tscn" id="2_ijvqs"]
+[ext_resource type="PackedScene" uid="uid://djrrfx64msbrd" path="res://Components/Health_Component/health_component.tscn" id="2_ijvqs"]
 [ext_resource type="Texture2D" uid="uid://dtdbwekpy8rxg" path="res://Player/Sprites/Miriam_Head_sheet.png" id="3_847dy"]
 [ext_resource type="Script" path="res://Player/Scripts/state_machine.gd" id="3_ngsr7"]
-[ext_resource type="PackedScene" uid="uid://dmwkamt6017mo" path="res://Components/hitbox_component.tscn" id="3_ofs54"]
+[ext_resource type="PackedScene" uid="uid://dmwkamt6017mo" path="res://Components/HitboxComponent/hitbox_component.tscn" id="3_ofs54"]
 [ext_resource type="Texture2D" uid="uid://b8lbw2tm4ptbu" path="res://Player/Sprites/Miriam_Ol_Reliable.png" id="4_e1iph"]
 [ext_resource type="Script" path="res://Player/Scripts/PlayerJump.gd" id="4_fp44l"]
 [ext_resource type="Script" path="res://Player/Scripts/PlayerRunning.gd" id="4_tqm3n"]
@@ -21,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://cjeyyge0rgcex" path="res://Player/Sprites/Grapple_Point_Arrow.png" id="19_4pi5e"]
 [ext_resource type="PackedScene" uid="uid://bpxbab0acltj7" path="res://Player/playercamera.tscn" id="19_pmhtr"]
 [ext_resource type="PackedScene" uid="uid://dxxm0wcqg60f6" path="res://UI/static_camera.tscn" id="21_bosql"]
-[ext_resource type="PackedScene" uid="uid://cjq7xqc1v6ssl" path="res://Components/dialog_player.tscn" id="21_wnd77"]
+[ext_resource type="PackedScene" uid="uid://cjq7xqc1v6ssl" path="res://Components/DialogComponent/dialog_player.tscn" id="21_wnd77"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oms6v"]
 radius = 46.0

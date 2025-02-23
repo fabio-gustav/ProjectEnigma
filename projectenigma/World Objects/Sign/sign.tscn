@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgrjet1205fdx"]
+
+[ext_resource type="PackedScene" uid="uid://ck5iia1n2ip73" path="res://Components/DialogComponent/dialog_area.tscn" id="1_g760m"]
+[ext_resource type="Texture2D" uid="uid://bnpknjh1mwt47" path="res://World Objects/Sign/test_sign.png" id="2_sijp7"]
+
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sskx1"]
+size = Vector2(536, 534)
+
+[node name="Sign" type="Node2D"]
+
+[node name="DialogArea" parent="." instance=ExtResource("1_g760m")]
+dialog_key = "sign"
+
+[node name="SignSprite" type="Sprite2D" parent="DialogArea"]
+position = Vector2(260, 264)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_sijp7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogArea"]
+position = Vector2(258, 257)
+shape = SubResource("RectangleShape2D_sskx1")
