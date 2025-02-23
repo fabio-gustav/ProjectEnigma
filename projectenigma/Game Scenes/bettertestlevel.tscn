@@ -29,6 +29,13 @@ sources/1 = SubResource("TileSetAtlasSource_vsgeg")
 
 [node name="Game" type="Node2D"]
 
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+position = Vector2(-3010, -4085)
+rotation = -0.258309
+color = Color(0.698993, 0.585637, 0.59129, 1)
+energy = 0.7
+shadow_enabled = true
+
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
 position = Vector2(831, 211)
