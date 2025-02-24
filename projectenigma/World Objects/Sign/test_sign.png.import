@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dy2o41nnj6bwy"
-path="res://.godot/imported/Illustration150.png-870080eccf4dbcf95451e2bdc3d50d37.ctex"
+uid="uid://bnpknjh1mwt47"
+path="res://.godot/imported/test_sign.png-1099bc886a9d0551622d7e6391912fea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Illustration150.png"
-dest_files=["res://.godot/imported/Illustration150.png-870080eccf4dbcf95451e2bdc3d50d37.ctex"]
+source_file="res://World Objects/Sign/test_sign.png"
+dest_files=["res://.godot/imported/test_sign.png-1099bc886a9d0551622d7e6391912fea.ctex"]
 
 [params]
 
