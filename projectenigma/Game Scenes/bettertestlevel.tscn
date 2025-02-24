@@ -31,8 +31,8 @@ sources/1 = SubResource("TileSetAtlasSource_vsgeg")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(-3010, -4085)
-rotation = -0.258309
-color = Color(0.698993, 0.585637, 0.59129, 1)
+rotation = -0.385718
+color = Color(0.568973, 0.568973, 0.568973, 1)
 energy = 0.7
 shadow_enabled = true
 
@@ -59,7 +59,7 @@ position = Vector2(-191, -257)
 jumpHeight = 1024.0
 
 [node name="StaticBody2D" parent="." instance=ExtResource("5_uttmx")]
-position = Vector2(-561, -1195)
+position = Vector2(-505, -703)
 
 [node name="StaticBody2D3" parent="." instance=ExtResource("5_uttmx")]
 position = Vector2(1539, -3516)
@@ -70,7 +70,7 @@ position = Vector2(1817, -1944)
 [node name="Node" type="Node" parent="."]
 
 [node name="Vertical_Platform" parent="Node" instance=ExtResource("6_ft7oh")]
-position = Vector2(5765, -1578)
+position = Vector2(6198, -1573)
 
 [node name="Normal_Platform" parent="Node" instance=ExtResource("7_d0ih6")]
 
@@ -81,6 +81,7 @@ position = Vector2(3601, -908)
 position = Vector2(4931, -1545)
 
 [node name="Short_Platform" parent="Node" instance=ExtResource("8_lkmqx")]
+position = Vector2(-706, -248)
 
 [node name="DialogPlayer" parent="." instance=ExtResource("7_7krpn")]
 scene_text_file = "res://JSON/testlvl.json"
@@ -92,7 +93,7 @@ position = Vector2(4076, -2742)
 position = Vector2(-589, -2814)
 
 [node name="StaticBody2D4" parent="." instance=ExtResource("5_uttmx")]
-position = Vector2(6639, -1019)
+position = Vector2(7695, -1842)
 
 [node name="Normal_Platform3" parent="." instance=ExtResource("7_d0ih6")]
 position = Vector2(-6583, -125)

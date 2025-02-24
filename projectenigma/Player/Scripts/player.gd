@@ -70,9 +70,9 @@ func _physics_process(delta: float) -> void:
 	SignalBus.emit_signal("debugData",[velocity.x, velocity.y])
 
 func grapple_check():
-	var penits = grapple_cast.get_collider()
+	var penits:StaticBody2D = grapple_cast.get_collider()
 	
-	if penits != null:
+	if penits != null and !penits.get_collision_layer_value(1):
 		if grapple_target != penits:
 			
 			grapple_icon.position = penits.global_position

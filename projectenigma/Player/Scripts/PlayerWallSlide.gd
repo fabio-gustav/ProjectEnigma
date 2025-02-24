@@ -19,9 +19,9 @@ func Update():
 	pass
 
 func physicsUpdate(_delta:float):
-	if Input.is_action_just_pressed("jump"):
-		Transitioned.emit("falling","walljumping")
+	if Input.is_action_just_pressed("jump") or player.jump_buffer:
+		Transitioned.emit("wallsliding","walljumping")
 		
 	player.velocity.y += player.wallslide_gravity * _delta
-	if player.is_on_floor():
+	if !player.is_on_wall():
 		Exit()

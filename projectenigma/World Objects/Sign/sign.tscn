@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://ck5iia1n2ip73" path="res://Components/DialogComponent/dialog_area.tscn" id="1_g760m"]
 [ext_resource type="Texture2D" uid="uid://bnpknjh1mwt47" path="res://World Objects/Sign/test_sign.png" id="2_sijp7"]
 
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sskx1"]
 size = Vector2(536, 534)
 
