@@ -6,3 +6,5 @@ signal display_dialog(text_key)
 signal debugData(playerDataArray)
 
 signal playerVelocity(velocity)
+
+signal health_changed()

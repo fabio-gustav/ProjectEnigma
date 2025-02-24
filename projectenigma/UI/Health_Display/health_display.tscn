@@ -12,11 +12,14 @@ texture_repeat = 2
 texture = ExtResource("2_tfb7u")
 centered = false
 region_enabled = true
-region_rect = Rect2(0, 0, 800, 200)
+region_rect = Rect2(0, 0, 600, 200)
 
 [node name="Charged" type="Sprite2D" parent="Uncharged"]
+visible = false
 texture_repeat = 2
 texture = ExtResource("3_ufolt")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 600, 200)
+
+[connection signal="ready" from="Uncharged" to="." method="_on_uncharged_ready"]
