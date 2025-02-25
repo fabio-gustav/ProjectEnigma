@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dy2o41nnj6bwy"
-path="res://.godot/imported/Illustration150.png-870080eccf4dbcf95451e2bdc3d50d37.ctex"
+uid="uid://c55ak5l0274mg"
+path="res://.godot/imported/Money_Counter_Numbers.png-9fb821ac4abb0326f3e3a6b0b7a7accc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Illustration150.png"
-dest_files=["res://.godot/imported/Illustration150.png-870080eccf4dbcf95451e2bdc3d50d37.ctex"]
+source_file="res://UI/Money_Counter/Money_Counter_Numbers.png"
+dest_files=["res://.godot/imported/Money_Counter_Numbers.png-9fb821ac4abb0326f3e3a6b0b7a7accc.ctex"]
 
 [params]
 

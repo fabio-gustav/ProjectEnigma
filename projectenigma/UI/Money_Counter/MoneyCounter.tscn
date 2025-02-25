@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://csheoqpy1xt30"]
+
+[ext_resource type="Texture2D" uid="uid://d1xikfbvi4j08" path="res://UI/Money_Counter/Money_Counter.png" id="1_avqb8"]
+[ext_resource type="Texture2D" uid="uid://c55ak5l0274mg" path="res://UI/Money_Counter/Money_Counter_Numbers.png" id="2_dbcqy"]
+[ext_resource type="Script" path="res://UI/Money_Counter/money_counter.gd" id="2_wlblx"]
+
+[node name="MoneyCounter" type="Node2D"]
+position = Vector2(1063, 514)
+
+[node name="MoneyCounterSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_avqb8")
+region_rect = Rect2(139.309, 71.4275, 306.536, 337.34)
+script = ExtResource("2_wlblx")
+
+[node name="Digit4" type="Sprite2D" parent="MoneyCounterSprite"]
+z_index = -1
+position = Vector2(119, 32)
+texture = ExtResource("2_dbcqy")
+vframes = 10
+
+[node name="Digit3" type="Sprite2D" parent="MoneyCounterSprite"]
+z_index = -1
+position = Vector2(14, 31)
+texture = ExtResource("2_dbcqy")
+vframes = 10
+frame = 9
+
+[node name="Digit2" type="Sprite2D" parent="MoneyCounterSprite"]
+z_index = -1
+position = Vector2(-92, 32)
+texture = ExtResource("2_dbcqy")
+vframes = 10
+frame = 9
+
+[node name="Digit1" type="Sprite2D" parent="MoneyCounterSprite"]
+z_index = -1
+position = Vector2(-200, 32)
+texture = ExtResource("2_dbcqy")
+vframes = 10
+frame = 9

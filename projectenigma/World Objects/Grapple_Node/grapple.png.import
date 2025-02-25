@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dy2o41nnj6bwy"
-path="res://.godot/imported/Illustration150.png-870080eccf4dbcf95451e2bdc3d50d37.ctex"
+uid="uid://c3hxbuk8tb73x"
+path="res://.godot/imported/grapple.png-ecb1fdc40c474cda28f878cc7498c12a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Illustration150.png"
-dest_files=["res://.godot/imported/Illustration150.png-870080eccf4dbcf95451e2bdc3d50d37.ctex"]
+source_file="res://World Objects/Grapple_Node/grapple.png"
+dest_files=["res://.godot/imported/grapple.png-ecb1fdc40c474cda28f878cc7498c12a.ctex"]
 
 [params]
 

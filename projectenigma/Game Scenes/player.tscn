@@ -1,12 +1,12 @@
-[gd_scene load_steps=26 format=3 uid="uid://iq0r13bt8ah7"]
+[gd_scene load_steps=28 format=3 uid="uid://iq0r13bt8ah7"]
 
 [ext_resource type="Script" path="res://Player/Scripts/player.gd" id="1_ghon7"]
 [ext_resource type="Script" path="res://Player/Scripts/sprite_state_machine.gd" id="2_65u56"]
 [ext_resource type="Texture2D" uid="uid://badafk1coipl4" path="res://Player/Sprites/Miriam_Body.png" id="2_hlulr"]
-[ext_resource type="PackedScene" uid="uid://djrrfx64msbrd" path="res://Components/health_component.tscn" id="2_ijvqs"]
+[ext_resource type="PackedScene" uid="uid://djrrfx64msbrd" path="res://Components/Health_Component/health_component.tscn" id="2_ijvqs"]
 [ext_resource type="Texture2D" uid="uid://dtdbwekpy8rxg" path="res://Player/Sprites/Miriam_Head_sheet.png" id="3_847dy"]
 [ext_resource type="Script" path="res://Player/Scripts/state_machine.gd" id="3_ngsr7"]
-[ext_resource type="PackedScene" uid="uid://dmwkamt6017mo" path="res://Components/hitbox_component.tscn" id="3_ofs54"]
+[ext_resource type="PackedScene" uid="uid://dmwkamt6017mo" path="res://Components/HitboxComponent/hitbox_component.tscn" id="3_ofs54"]
 [ext_resource type="Texture2D" uid="uid://b8lbw2tm4ptbu" path="res://Player/Sprites/Miriam_Ol_Reliable.png" id="4_e1iph"]
 [ext_resource type="Script" path="res://Player/Scripts/PlayerJump.gd" id="4_fp44l"]
 [ext_resource type="Script" path="res://Player/Scripts/PlayerRunning.gd" id="4_tqm3n"]
@@ -20,8 +20,8 @@
 [ext_resource type="Script" path="res://Player/Scripts/PlayerWallSlide.gd" id="14_l0nas"]
 [ext_resource type="Texture2D" uid="uid://cjeyyge0rgcex" path="res://Player/Sprites/Grapple_Point_Arrow.png" id="19_4pi5e"]
 [ext_resource type="PackedScene" uid="uid://bpxbab0acltj7" path="res://Player/playercamera.tscn" id="19_pmhtr"]
-[ext_resource type="PackedScene" uid="uid://d2tevq3qomvh2" path="res://UI/StaticCamera.tscn" id="20_dhxef"]
-[ext_resource type="PackedScene" uid="uid://cjq7xqc1v6ssl" path="res://Components/dialog_player.tscn" id="21_wnd77"]
+[ext_resource type="PackedScene" uid="uid://dxxm0wcqg60f6" path="res://UI/static_camera.tscn" id="21_bosql"]
+[ext_resource type="PackedScene" uid="uid://cjq7xqc1v6ssl" path="res://Components/DialogComponent/dialog_player.tscn" id="21_wnd77"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oms6v"]
 radius = 46.0
@@ -30,6 +30,12 @@ height = 248.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cjmbv"]
 radius = 46.0
 height = 248.0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_dguh3"]
+polygon = PackedVector2Array(-29, -18, -24, -3, -23, 6, -34, 26, -43, 57, -55, 103, -59, 135, -37, 113, -23, 90, -12, 63, -8, 54, -5, 90, 6, 132, 16, 115, 23, 79, 23, 43, 18, 25, 15, 9, 31, 18, 33, 133, 41, 133, 41, 20, 46, 12, 42, 2, 19, -6, 35, -25, 25, -26, 40, -54, 9, -39)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_51o3i"]
+polygon = PackedVector2Array(275.576, 4.23944, 76.3134, 8.47906, 69.9539, 27.5574, 6.35942, 21.198, 10.599, 74.1934, -76.3134, 55.115, -69.954, 118.71, -16.9586, 108.11, 19.0783, 116.59, 82.6728, 84.7925, 108.111, 89.0321, 122.949, 69.9537, 114.47, 44.5159, 241.659, 36.0367, 277.696, 23.3178)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_na4ea"]
 size = Vector2(332.125, 255)
@@ -46,8 +52,11 @@ shape = SubResource("CapsuleShape2D_oms6v")
 metadata/_edit_lock_ = true
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_ijvqs")]
+MAX_HEALTH = 4.0
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_ofs54")]
+collision_layer = 2
+collision_mask = 8
 health_component = NodePath("../HealthComponent")
 
 [node name="collider" type="CollisionShape2D" parent="HitboxComponent"]
@@ -103,6 +112,11 @@ position = Vector2(-6.25, 38.9435)
 scale = Vector2(0.471739, 0.471739)
 texture = ExtResource("2_hlulr")
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="PlayerSprite/Torso"]
+position = Vector2(13.2489, -82.5531)
+scale = Vector2(2.11982, 2.11982)
+occluder = SubResource("OccluderPolygon2D_dguh3")
+
 [node name="Head" type="Sprite2D" parent="PlayerSprite/Torso"]
 position = Vector2(15.3687, -230.94)
 texture = ExtResource("3_847dy")
@@ -114,17 +128,23 @@ position = Vector2(-39.7465, -141.908)
 texture = ExtResource("4_e1iph")
 offset = Vector2(155, -30)
 
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="PlayerSprite/Torso/Arm"]
+position = Vector2(55.1152, -89.032)
+occluder = SubResource("OccluderPolygon2D_51o3i")
+
 [node name="AimPivot" type="Marker2D" parent="."]
 position = Vector2(0, -26)
 
 [node name="coyoteTimer" type="Timer" parent="."]
 
+[node name="dashCooldownTimer" type="Timer" parent="."]
+
 [node name="Camera2D" parent="." instance=ExtResource("19_pmhtr")]
 
 [node name="GrappleCast" type="RayCast2D" parent="."]
 position = Vector2(0, -25)
-target_position = Vector2(6400, 0)
-collision_mask = 4
+target_position = Vector2(2400, 0)
+collision_mask = 5
 collide_with_areas = true
 metadata/_edit_lock_ = true
 
@@ -142,29 +162,11 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("RectangleShape2D_na4ea")
 
+[node name="Static Camera" parent="." instance=ExtResource("21_bosql")]
+
 [node name="DialogPlayer" parent="." instance=ExtResource("21_wnd77")]
 follow_viewport_enabled = false
 scene_text_file = "res://JSON/testlvl.json"
 
-[node name="Static Camera" type="CanvasLayer" parent="."]
-offset = Vector2(940, 520)
-scale = Vector2(0.4, 0.4)
-transform = Transform2D(0.4, 0, 0, 0.4, 940, 520)
-
-[node name="Control" type="Control" parent="Static Camera"]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Camera2D" parent="Static Camera" instance=ExtResource("20_dhxef")]
-
 [connection signal="timeout" from="coyoteTimer" to="." method="coyoteTimeout"]
+[connection signal="timeout" from="dashCooldownTimer" to="." method="on_dash_cooldown_timer_timeout"]

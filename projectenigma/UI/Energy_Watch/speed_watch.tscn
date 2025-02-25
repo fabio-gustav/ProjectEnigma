@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://jdqm7clpymgb"]
+
+[ext_resource type="Texture2D" uid="uid://c125x8v28q05s" path="res://UI/Energy_Watch/Energy_Watch.png" id="1_fmoyi"]
+[ext_resource type="Texture2D" uid="uid://bww0yhaphmwso" path="res://UI/Energy_Watch/Watch_Needle.png" id="2_tab8k"]
+[ext_resource type="Script" path="res://UI/Energy_Watch/speed_watch.gd" id="3_5xpgs"]
+
+[node name="SpeedWatch" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(860, 535)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_fmoyi")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-62.5, 8.75)
+rotation = -2.11185
+texture = ExtResource("2_tab8k")
+centered = false
+offset = Vector2(-40, -220)
+script = ExtResource("3_5xpgs")
+display_speed = 0.02
+metadata/_edit_lock_ = true

@@ -1,14 +1,18 @@
-[gd_scene load_steps=14 format=4 uid="uid://b431iyeambykj"]
+[gd_scene load_steps=16 format=4 uid="uid://b431iyeambykj"]
 
-[ext_resource type="Texture2D" uid="uid://b430csx81wse3" path="res://256Engima_Grid.png" id="2_5p1b3"]
-[ext_resource type="Texture2D" uid="uid://sqpoebcl31iy" path="res://TransparencyDark120.png" id="2_7ni6y"]
-[ext_resource type="PackedScene" uid="uid://dgrjet1205fdx" path="res://World Objects/sign.tscn" id="3_bk7xb"]
+[ext_resource type="PackedScene" uid="uid://uklk3qd88hbn" path="res://Components/Attack_Component/Attack_Component.tscn" id="1_v7a47"]
+[ext_resource type="Texture2D" uid="uid://cty20pk0q8of8" path="res://Backgrounds/256Engima_Grid.png" id="2_5p1b3"]
+[ext_resource type="Texture2D" uid="uid://b6eywagxq110m" path="res://Backgrounds/TransparencyDark120.png" id="2_7ni6y"]
+[ext_resource type="PackedScene" uid="uid://dgrjet1205fdx" path="res://World Objects/Sign/sign.tscn" id="3_bk7xb"]
 [ext_resource type="PackedScene" uid="uid://iq0r13bt8ah7" path="res://Game Scenes/player.tscn" id="4_exivl"]
-[ext_resource type="PackedScene" uid="uid://cctnwlr1iq78a" path="res://Components/grapple_node.tscn" id="5_uttmx"]
-[ext_resource type="PackedScene" uid="uid://bjft6ujfjtllf" path="res://Components/vertical_platform.tscn" id="6_ft7oh"]
-[ext_resource type="PackedScene" uid="uid://cjq7xqc1v6ssl" path="res://Components/dialog_player.tscn" id="7_7krpn"]
-[ext_resource type="PackedScene" uid="uid://chvf73yoap5lr" path="res://Components/normal_platform.tscn" id="7_d0ih6"]
-[ext_resource type="PackedScene" uid="uid://bjao5ba1ukmng" path="res://Components/short_platform.tscn" id="8_lkmqx"]
+[ext_resource type="PackedScene" uid="uid://cctnwlr1iq78a" path="res://World Objects/Grapple_Node/grapple_node.tscn" id="5_uttmx"]
+[ext_resource type="PackedScene" uid="uid://bjft6ujfjtllf" path="res://World Objects/Platforms/vertical_platform.tscn" id="6_ft7oh"]
+[ext_resource type="PackedScene" uid="uid://cjq7xqc1v6ssl" path="res://Components/DialogComponent/dialog_player.tscn" id="7_7krpn"]
+[ext_resource type="PackedScene" uid="uid://chvf73yoap5lr" path="res://World Objects/Platforms/normal_platform.tscn" id="7_d0ih6"]
+[ext_resource type="PackedScene" uid="uid://bjao5ba1ukmng" path="res://World Objects/Platforms/short_platform.tscn" id="8_lkmqx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ja56a"]
+size = Vector2(703, 618)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vsgeg"]
 texture = ExtResource("2_5p1b3")
@@ -29,6 +33,21 @@ sources/1 = SubResource("TileSetAtlasSource_vsgeg")
 
 [node name="Game" type="Node2D"]
 
+[node name="AttackComponent" parent="." instance=ExtResource("1_v7a47")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent"]
+position = Vector2(-460.247, 4595.48)
+rotation = 0.385718
+shape = SubResource("RectangleShape2D_ja56a")
+debug_color = Color(0.903648, 0, 0.426907, 0.42)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+position = Vector2(-3010, -4085)
+rotation = -0.385718
+color = Color(0.568973, 0.568973, 0.568973, 1)
+energy = 0.7
+shadow_enabled = true
+
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
 position = Vector2(831, 211)
@@ -45,14 +64,14 @@ shape = SubResource("WorldBoundaryShape2D_qe1um")
 metadata/_edit_lock_ = true
 
 [node name="Sign" parent="." instance=ExtResource("3_bk7xb")]
-position = Vector2(-7678, 1232)
+position = Vector2(-7879, -157)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("4_exivl")]
 position = Vector2(-191, -257)
 jumpHeight = 1024.0
 
 [node name="StaticBody2D" parent="." instance=ExtResource("5_uttmx")]
-position = Vector2(-561, -1195)
+position = Vector2(-505, -703)
 
 [node name="StaticBody2D3" parent="." instance=ExtResource("5_uttmx")]
 position = Vector2(1539, -3516)
@@ -63,7 +82,7 @@ position = Vector2(1817, -1944)
 [node name="Node" type="Node" parent="."]
 
 [node name="Vertical_Platform" parent="Node" instance=ExtResource("6_ft7oh")]
-position = Vector2(5765, -1578)
+position = Vector2(6198, -1573)
 
 [node name="Normal_Platform" parent="Node" instance=ExtResource("7_d0ih6")]
 
@@ -74,9 +93,9 @@ position = Vector2(3601, -908)
 position = Vector2(4931, -1545)
 
 [node name="Short_Platform" parent="Node" instance=ExtResource("8_lkmqx")]
+position = Vector2(-706, -248)
 
 [node name="DialogPlayer" parent="." instance=ExtResource("7_7krpn")]
-follow_viewport_enabled = false
 scene_text_file = "res://JSON/testlvl.json"
 
 [node name="Normal_Platform" parent="." instance=ExtResource("7_d0ih6")]
@@ -86,7 +105,7 @@ position = Vector2(4076, -2742)
 position = Vector2(-589, -2814)
 
 [node name="StaticBody2D4" parent="." instance=ExtResource("5_uttmx")]
-position = Vector2(6639, -1019)
+position = Vector2(7695, -1842)
 
 [node name="Normal_Platform3" parent="." instance=ExtResource("7_d0ih6")]
 position = Vector2(-6583, -125)
