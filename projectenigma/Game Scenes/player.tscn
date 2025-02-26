@@ -168,8 +168,10 @@ collision_mask = 0
 shape = SubResource("RectangleShape2D_na4ea")
 
 [node name="Static Camera" parent="." instance=ExtResource("21_bosql")]
+visible = false
 
 [node name="DialogPlayer" parent="." instance=ExtResource("21_wnd77")]
+visible = false
 follow_viewport_enabled = false
 scene_text_file = "res://JSON/testlvl.json"
 
