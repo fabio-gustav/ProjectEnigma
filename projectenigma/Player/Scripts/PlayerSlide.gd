@@ -18,16 +18,16 @@ func Update():
 func physicsUpdate(_delta:float):
 	if Input.is_action_just_pressed("jump"):
 		if player.jump_available:
-			Transitioned.emit("idle","jumping")
+			Transitioned.emit("slide","jumping")
 		
 	if !player.is_on_floor():
 		Transitioned.emit("running","falling")
 	
-	if !Input.is_action_pressed("dash"):
+	if !Input.is_action_pressed("slide"):
 		Transitioned.emit("sliding","idle")
 	var floor_angle = player.get_floor_angle()
-	print(floor_angle)
-	print(player.is_on_floor())
+	#print(floor_angle)
+	#print(player.is_on_floor())
 	if floor_angle >= 0.1:
 		player.velocity.x += (player.get_floor_normal() * fallGravity * _delta).x
 	if abs(player.velocity.x) >= 0.001:
