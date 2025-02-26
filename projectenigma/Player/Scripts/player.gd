@@ -59,6 +59,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 @warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
+	
 	if (dash_cool and is_on_floor()):
 		dash_available = true
 	grapple_check()

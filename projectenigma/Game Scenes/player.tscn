@@ -25,7 +25,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oms6v"]
 radius = 46.0
-height = 248.0
+height = 224.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cjmbv"]
 radius = 46.0
@@ -45,11 +45,11 @@ script = ExtResource("1_ghon7")
 airspeed = 150.0
 dashDistance = 2048.0
 swing_speed = 0.1
+wallslide_gravity = 0.0
 
 [node name="collider" type="CollisionShape2D" parent="."]
-position = Vector2(-15, 13)
+position = Vector2(0, 21)
 shape = SubResource("CapsuleShape2D_oms6v")
-metadata/_edit_lock_ = true
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_ijvqs")]
 MAX_HEALTH = 4.0
@@ -62,7 +62,6 @@ health_component = NodePath("../HealthComponent")
 [node name="collider" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(-15, 13)
 shape = SubResource("CapsuleShape2D_cjmbv")
-metadata/_edit_lock_ = true
 
 [node name="SpriteStateMachine" type="Node" parent="."]
 script = ExtResource("2_65u56")
@@ -101,6 +100,12 @@ risingwallJumpTime = 0.8
 
 [node name="WallSliding" type="Node2D" parent="MovementStateMachine"]
 script = ExtResource("14_l0nas")
+
+[node name="WallCheckLeft" type="RayCast2D" parent="MovementStateMachine/WallSliding"]
+target_position = Vector2(-126, 0)
+
+[node name="WallCheckRight" type="RayCast2D" parent="MovementStateMachine/WallSliding"]
+target_position = Vector2(139, 0)
 
 [node name="GrapplePulling" type="Node2D" parent="MovementStateMachine"]
 script = ExtResource("13_yg5uo")

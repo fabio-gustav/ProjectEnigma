@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c3hxbuk8tb73x" path="res://World Objects/Grapple_Node/grapple.png" id="1_u4qpr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3hktp"]
-radius = 336.214
+radius = 755.483
 
 [node name="StaticBody2D" type="StaticBody2D"]
 collision_layer = 4

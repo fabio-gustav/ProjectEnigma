@@ -24,10 +24,13 @@ func physicsUpdate(_delta:float):
 	player.velocity.x  = lerp(player.velocity.x, 0.0, player.airResistance)
 	if (player.grapple_check() && Input.is_action_just_pressed("grapple")):
 		Transitioned.emit("jumping","grappling")
-	
+	if player.is_on_wall():
+		Transitioned.emit("jumping","wallsliding")
+		return
 	
 	if Input.is_action_just_pressed("dash") && player.dash_available:
 		Transitioned.emit("jumping","dashing")
+		return
 	if Input.is_action_pressed("jump"):
 		if player.velocity.y <= 0.0:
 			pass
