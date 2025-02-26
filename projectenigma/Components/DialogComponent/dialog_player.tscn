@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjq7xqc1v6ssl"]
+
+[ext_resource type="Script" path="res://Components/DialogComponent/DialogPlayer.gd" id="1_33pgl"]
+[ext_resource type="Texture2D" uid="uid://d2mgnyyuxn7tr" path="res://UI/download.png" id="1_o35c7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jxsxs"]
+font_size = 64
+font_color = Color(0, 0, 0, 1)
+
+[node name="DialogPlayer" type="CanvasLayer"]
+process_mode = 3
+follow_viewport_enabled = true
+script = ExtResource("1_33pgl")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_left = 222.0
+offset_top = 666.0
+offset_right = 713.0
+offset_bottom = 789.0
+scale = Vector2(3, 3)
+texture = ExtResource("1_o35c7")
+expand_mode = 5
+
+[node name="TextLabel" type="Label" parent="."]
+offset_left = 556.0
+offset_top = 722.0
+offset_right = 1625.0
+offset_bottom = 953.0
+label_settings = SubResource("LabelSettings_jxsxs")
+autowrap_mode = 3

@@ -18,8 +18,6 @@ func Update():
 	pass
 
 func physicsUpdate(_delta:float):
-	if player.is_on_wall_only():
-			Transitioned.emit("falling","wallsliding")
 	if Input.is_action_just_pressed("dash") && player.dash_available:
 		Transitioned.emit("falling","dashing")
 	if Input.is_action_just_pressed("jump"):
@@ -36,5 +34,8 @@ func physicsUpdate(_delta:float):
 	player.velocity.y += fallGravity * _delta
 	player.velocity.x = lerp(player.velocity.x,player.velocity.x+(get_input()*player.airspeed),player.acceleration)
 	player.velocity.x  = lerp(player.velocity.x, 0.0, player.airResistance)
+	if player.is_on_wall():
+		Transitioned.emit("falling","wallsliding")
+	
 	if player.is_on_floor():
 		Exit()

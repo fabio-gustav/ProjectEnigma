@@ -7,11 +7,13 @@ class_name PlayerDash
 func Enter():
 	print("entering dash")
 	player.dash_available = false
+	player.dash_cool = false
 	player.velocity.y = 0
 	player.velocity += get_dash_input() * dashVelocity
 	Exit()
 
 func Exit():
+	get_tree().create_timer(player.dashCooldown).timeout.connect(player.on_dash_cooldown_timer_timeout)
 	print("exiting dash")
 	Transitioned.emit("dashing","idle")
 

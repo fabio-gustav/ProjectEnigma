@@ -20,7 +20,6 @@ func physicsUpdate(_delta:float):
 	else:
 		player.player_look()
 		player.velocity.x  = lerp(player.velocity.x, 0.0, player.friction)
-		player.dash_available = true
 		player.jump_available = true
 		player.coyote_timer.stop()
 		
@@ -36,5 +35,5 @@ func physicsUpdate(_delta:float):
 		if player.jump_available:
 			Transitioned.emit("idle","jumping")
 			
-	if Input.is_action_pressed("dash") and abs(player.velocity.x) >= 0.001:
-		Transitioned.emit("running","sliding")
+	#if Input.is_action_pressed("slide") and abs(player.velocity.x) >= 0.001:
+		#Transitioned.emit("running","sliding")
