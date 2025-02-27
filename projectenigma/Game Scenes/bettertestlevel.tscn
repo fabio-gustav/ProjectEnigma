@@ -44,7 +44,7 @@ debug_color = Color(0.903648, 0, 0.426907, 0.42)
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(-3010, -4085)
 rotation = -0.385718
-color = Color(0.568973, 0.568973, 0.568973, 1)
+color = Color(0.552956, 0.552956, 0.552956, 1)
 energy = 0.7
 shadow_enabled = true
 
@@ -61,6 +61,7 @@ position = Vector2(2, 513)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapLayer/StaticBody2D"]
 shape = SubResource("WorldBoundaryShape2D_qe1um")
+debug_color = Color(0.906684, 0.17564, 0.61276, 0.42)
 metadata/_edit_lock_ = true
 
 [node name="Sign" parent="." instance=ExtResource("3_bk7xb")]
@@ -69,8 +70,11 @@ position = Vector2(-7879, -157)
 [node name="CharacterBody2D" parent="." instance=ExtResource("4_exivl")]
 position = Vector2(-191, -257)
 jumpHeight = 1024.0
+risingJumpTime = 0.35
+fallingJumpTime = 0.25
 dashDistance = 1440.0
 speed = 2000
+friction = 0.3
 wallslide_gravity = 4500.0
 
 [node name="StaticBody2D" parent="." instance=ExtResource("5_uttmx")]

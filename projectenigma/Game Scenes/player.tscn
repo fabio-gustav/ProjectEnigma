@@ -42,10 +42,10 @@ size = Vector2(332.125, 255)
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_ghon7")
+acceleration = 0.3
 airspeed = 150.0
 dashDistance = 2048.0
 swing_speed = 0.1
-wallslide_gravity = 0.0
 
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 21)
