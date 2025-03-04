@@ -22,7 +22,6 @@ extends CharacterBody2D
 
 
 
-
 @onready var grapple_cast: RayCast2D = $GrappleCast
 @onready var coyote_timer: Timer = $coyoteTimer
 

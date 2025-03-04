@@ -8,3 +8,5 @@ signal debugData(playerDataArray)
 signal playerVelocity(velocity)
 
 signal health_changed()
+
+signal money_changed()
