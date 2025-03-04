@@ -115,7 +115,6 @@ func debug():
 
 #called from timer to update debug menu on timeout
 func updateDebug():
-	
 	var s = "X-Speed: " + str(playerData[0]) + "\n" + "Y-Speed: " + str(playerData[1]) + "\n"  
 	debugText.set_text(s)
 	
