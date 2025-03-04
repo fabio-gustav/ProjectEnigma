@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://d1xikfbvi4j08" path="res://UI/Money_Counter/Money_Counter.png" id="1_avqb8"]
 [ext_resource type="Texture2D" uid="uid://c55ak5l0274mg" path="res://UI/Money_Counter/Money_Counter_Numbers.png" id="2_dbcqy"]
-[ext_resource type="Script" path="res://UI/Money_Counter/money_counter.gd" id="2_wlblx"]
+[ext_resource type="Script" uid="uid://c2yrbymlgtyhc" path="res://UI/Money_Counter/money_counter.gd" id="2_wlblx"]
 
 [node name="MoneyCounter" type="Node2D"]
 position = Vector2(1063, 514)
