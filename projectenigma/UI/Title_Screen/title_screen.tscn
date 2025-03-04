@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwsrgip13k37b"]
+
+[ext_resource type="Script" uid="uid://cx7m2ilfl8fr4" path="res://UI/Title_Screen/title_screen.gd" id="1_gwbmd"]
+[ext_resource type="Texture2D" uid="uid://bpd1tnhy5sxu3" path="res://UI/Title_Screen/Game_Concept_Art_1.png" id="2_1dd5w"]
+
+[node name="Title Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gwbmd")
+
+[node name="MainMenu" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Load Level" type="Button" parent="MainMenu"]
+layout_mode = 0
+offset_left = 171.0
+offset_top = 110.0
+offset_right = 721.0
+offset_bottom = 335.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Load Level"
+
+[node name="Quit Game" type="Button" parent="MainMenu"]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 695.0
+offset_right = 724.0
+offset_bottom = 920.0
+theme_override_font_sizes/font_size = 50
+text = "Quit Game
+"
+
+[node name="Options" type="Button" parent="MainMenu"]
+layout_mode = 0
+offset_left = 171.0
+offset_top = 393.0
+offset_right = 721.0
+offset_bottom = 618.0
+theme_override_font_sizes/font_size = 50
+text = "Options~
+"
+
+[node name="BackgroundImage" type="TextureRect" parent="."]
+z_index = -1
+layout_mode = 0
+offset_top = 2.0
+offset_right = 1920.0
+offset_bottom = 1082.0
+texture = ExtResource("2_1dd5w")
+expand_mode = 1
+
+[node name="Title" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 865.0
+offset_top = 36.0
+offset_right = 1865.0
+offset_bottom = 636.0
+theme_override_font_sizes/normal_font_size = 120
+text = "Project: Enigma"
+
+[connection signal="pressed" from="MainMenu/Load Level" to="." method="loadLevel"]
+[connection signal="pressed" from="MainMenu/Quit Game" to="." method="quitGame"]
+[connection signal="pressed" from="MainMenu/Options" to="." method="options"]
