@@ -40,6 +40,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	#temp
+	if Input.is_action_just_pressed("jump"):
+		PlayerVariables.money = PlayerVariables.money + 1
+	#endtemp
 	if Input.is_action_just_pressed("pause"):
 		switch()
 	if opened:
@@ -115,7 +119,7 @@ func debug():
 
 #called from timer to update debug menu on timeout
 func updateDebug():
-	var s = "X-Speed: " + str(playerData[0]) + "\n" + "Y-Speed: " + str(playerData[1]) + "\n"  
+	var s = "X-Speed: " + str(playerData[0]) + "\n" + "Y-Speed: " + str(playerData[1]) + "\n" + "Health: " + str(PlayerVariables.health) + "\n" + "Money: " + str(PlayerVariables.money) + "\n"
 	debugText.set_text(s)
 	
 #to be used for debug menu

@@ -1,10 +1,9 @@
 extends Control
-
+"res://UI/Title_Screen/title_screen.tscn"
 @onready var loadLevelButton = $"MainMenu/Load Level"
 @onready var quitGameButton = $"MainMenu/Quit Game"
 @onready var optionsButton = $MainMenu/Options
 
-@onready var Menus = $Menus
 @onready var level = "res://Game Scenes/bettertestlevel.tscn" # change this to change the starting level
 @onready var activeButtons = [loadLevelButton, optionsButton, quitGameButton]
 @onready var optionsButtons = []
