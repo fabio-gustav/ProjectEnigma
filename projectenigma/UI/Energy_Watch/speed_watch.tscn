@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c125x8v28q05s" path="res://UI/Energy_Watch/Energy_Watch.png" id="1_fmoyi"]
 [ext_resource type="Texture2D" uid="uid://bww0yhaphmwso" path="res://UI/Energy_Watch/Watch_Needle.png" id="2_tab8k"]
-[ext_resource type="Script" path="res://UI/Energy_Watch/speed_watch.gd" id="3_5xpgs"]
+[ext_resource type="Script" uid="uid://caw7tucab60rt" path="res://UI/Energy_Watch/speed_watch.gd" id="3_5xpgs"]
 
 [node name="SpeedWatch" type="Node2D"]
 
