@@ -11,6 +11,7 @@ var stop
 var icon : Sprite2D
 
 func Enter():
+	player.velocity = Vector2(0,0)
 	player.playerGrappled = true
 	targetPosition = player.grapple_target.global_position
 	ropeLength = player.global_position.distance_to(targetPosition)
@@ -18,6 +19,7 @@ func Enter():
 
 func Exit():
 	player.playerGrappled = false
+	
 
 func Update():
 	pass
@@ -27,6 +29,7 @@ func physicsUpdate(_delta:float):
 		stop = true
 		Exit()
 		Transitioned.emit("grappling","falling")
+		return
 		
 	
 	player.velocity.y += fallGravity * _delta
@@ -35,17 +38,21 @@ func physicsUpdate(_delta:float):
 	if player.is_on_floor():
 		Exit()
 		Transitioned.emit("grappling","idle")
+		return
 	
 	if Input.is_action_just_pressed("dash") && player.dash_available:
 		Exit()
 		Transitioned.emit("dashing","dashing")
+		return
 	
 	if Input.is_action_just_pressed("jump"):
 		Exit()
 		Transitioned.emit("grappling","jumping")
+		return
 		
 	if Input.is_action_just_pressed("grapplepull"):
 		Transitioned.emit("grappling","grapplepulling")
+		return
 	
 
 

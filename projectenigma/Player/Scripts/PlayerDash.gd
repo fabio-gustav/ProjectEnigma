@@ -16,6 +16,7 @@ func Exit():
 	get_tree().create_timer(player.dashCooldown).timeout.connect(player.on_dash_cooldown_timer_timeout)
 	print("exiting dash")
 	Transitioned.emit("dashing","idle")
+	return
 
 func Update():
 	pass
