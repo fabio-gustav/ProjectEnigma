@@ -1,5 +1,5 @@
 extends Control
-"res://UI/Title_Screen/title_screen.tscn"
+
 @onready var loadLevelButton = $"MainMenu/Load Level"
 @onready var quitGameButton = $"MainMenu/Quit Game"
 @onready var optionsButton = $MainMenu/Options
@@ -11,7 +11,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	SignalBus.emit_signal("loading")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -44,7 +44,8 @@ func subMenu(menu):
 	activeButtons[selection].set("theme_override_colors/font_color",Color(255,255,0))
 	
 func loadLevel():
-	get_tree().change_scene_to_file(level)
+	SignalBus.emit_signal("loading")
+	SignalBus.emit_signal("sceneTransition", level)
 
 func options():#no
 	return
