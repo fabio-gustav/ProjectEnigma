@@ -8,8 +8,12 @@ signal money_change
 func _ready() -> void:
 	money = 0
 	PlayerVariables.money = 0
+	SignalBus.connect("changeMoney", transaction)
 	
-func transaction(moneyChange : float):
-	money += moneyChange
-	PlayerVariables.money = money
-	SignalBus.money_changed.emit()
+func transaction(moneyChange):
+	if (money + moneyChange < MAX_MONEY && money + moneyChange > 0):
+		money += moneyChange
+		PlayerVariables.money = money
+		SignalBus.money_changed.emit()
+	else:
+		print("No")

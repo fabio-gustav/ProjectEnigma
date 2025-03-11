@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwsrgip13k37b"]
+[gd_scene load_steps=4 format=3 uid="uid://bwsrgip13k37b"]
 
-[ext_resource type="Script" uid="uid://cx7m2ilfl8fr4" path="res://UI/Title_Screen/title_screen.gd" id="1_gwbmd"]
-[ext_resource type="Texture2D" uid="uid://bpd1tnhy5sxu3" path="res://UI/Title_Screen/Game_Concept_Art_1.png" id="2_1dd5w"]
+[ext_resource type="Script" uid="uid://cx7m2ilfl8fr4" path="res://Game Scenes/Title_Screen/title_screen.gd" id="1_gwbmd"]
+[ext_resource type="Texture2D" uid="uid://bpd1tnhy5sxu3" path="res://Game Scenes/Title_Screen/Game_Concept_Art_1.png" id="2_1dd5w"]
+[ext_resource type="PackedScene" uid="uid://fdxr2yejyo8c" path="res://Game Scenes/Scene_Transition/scene_transition.tscn" id="2_ijc0d"]
 
 [node name="Title Screen" type="Control"]
 layout_mode = 3
@@ -11,6 +12,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gwbmd")
+
+[node name="sceneTransition" parent="." instance=ExtResource("2_ijc0d")]
 
 [node name="MainMenu" type="Control" parent="."]
 anchors_preset = 0

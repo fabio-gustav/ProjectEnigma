@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2tevq3qomvh2"]
+[gd_scene load_steps=6 format=3 uid="uid://d2tevq3qomvh2"]
 
+[ext_resource type="PackedScene" uid="uid://fdxr2yejyo8c" path="res://Game Scenes/Scene_Transition/scene_transition.tscn" id="1_6rxkf"]
 [ext_resource type="PackedScene" uid="uid://c3fbkw26y8tbw" path="res://UI/Pause_Menu/PauseMenu.tscn" id="1_ogi2g"]
 [ext_resource type="PackedScene" uid="uid://csheoqpy1xt30" path="res://UI/Money_Counter/MoneyCounter.tscn" id="2_elwtn"]
 [ext_resource type="PackedScene" uid="uid://jdqm7clpymgb" path="res://UI/Energy_Watch/speed_watch.tscn" id="3_x6cmm"]
@@ -11,6 +12,14 @@ zoom = Vector2(0.4, 0.4)
 process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 2.7e+07
+
+[node name="sceneTransition" parent="." instance=ExtResource("1_6rxkf")]
+z_index = 69
+offset_left = -5240.0
+offset_top = -5240.0
+offset_right = -5240.0
+offset_bottom = -5240.0
+scale = Vector2(10, 10)
 
 [node name="PauseMenu" parent="." instance=ExtResource("1_ogi2g")]
 
