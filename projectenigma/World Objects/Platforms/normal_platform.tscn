@@ -21,4 +21,5 @@ shape = SubResource("RectangleShape2D_j4eh6")
 metadata/_edit_lock_ = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
 occluder = SubResource("OccluderPolygon2D_yfm1h")
