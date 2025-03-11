@@ -1,9 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://c3fbkw26y8tbw"]
 
-[ext_resource type="Script" path="res://UI/Pause_Menu/PauseMenu.gd" id="1_nnlwg"]
+[ext_resource type="Script" uid="uid://chr1ytkk2103a" path="res://UI/Pause_Menu/PauseMenu.gd" id="1_nnlwg"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
+z_index = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,6 +23,59 @@ offset_left = -859.0
 offset_top = 570.0
 offset_right = -819.0
 offset_bottom = 610.0
+
+[node name="DebugMenu" type="Control" parent="Menus"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 859.0
+offset_top = -570.0
+offset_right = 899.0
+offset_bottom = -530.0
+
+[node name="Back(toOptions)" type="Button" parent="Menus/DebugMenu"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = -100.0
+offset_right = 1733.0
+offset_bottom = 164.0
+theme_override_font_sizes/font_size = 100
+text = "Back"
+
+[node name="Money" type="Button" parent="Menus/DebugMenu"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 200.0
+offset_right = 1733.0
+offset_bottom = 464.0
+theme_override_font_sizes/font_size = 100
+text = "Money"
+
+[node name="ToBetterTestLevel" type="Button" parent="Menus/DebugMenu"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 500.0
+offset_right = 1733.0
+offset_bottom = 764.0
+theme_override_font_sizes/font_size = 100
+text = "ToBetterTestLevel"
+
+[node name="ToTestLevel" type="Button" parent="Menus/DebugMenu"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 800.0
+offset_right = 1733.0
+offset_bottom = 1064.0
+theme_override_font_sizes/font_size = 100
+text = "ToTestLevel"
+
+[node name="DebugText" type="Button" parent="Menus/DebugMenu"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 1100.0
+offset_right = 1733.0
+offset_bottom = 1364.0
+theme_override_font_sizes/font_size = 100
+text = "DebugText"
 
 [node name="MainPauseMenu" type="Control" parent="Menus"]
 anchors_preset = 0
@@ -71,7 +125,7 @@ offset_top = -570.0
 offset_right = 899.0
 offset_bottom = -530.0
 
-[node name="Back" type="Button" parent="Menus/OptionsMenu"]
+[node name="Back(toMain)" type="Button" parent="Menus/OptionsMenu"]
 layout_mode = 0
 offset_left = 256.0
 offset_top = -100.0
@@ -128,10 +182,15 @@ editable = false
 [node name="DebugUpdateTimer" type="Timer" parent="DebugText"]
 wait_time = 0.1
 
+[connection signal="pressed" from="Menus/DebugMenu/Back(toOptions)" to="." method="backToOptions"]
+[connection signal="pressed" from="Menus/DebugMenu/Money" to="." method="money"]
+[connection signal="pressed" from="Menus/DebugMenu/ToBetterTestLevel" to="." method="toBetterTestLevel"]
+[connection signal="pressed" from="Menus/DebugMenu/ToTestLevel" to="." method="toTestLevel"]
+[connection signal="pressed" from="Menus/DebugMenu/DebugText" to="." method="debug_text_toggle"]
 [connection signal="pressed" from="Menus/MainPauseMenu/Resume" to="." method="resume"]
 [connection signal="pressed" from="Menus/MainPauseMenu/Options" to="." method="options"]
 [connection signal="pressed" from="Menus/MainPauseMenu/QuitGame" to="." method="quitGame"]
-[connection signal="pressed" from="Menus/OptionsMenu/Back" to="." method="back"]
+[connection signal="pressed" from="Menus/OptionsMenu/Back(toMain)" to="." method="backToMain"]
 [connection signal="pressed" from="Menus/OptionsMenu/SoundSettings" to="." method="soundSettings"]
 [connection signal="pressed" from="Menus/OptionsMenu/VideoSettings" to="." method="videoSettings"]
 [connection signal="pressed" from="Menus/OptionsMenu/Controls" to="." method="controls"]

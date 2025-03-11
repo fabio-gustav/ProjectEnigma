@@ -22,6 +22,7 @@ func physicsUpdate(_delta:float):
 	if Input.is_action_just_pressed("jump") or player.jump_buffer:
 		print(player.jump_buffer)
 		Transitioned.emit("wallsliding","walljumping")
+		return
 		
 	player.velocity.y += player.wallslide_gravity * _delta
 	
@@ -29,3 +30,4 @@ func physicsUpdate(_delta:float):
 		print(left_check.is_colliding())
 		print(right_check.is_colliding())
 		Transitioned.emit("wallsliding","falling")
+		return

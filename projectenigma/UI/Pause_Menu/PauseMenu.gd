@@ -2,20 +2,31 @@ extends Control
 
 @onready var Menus = $Menus
 
+#for main menu
 @onready var Resume = $Menus/MainPauseMenu/Resume
 @onready var Options = $Menus/MainPauseMenu/Options
 @onready var QuitGame = $Menus/MainPauseMenu/QuitGame
 
-@onready var Back = $Menus/OptionsMenu/Back
+#for options meny
+@onready var BackToMain = $"Menus/OptionsMenu/Back(toMain)"
 @onready var SoundSettings = $Menus/OptionsMenu/SoundSettings
 @onready var VideoSettings = $Menus/OptionsMenu/VideoSettings
 @onready var Controls = $Menus/OptionsMenu/Controls
 @onready var Debug = $Menus/OptionsMenu/Debug
+
+#for debug menu
+@onready var BackToOptions = $"Menus/DebugMenu/Back(toOptions)"
+@onready var Money = $Menus/DebugMenu/Money
+@onready var ToBetterTestLevel = $Menus/DebugMenu/ToBetterTestLevel
+@onready var ToTestLevel = $Menus/DebugMenu/ToTestLevel
+@onready var DebugText = $Menus/DebugMenu/DebugText
+
 @onready var debugText  = $DebugText   #not a button
 @onready var debugUpdateTimer = $DebugText/DebugUpdateTimer
 
 @onready var mainButtons = [Resume, Options, QuitGame]#buttons available in the main pause menu
-@onready var optionsButtons = [Back, SoundSettings, VideoSettings, Controls, Debug ]#buttons that appear in sub-options menu
+@onready var optionsButtons = [BackToMain, SoundSettings, VideoSettings, Controls, Debug ]#buttons that appear in sub-options menu
+@onready var debugButtons = [BackToOptions, Money, ToBetterTestLevel, ToTestLevel, DebugText]
 @onready var activeButtons = mainButtons#buttons that will be iterated through for selection, set to mainButtons by defualt
 
 @onready var opened = false
@@ -26,13 +37,21 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Back.hide()
+	BackToMain.hide()
 	SoundSettings.hide()
 	VideoSettings.hide()
 	Controls.hide()
 	
 	Debug.hide()
 	debugText.hide()
+	
+	BackToOptions.hide()
+	Money.hide()
+	ToBetterTestLevel.hide()
+	ToTestLevel.hide()
+	DebugText.hide()
+	
+	
 	SignalBus.connect("debugData", updatePlayerData)
 	
 	Menus.hide()
@@ -91,7 +110,7 @@ func options():
 func quitGame():
 	get_tree().quit()
 	
-func back():
+func backToMain():
 	subMenu(mainButtons)
 	
 func soundSettings():
@@ -104,6 +123,29 @@ func controls():
 	pass
 	
 func debug():
+	subMenu(debugButtons)
+	
+func backToOptions():
+	subMenu(optionsButtons)
+	
+func money():
+	SignalBus.emit_signal("changeMoney", 1)
+	
+func toTestLevel():
+	get_tree().paused = false
+	SignalBus.emit_signal("loading")#these two emit_signals are the only things necessary for changing scenes, the rest is because this is in the pause menu
+	SignalBus.emit_signal("sceneTransition", "res://Game Scenes/testlevel.tscn")
+	await get_tree().create_timer(1).timeout
+	get_tree().paused = true
+	
+func toBetterTestLevel():
+	get_tree().paused = false
+	SignalBus.emit_signal("loading")
+	SignalBus.emit_signal("sceneTransition", "res://Game Scenes/bettertestlevel.tscn")
+	await get_tree().create_timer(1).timeout
+	get_tree().paused = true
+
+func debug_text_toggle():
 	debugOn = !debugOn
 	if debugOn:
 		updateDebug()
@@ -115,8 +157,7 @@ func debug():
 
 #called from timer to update debug menu on timeout
 func updateDebug():
-	
-	var s = "X-Speed: " + str(playerData[0]) + "\n" + "Y-Speed: " + str(playerData[1]) + "\n"  
+	var s = "X-Speed: " + str(playerData[0]) + "\n" + "Y-Speed: " + str(playerData[1]) + "\n" + "Health: " + str(PlayerVariables.health) + "\n" + "Money: " + str(PlayerVariables.money) + "\n"
 	debugText.set_text(s)
 	
 #to be used for debug menu
