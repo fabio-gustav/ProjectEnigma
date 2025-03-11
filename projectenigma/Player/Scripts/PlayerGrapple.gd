@@ -11,7 +11,6 @@ var stop
 var icon : Sprite2D
 
 func Enter():
-	player.velocity = Vector2(0,0)
 	player.playerGrappled = true
 	targetPosition = player.grapple_target.global_position
 	ropeLength = player.global_position.distance_to(targetPosition)
@@ -34,7 +33,8 @@ func physicsUpdate(_delta:float):
 	
 	player.velocity.y += fallGravity * _delta
 	swing(_delta)
-	player.velocity *= 0.98
+	player.velocity *= 0.985
+	
 	if player.is_on_floor():
 		Exit()
 		Transitioned.emit("grappling","idle")
