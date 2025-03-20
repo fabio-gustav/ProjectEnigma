@@ -38,7 +38,7 @@ func physicsUpdate(_delta:float):
 	player.velocity.y += fallGravity * _delta
 	player.velocity.x = lerp(player.velocity.x,player.velocity.x+(get_input()*player.airspeed),player.acceleration)
 	player.velocity.x  = lerp(player.velocity.x, 0.0, player.airResistance)
-	if player.is_on_wall():
+	if player.is_on_wall() and Input.is_action_pressed("slide"):
 		Transitioned.emit("falling","wallsliding")
 		return
 	
