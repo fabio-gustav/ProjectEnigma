@@ -20,13 +20,14 @@ extends Control
 @onready var ToBetterTestLevel = $Menus/DebugMenu/ToBetterTestLevel
 @onready var ToTestLevel = $Menus/DebugMenu/ToTestLevel
 @onready var DebugText = $Menus/DebugMenu/DebugText
+@onready var fishTest = $Menus/DebugMenu/FishTest
 
 @onready var debugText  = $DebugText   #not a button
 @onready var debugUpdateTimer = $DebugText/DebugUpdateTimer
 
 @onready var mainButtons = [Resume, Options, QuitGame]#buttons available in the main pause menu
 @onready var optionsButtons = [BackToMain, SoundSettings, VideoSettings, Controls, Debug ]#buttons that appear in sub-options menu
-@onready var debugButtons = [BackToOptions, Money, ToBetterTestLevel, ToTestLevel, DebugText]
+@onready var debugButtons = [BackToOptions, Money, ToBetterTestLevel, ToTestLevel, DebugText, fishTest]
 @onready var activeButtons = mainButtons#buttons that will be iterated through for selection, set to mainButtons by defualt
 
 @onready var opened = false
@@ -50,6 +51,7 @@ func _ready() -> void:
 	ToBetterTestLevel.hide()
 	ToTestLevel.hide()
 	DebugText.hide()
+	fishTest.hide()
 	
 	
 	SignalBus.connect("debugData", updatePlayerData)
@@ -154,6 +156,12 @@ func debug_text_toggle():
 	else:
 		debugText.hide()
 		debugUpdateTimer.stop()
+		
+func FishTest():
+	var FishingManager = $Menus/DebugMenu/FishTest/FishingManager
+	var equipment = 1 # will be an actual value between 0 and sqrt(10) for actual fishing
+	FishingManager.fishingGame(equipment)
+	FishingManager.viewInventory()
 
 #called from timer to update debug menu on timeout
 func updateDebug():

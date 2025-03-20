@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3fbkw26y8tbw"]
+[gd_scene load_steps=3 format=3 uid="uid://c3fbkw26y8tbw"]
 
 [ext_resource type="Script" uid="uid://chr1ytkk2103a" path="res://UI/Pause_Menu/PauseMenu.gd" id="1_nnlwg"]
+[ext_resource type="PackedScene" uid="uid://dk5ggfxqxnyr2" path="res://Singletons/Fishing/FishingManager.tscn" id="2_xvg33"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -76,6 +77,17 @@ offset_right = 1733.0
 offset_bottom = 1364.0
 theme_override_font_sizes/font_size = 100
 text = "DebugText"
+
+[node name="FishTest" type="Button" parent="Menus/DebugMenu"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 1400.0
+offset_right = 1733.0
+offset_bottom = 1664.0
+theme_override_font_sizes/font_size = 100
+text = "FishTest(In Console)"
+
+[node name="FishingManager" parent="Menus/DebugMenu/FishTest" instance=ExtResource("2_xvg33")]
 
 [node name="MainPauseMenu" type="Control" parent="Menus"]
 anchors_preset = 0
@@ -187,6 +199,7 @@ wait_time = 0.1
 [connection signal="pressed" from="Menus/DebugMenu/ToBetterTestLevel" to="." method="toBetterTestLevel"]
 [connection signal="pressed" from="Menus/DebugMenu/ToTestLevel" to="." method="toTestLevel"]
 [connection signal="pressed" from="Menus/DebugMenu/DebugText" to="." method="debug_text_toggle"]
+[connection signal="pressed" from="Menus/DebugMenu/FishTest" to="." method="FishTest"]
 [connection signal="pressed" from="Menus/MainPauseMenu/Resume" to="." method="resume"]
 [connection signal="pressed" from="Menus/MainPauseMenu/Options" to="." method="options"]
 [connection signal="pressed" from="Menus/MainPauseMenu/QuitGame" to="." method="quitGame"]
