@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://uklk3qd88hbn"]
 
-[ext_resource type="Script" uid="uid://7tpmg110n3px" path="res://Components/Attack_Component/attack_component.gd" id="1_tm2i4"]
+[ext_resource type="Script" uid="uid://cejmc8ltllyq1" path="res://Components/Attack_Component/attack_component.gd" id="1_tm2i4"]
 
 [node name="AttackComponent" type="Area2D"]
 position = Vector2(-3010, -4085)
