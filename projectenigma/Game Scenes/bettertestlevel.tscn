@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://b431iyeambykj"]
+[gd_scene load_steps=21 format=4 uid="uid://b431iyeambykj"]
 
 [ext_resource type="PackedScene" uid="uid://uklk3qd88hbn" path="res://Components/Attack_Component/Attack_Component.tscn" id="1_v7a47"]
 [ext_resource type="Texture2D" uid="uid://cty20pk0q8of8" path="res://Backgrounds/256Engima_Grid.png" id="2_5p1b3"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cjq7xqc1v6ssl" path="res://Components/DialogComponent/dialog_player.tscn" id="7_7krpn"]
 [ext_resource type="PackedScene" uid="uid://chvf73yoap5lr" path="res://World Objects/Platforms/normal_platform.tscn" id="7_d0ih6"]
 [ext_resource type="PackedScene" uid="uid://bjao5ba1ukmng" path="res://World Objects/Platforms/short_platform.tscn" id="8_lkmqx"]
+[ext_resource type="PackedScene" uid="uid://dvlmtfukbfdv3" path="res://World Objects/Target/target.tscn" id="12_5rn3q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ja56a"]
 size = Vector2(703, 618)
@@ -276,6 +277,10 @@ metadata/_edit_lock_ = true
 visible = false
 position = Vector2(-7879, -157)
 
+[node name="Target" parent="." instance=ExtResource("12_5rn3q")]
+position = Vector2(-4110, 134)
+scale = Vector2(0.16, 0.16)
+
 [node name="CharacterBody2D" parent="." instance=ExtResource("4_exivl")]
 position = Vector2(-2586, 533)
 jumpHeight = 1024.0
@@ -318,7 +323,6 @@ position = Vector2(-825.25, -2825)
 scale = Vector2(7.02539, 1)
 
 [node name="DialogPlayer" parent="." instance=ExtResource("7_7krpn")]
-visible = false
 scene_text_file = "res://JSON/testlvl.json"
 
 [node name="Normal_Platform" parent="." instance=ExtResource("7_d0ih6")]

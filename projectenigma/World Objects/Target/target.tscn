@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvlmtfukbfdv3"]
+
+[ext_resource type="Texture2D" uid="uid://cpwaps4vea4hf" path="res://World Objects/Target/target-logo-transparent.png" id="1_4pv12"]
+[ext_resource type="PackedScene" uid="uid://dmwkamt6017mo" path="res://Components/HitboxComponent/hitbox_component.tscn" id="1_gdjy4"]
+[ext_resource type="Script" uid="uid://b4d38ukmeo70h" path="res://World Objects/Target/target.gd" id="2_4bb70"]
+[ext_resource type="PackedScene" uid="uid://djrrfx64msbrd" path="res://Components/Health_Component/health_component.tscn" id="2_4pv12"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4bb70"]
+radius = 1114.76
+
+[node name="Target" type="Sprite2D"]
+texture = ExtResource("1_4pv12")
+script = ExtResource("2_4bb70")
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("1_gdjy4")]
+collision_layer = 8
+collision_mask = 0
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_4bb70")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_4pv12")]
+MAX_HEALTH = 1.0
