@@ -44,7 +44,6 @@ func subMenu(menu):
 	activeButtons[selection].set("theme_override_colors/font_color",Color(255,255,0))
 	
 func loadLevel():
-	SignalBus.emit_signal("loading")
 	SignalBus.emit_signal("sceneTransition", level)
 
 func options():#no
