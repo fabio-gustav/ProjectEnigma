@@ -1,5 +1,6 @@
-[gd_scene load_steps=21 format=4 uid="uid://b431iyeambykj"]
+[gd_scene load_steps=22 format=4 uid="uid://b431iyeambykj"]
 
+[ext_resource type="PackedScene" uid="uid://dxxm0wcqg60f6" path="res://UI/UILayer/UILayer.tscn" id="1_ck7fo"]
 [ext_resource type="PackedScene" uid="uid://uklk3qd88hbn" path="res://Components/Attack_Component/Attack_Component.tscn" id="1_v7a47"]
 [ext_resource type="Texture2D" uid="uid://cty20pk0q8of8" path="res://Backgrounds/256Engima_Grid.png" id="2_5p1b3"]
 [ext_resource type="Texture2D" uid="uid://b6eywagxq110m" path="res://Backgrounds/TransparencyDark120.png" id="2_7ni6y"]
@@ -235,6 +236,8 @@ sources/1 = SubResource("TileSetAtlasSource_vsgeg")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qe1um"]
 
 [node name="Game" type="Node2D"]
+
+[node name="UILayer" parent="." instance=ExtResource("1_ck7fo")]
 
 [node name="AttackComponent" parent="." instance=ExtResource("1_v7a47")]
 
