@@ -240,15 +240,16 @@ sources/1 = SubResource("TileSetAtlasSource_vsgeg")
 [node name="UILayer" parent="." instance=ExtResource("1_ck7fo")]
 
 [node name="AttackComponent" parent="." instance=ExtResource("1_v7a47")]
+position = Vector2(-4744, -483)
+rotation = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent"]
-position = Vector2(-2524.67, -1190.3)
-rotation = 0.385718
 shape = SubResource("RectangleShape2D_ja56a")
 debug_color = Color(0.903648, 0, 0.426907, 0.42)
+metadata/_edit_lock_ = true
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-position = Vector2(-3010, -4085)
+position = Vector2(-3462, -4321)
 rotation = -0.385718
 color = Color(0.552956, 0.552956, 0.552956, 1)
 energy = 0.7

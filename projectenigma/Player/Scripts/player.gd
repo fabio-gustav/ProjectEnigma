@@ -103,3 +103,6 @@ func player_look():
 
 func on_dash_cooldown_timer_timeout() -> void:
 	dash_cool = true
+	
+func death() -> void:
+	SignalBus.emit_signal("sceneTransition","res://Game Scenes/bettertestlevel.tscn")
