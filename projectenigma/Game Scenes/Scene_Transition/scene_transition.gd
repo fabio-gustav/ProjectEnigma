@@ -16,7 +16,8 @@ func _process(delta: float) -> void:
 		background.set_self_modulate(lerp(background.get_self_modulate(), Color(0,0,0,1), 0.2))
 		
 func loadLevel(level):
-	await get_tree().create_timer(0.15).timeout # arbitray delay for no reason
+	loadedSwap()
+	await get_tree().create_timer(0.3).timeout # arbitray delay for no reason
 	get_tree().change_scene_to_file(level)
 	
 func loadedSwap():

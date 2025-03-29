@@ -25,7 +25,7 @@ func physicsUpdate(_delta:float):
 	if (player.grapple_check() && Input.is_action_just_pressed("grapple")):
 		Transitioned.emit("jumping","grappling")
 		return
-	if player.is_on_wall():
+	if player.is_on_wall() and Input.is_action_pressed("slide"):
 		Transitioned.emit("jumping","wallsliding")
 		return
 	

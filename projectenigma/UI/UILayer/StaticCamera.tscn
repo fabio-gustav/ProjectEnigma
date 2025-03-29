@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2tevq3qomvh2"]
+
+[ext_resource type="PackedScene" uid="uid://fdxr2yejyo8c" path="res://Game Scenes/Scene_Transition/scene_transition.tscn" id="1_25iob"]
+[ext_resource type="PackedScene" uid="uid://c3fbkw26y8tbw" path="res://UI/Pause_Menu/PauseMenu.tscn" id="2_o1gur"]
+[ext_resource type="PackedScene" uid="uid://csheoqpy1xt30" path="res://UI/Money_Counter/MoneyCounter.tscn" id="3_5lggi"]
+[ext_resource type="PackedScene" uid="uid://jdqm7clpymgb" path="res://UI/Energy_Watch/speed_watch.tscn" id="4_xt6ph"]
+[ext_resource type="PackedScene" uid="uid://bdpxmchqeh3cp" path="res://UI/Health_Display/health_display.tscn" id="5_3yvbj"]
+
+[node name="StaticCamera" type="Camera2D"]
+physics_interpolation_mode = 2
+zoom = Vector2(0.4, 0.4)
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 2.7e+07
+
+[node name="sceneTransition" parent="." instance=ExtResource("1_25iob")]
+z_index = 69
+offset_left = -5240.0
+offset_top = -5240.0
+offset_right = -5240.0
+offset_bottom = -5240.0
+scale = Vector2(10, 10)
+
+[node name="PauseMenu" parent="." instance=ExtResource("2_o1gur")]
+
+[node name="MoneyCounter" parent="." instance=ExtResource("3_5lggi")]
+position = Vector2(-2063, -1019)
+scale = Vector2(0.5, 0.5)
+
+[node name="SpeedWatch" parent="." instance=ExtResource("4_xt6ph")]
+position = Vector2(-812, 538)
+
+[node name="HealthDisplay" parent="." instance=ExtResource("5_3yvbj")]
+position = Vector2(1562, -1249)

@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=4 uid="uid://c7gb08phau5v2"]
+[gd_scene load_steps=10 format=4 uid="uid://c7gb08phau5v2"]
 
+[ext_resource type="PackedScene" uid="uid://dxxm0wcqg60f6" path="res://UI/UILayer/UILayer.tscn" id="1_e7ssd"]
 [ext_resource type="Texture2D" uid="uid://bf82kk3a4dpea" path="res://Backgrounds/grid.png" id="1_w4hom"]
 [ext_resource type="PackedScene" uid="uid://iq0r13bt8ah7" path="res://Game Scenes/player.tscn" id="2_5j57l"]
 [ext_resource type="PackedScene" uid="uid://cctnwlr1iq78a" path="res://World Objects/Grapple_Node/grapple_node.tscn" id="3_ti6e0"]
@@ -22,6 +23,8 @@ sources/0 = SubResource("TileSetAtlasSource_05mmg")
 size = Vector2(256, 64)
 
 [node name="Game" type="Node2D"]
+
+[node name="UILayer" parent="." instance=ExtResource("1_e7ssd")]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
