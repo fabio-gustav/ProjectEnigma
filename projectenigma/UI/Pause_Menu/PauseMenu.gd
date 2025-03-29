@@ -135,14 +135,12 @@ func money():
 	
 func toTestLevel():
 	get_tree().paused = false
-	SignalBus.emit_signal("loading")#these two emit_signals are the only things necessary for changing scenes, the rest is because this is in the pause menu
 	SignalBus.emit_signal("sceneTransition", "res://Game Scenes/testlevel.tscn")
 	await get_tree().create_timer(1).timeout
 	get_tree().paused = true
 	
 func toBetterTestLevel():
 	get_tree().paused = false
-	SignalBus.emit_signal("loading")
 	SignalBus.emit_signal("sceneTransition", "res://Game Scenes/bettertestlevel.tscn")
 	await get_tree().create_timer(1).timeout
 	get_tree().paused = true

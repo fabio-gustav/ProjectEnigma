@@ -53,7 +53,6 @@ func _ready():
 	grapple_icon.texture = marker
 	grapple_icon.scale = Vector2(0.4,0.4)
 	add_sibling.call_deferred(grapple_icon)
-	SignalBus.emit_signal("loading")
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 @warning_ignore("unused_parameter")
