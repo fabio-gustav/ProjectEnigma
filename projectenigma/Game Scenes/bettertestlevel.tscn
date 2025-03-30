@@ -239,7 +239,7 @@ sources/1 = SubResource("TileSetAtlasSource_vsgeg")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qe1um"]
 
-[sub_resource type="Resource" id="Resource_iwx7e"]
+[sub_resource type="Resource" id="Resource_b46f4"]
 script = ExtResource("14_b46f4")
 texture_idx = 0
 flip = false
@@ -250,9 +250,9 @@ script = ExtResource("15_6pplw")
 position = Vector2(2224, 800)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
-properties = SubResource("Resource_iwx7e")
+properties = SubResource("Resource_b46f4")
 
-[sub_resource type="Resource" id="Resource_wjenk"]
+[sub_resource type="Resource" id="Resource_6pplw"]
 script = ExtResource("14_b46f4")
 texture_idx = 0
 flip = false
@@ -263,7 +263,7 @@ script = ExtResource("15_6pplw")
 position = Vector2(4472, 2512)
 point_in = Vector2(-2336, -48)
 point_out = Vector2(2528, 56)
-properties = SubResource("Resource_wjenk")
+properties = SubResource("Resource_6pplw")
 
 [sub_resource type="Resource" id="Resource_igbwe"]
 script = ExtResource("16_nfr4x")

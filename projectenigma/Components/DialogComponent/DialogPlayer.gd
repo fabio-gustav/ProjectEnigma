@@ -12,6 +12,7 @@ var in_progress = false
 @onready var background = $Background
 @onready var text_label = $TextLabel
 @onready var timer = $LetterDisplayTimer
+@onready var audio = $AudioStreamPlayer
 
 var letter_index:int = 0
 
@@ -56,6 +57,8 @@ func show_text():
 
 func _display_letter():
 	text_label.text += text_to_display[letter_index]
+	audio.pitch_scale = randf_range(0.9,1.1)
+	audio.play()
 	
 	letter_index +=1
 	if letter_index >= text_to_display.length():

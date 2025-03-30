@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjq7xqc1v6ssl"]
+[gd_scene load_steps=5 format=3 uid="uid://cjq7xqc1v6ssl"]
 
 [ext_resource type="Script" uid="uid://celj18ncsy7iu" path="res://Components/DialogComponent/DialogPlayer.gd" id="1_33pgl"]
 [ext_resource type="Texture2D" uid="uid://d2mgnyyuxn7tr" path="res://UI/download.png" id="1_o35c7"]
+[ext_resource type="AudioStream" uid="uid://dl3rtvpp40j5k" path="res://Audio/Sound_Effects/Fast_Single_v2_wav.wav" id="3_jb5ki"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jxsxs"]
 font_size = 128
@@ -20,6 +21,9 @@ offset_right = -1673.08
 offset_bottom = -1008.8
 size_flags_vertical = 8
 script = ExtResource("1_33pgl")
+letter_time = 0.06
+space_time = 0.12
+punctuation_time = 0.3
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -37,6 +41,7 @@ texture = ExtResource("1_o35c7")
 expand_mode = 1
 
 [node name="TextLabel" type="Label" parent="."]
+layout_mode = 0
 offset_left = 629.0
 offset_top = 170.0
 offset_right = 2776.0
@@ -46,5 +51,9 @@ autowrap_mode = 3
 
 [node name="LetterDisplayTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_jb5ki")
+volume_db = -18.683
 
 [connection signal="timeout" from="LetterDisplayTimer" to="." method="_on_letter_display_timer_timeout"]
