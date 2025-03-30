@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://b431iyeambykj"]
+[gd_scene load_steps=21 format=4 uid="uid://b431iyeambykj"]
 
 [ext_resource type="PackedScene" uid="uid://dxxm0wcqg60f6" path="res://UI/UILayer/UILayer.tscn" id="1_ck7fo"]
 [ext_resource type="PackedScene" uid="uid://uklk3qd88hbn" path="res://Components/Attack_Component/Attack_Component.tscn" id="1_v7a47"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://iq0r13bt8ah7" path="res://Game Scenes/player.tscn" id="4_exivl"]
 [ext_resource type="PackedScene" uid="uid://cctnwlr1iq78a" path="res://World Objects/Grapple_Node/grapple_node.tscn" id="5_uttmx"]
 [ext_resource type="PackedScene" uid="uid://bjft6ujfjtllf" path="res://World Objects/Platforms/vertical_platform.tscn" id="6_ft7oh"]
-[ext_resource type="PackedScene" uid="uid://cjq7xqc1v6ssl" path="res://Components/DialogComponent/dialog_player.tscn" id="7_7krpn"]
 [ext_resource type="PackedScene" uid="uid://chvf73yoap5lr" path="res://World Objects/Platforms/normal_platform.tscn" id="7_d0ih6"]
 [ext_resource type="PackedScene" uid="uid://bjao5ba1ukmng" path="res://World Objects/Platforms/short_platform.tscn" id="8_lkmqx"]
 [ext_resource type="PackedScene" uid="uid://dvlmtfukbfdv3" path="res://World Objects/Target/target.tscn" id="12_5rn3q"]
@@ -235,7 +234,7 @@ sources/1 = SubResource("TileSetAtlasSource_vsgeg")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qe1um"]
 
-[node name="Game" type="Node2D"]
+[node name="bettertestlevel" type="Node2D"]
 
 [node name="UILayer" parent="." instance=ExtResource("1_ck7fo")]
 
@@ -278,8 +277,7 @@ debug_color = Color(0.906684, 0.17564, 0.61276, 0.42)
 metadata/_edit_lock_ = true
 
 [node name="Sign" parent="." instance=ExtResource("3_bk7xb")]
-visible = false
-position = Vector2(-7879, -157)
+position = Vector2(-3775, 203)
 
 [node name="Target" parent="." instance=ExtResource("12_5rn3q")]
 position = Vector2(-4110, 134)
@@ -325,9 +323,6 @@ scale = Vector2(22.9981, 1)
 [node name="Short_Platform" parent="Node" instance=ExtResource("8_lkmqx")]
 position = Vector2(-825.25, -2825)
 scale = Vector2(7.02539, 1)
-
-[node name="DialogPlayer" parent="." instance=ExtResource("7_7krpn")]
-scene_text_file = "res://JSON/testlvl.json"
 
 [node name="Normal_Platform" parent="." instance=ExtResource("7_d0ih6")]
 position = Vector2(575.5, -1575)
