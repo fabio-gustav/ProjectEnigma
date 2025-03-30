@@ -15,7 +15,6 @@ position_smoothing_enabled = true
 position_smoothing_speed = 2.7e+07
 
 [node name="sceneTransition" parent="." instance=ExtResource("1_25iob")]
-visible = false
 z_index = 69
 offset_left = -5240.0
 offset_top = -5240.0
@@ -24,10 +23,8 @@ offset_bottom = -5240.0
 scale = Vector2(10, 10)
 
 [node name="PauseMenu" parent="." instance=ExtResource("2_o1gur")]
-visible = false
 
 [node name="MoneyCounter" parent="." instance=ExtResource("3_5lggi")]
-visible = false
 position = Vector2(-2063, -1019)
 scale = Vector2(0.5, 0.5)
 
