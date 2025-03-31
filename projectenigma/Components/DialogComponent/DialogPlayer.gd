@@ -63,6 +63,7 @@ func _display_letter():
 	letter_index +=1
 	if letter_index >= text_to_display.length():
 		finished_displaying = true
+		SignalBus.dialog_finished.emit()
 		return
 	
 	match text_to_display[letter_index]:
@@ -81,6 +82,7 @@ func next_line():
 		finish()
 
 func finish():
+	SignalBus.dialog_finished.emit()
 	text_label.text = ""
 	letter_index = 0
 	background.visible = false

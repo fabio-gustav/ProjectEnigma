@@ -11,7 +11,11 @@ signal sceneTransition(level)
 #to be called both before and after a scene starts and ends loading to know when to fade to black and back out
 signal loading()
 
+#returns the player's current velocity
 signal playerVelocity(velocity)
+
+#called when diolog is finished playing
+signal dialog_finished()
 
 signal health_changed()
 
