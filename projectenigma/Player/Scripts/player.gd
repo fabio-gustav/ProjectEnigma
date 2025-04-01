@@ -45,6 +45,7 @@ var x_input:float = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	set_floor_max_angle(1.39626)
 	floor_snap_length = 10.0
 	floor_stop_on_slope = false
 	grapple_icon = Sprite2D.new()
@@ -103,3 +104,6 @@ func player_look():
 
 func on_dash_cooldown_timer_timeout() -> void:
 	dash_cool = true
+	
+func death() -> void:
+	SignalBus.emit_signal("sceneTransition","res://Game Scenes/bettertestlevel.tscn")

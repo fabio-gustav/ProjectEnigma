@@ -1,12 +1,12 @@
-[gd_scene load_steps=32 format=3 uid="uid://iq0r13bt8ah7"]
+[gd_scene load_steps=31 format=3 uid="uid://iq0r13bt8ah7"]
 
 [ext_resource type="Script" uid="uid://cyuaeve0r54at" path="res://Player/Scripts/player.gd" id="1_ghon7"]
-[ext_resource type="Script" uid="uid://b1p06nnfdrpbp" path="res://Player/Scripts/sprite_state_machine.gd" id="2_65u56"]
+[ext_resource type="Script" uid="uid://b8tn0gs0xvihj" path="res://Player/Scripts/sprite_state_machine.gd" id="2_65u56"]
 [ext_resource type="Texture2D" uid="uid://badafk1coipl4" path="res://Player/Sprites/Miriam_Body.png" id="2_hlulr"]
 [ext_resource type="PackedScene" uid="uid://djrrfx64msbrd" path="res://Components/Health_Component/health_component.tscn" id="2_ijvqs"]
 [ext_resource type="PackedScene" uid="uid://xvd2rcfwru4" path="res://Components/Money_Component/Money_Component.tscn" id="2_xgjyx"]
 [ext_resource type="Texture2D" uid="uid://dtdbwekpy8rxg" path="res://Player/Sprites/Miriam_Head_sheet.png" id="3_847dy"]
-[ext_resource type="Script" uid="uid://c1lo7s0dwopuu" path="res://Player/Scripts/state_machine.gd" id="3_ngsr7"]
+[ext_resource type="Script" uid="uid://dpwvkdonxcjpe" path="res://Player/Scripts/state_machine.gd" id="3_ngsr7"]
 [ext_resource type="PackedScene" uid="uid://dmwkamt6017mo" path="res://Components/HitboxComponent/hitbox_component.tscn" id="3_ofs54"]
 [ext_resource type="Texture2D" uid="uid://b8lbw2tm4ptbu" path="res://Player/Sprites/Miriam_Ol_Reliable.png" id="4_e1iph"]
 [ext_resource type="Script" uid="uid://bwjpth3hqvl4f" path="res://Player/Scripts/PlayerJump.gd" id="4_fp44l"]
@@ -17,13 +17,12 @@
 [ext_resource type="Script" uid="uid://dutl1hou2tqsi" path="res://Player/Scripts/PlayerActionAttack.gd" id="8_xg255"]
 [ext_resource type="Script" uid="uid://bj3bam4mnmjts" path="res://Player/Scripts/PlayerGrapple.gd" id="9_5opso"]
 [ext_resource type="Script" uid="uid://j1mjkgb87clx" path="res://Player/Scripts/PlayerSlide.gd" id="10_0cq60"]
-[ext_resource type="Script" uid="uid://crt5il5cutvyw" path="res://Player/Scripts/PlayerWalljump.gd" id="11_fi1tf"]
+[ext_resource type="Script" uid="uid://dq0fn4xni0mpw" path="res://Player/Scripts/PlayerWalljump.gd" id="11_fi1tf"]
 [ext_resource type="Script" uid="uid://bn7row8c3y82q" path="res://Player/Scripts/PlayerDash.gd" id="11_sdgqk"]
-[ext_resource type="Script" uid="uid://cx1x51ckks5of" path="res://Player/Scripts/PlayerGrapplePull.gd" id="13_yg5uo"]
+[ext_resource type="Script" uid="uid://bph6wl571g058" path="res://Player/Scripts/PlayerGrapplePull.gd" id="13_yg5uo"]
 [ext_resource type="Script" uid="uid://cmv12v0s7v0os" path="res://Player/Scripts/PlayerWallSlide.gd" id="14_l0nas"]
 [ext_resource type="Texture2D" uid="uid://cjeyyge0rgcex" path="res://Player/Sprites/Grapple_Point_Arrow.png" id="19_4pi5e"]
 [ext_resource type="PackedScene" uid="uid://bpxbab0acltj7" path="res://Player/playercamera.tscn" id="19_pmhtr"]
-[ext_resource type="PackedScene" uid="uid://cjq7xqc1v6ssl" path="res://Components/DialogComponent/dialog_player.tscn" id="21_wnd77"]
 [ext_resource type="PackedScene" uid="uid://uklk3qd88hbn" path="res://Components/Attack_Component/Attack_Component.tscn" id="23_58dwp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oms6v"]
@@ -179,6 +178,7 @@ collision_mask = 0
 position = Vector2(415, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_58dwp")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="GrappleCast"]
 texture_filter = 5
@@ -193,10 +193,6 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("RectangleShape2D_na4ea")
-
-[node name="DialogPlayer" parent="." instance=ExtResource("21_wnd77")]
-follow_viewport_enabled = false
-scene_text_file = "res://JSON/testlvl.json"
 
 [connection signal="melee_attack" from="ActionStateMachine/Attacking" to="GrappleCast/AttackComponent" method="_on_attacking_melee_attack"]
 [connection signal="timeout" from="coyoteTimer" to="." method="coyoteTimeout"]

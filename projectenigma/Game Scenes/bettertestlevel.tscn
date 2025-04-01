@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://b431iyeambykj"]
+[gd_scene load_steps=31 format=4 uid="uid://b431iyeambykj"]
 
 [ext_resource type="PackedScene" uid="uid://dxxm0wcqg60f6" path="res://UI/UILayer/UILayer.tscn" id="1_ck7fo"]
 [ext_resource type="PackedScene" uid="uid://uklk3qd88hbn" path="res://Components/Attack_Component/Attack_Component.tscn" id="1_v7a47"]
@@ -9,10 +9,14 @@
 [ext_resource type="PackedScene" uid="uid://iq0r13bt8ah7" path="res://Game Scenes/player.tscn" id="4_exivl"]
 [ext_resource type="PackedScene" uid="uid://cctnwlr1iq78a" path="res://World Objects/Grapple_Node/grapple_node.tscn" id="5_uttmx"]
 [ext_resource type="PackedScene" uid="uid://bjft6ujfjtllf" path="res://World Objects/Platforms/vertical_platform.tscn" id="6_ft7oh"]
-[ext_resource type="PackedScene" uid="uid://cjq7xqc1v6ssl" path="res://Components/DialogComponent/dialog_player.tscn" id="7_7krpn"]
 [ext_resource type="PackedScene" uid="uid://chvf73yoap5lr" path="res://World Objects/Platforms/normal_platform.tscn" id="7_d0ih6"]
 [ext_resource type="PackedScene" uid="uid://bjao5ba1ukmng" path="res://World Objects/Platforms/short_platform.tscn" id="8_lkmqx"]
 [ext_resource type="PackedScene" uid="uid://dvlmtfukbfdv3" path="res://World Objects/Target/target.tscn" id="12_5rn3q"]
+[ext_resource type="Script" uid="uid://isd04utwv4bp" path="res://addons/rmsmartshape/shapes/shape_open.gd" id="13_igbwe"]
+[ext_resource type="Script" uid="uid://skd2bwy2yn5q" path="res://addons/rmsmartshape/vertex_properties.gd" id="14_b46f4"]
+[ext_resource type="Script" uid="uid://6ufod1uspbup" path="res://addons/rmsmartshape/shapes/point.gd" id="15_6pplw"]
+[ext_resource type="Script" uid="uid://j72cavxti37x" path="res://addons/rmsmartshape/shapes/point_array.gd" id="16_nfr4x"]
+[ext_resource type="Resource" uid="uid://k7w4gmk785mc" path="res://Assets/terraingeneration.tres" id="17_rq2il"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ja56a"]
 size = Vector2(703, 618)
@@ -235,20 +239,61 @@ sources/1 = SubResource("TileSetAtlasSource_vsgeg")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qe1um"]
 
-[node name="Game" type="Node2D"]
+[sub_resource type="Resource" id="Resource_b46f4"]
+script = ExtResource("14_b46f4")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_ft6fj"]
+script = ExtResource("15_6pplw")
+position = Vector2(2224, 800)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_b46f4")
+
+[sub_resource type="Resource" id="Resource_6pplw"]
+script = ExtResource("14_b46f4")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_ulohw"]
+script = ExtResource("15_6pplw")
+position = Vector2(4472, 2512)
+point_in = Vector2(-2336, -48)
+point_out = Vector2(2528, 56)
+properties = SubResource("Resource_6pplw")
+
+[sub_resource type="Resource" id="Resource_igbwe"]
+script = ExtResource("16_nfr4x")
+_points = {
+0: SubResource("Resource_ft6fj"),
+1: SubResource("Resource_ulohw")
+}
+_point_order = PackedInt32Array(0, 1)
+_constraints = {}
+_next_key = 2
+_material_overrides = {}
+tessellation_stages = 3
+tessellation_tolerance = 6.0
+curve_bake_interval = 20.0
+
+[node name="bettertestlevel" type="Node2D"]
 
 [node name="UILayer" parent="." instance=ExtResource("1_ck7fo")]
 
 [node name="AttackComponent" parent="." instance=ExtResource("1_v7a47")]
+position = Vector2(-4744, -483)
+rotation = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent"]
-position = Vector2(-2524.67, -1190.3)
-rotation = 0.385718
 shape = SubResource("RectangleShape2D_ja56a")
 debug_color = Color(0.903648, 0, 0.426907, 0.42)
+metadata/_edit_lock_ = true
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-position = Vector2(-3010, -4085)
+position = Vector2(-3462, -4321)
 rotation = -0.385718
 color = Color(0.552956, 0.552956, 0.552956, 1)
 energy = 0.7
@@ -277,8 +322,7 @@ debug_color = Color(0.906684, 0.17564, 0.61276, 0.42)
 metadata/_edit_lock_ = true
 
 [node name="Sign" parent="." instance=ExtResource("3_bk7xb")]
-visible = false
-position = Vector2(-7879, -157)
+position = Vector2(-3775, 203)
 
 [node name="Target" parent="." instance=ExtResource("12_5rn3q")]
 position = Vector2(-4110, 134)
@@ -324,9 +368,6 @@ scale = Vector2(22.9981, 1)
 [node name="Short_Platform" parent="Node" instance=ExtResource("8_lkmqx")]
 position = Vector2(-825.25, -2825)
 scale = Vector2(7.02539, 1)
-
-[node name="DialogPlayer" parent="." instance=ExtResource("7_7krpn")]
-scene_text_file = "res://JSON/testlvl.json"
 
 [node name="Normal_Platform" parent="." instance=ExtResource("7_d0ih6")]
 position = Vector2(575.5, -1575)
@@ -478,3 +519,17 @@ scale = Vector2(6.24517, 0.685024)
 position = Vector2(2398.1, 371.236)
 rotation = -0.359538
 scale = Vector2(8.7722, 1)
+
+[node name="StaticBody2D9" type="StaticBody2D" parent="."]
+
+[node name="SS2D_Shape_Open" type="Node2D" parent="StaticBody2D9"]
+position = Vector2(4830, -1851)
+script = ExtResource("13_igbwe")
+_points = SubResource("Resource_igbwe")
+shape_material = ExtResource("17_rq2il")
+collision_polygon_node_path = NodePath("../CollisionPolygon2D")
+metadata/_custom_type_script = "uid://isd04utwv4bp"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D9"]
+modulate = Color(1, 1, 1, 0.3)
+polygon = PackedVector2Array(7054, -1051, 7076.81, -790.261, 7149.38, -521.981, 7213.85, -370.179, 7302.02, -213.016, 7417.58, -55.2913, 7564.18, 98.1915, 7745.52, 242.629, 7965.27, 373.219, 8227.11, 485.155, 8534.73, 573.602, 9302, 661, 9298.38, 692.794, 8528.48, 604.985, 8216.38, 515.302, 7950.77, 401.748, 7727.33, 268.96, 7542.59, 121.812, 7393.05, -34.741, 7275.11, -195.7, 7185.12, -356.073, 7119.14, -511.522, 7045.3, -784.669, 7022.12, -1048.22)

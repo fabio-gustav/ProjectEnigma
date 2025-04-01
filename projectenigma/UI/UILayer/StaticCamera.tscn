@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2tevq3qomvh2"]
+[gd_scene load_steps=7 format=3 uid="uid://d2tevq3qomvh2"]
 
 [ext_resource type="PackedScene" uid="uid://fdxr2yejyo8c" path="res://Game Scenes/Scene_Transition/scene_transition.tscn" id="1_25iob"]
+[ext_resource type="PackedScene" uid="uid://cjq7xqc1v6ssl" path="res://Components/DialogComponent/dialog_player.tscn" id="1_o1gur"]
 [ext_resource type="PackedScene" uid="uid://c3fbkw26y8tbw" path="res://UI/Pause_Menu/PauseMenu.tscn" id="2_o1gur"]
 [ext_resource type="PackedScene" uid="uid://csheoqpy1xt30" path="res://UI/Money_Counter/MoneyCounter.tscn" id="3_5lggi"]
 [ext_resource type="PackedScene" uid="uid://jdqm7clpymgb" path="res://UI/Energy_Watch/speed_watch.tscn" id="4_xt6ph"]
@@ -29,6 +30,16 @@ scale = Vector2(0.5, 0.5)
 
 [node name="SpeedWatch" parent="." instance=ExtResource("4_xt6ph")]
 position = Vector2(-812, 538)
+
+[node name="DialogPlayer" parent="." instance=ExtResource("1_o1gur")]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.5
+offset_left = -1511.0
+offset_top = 539.0
+offset_right = -1511.0
+offset_bottom = 539.0
 
 [node name="HealthDisplay" parent="." instance=ExtResource("5_3yvbj")]
 position = Vector2(1562, -1249)
