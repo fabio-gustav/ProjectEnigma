@@ -23,7 +23,7 @@ point_in = Vector2(-930.022, -1152.42)
 point_out = Vector2(930.022, 1152.42)
 properties = SubResource("Resource_jwcjo")
 
-[sub_resource type="Resource" id="Resource_l7t8i"]
+[sub_resource type="Resource" id="Resource_3jn21"]
 script = ExtResource("6_pbolv")
 texture_idx = 0
 flip = false
@@ -34,7 +34,7 @@ script = ExtResource("7_iuhlp")
 position = Vector2(14423.3, 5910.78)
 point_in = Vector2(-980.778, -618.79)
 point_out = Vector2(949.609, 388.925)
-properties = SubResource("Resource_l7t8i")
+properties = SubResource("Resource_3jn21")
 
 [sub_resource type="Resource" id="Resource_d2gkg"]
 script = ExtResource("6_pbolv")
@@ -64,7 +64,7 @@ tessellation_stages = 3
 tessellation_tolerance = 6.0
 curve_bake_interval = 20.0
 
-[sub_resource type="Resource" id="Resource_t0lqo"]
+[sub_resource type="Resource" id="Resource_r1jmg"]
 script = ExtResource("6_pbolv")
 texture_idx = 0
 flip = false
@@ -75,9 +75,9 @@ script = ExtResource("7_iuhlp")
 position = Vector2(20471.6, 5201.81)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
-properties = SubResource("Resource_t0lqo")
+properties = SubResource("Resource_r1jmg")
 
-[sub_resource type="Resource" id="Resource_pvvxi"]
+[sub_resource type="Resource" id="Resource_bfd1t"]
 script = ExtResource("6_pbolv")
 texture_idx = 0
 flip = false
@@ -88,7 +88,7 @@ script = ExtResource("7_iuhlp")
 position = Vector2(16384, 7191.46)
 point_in = Vector2(4087.64, -19.6992)
 point_out = Vector2(-1999.5, -29.5493)
-properties = SubResource("Resource_pvvxi")
+properties = SubResource("Resource_bfd1t")
 
 [sub_resource type="Resource" id="Resource_1vh25"]
 script = ExtResource("8_gj7wv")
@@ -104,9 +104,10 @@ tessellation_stages = 3
 tessellation_tolerance = 6.0
 curve_bake_interval = 20.0
 
-[node name="Node2D" type="Node2D"]
+[node name="TestLighthouse" type="Node2D"]
 
 [node name="UILayer" parent="." instance=ExtResource("4_gshlr")]
+visible = false
 
 [node name="player" parent="." instance=ExtResource("1_61vyp")]
 
