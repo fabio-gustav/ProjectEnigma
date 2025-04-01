@@ -8,6 +8,7 @@ anchors_preset = 0
 script = ExtResource("1_qkt1w")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 z_index = 69
 layout_mode = 0
 offset_right = 2560.0

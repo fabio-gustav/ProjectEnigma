@@ -5,6 +5,7 @@ var loaded = false
 var level = ""
 
 func _ready() -> void:
+	background.visible = true;
 	SignalBus.connect("sceneTransition", loadLevel)
 	SignalBus.connect("loading", loadedSwap)
 
