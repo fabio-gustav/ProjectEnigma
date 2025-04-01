@@ -106,6 +106,7 @@ tessellation_stages = 3
 tessellation_tolerance = 6.0
 curve_bake_interval = 20.0
 
+
 [sub_resource type="Resource" id="Resource_bdmyx"]
 script = ExtResource("6_pbolv")
 texture_idx = 0
@@ -202,7 +203,9 @@ render_offset = 0.0
 
 [node name="Node2D" type="Node2D"]
 
+
 [node name="UILayer" parent="." instance=ExtResource("4_gshlr")]
+visible = false
 
 [node name="player" parent="." instance=ExtResource("1_61vyp")]
 

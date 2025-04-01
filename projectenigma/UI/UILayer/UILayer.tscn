@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://bragm6ggubgry" path="res://UI/UILayer/ui_layer.gd" id="1_n0wwi"]
 
 [node name="UILayer" type="CanvasLayer"]
-visible = false
 offset = Vector2(940, 520)
 scale = Vector2(0.4, 0.4)
 transform = Transform2D(0.4, 0, 0, 0.4, 940, 520)
