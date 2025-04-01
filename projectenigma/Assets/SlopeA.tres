@@ -1,0 +1,57 @@
+[gd_resource type="Resource" script_class="SS2D_Material_Shape" load_steps=11 format=3 uid="uid://b451wyetvg3yi"]
+
+[ext_resource type="Script" uid="uid://bmw5yoed13ap2" path="res://addons/rmsmartshape/materials/edge_material_metadata.gd" id="1_ylrdp"]
+[ext_resource type="Script" uid="uid://dax2enexvok6i" path="res://addons/rmsmartshape/materials/edge_material.gd" id="2_e63ue"]
+[ext_resource type="Texture2D" uid="uid://c1dfj37mtr0sp" path="res://Assets/top_center_2.png" id="3_ofdir"]
+[ext_resource type="Texture2D" uid="uid://or4y0xducmyb" path="res://Assets/top_left_2.png" id="4_g41ip"]
+[ext_resource type="Texture2D" uid="uid://t8h4q3tl47j8" path="res://Assets/top_right_2.png" id="5_f7qdy"]
+[ext_resource type="Script" uid="uid://bfi0oc6gwmheb" path="res://addons/rmsmartshape/normal_range.gd" id="6_5jelm"]
+[ext_resource type="Script" uid="uid://dco88skyisp2k" path="res://addons/rmsmartshape/materials/shape_material.gd" id="7_fpctg"]
+
+[sub_resource type="Resource" id="Resource_hyu4h"]
+script = ExtResource("2_e63ue")
+textures = Array[Texture2D]([ExtResource("3_ofdir")])
+textures_corner_outer = Array[Texture2D]([])
+textures_corner_inner = Array[Texture2D]([])
+textures_taper_left = Array[Texture2D]([ExtResource("4_g41ip")])
+textures_taper_right = Array[Texture2D]([ExtResource("5_f7qdy")])
+textures_taper_corner_left = Array[Texture2D]([])
+textures_taper_corner_right = Array[Texture2D]([])
+randomize_texture = false
+use_corner_texture = true
+use_taper_texture = true
+fit_mode = 0
+metadata/_custom_type_script = "uid://dax2enexvok6i"
+
+[sub_resource type="Resource" id="Resource_wubp5"]
+script = ExtResource("6_5jelm")
+begin = 0.0
+distance = 360.0
+edgeRendering = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_225e1"]
+script = ExtResource("1_ylrdp")
+edge_material = SubResource("Resource_hyu4h")
+normal_range = SubResource("Resource_wubp5")
+weld = true
+taper_sharp_corners = false
+render = true
+z_index = 0
+z_as_relative = true
+offset = 0.0
+metadata/_custom_type_script = "uid://bmw5yoed13ap2"
+
+[resource]
+script = ExtResource("7_fpctg")
+_edge_meta_materials = Array[ExtResource("1_ylrdp")]([SubResource("Resource_225e1")])
+fill_textures = Array[Texture2D]([])
+fill_texture_z_index = -10
+fill_texture_show_behind_parent = false
+fill_texture_scale = 1.0
+fill_texture_absolute_position = false
+fill_texture_absolute_rotation = false
+fill_texture_offset = Vector2(0, 0)
+fill_texture_angle_offset = 0.0
+fill_mesh_offset = 0.0
+render_offset = 0.0
+metadata/_custom_type_script = "uid://dco88skyisp2k"
