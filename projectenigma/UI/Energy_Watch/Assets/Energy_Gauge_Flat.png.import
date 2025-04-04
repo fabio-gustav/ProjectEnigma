@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c125x8v28q05s"
-path="res://.godot/imported/Energy_Watch.png-d89433391f3abdf0aff25332020ddfe2.ctex"
+uid="uid://cfw5q78la0owr"
+path="res://.godot/imported/Energy_Gauge_Flat.png-d19a2b9fc6ddc97b3a66e8aa5c29a8c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/Energy_Watch/Energy_Watch.png"
-dest_files=["res://.godot/imported/Energy_Watch.png-d89433391f3abdf0aff25332020ddfe2.ctex"]
+source_file="res://UI/Energy_Watch/Assets/Energy_Gauge_Flat.png"
+dest_files=["res://.godot/imported/Energy_Gauge_Flat.png-d19a2b9fc6ddc97b3a66e8aa5c29a8c0.ctex"]
 
 [params]
 

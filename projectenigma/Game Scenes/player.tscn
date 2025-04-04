@@ -60,7 +60,7 @@ shape = SubResource("CapsuleShape2D_oms6v")
 [node name="MoneyComponent" parent="." instance=ExtResource("2_xgjyx")]
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_ijvqs")]
-MAX_HEALTH = 4.0
+MAX_HEALTH = 3.0
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_ofs54")]
 collision_layer = 2

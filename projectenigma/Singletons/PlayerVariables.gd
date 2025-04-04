@@ -2,3 +2,6 @@ extends Node
 
 var money : int = 0
 var health : int = 0
+var max_health : int = 3
+var energy : int = 3
+var max_energy : int = 3

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bww0yhaphmwso"
-path="res://.godot/imported/Watch_Needle.png-5577be9a2bcb63873b4730d341d4c4b3.ctex"
+uid="uid://b7xa13x4x8fal"
+path="res://.godot/imported/Health_Full.png-30a4dab2ff4dca8c6fd06971ecb0cf6f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/Energy_Watch/Watch_Needle.png"
-dest_files=["res://.godot/imported/Watch_Needle.png-5577be9a2bcb63873b4730d341d4c4b3.ctex"]
+source_file="res://UI/Energy_Watch/Assets/Health_Full.png"
+dest_files=["res://.godot/imported/Health_Full.png-30a4dab2ff4dca8c6fd06971ecb0cf6f.ctex"]
 
 [params]
 
