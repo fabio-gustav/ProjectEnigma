@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://xvd2rcfwru4"]
-
-[ext_resource type="Script" uid="uid://bgb3jn6uyyaa1" path="res://Components/Money_Component/money_component.gd" id="1_kjkha"]
-
-[node name="MoneyComponent" type="Node"]
-script = ExtResource("1_kjkha")

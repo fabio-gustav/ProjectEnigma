@@ -131,7 +131,7 @@ func backToOptions():
 	subMenu(optionsButtons)
 	
 func money():
-	SignalBus.emit_signal("changeMoney", 1)
+	PlayerVariables.transaction(1)
 	
 func toTestLevel():
 	get_tree().paused = false
