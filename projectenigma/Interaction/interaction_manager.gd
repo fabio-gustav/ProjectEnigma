@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var player = get_tree().get_first_node_in_group("player")
-@onready var label = $label
+@onready var label = %Label
 
 const base_text = "[E] to "
 
@@ -25,6 +25,7 @@ func _process(delta):
 		label.global_position.x -= label.size.x/2
 		label.show()
 	else:
+		pass
 		label.hide()
 
 func _sort_by_distance_to_player(area1, area2):
