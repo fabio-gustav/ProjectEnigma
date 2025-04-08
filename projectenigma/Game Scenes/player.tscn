@@ -94,7 +94,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Running",
-"speed": 5.0
+"speed": 12.0
 }]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_dguh3"]
@@ -161,7 +161,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Running",
-"speed": 5.0
+"speed": 12.0
 }]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_51o3i"]
