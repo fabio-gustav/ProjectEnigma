@@ -30,7 +30,7 @@ func aim(pos: Vector2):
 		_flip_player_sprite(false)
 	else:
 		pass
-	if (pos.x < parent.global_position.x):
-		parent.arm.rotation = lerp_angle(parent.arm.rotation, -(parent.aim_pivot.global_position - pos).angle(), (1))
-	else:
-		parent.arm.rotation = lerp_angle(parent.arm.rotation, (pos - parent.aim_pivot.global_position).angle(), (1))
+	#if (pos.x < parent.global_position.x):
+		#parent.arm.rotation = lerp_angle(parent.arm.rotation, -(parent.aim_pivot.global_position - pos).angle(), (1))
+	#else:
+		#parent.arm.rotation = lerp_angle(parent.arm.rotation, (pos - parent.aim_pivot.global_position).angle(), (1))

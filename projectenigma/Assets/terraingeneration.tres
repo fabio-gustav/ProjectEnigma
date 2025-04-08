@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="SS2D_Material_Shape" load_steps=22 format=3 uid="uid://k7w4gmk785mc"]
 
-[ext_resource type="Script" uid="uid://bmw5yoed13ap2" path="res://addons/rmsmartshape/materials/edge_material_metadata.gd" id="1_jhb7q"]
-[ext_resource type="Script" uid="uid://dax2enexvok6i" path="res://addons/rmsmartshape/materials/edge_material.gd" id="2_du2ls"]
+[ext_resource type="Script" uid="uid://vf5stl8vovim" path="res://addons/rmsmartshape/materials/edge_material_metadata.gd" id="1_jhb7q"]
+[ext_resource type="Script" uid="uid://bkmt6b57b5oh4" path="res://addons/rmsmartshape/materials/edge_material.gd" id="2_du2ls"]
 [ext_resource type="Texture2D" uid="uid://c6y747tcvmcby" path="res://Assets/allaround_2.png" id="3_yaoab"]
-[ext_resource type="Script" uid="uid://bfi0oc6gwmheb" path="res://addons/rmsmartshape/normal_range.gd" id="4_vgrfs"]
+[ext_resource type="Script" uid="uid://bm8abaadyhokb" path="res://addons/rmsmartshape/normal_range.gd" id="4_vgrfs"]
 [ext_resource type="Texture2D" uid="uid://cd6oe5alj8jjq" path="res://Assets/top_center_2.png" id="5_y182c"]
 [ext_resource type="Texture2D" uid="uid://bbaylrvlvvtxi" path="res://Assets/top_left_2.png" id="6_ah7l8"]
 [ext_resource type="Texture2D" uid="uid://dptpokjt3125j" path="res://Assets/top_right_2.png" id="7_vbdwj"]
@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://g30svru6m2jp" path="res://Assets/bottom_left_2.png" id="9_y247g"]
 [ext_resource type="Texture2D" uid="uid://kv4wo24ybtqn" path="res://Assets/bottom_right_2.png" id="10_tmn1k"]
 [ext_resource type="Texture2D" uid="uid://de5jogodqugti" path="res://Assets/Fill.png" id="11_s7j0t"]
-[ext_resource type="Script" uid="uid://dco88skyisp2k" path="res://addons/rmsmartshape/materials/shape_material.gd" id="12_madws"]
+[ext_resource type="Script" uid="uid://dnn732mjpq88r" path="res://addons/rmsmartshape/materials/shape_material.gd" id="12_madws"]
 
 [sub_resource type="Resource" id="Resource_qn7pg"]
 script = ExtResource("2_du2ls")
