@@ -46,7 +46,7 @@ height = 666.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_na4ea"]
 size = Vector2(332.125, 255)
 
-[node name="player" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_ghon7")
 acceleration = 0.3
 airspeed = 150.0
