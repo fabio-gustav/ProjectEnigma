@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctc2abisdxjjf"]
+
+[ext_resource type="Texture2D" uid="uid://cmog1fvr02ebp" path="res://closed_chest.png" id="1_pyrua"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u64gy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_pyrua")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_glq0c"]
+size = Vector2(249.081, 249.756)
+
+[node name="MoneyChest" type="AnimatedSprite2D"]
+scale = Vector2(0.0722656, 0.0800781)
+sprite_frames = SubResource("SpriteFrames_u64gy")
+animation = &"idle"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_glq0c")
