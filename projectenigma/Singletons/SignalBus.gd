@@ -21,6 +21,3 @@ signal health_changed()
 
 #called whenever you money is changed
 signal money_changed()
-#Note: Definitley a better way to do this, but I'm too lazy rn to figure it out
-#called to change your money
-signal changeMoney(money : float)
