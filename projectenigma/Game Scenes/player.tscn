@@ -1,14 +1,11 @@
-[gd_scene load_steps=31 format=3 uid="uid://iq0r13bt8ah7"]
+[gd_scene load_steps=49 format=3 uid="uid://iq0r13bt8ah7"]
 
 [ext_resource type="Script" uid="uid://cyuaeve0r54at" path="res://Player/Scripts/player.gd" id="1_ghon7"]
 [ext_resource type="Script" uid="uid://b8tn0gs0xvihj" path="res://Player/Scripts/sprite_state_machine.gd" id="2_65u56"]
-[ext_resource type="Texture2D" uid="uid://badafk1coipl4" path="res://Player/Sprites/Miriam_Body.png" id="2_hlulr"]
 [ext_resource type="PackedScene" uid="uid://djrrfx64msbrd" path="res://Components/Health_Component/health_component.tscn" id="2_ijvqs"]
 [ext_resource type="PackedScene" uid="uid://xvd2rcfwru4" path="res://Components/Money_Component/Money_Component.tscn" id="2_xgjyx"]
-[ext_resource type="Texture2D" uid="uid://dtdbwekpy8rxg" path="res://Player/Sprites/Miriam_Head_sheet.png" id="3_847dy"]
 [ext_resource type="Script" uid="uid://dpwvkdonxcjpe" path="res://Player/Scripts/state_machine.gd" id="3_ngsr7"]
 [ext_resource type="PackedScene" uid="uid://dmwkamt6017mo" path="res://Components/HitboxComponent/hitbox_component.tscn" id="3_ofs54"]
-[ext_resource type="Texture2D" uid="uid://b8lbw2tm4ptbu" path="res://Player/Sprites/Miriam_Ol_Reliable.png" id="4_e1iph"]
 [ext_resource type="Script" uid="uid://bwjpth3hqvl4f" path="res://Player/Scripts/PlayerJump.gd" id="4_fp44l"]
 [ext_resource type="Script" uid="uid://5hhi2rcyut4s" path="res://Player/Scripts/PlayerRunning.gd" id="4_tqm3n"]
 [ext_resource type="Script" uid="uid://de3fl6c7nkprk" path="res://Player/Scripts/PlayerIdle.gd" id="4_v5iuh"]
@@ -23,18 +20,149 @@
 [ext_resource type="Script" uid="uid://cmv12v0s7v0os" path="res://Player/Scripts/PlayerWallSlide.gd" id="14_l0nas"]
 [ext_resource type="Texture2D" uid="uid://cjeyyge0rgcex" path="res://Player/Sprites/Grapple_Point_Arrow.png" id="19_4pi5e"]
 [ext_resource type="PackedScene" uid="uid://bpxbab0acltj7" path="res://Player/playercamera.tscn" id="19_pmhtr"]
+[ext_resource type="Texture2D" uid="uid://br7x7vsic3cj7" path="res://Player/Sprites/Legs_Walk.png" id="19_ql7fn"]
+[ext_resource type="Texture2D" uid="uid://da20swppcg4dl" path="res://Player/Sprites/Body_Base.png" id="20_xg255"]
+[ext_resource type="Texture2D" uid="uid://cnax402duofa5" path="res://Player/Sprites/Cane_Walk_Texture.png" id="21_58dwp"]
 [ext_resource type="PackedScene" uid="uid://uklk3qd88hbn" path="res://Components/Attack_Component/Attack_Component.tscn" id="23_58dwp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oms6v"]
-radius = 46.0
-height = 224.0
+radius = 68.0
+height = 360.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cjmbv"]
-radius = 46.0
-height = 248.0
+radius = 67.0
+height = 336.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ql7fn"]
+atlas = ExtResource("19_ql7fn")
+region = Rect2(0, 0, 393, 445)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xg255"]
+atlas = ExtResource("19_ql7fn")
+region = Rect2(393, 0, 393, 445)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58dwp"]
+atlas = ExtResource("19_ql7fn")
+region = Rect2(786, 0, 393, 445)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0y5re"]
+atlas = ExtResource("19_ql7fn")
+region = Rect2(1179, 0, 393, 445)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjus6"]
+atlas = ExtResource("19_ql7fn")
+region = Rect2(1572, 0, 393, 445)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3ih0"]
+atlas = ExtResource("19_ql7fn")
+region = Rect2(1965, 0, 393, 445)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ysunm"]
+atlas = ExtResource("19_ql7fn")
+region = Rect2(2358, 0, 393, 445)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ye1qr"]
+atlas = ExtResource("19_ql7fn")
+region = Rect2(2751, 0, 393, 445)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ent5j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ql7fn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xg255")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58dwp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0y5re")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjus6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3ih0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ysunm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ye1qr")
+}],
+"loop": true,
+"name": &"Running",
+"speed": 5.0
+}]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_dguh3"]
 polygon = PackedVector2Array(-29, -18, -24, -3, -23, 6, -34, 26, -43, 57, -55, 103, -59, 135, -37, 113, -23, 90, -12, 63, -8, 54, -5, 90, 6, 132, 16, 115, 23, 79, 23, 43, 18, 25, 15, 9, 31, 18, 33, 133, 41, 133, 41, 20, 46, 12, 42, 2, 19, -6, 35, -25, 25, -26, 40, -54, 9, -39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ent5j"]
+atlas = ExtResource("21_58dwp")
+region = Rect2(0, 0, 238, 568)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oeb7n"]
+atlas = ExtResource("21_58dwp")
+region = Rect2(238, 0, 238, 568)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnh26"]
+atlas = ExtResource("21_58dwp")
+region = Rect2(476, 0, 238, 568)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6pcp"]
+atlas = ExtResource("21_58dwp")
+region = Rect2(714, 0, 238, 568)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6pgc"]
+atlas = ExtResource("21_58dwp")
+region = Rect2(952, 0, 238, 568)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukadm"]
+atlas = ExtResource("21_58dwp")
+region = Rect2(1190, 0, 238, 568)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qq2gc"]
+atlas = ExtResource("21_58dwp")
+region = Rect2(1428, 0, 238, 568)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3ako"]
+atlas = ExtResource("21_58dwp")
+region = Rect2(1666, 0, 238, 568)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rmf1q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ent5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oeb7n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnh26")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6pcp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6pgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukadm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qq2gc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3ako")
+}],
+"loop": true,
+"name": &"Running",
+"speed": 5.0
+}]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_51o3i"]
 polygon = PackedVector2Array(275.576, 4.23944, 76.3134, 8.47906, 69.9539, 27.5574, 6.35942, 21.198, 10.599, 74.1934, -76.3134, 55.115, -69.954, 118.71, -16.9586, 108.11, 19.0783, 116.59, 82.6728, 84.7925, 108.111, 89.0321, 122.949, 69.9537, 114.47, 44.5159, 241.659, 36.0367, 277.696, 23.3178)
@@ -44,9 +172,9 @@ radius = 162.0
 height = 666.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_na4ea"]
-size = Vector2(332.125, 255)
+size = Vector2(347.063, 370.5)
 
-[node name="player" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_ghon7")
 acceleration = 0.3
 airspeed = 150.0
@@ -54,13 +182,13 @@ dashDistance = 2048.0
 swing_speed = 0.1
 
 [node name="collider" type="CollisionShape2D" parent="."]
-position = Vector2(0, 21)
+position = Vector2(0, 65)
 shape = SubResource("CapsuleShape2D_oms6v")
 
 [node name="MoneyComponent" parent="." instance=ExtResource("2_xgjyx")]
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_ijvqs")]
-MAX_HEALTH = 4.0
+MAX_HEALTH = 3.0
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_ofs54")]
 collision_layer = 2
@@ -68,7 +196,7 @@ collision_mask = 8
 health_component = NodePath("../HealthComponent")
 
 [node name="collider" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(-15, 13)
+position = Vector2(0, 72)
 shape = SubResource("CapsuleShape2D_cjmbv")
 
 [node name="SpriteStateMachine" type="Node" parent="."]
@@ -127,28 +255,36 @@ script = ExtResource("13_yg5uo")
 
 [node name="PlayerSprite" type="Node2D" parent="."]
 
+[node name="Legs" type="AnimatedSprite2D" parent="PlayerSprite"]
+unique_name_in_owner = true
+position = Vector2(11, 139)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_ent5j")
+animation = &"Running"
+metadata/_edit_lock_ = true
+
 [node name="Torso" type="Sprite2D" parent="PlayerSprite"]
-position = Vector2(-6.25, 38.9435)
+position = Vector2(-3, -40)
 scale = Vector2(0.471739, 0.471739)
-texture = ExtResource("2_hlulr")
+texture = ExtResource("20_xg255")
+metadata/_edit_lock_ = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="PlayerSprite/Torso"]
+visible = false
 position = Vector2(13.2489, -82.5531)
 scale = Vector2(2.11982, 2.11982)
 occluder = SubResource("OccluderPolygon2D_dguh3")
 
-[node name="Head" type="Sprite2D" parent="PlayerSprite/Torso"]
-position = Vector2(15.3687, -230.94)
-texture = ExtResource("3_847dy")
-hframes = 8
-frame = 6
-
-[node name="Arm" type="Sprite2D" parent="PlayerSprite/Torso"]
-position = Vector2(-39.7465, -141.908)
-texture = ExtResource("4_e1iph")
+[node name="Arm" type="AnimatedSprite2D" parent="PlayerSprite/Torso"]
+unique_name_in_owner = true
+position = Vector2(-279.816, 322.212)
+sprite_frames = SubResource("SpriteFrames_rmf1q")
+animation = &"Running"
 offset = Vector2(155, -30)
+metadata/_edit_lock_ = true
 
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="PlayerSprite/Torso/Arm"]
+visible = false
 position = Vector2(55.1152, -89.032)
 occluder = SubResource("OccluderPolygon2D_51o3i")
 
@@ -192,6 +328,7 @@ collision_layer = 16
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(7.46875, 57.75)
 shape = SubResource("RectangleShape2D_na4ea")
 
 [connection signal="melee_attack" from="ActionStateMachine/Attacking" to="GrappleCast/AttackComponent" method="_on_attacking_melee_attack"]

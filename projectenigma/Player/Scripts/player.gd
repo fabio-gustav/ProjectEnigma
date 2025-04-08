@@ -37,7 +37,7 @@ var grapple_icon:Sprite2D
 
 var x_input:float = 0.0
 @onready var player_sprite = $PlayerSprite
-@onready var head = $PlayerSprite/Torso/Head
+#@onready var head = $PlayerSprite/Torso/Head
 @onready var torso = $PlayerSprite/Torso
 @onready var arm = $PlayerSprite/Torso/Arm
 @onready var aim_pivot = $AimPivot

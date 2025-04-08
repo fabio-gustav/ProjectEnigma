@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bww0yhaphmwso"
-path="res://.godot/imported/Watch_Needle.png-5577be9a2bcb63873b4730d341d4c4b3.ctex"
+uid="uid://cnax402duofa5"
+path="res://.godot/imported/Cane_Walk_Texture.png-429fa9033f2197b82e59dcd6e72a84ae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/Energy_Watch/Watch_Needle.png"
-dest_files=["res://.godot/imported/Watch_Needle.png-5577be9a2bcb63873b4730d341d4c4b3.ctex"]
+source_file="res://Player/Sprites/Cane_Walk_Texture.png"
+dest_files=["res://.godot/imported/Cane_Walk_Texture.png-429fa9033f2197b82e59dcd6e72a84ae.ctex"]
 
 [params]
 

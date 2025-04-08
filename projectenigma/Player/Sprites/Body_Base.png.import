@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dm525ikwbikku"
-path="res://.godot/imported/Health_Glowing.png-070ffda59f4160d3b612ca1d932bf426.ctex"
+uid="uid://da20swppcg4dl"
+path="res://.godot/imported/Body_Base.png-8fe95e2898862a0db051c6589ea5e6ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/Health_Display/Health_Glowing.png"
-dest_files=["res://.godot/imported/Health_Glowing.png-070ffda59f4160d3b612ca1d932bf426.ctex"]
+source_file="res://Player/Sprites/Body_Base.png"
+dest_files=["res://.godot/imported/Body_Base.png-8fe95e2898862a0db051c6589ea5e6ec.ctex"]
 
 [params]
 

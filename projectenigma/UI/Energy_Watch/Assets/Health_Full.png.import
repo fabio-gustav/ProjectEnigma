@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fdapkik0amwm"
-path="res://.godot/imported/Health_Not_Glowing.png-ef7a1131af17a4a85e6feb6b041c2bdb.ctex"
+uid="uid://b7xa13x4x8fal"
+path="res://.godot/imported/Health_Full.png-30a4dab2ff4dca8c6fd06971ecb0cf6f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/Health_Display/Health_Not_Glowing.png"
-dest_files=["res://.godot/imported/Health_Not_Glowing.png-ef7a1131af17a4a85e6feb6b041c2bdb.ctex"]
+source_file="res://UI/Energy_Watch/Assets/Health_Full.png"
+dest_files=["res://.godot/imported/Health_Full.png-30a4dab2ff4dca8c6fd06971ecb0cf6f.ctex"]
 
 [params]
 

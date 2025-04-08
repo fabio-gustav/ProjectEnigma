@@ -4,7 +4,7 @@ extends Control
 @onready var quitGameButton = $"MainMenu/Quit Game"
 @onready var optionsButton = $MainMenu/Options
 
-@onready var level = "res://Game Scenes/bettertestlevel.tscn" # change this to change the starting level
+@onready var level = "res://Game Scenes/TestLighthouse.tscn" # change this to change the starting level
 @onready var activeButtons = [loadLevelButton, optionsButton, quitGameButton]
 @onready var optionsButtons = []
 @onready var selection = 0;

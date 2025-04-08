@@ -7,8 +7,9 @@ signal health_change(health)
 
 func _ready() -> void:
 	health = MAX_HEALTH
+	PlayerVariables.health = MAX_HEALTH
+	PlayerVariables.max_health = MAX_HEALTH
 	SignalBus.health_changed.emit(health)
-	#PlayerVariables.health = MAX_HEALTH
 	
 	
 

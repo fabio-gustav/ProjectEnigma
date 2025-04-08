@@ -5,8 +5,8 @@ class_name State
 signal Transitioned
 
 @onready var player: CharacterBody2D = get_parent().get_parent()
-
-
+@onready var legs: AnimatedSprite2D = %Legs
+@onready var arm: AnimatedSprite2D = %Arm
 
 
 
