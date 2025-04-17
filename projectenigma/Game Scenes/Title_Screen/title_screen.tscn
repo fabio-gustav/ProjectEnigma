@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwsrgip13k37b"]
+[gd_scene load_steps=5 format=3 uid="uid://bwsrgip13k37b"]
 
 [ext_resource type="Script" uid="uid://cx7m2ilfl8fr4" path="res://Game Scenes/Title_Screen/title_screen.gd" id="1_gwbmd"]
 [ext_resource type="Texture2D" uid="uid://bpd1tnhy5sxu3" path="res://Game Scenes/Title_Screen/Game_Concept_Art_1.png" id="2_1dd5w"]
 [ext_resource type="PackedScene" uid="uid://fdxr2yejyo8c" path="res://Game Scenes/Scene_Transition/scene_transition.tscn" id="2_ijc0d"]
+[ext_resource type="AudioStream" uid="uid://bwxcmw7xkyn7w" path="res://Audio/Title1.wav" id="4_ms2sr"]
 
 [node name="Title Screen" type="Control"]
 layout_mode = 3
@@ -72,6 +73,10 @@ offset_right = 1865.0
 offset_bottom = 636.0
 theme_override_font_sizes/normal_font_size = 120
 text = "Project: Enigma"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ms2sr")
+autoplay = true
 
 [connection signal="pressed" from="MainMenu/Load Level" to="." method="loadLevel"]
 [connection signal="pressed" from="MainMenu/Options" to="." method="options"]

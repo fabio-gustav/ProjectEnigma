@@ -13,9 +13,9 @@
 [ext_resource type="Script" uid="uid://dutl1hou2tqsi" path="res://Player/Scripts/PlayerActionAttack.gd" id="8_xg255"]
 [ext_resource type="Script" uid="uid://bj3bam4mnmjts" path="res://Player/Scripts/PlayerGrapple.gd" id="9_5opso"]
 [ext_resource type="Script" uid="uid://j1mjkgb87clx" path="res://Player/Scripts/PlayerSlide.gd" id="10_0cq60"]
-[ext_resource type="Script" uid="uid://dq0fn4xni0mpw" path="res://Player/Scripts/PlayerWalljump.gd" id="11_fi1tf"]
+[ext_resource type="Script" uid="uid://4kndegcb3045" path="res://Player/Scripts/PlayerWalljump.gd" id="11_fi1tf"]
 [ext_resource type="Script" uid="uid://bn7row8c3y82q" path="res://Player/Scripts/PlayerDash.gd" id="11_sdgqk"]
-[ext_resource type="Script" uid="uid://bph6wl571g058" path="res://Player/Scripts/PlayerGrapplePull.gd" id="13_yg5uo"]
+[ext_resource type="Script" uid="uid://rt7r6kmtft7e" path="res://Player/Scripts/PlayerGrapplePull.gd" id="13_yg5uo"]
 [ext_resource type="Script" uid="uid://cmv12v0s7v0os" path="res://Player/Scripts/PlayerWallSlide.gd" id="14_l0nas"]
 [ext_resource type="Script" uid="uid://cvgn18t4vsj1o" path="res://Game Scenes/PlayerWalking.gd" id="18_ql7fn"]
 [ext_resource type="Texture2D" uid="uid://cjeyyge0rgcex" path="res://Player/Sprites/Grapple_Point_Arrow.png" id="19_4pi5e"]
@@ -176,12 +176,13 @@ size = Vector2(347.063, 370.5)
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_ghon7")
-airspeed = 550.0
-airResistance = 0.05
+coyoteTime = 0.15
+airspeed = 275.0
+airResistance = 0.008
 dashDistance = 2048.0
+run_speed = 2500
 run_acceleration = 0.1
-friction = 0.15
-swing_speed = 0.1
+swing_speed = 0.05
 
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 65)
