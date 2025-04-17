@@ -5,14 +5,16 @@ extends CharacterBody2D
 @export var dashCooldown:float = 0.5
 #testing things
 
-@export var acceleration = .25
+@export var acceleration = .05
 @export var jumpHeight:float = 768
 @export var risingJumpTime:float = 0.4
 @export var airspeed:float = 50.0
 @export var airResistance:float = 0.005
 @export var fallingJumpTime:float = 0.3
 @export var dashDistance:float = 1024
-@export var speed = 1542
+@export var walk_speed = 1042
+@export var run_speed = 2048
+@export var run_acceleration = .25
 @export var friction = .2
 @export var swing_speed:float = 64
 @export var slide_friction:float = 0.01

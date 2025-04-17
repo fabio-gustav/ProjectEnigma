@@ -1,6 +1,6 @@
 extends State
 
-class_name PlayerRunning
+class_name PlayerWalking
 
 
 func Enter():
@@ -35,13 +35,13 @@ func physicsUpdate(_delta:float):
 		Transitioned.emit("running","sliding")
 		return
 		
-	player.velocity.x = lerp(player.velocity.x,(get_input()*player.run_speed),player.run_acceleration)
+	player.velocity.x = lerp(player.velocity.x,(get_input()*player.walk_speed),player.acceleration)
 	#print(player.velocity.x)
 	
-	if abs(player.velocity.x) <= player.walk_speed:
+	if abs(player.velocity.x) >= player.walk_speed - 100:
 		legs.stop()
 		arm.stop()
-		Transitioned.emit("running","walking")
+		Transitioned.emit("walking","running")
 		return
 	
 	if get_input() == 0.0:
