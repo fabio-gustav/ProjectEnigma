@@ -13,6 +13,7 @@ func Enter():
 	player.jump_available = false
 	
 func Exit():
+	player.velocity.y = 0.0
 	Transitioned.emit("jumping","falling")
 
 func Update():
