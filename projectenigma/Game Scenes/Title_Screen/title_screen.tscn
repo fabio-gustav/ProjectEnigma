@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cx7m2ilfl8fr4" path="res://Game Scenes/Title_Screen/title_screen.gd" id="1_gwbmd"]
 [ext_resource type="Texture2D" uid="uid://bpd1tnhy5sxu3" path="res://Game Scenes/Title_Screen/Game_Concept_Art_1.png" id="2_1dd5w"]
 [ext_resource type="PackedScene" uid="uid://fdxr2yejyo8c" path="res://Game Scenes/Scene_Transition/scene_transition.tscn" id="2_ijc0d"]
-[ext_resource type="AudioStream" uid="uid://bwxcmw7xkyn7w" path="res://Audio/Title1.wav" id="4_ms2sr"]
+[ext_resource type="AudioStream" uid="uid://bxq3taan70fqa" path="res://Audio/Title1.wav" id="4_ms2sr"]
 
 [node name="Title Screen" type="Control"]
 layout_mode = 3
