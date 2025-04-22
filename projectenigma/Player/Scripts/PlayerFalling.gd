@@ -23,7 +23,6 @@ func physicsUpdate(_delta:float):
 		Transitioned.emit("falling","dashing")
 		return
 	if Input.is_action_just_pressed("jump"):
-		
 		if player.jump_available:
 			Transitioned.emit("falling","jumping")
 			return

@@ -133,7 +133,6 @@ jumpHeight = 1024.0
 risingJumpTime = 0.35
 fallingJumpTime = 0.25
 dashDistance = 1440.0
-speed = 2000
 friction = 0.3
 wallslide_gravity = 4500.0
 
