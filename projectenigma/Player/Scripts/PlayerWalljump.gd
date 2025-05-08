@@ -11,7 +11,11 @@ class_name PlayerWallJump
 
 func Enter():
 	var direction = player.player_look()
-	player.velocity = ((-player.get_wall_normal().normalized())+(-player.up_direction)) * jumpVelocity
+	if player.velocity.length() < (8000-player.velocity.length()):	
+		player.velocity = (((-1*direction) * player.velocity.length()) + ((-1*direction) * 8000))
+	else:
+		player.velocity = ((-1*direction) * player.velocity.length())
+	print("Klablamy!")
 	player.jump_available = false
 	
 func Exit():
@@ -25,9 +29,7 @@ func physicsUpdate(_delta:float):
 	if (player.grapple_check() && Input.is_action_just_pressed("grapple")):
 		Transitioned.emit("walljumping","grappling")
 		return
-	if player.is_on_wall():
-		Transitioned.emit("walljumping","wallsliding")
-		return
+	
 	
 	if Input.is_action_just_pressed("dash") && player.dash_available:
 		Transitioned.emit("walljumping","dashing")

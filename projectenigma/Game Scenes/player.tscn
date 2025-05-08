@@ -176,10 +176,11 @@ size = Vector2(347.063, 370.5)
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_ghon7")
-airspeed = 550.0
-airResistance = 0.05
+airspeed = 850.0
+airResistance = 0.0
 dashDistance = 2048.0
-run_acceleration = 0.1
+run_speed = 8048
+run_acceleration = 0.015
 friction = 0.15
 swing_speed = 0.1
 

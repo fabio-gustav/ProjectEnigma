@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var coyoteTime:float = 0.2
 @export var jumpBufferTime:float = 0.1
+@export var parry_buffer_time:float = 0.1
 @export var dashCooldown:float = 0.5
 #testing things
 
@@ -19,7 +20,7 @@ extends CharacterBody2D
 @export var swing_speed:float = 64
 @export var slide_friction:float = 0.01
 @export var grapple_pull:float = 1024
-@export var wallslide_gravity:float = 5500
+#@export var wallslide_gravity:float = 5500
 @export var grapple_pull_speed:float = 800
 
 
@@ -29,7 +30,9 @@ extends CharacterBody2D
 
 var playerGrappled:bool = false
 var jump_available:bool = false
+var wall_jump_available:bool = false
 var jump_buffer:bool = false
+var parry_buffer:bool = false
 var dash_available:bool = true
 var dash_cool:bool = false
 var grapple_target:StaticBody2D
@@ -60,7 +63,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 @warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
-	
 	if (dash_cool and is_on_floor()):
 		dash_available = true
 	grapple_check()
@@ -96,6 +98,9 @@ func coyoteTimeout() -> void:
 
 func on_jump_buffer_timeout()->void:
 	jump_buffer = false
+
+func on_parry_buffer_timeout()->void:
+	parry_buffer = false
 
 
 func player_look():

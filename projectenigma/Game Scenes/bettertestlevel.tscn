@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cty20pk0q8of8" path="res://Backgrounds/256Engima_Grid.png" id="2_5p1b3"]
 [ext_resource type="Texture2D" uid="uid://b6eywagxq110m" path="res://Backgrounds/TransparencyDark120.png" id="2_7ni6y"]
 [ext_resource type="PackedScene" uid="uid://dgrjet1205fdx" path="res://World Objects/Sign/sign.tscn" id="3_bk7xb"]
-[ext_resource type="TileSet" uid="uid://ylx70h84t1k5" path="res://Assets/grid.tres" id="3_igbwe"]
+[ext_resource type="PackedScene" uid="uid://0c3ygnlacur5" path="res://World Objects/terrain.tscn" id="3_igbwe"]
 [ext_resource type="PackedScene" uid="uid://iq0r13bt8ah7" path="res://Game Scenes/player.tscn" id="4_exivl"]
 [ext_resource type="PackedScene" uid="uid://cctnwlr1iq78a" path="res://World Objects/Grapple_Node/grapple_node.tscn" id="5_uttmx"]
 [ext_resource type="PackedScene" uid="uid://bjft6ujfjtllf" path="res://World Objects/Platforms/vertical_platform.tscn" id="6_ft7oh"]
@@ -98,10 +98,8 @@ color = Color(0.552956, 0.552956, 0.552956, 1)
 energy = 0.7
 shadow_enabled = true
 
-[node name="TileMapLayer2" type="TileMapLayer" parent="."]
+[node name="TileMapLayer2" parent="." instance=ExtResource("3_igbwe")]
 position = Vector2(831, 211)
-tile_map_data = PackedByteArray("AADx/wkAAgAGAAQAAADx/wgAAgAGAAMAAADx/wcAAgAAAAMAAADx/wYAAgAAAAMAAADx/wUAAgAAAAMAAADx/wQAAgAAAAMAAADx/wMAAgAGAAMAAADx/wIAAgAGAAIAAADw/wkAAgABAAIAAADw/wgAAgAFAAMAAADw/wcAAgAFAAMAAADw/wYAAgAFAAMAAADw/wUAAgAFAAMAAADw/wQAAgAFAAMAAADw/wMAAgAFAAMAAADw/wIAAgAFAAIAAADv/wkAAgABAAIAAADv/wgAAgAFAAMAAADv/wcAAgAFAAMAAADv/wYAAgAFAAMAAADv/wUAAgAFAAMAAADv/wQAAgAFAAMAAADv/wMAAgAFAAMAAADv/wIAAgAFAAIAAADu/wkAAgAFAAQAAADu/wgAAgAFAAMAAADu/wcAAgAFAAMAAADu/wYAAgAFAAMAAADu/wUAAgAFAAMAAADu/wQAAgAFAAMAAADu/wMAAgAFAAMAAADu/wIAAgAFAAIAAADt/wkAAgABAAIAAADt/wgAAgAFAAMAAADt/wcAAgAFAAMAAADt/wYAAgAFAAMAAADt/wUAAgAFAAMAAADt/wQAAgAFAAMAAADt/wMAAgAFAAMAAADt/wIAAgABAAQAAADs/wkAAgABAAIAAADs/wgAAgAFAAMAAADs/wcAAgAFAAMAAADs/wYAAgAFAAMAAADs/wUAAgAFAAMAAADs/wQAAgAFAAMAAADs/wMAAgAFAAMAAADs/wIAAgABAAQAAADr/wkAAgAFAAQAAADr/wgAAgAFAAMAAADr/wcAAgAFAAMAAADr/wYAAgAFAAMAAADr/wUAAgAFAAMAAADr/wQAAgAFAAMAAADr/wMAAgAFAAMAAADr/wIAAgAAAAQAAADq/wkAAgAFAAQAAADq/wgAAgAFAAMAAADq/wcAAgAFAAMAAADq/wYAAgAFAAMAAADq/wUAAgAFAAMAAADq/wQAAgAFAAMAAADq/wMAAgAFAAMAAADq/wIAAgAFAAMAAADp/wkAAgABAAIAAADp/wgAAgAFAAMAAADp/wcAAgAFAAMAAADp/wYAAgAFAAMAAADp/wUAAgAFAAMAAADp/wQAAgAFAAMAAADp/wMAAgAFAAMAAADp/wIAAgAFAAMAAADo/wkAAgAFAAQAAADo/wgAAgAFAAMAAADo/wcAAgAFAAMAAADo/wYAAgAFAAMAAADo/wUAAgAFAAMAAADo/wQAAgAFAAMAAADo/wMAAgAFAAMAAADo/wIAAgAFAAMAAADn/wkAAgABAAIAAADn/wgAAgAFAAMAAADn/wcAAgAFAAMAAADn/wYAAgAFAAMAAADn/wUAAgAFAAMAAADn/wQAAgAFAAMAAADn/wMAAgAFAAMAAADn/wIAAgAFAAMAAADm/wkAAgAFAAQAAADm/wgAAgAFAAMAAADm/wcAAgAFAAMAAADm/wYAAgAFAAMAAADm/wUAAgAFAAMAAADm/wQAAgAFAAMAAADm/wMAAgAFAAMAAADm/wIAAgAFAAMAAADl/wkAAgAFAAQAAADl/wgAAgAFAAMAAADl/wcAAgAFAAMAAADl/wYAAgAFAAMAAADl/wUAAgAFAAMAAADl/wQAAgAFAAMAAADl/wMAAgAFAAMAAADl/wIAAgAFAAMAAADk/wkAAgAEAAQAAADk/wgAAgAEAAMAAADk/wcAAgAEAAMAAADk/wYAAgAEAAMAAADk/wUAAgAEAAMAAADk/wQAAgACAAMAAADk/wMAAgACAAMAAADk/wIAAgAEAAMAAADr/wEAAgAGAAIAAADq/wEAAgAAAAQAAADp/wEAAgAFAAMAAADo/wEAAgAFAAMAAADn/wEAAgAFAAMAAADm/wEAAgAFAAMAAADl/wEAAgAFAAMAAADk/wEAAgACAAQAAADk/wAAAgAEAAMAAADl/wAAAgAFAAMAAADm/wAAAgAFAAMAAADn/wAAAgAAAAQAAADo/wAAAgABAAQAAADp/wAAAgAFAAIAAADq/wAAAgAGAAIAAADn////AgAGAAIAAADm////AgAFAAIAAADl////AgAAAAQAAADk////AgACAAMAAADk//7/AgACAAIAAADk//3/AgAFAAMAAADk//z/AgAFAAMAAADk//v/AgAFAAMAAADk//r/AgACAAQAAADk//n/AgACAAMAAADk//j/AgAEAAIAAADl//j/AgAGAAIAAADl//n/AgAAAAMAAADl//r/AgAGAAMAAADl//v/AgAGAAMAAADl//z/AgAAAAMAAADl//3/AgAAAAMAAADl//7/AgAGAAMAAAA=")
-tile_set = ExtResource("3_igbwe")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 visible = false
@@ -133,9 +131,7 @@ jumpHeight = 1024.0
 risingJumpTime = 0.35
 fallingJumpTime = 0.25
 dashDistance = 1440.0
-speed = 2000
 friction = 0.3
-wallslide_gravity = 4500.0
 
 [node name="StaticBody2D" parent="." instance=ExtResource("5_uttmx")]
 position = Vector2(327, -4647)

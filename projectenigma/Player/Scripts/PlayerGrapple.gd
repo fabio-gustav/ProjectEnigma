@@ -33,7 +33,7 @@ func physicsUpdate(_delta:float):
 	
 	player.velocity.y += fallGravity * _delta
 	swing(_delta)
-	player.velocity *= 0.985
+	player.velocity *= 0.98
 	
 	if player.is_on_floor():
 		Exit()

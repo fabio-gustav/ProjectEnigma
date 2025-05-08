@@ -9,7 +9,7 @@ class_name PlayerJump
 @onready var jumpGravity:float = ((-2.0 * player.jumpHeight) / (player.risingJumpTime * player.risingJumpTime)) * -1.0
 
 func Enter():
-	player.velocity.y = jumpVelocity
+	player.velocity.y += jumpVelocity
 	player.jump_available = false
 	
 func Exit():
@@ -22,12 +22,12 @@ func Update():
 func physicsUpdate(_delta:float):
 	player.velocity.y += jumpGravity * _delta
 	player.velocity.x = lerp(player.velocity.x,player.velocity.x+(get_input()*player.airspeed),player.acceleration)
-	player.velocity.x  = lerp(player.velocity.x, 0.0, player.airResistance)
+	player.velocity.x = lerp(player.velocity.x, 0.0, player.airResistance)
 	if (player.grapple_check() && Input.is_action_just_pressed("grapple")):
 		Transitioned.emit("jumping","grappling")
 		return
-	if player.is_on_wall() and Input.is_action_pressed("slide"):
-		Transitioned.emit("jumping","wallsliding")
+	if player.is_on_wall() and Input.is_action_pressed("parry"):
+		Transitioned.emit("falling","walljumping")
 		return
 	
 	if Input.is_action_just_pressed("dash") && player.dash_available:
