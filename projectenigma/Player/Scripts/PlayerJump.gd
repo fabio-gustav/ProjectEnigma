@@ -14,6 +14,7 @@ func Enter():
 	
 func Exit():
 	player.velocity.y = 0.0
+	jumpGravity = ((-2.0 * player.jumpHeight) / (player.risingJumpTime * player.risingJumpTime)) * -1.0
 	Transitioned.emit("jumping","falling")
 
 func Update():
@@ -33,13 +34,13 @@ func physicsUpdate(_delta:float):
 	if Input.is_action_just_pressed("dash") && player.dash_available:
 		Transitioned.emit("jumping","dashing")
 		return
-	if Input.is_action_pressed("jump"):
-		if player.velocity.y <= 0.0:
-			pass
-		else: 
-			Exit()
-			return
-	else:
+		
+	if player.velocity.y <= 0.0001:
+		pass
+	else: 
 		Exit()
+		return
+	if !Input.is_action_pressed("jump"):
+		jumpGravity = ((-6.0 * player.jumpHeight) / (player.risingJumpTime * player.risingJumpTime)) * -1.0
 		return
 		
