@@ -16,13 +16,13 @@ func init() -> void:
 
 func enter():
 	super()
-	parent.parentGrappled = true
+	parent.playerGrappled = true
 	targetPosition = parent.grapple_target.global_position
 	ropeLength = parent.global_position.distance_to(targetPosition)
 
 
 func exit():
-	parent.parentGrappled = false
+	parent.playerGrappled = false
 	
 
 func process_input(event: InputEvent) -> State:

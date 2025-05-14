@@ -42,7 +42,7 @@ var dash_cool:bool = false
 @export var grapple_pull:float = 1024
 @export var grapple_pull_speed:float = 800
 @onready var grapple_cast: RayCast2D = $GrappleCast
-var playerGrappled:bool = false
+@onready var playerGrappled:bool = false
 var grapple_target:StaticBody2D
 var grapple_icon:Sprite2D
 @onready var marker = preload("res://Player/Sprites/Grapple_Point_Dot.png")
