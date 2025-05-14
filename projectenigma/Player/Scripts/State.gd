@@ -1,28 +1,30 @@
+class_name State
 extends Node
 
-class_name State
-
-signal Transitioned
-
-@onready var player: CharacterBody2D = get_parent().get_parent()
+@onready var parent: CharacterBody2D
 @onready var legs: AnimatedSprite2D = %Legs
 @onready var arm: AnimatedSprite2D = %Arm
 
+var move_component
 
+func init() -> void:
+	pass
 
-func enter():
+func enter() -> void:
+	#parent.animations.play(animation_name)
 	pass
 	
 func exit():
 	pass
 	
-func update(_delta:float):
-	pass
-	
-func physicsUpdate(_delta:float):
-	pass
-	
+func process_input(event: InputEvent) -> State:
+	return null
 
-func get_input() -> float:
-	var input_direction = Input.get_axis("left","right")
-	return input_direction
+func process_frame(delta: float) -> State:
+	return null
+
+func process_physics(delta: float) -> State:
+	return null
+
+func get_movement_input() -> float:
+	return move_component.get_movement_direction()

@@ -1,50 +1,44 @@
 extends State
 
-class_name PlayerJump
+@export var grapple_state: State
+@export var fall_state: State
+@export var parry_state: State
 
+@onready var jumpVelocity:float
+@onready var jumpGravity:float
 
+func init() -> void:
+	jumpVelocity = ((2.0 * parent.jumpHeight) / parent.risingJumpTime) * -1.0
+	jumpGravity = ((-2.0 * parent.jumpHeight) / (parent.risingJumpTime * parent.risingJumpTime)) * -1.0
 
-
-@onready var jumpVelocity:float = ((2.0 * player.jumpHeight) / player.risingJumpTime) * -1.0
-@onready var jumpGravity:float = ((-2.0 * player.jumpHeight) / (player.risingJumpTime * player.risingJumpTime)) * -1.0
-
-func Enter():
-	player.velocity.y += jumpVelocity
-	player.jump_available = false
+func enter():
+	super()
+	parent.velocity.y += jumpVelocity
+	parent.jump_available = false
 	
-func Exit():
-	player.velocity.y = 0.0
-	jumpGravity = ((-2.0 * player.jumpHeight) / (player.risingJumpTime * player.risingJumpTime)) * -1.0
-	Transitioned.emit("jumping","falling")
+func exit():
+	parent.velocity.y = 0.0
+	jumpGravity = ((-2.0 * parent.jumpHeight) / (parent.risingJumpTime * parent.risingJumpTime)) * -1.0
 
-func Update():
-	pass
+func process_input(event: InputEvent) -> State:
+	if parent.grapple_check() and Input.is_action_just_pressed("grapple"):
+		return grapple_state
+	if parent.parry_available and Input.is_action_just_pressed("parry"):
+		#legs.stop()
+		#arm.stop()
+		if parent.parry_buffer or parent.is_on_wall():
+			return parry_state
+		parent.parry_buffer = true
+		parent.get_tree().create_timer(parent.parry_buffer_time).timeout.connect(parent.on_parry_buffer_timeout)
+	return null
 
-func physicsUpdate(_delta:float):
-	player.velocity.y += jumpGravity * _delta
-	player.velocity.x = lerp(player.velocity.x,player.velocity.x+(get_input()*player.airspeed),player.acceleration)
-	player.velocity.x = lerp(player.velocity.x, 0.0, player.airResistance)
-	if (player.grapple_check() && Input.is_action_just_pressed("grapple")):
-		Transitioned.emit("jumping","grappling")
-		return
-	if Input.is_action_just_pressed("parry"):
-		if player.parry_buffer or player.is_on_floor() or player.is_on_wall():
-			Transitioned.emit("falling","parry")
-			return
-		player.parry_buffer = true
-		player.get_tree().create_timer(player.parry_buffer_time).timeout.connect(player.on_parry_buffer_timeout)
-		return
+func process_physics(delta: float) -> State:
+	parent.velocity.y += jumpGravity * delta
+	parent.velocity.x = lerp(parent.velocity.x,parent.velocity.x+(get_movement_input()*parent.airspeed),parent.acceleration)
+	parent.velocity.x = lerp(parent.velocity.x, 0.0, parent.airResistance)
 	
-	if Input.is_action_just_pressed("dash") && player.dash_available:
-		Transitioned.emit("jumping","dashing")
-		return
-		
-	if player.velocity.y <= 0.0001:
-		pass
-	else: 
-		Exit()
-		return
+	if parent.velocity.y >= 0.0:
+		return fall_state
 	if !Input.is_action_pressed("jump"):
-		jumpGravity = ((-6.0 * player.jumpHeight) / (player.risingJumpTime * player.risingJumpTime)) * -1.0
-		return
-		
+		jumpGravity = ((-6.0 * parent.jumpHeight) / (parent.risingJumpTime * parent.risingJumpTime)) * -1.0
+	return null

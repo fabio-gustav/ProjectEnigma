@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 
@@ -54,6 +55,9 @@ var x_input:float = 0.0
 @onready var arm = $PlayerSprite/Torso/Arm
 @onready var aim_pivot = $AimPivot
 
+#State Machine
+@onready var state_machine: Node = $MovementStateMachine
+@onready var player_move_component: Node = $PlayerMovmentComponent
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -66,12 +70,15 @@ func _ready():
 	grapple_icon.texture = marker
 	grapple_icon.scale = Vector2(0.4,0.4)
 	add_sibling.call_deferred(grapple_icon)
+	state_machine.init(self,player_move_component)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 @warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
-	if (dash_cool and is_on_floor()):
-		dash_available = true
+	#if (dash_cool and is_on_floor()):
+		#dash_available = true
+	state_machine.process_physics(delta)
+	
 	grapple_check()
 	grapple_cast.look_at((10*player_look())+global_position)
 	move_and_slide()
@@ -79,6 +86,12 @@ func _physics_process(delta: float) -> void:
 	
 	#addition to connect with signal bus to give debug menu player movement data
 	SignalBus.emit_signal("debugData",[velocity.x, velocity.y])
+
+func _unhandled_input(event: InputEvent) -> void:
+	state_machine.process_input(event)
+
+func _process(delta: float) -> void:
+	state_machine.process_frame(delta)
 
 func grapple_check():
 	var penits:StaticBody2D = grapple_cast.get_collider()
@@ -105,6 +118,7 @@ func coyoteTimeout() -> void:
 	
 func parry_timeout() -> void:
 	print("parry no longer available")
+	parry_available = false
 	
 
 func on_jump_buffer_timeout()->void:

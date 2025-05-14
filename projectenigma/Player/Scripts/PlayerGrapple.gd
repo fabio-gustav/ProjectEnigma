@@ -1,90 +1,65 @@
 extends State
 
-class_name PlayerGrapple
+@export var fall_state: State
+@export var grapple_pull_state: State
+@export var jump_state: State
+@export var idle_state: State
 
-@onready var fallGravity:float = ((-2.0 * player.jumpHeight) / (player.fallingJumpTime * player.fallingJumpTime)) * -1
+@onready var fallGravity:float 
 
-var target:StaticBody2D
 var targetPosition:Vector2
 var ropeLength:float
-var stop
-var icon : Sprite2D
+var icon: Sprite2D
 
-func Enter():
-	player.playerGrappled = true
-	targetPosition = player.grapple_target.global_position
-	ropeLength = player.global_position.distance_to(targetPosition)
+func init() -> void:
+	fallGravity = ((-2.0 * parent.jumpHeight) / (parent.fallingJumpTime * parent.fallingJumpTime)) * -1
+
+func enter():
+	super()
+	parent.parentGrappled = true
+	targetPosition = parent.grapple_target.global_position
+	ropeLength = parent.global_position.distance_to(targetPosition)
 
 
-func Exit():
-	player.playerGrappled = false
+func exit():
+	parent.parentGrappled = false
 	
 
-func Update():
-	pass
-
-func physicsUpdate(_delta:float):
+func process_input(event: InputEvent) -> State:
 	if Input.is_action_just_pressed("grapple"):
-		stop = true
-		Exit()
-		Transitioned.emit("grappling","falling")
-		return
-		
-	
-	player.velocity.y += fallGravity * _delta
-	swing(_delta)
-	player.velocity *= 0.98
-	
-	if player.is_on_floor():
-		Exit()
-		Transitioned.emit("grappling","idle")
-		return
-	
-	if Input.is_action_just_pressed("dash") && player.dash_available:
-		Exit()
-		Transitioned.emit("dashing","dashing")
-		return
-	
-	if Input.is_action_just_pressed("jump"):
-		Exit()
-		Transitioned.emit("grappling","jumping")
-		return
-		
+		return fall_state
+	if parent.jump_available and Input.is_action_just_pressed("jump"):
+		return jump_state
 	if Input.is_action_just_pressed("grapplepull"):
-		Transitioned.emit("grappling","grapplepulling")
-		return
-	
+		return grapple_pull_state
+	return null
 
-
-
-func endGrapple():
-	player.playerGrappled = false
+func process_physics(delta: float) -> State:
+	parent.velocity.y += fallGravity * delta
+	swing(delta)
+	parent.velocity *= 0.98
 	
-	
+	if parent.is_on_floor():
+		return idle_state
+	return null
+
 func swing(_delta):
-	var radius = player.global_position - targetPosition
-	if player.velocity.length() < 0.01 or radius.length() < 10: return
-	var angle = acos(radius.dot(player.velocity) / (radius.length()*player.velocity.length()))
-	var radial_velocity = cos(angle) * player.velocity.length()
-	#var radial_velocity = fallGravity
-	#var radial_velocity = player.global_position.dot(-targetPosition) * radius.normalized(
+	var radius = parent.global_position - targetPosition
+	if parent.velocity.length() < 0.01 or radius.length() < 10: return
+	var angle = acos(radius.dot(parent.velocity) / (radius.length()*parent.velocity.length()))
+	var radial_velocity = cos(angle) * parent.velocity.length()
 	
+	parent.velocity += radius.normalized() * -(radial_velocity)
 	
-	#var myUp = player.global_position - targetPosition
-	#player.look_at(targetPosition)
-	#player.rotate(PI/2)
-	
-	player.velocity += radius.normalized() * -(radial_velocity)
-	
-	if player.global_position.distance_to(targetPosition) != ropeLength:
+	if parent.global_position.distance_to(targetPosition) != ropeLength:
 	#print("adjust")
-		player.global_position = targetPosition + radius.normalized() * ropeLength
+		parent.global_position = targetPosition + radius.normalized() * ropeLength
 		
-	player.velocity += (targetPosition - player.global_position).normalized() * (_delta) * 15000
+	parent.velocity += (targetPosition - parent.global_position).normalized() * (_delta) * 15000
 	
-	if Input.is_action_pressed("right") and player.velocity.x > 0:
-		player.velocity+= player.velocity.normalized() * player.swing_speed * radius.length()
+	#could probalby lerp this to a max speed
+	if Input.is_action_pressed("right") and parent.velocity.x > 0:
+		parent.velocity+= parent.velocity.normalized() * parent.swing_speed * radius.length()
 	
-	if Input.is_action_pressed("left") and player.velocity.x < 0:
-		player.velocity+= player.velocity.normalized() * player.swing_speed * radius.length()
-	#print(player.velocity)
+	if Input.is_action_pressed("left") and parent.velocity.x < 0:
+		parent.velocity+= parent.velocity.normalized() * parent.swing_speed * radius.length()

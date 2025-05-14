@@ -1,53 +1,49 @@
 extends State
 
-class_name PlayerFalling
+@export var grapple_state: State
+@export var parry_state: State
+@export var idle_state: State
+@export var jump_state: State
 
-@onready var fallGravity:float = ((-2.0 * player.jumpHeight) / (player.fallingJumpTime * player.fallingJumpTime)) * -1.0
 
-func Enter():
-	if player.jump_available:
-		player.coyote_timer.start(player.coyoteTime)
+@onready var fallGravity:float 
+func init() -> void:
+	fallGravity = ((-2.0 * parent.jumpHeight) / (parent.fallingJumpTime * parent.fallingJumpTime)) * -1.0
 
-func Exit():
-	Transitioned.emit("falling","idle")
-	return
+func enter():
+	super()
+	print("Enter Fall")
+	if parent.jump_available:
+		parent.coyote_timer.start(parent.coyoteTime)
 
-func Update():
+func exit():
+	#parent.parry_timer.start(parent.parry_time)
+	#parent.parry_available = true
+	#Transitioned.emit("falling","idle")
 	pass
 
-func physicsUpdate(_delta:float):
-	
-	player.velocity.y += fallGravity * _delta
-	player.velocity.x = lerp(player.velocity.x,player.velocity.x+(get_input()*player.airspeed),player.acceleration)
-	player.velocity.x  = lerp(player.velocity.x, 0.0, player.airResistance)
-	
-	if Input.is_action_just_pressed("dash") && player.dash_available:
-		Transitioned.emit("falling","dashing")
-		return
+func process_input(event: InputEvent) -> State:
 	if Input.is_action_just_pressed("jump"):
-		
-		if player.jump_available:
-			Transitioned.emit("falling","jumping")
-			return
-			
-		player.jump_buffer = true
-		player.get_tree().create_timer(player.jumpBufferTime).timeout.connect(player.on_jump_buffer_timeout)
-		return
+		if parent.jump_available:
+			return jump_state
+		parent.jump_buffer = true
+		parent.get_tree().create_timer(parent.jumpBufferTime).timeout.connect(parent.on_jump_buffer_timeout)
+		return null
+	if parent.grapple_check() and Input.is_action_just_pressed("grapple"):
+		return grapple_state
+	if parent.parry_available and Input.is_action_just_pressed("parry"):
+		#legs.stop()
+		#arm.stop()
+		if parent.parry_buffer or parent.is_on_wall():
+			return parry_state
+		parent.parry_buffer = true
+		parent.get_tree().create_timer(parent.parry_buffer_time).timeout.connect(parent.on_parry_buffer_timeout)
+	return null
+
+func process_physics(delta: float):
+	parent.velocity.y += fallGravity * delta
+	parent.velocity.x = lerp(parent.velocity.x,parent.velocity.x+(get_movement_input()*parent.airspeed),parent.acceleration)
+	parent.velocity.x  = lerp(parent.velocity.x, 0.0, parent.airResistance)
 	
-	if (player.grapple_check() && Input.is_action_just_pressed("grapple")):
-		Transitioned.emit("falling","grappling")
-		return
-	
-	
-	if Input.is_action_just_pressed("parry"):
-		if player.parry_buffer or player.is_on_floor() or player.is_on_wall():
-			Transitioned.emit("falling","parry")
-			return
-		player.parry_buffer = true
-		player.get_tree().create_timer(player.parry_buffer_time).timeout.connect(player.on_parry_buffer_timeout)
-		return
-	
-	if player.is_on_floor():
-		player.parry_timer.start(player.parry_time)
-		Exit()
-		return
+	if parent.is_on_floor():
+		return idle_state

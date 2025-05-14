@@ -3,48 +3,39 @@ extends Node2D
 
 @export var intitialState : State
 
+var current_state: State
+var process_state: State
 
-var states : Dictionary = {}
-var currentState : State
+# state_machine.gd
 
-func _ready() -> void:
+func init(parent: CharacterBody2D, move_component: Node) -> void:
 	for child in get_children():
-		if child is State:
-			states[child.name.to_lower()] = child
-			child.Transitioned.connect(on_child_transition)
+		child.parent = parent
+		child.move_component = move_component
+		child.init()
 	
-	if intitialState:
-		intitialState.enter()
-		currentState = intitialState
-		
-func _process(delta: float) -> void:
-	#print("Current State:" + currentState)
-	if currentState:
-		currentState.update(delta)
+	change_state(intitialState)
 
-func _physics_process(delta: float) -> void:
+func change_state(new_state: State) -> void:
+	print("C: " + str(current_state) + ", N: " + str(new_state))
+	process_state == null
+	if current_state:
+		current_state.exit()
 	
-			
-	if currentState:
-		currentState.physicsUpdate(delta)
-	
-		
+	current_state = new_state
+	current_state.enter()
 
-func on_child_transition(state, new_state_name):
-	print("Transition from " + state + " to " + new_state_name)
-	if state == currentState.name:
-		print("help!")
-		return
-		
-	var newState = states.get(new_state_name.to_lower())
-	
-	if !newState:
-		print("help!")
-		return
-	
-	print("help!")
-	newState.Enter()
-	
-	currentState = newState
-	print(currentState.name)
-	
+func process_physics(delta: float) -> void:
+	process_state = current_state.process_physics(delta)
+	if process_state:
+		change_state(process_state)
+
+func process_input(event: InputEvent) -> void:
+	process_state = current_state.process_input(event)
+	if process_state:
+		change_state(process_state)
+
+func process_frame(delta: float) -> void:
+	process_state = current_state.process_frame(delta)
+	if process_state:
+		change_state(process_state)

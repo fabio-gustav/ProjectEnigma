@@ -1,31 +1,35 @@
 extends State
 
-class_name PlayerGrapplePull
+@export var fall_state: State
 
-var targetPosition
+var targetPosition: Vector2
 
-@export var grapplejumpHeight:float = 768
-@export var risinggrappleJumpTime:float = 0.4
-@onready var jumpVelocity:float = ((2.0 * player.jumpHeight) / player.risingJumpTime) * -1.0
-@onready var jumpGravity:float = ((-2.0 * player.jumpHeight) / (player.risingJumpTime * player.risingJumpTime)) * -1.0
+@export var grapplejumpHeight:float
+@export var risinggrappleJumpTime:float
+@onready var jumpVelocity:float
+@onready var jumpGravity:float
 
-func Enter():
-	var direction = player.player_look()
-	targetPosition = player.grapple_target.global_position
-	player.jump_available = false
-	player.velocity = Vector2(0,0)
+func init() -> void:
+	grapplejumpHeight = 768
+	risinggrappleJumpTime = 0.4
+	jumpVelocity = ((2.0 * parent.jumpHeight) / parent.risingJumpTime) * -1.0
+	jumpGravity = ((-2.0 * parent.jumpHeight) / (parent.risingJumpTime * parent.risingJumpTime)) * -1.0
+
+func enter():
+	super()
+	var direction = parent.player_look()
+	targetPosition = parent.grapple_target.global_position
+	parent.jump_available = false
+	parent.velocity = Vector2(0,0)
 	
-func Exit():
-	player.playerGrappled = false
-	Transitioned.emit("grapplepulling","falling")
+func exit():
+	parent.playerGrappled = false
 
-func Update():
-	pass
 
-func physicsUpdate(_delta:float):
-	
-	if targetPosition.y < player.global_position.y:
-		player.velocity += (player.global_position.direction_to(targetPosition)) * player.grapple_pull_speed
+func process_physics(delta: float) -> State:
+	if targetPosition.y < parent.global_position.y:
+		parent.velocity += (parent.global_position.direction_to(targetPosition)) * parent.grapple_pull_speed
+		return null
 	else:
-		Exit()
+		return fall_state
 	
