@@ -1,25 +1,20 @@
 extends State
 
-class_name PlayerJump
+class_name PlayerParry
 
-
-
-
-@onready var jumpVelocity:float = ((2.0 * player.jumpHeight) / player.risingJumpTime) * -1.0
 @onready var jumpGravity:float = ((-2.0 * player.jumpHeight) / (player.risingJumpTime * player.risingJumpTime)) * -1.0
 
+
 func Enter():
-	player.velocity.y += jumpVelocity
+	var direction = player.player_look()
+	if player.velocity.length() < (6000-player.velocity.length()):	
+		player.velocity = (((-1*direction) * player.velocity.length()) + ((-1*direction) * 6000))
+	else:
+		player.velocity = ((-1*direction) * player.velocity.length())
+	print("Klablamy!")
 	player.jump_available = false
 	
-func Exit():
-	player.velocity.y = 0.0
-	jumpGravity = ((-2.0 * player.jumpHeight) / (player.risingJumpTime * player.risingJumpTime)) * -1.0
-	Transitioned.emit("jumping","falling")
-
-func Update():
-	pass
-
+	
 func physicsUpdate(_delta:float):
 	player.velocity.y += jumpGravity * _delta
 	player.velocity.x = lerp(player.velocity.x,player.velocity.x+(get_input()*player.airspeed),player.acceleration)
@@ -39,12 +34,9 @@ func physicsUpdate(_delta:float):
 		Transitioned.emit("jumping","dashing")
 		return
 		
-	if player.velocity.y <= 0.0001:
-		pass
-	else: 
+	if player.velocity.y >= 0.0001:
 		Exit()
-		return
-	if !Input.is_action_pressed("jump"):
-		jumpGravity = ((-6.0 * player.jumpHeight) / (player.risingJumpTime * player.risingJumpTime)) * -1.0
-		return
-		
+	
+
+func Exit():
+	Transitioned.emit("parry","falling")

@@ -14,7 +14,7 @@ func Update():
 func physicsUpdate(_delta:float):
 	if !player.is_on_floor():
 		if player.jump_available:
-			get_tree().create_timer(player.coyoteTime).timeout.connect(player.coyoteTimeout)
+			player.coyote_timer.start(player.coyoteTime)
 		Transitioned.emit("idle","falling")
 		return
 		

@@ -16,6 +16,11 @@ func Update():
 	pass
 
 func physicsUpdate(_delta:float):
+	
+	player.velocity.y += fallGravity * _delta
+	player.velocity.x = lerp(player.velocity.x,player.velocity.x+(get_input()*player.airspeed),player.acceleration)
+	player.velocity.x  = lerp(player.velocity.x, 0.0, player.airResistance)
+	
 	if Input.is_action_just_pressed("dash") && player.dash_available:
 		Transitioned.emit("falling","dashing")
 		return
@@ -32,15 +37,17 @@ func physicsUpdate(_delta:float):
 	if (player.grapple_check() && Input.is_action_just_pressed("grapple")):
 		Transitioned.emit("falling","grappling")
 		return
-	player.velocity.y += fallGravity * _delta
-	player.velocity.x = lerp(player.velocity.x,player.velocity.x+(get_input()*player.airspeed),player.acceleration)
-	player.velocity.x  = lerp(player.velocity.x, 0.0, player.airResistance)
+	
+	
 	if Input.is_action_just_pressed("parry"):
 		if player.parry_buffer or player.is_on_floor() or player.is_on_wall():
-			Transitioned.emit("falling","walljumping")
+			Transitioned.emit("falling","parry")
 			return
 		player.parry_buffer = true
 		player.get_tree().create_timer(player.parry_buffer_time).timeout.connect(player.on_parry_buffer_timeout)
+		return
 	
 	if player.is_on_floor():
+		player.parry_timer.start(player.parry_time)
 		Exit()
+		return

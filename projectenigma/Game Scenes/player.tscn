@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://dutl1hou2tqsi" path="res://Player/Scripts/PlayerActionAttack.gd" id="8_xg255"]
 [ext_resource type="Script" uid="uid://bj3bam4mnmjts" path="res://Player/Scripts/PlayerGrapple.gd" id="9_5opso"]
 [ext_resource type="Script" uid="uid://j1mjkgb87clx" path="res://Player/Scripts/PlayerSlide.gd" id="10_0cq60"]
-[ext_resource type="Script" uid="uid://dq0fn4xni0mpw" path="res://Player/Scripts/PlayerWalljump.gd" id="11_fi1tf"]
+[ext_resource type="Script" uid="uid://dq0fn4xni0mpw" path="res://Player/Scripts/PlayerParry.gd" id="11_fi1tf"]
 [ext_resource type="Script" uid="uid://bn7row8c3y82q" path="res://Player/Scripts/PlayerDash.gd" id="11_sdgqk"]
 [ext_resource type="Script" uid="uid://bph6wl571g058" path="res://Player/Scripts/PlayerGrapplePull.gd" id="13_yg5uo"]
 [ext_resource type="Script" uid="uid://cmv12v0s7v0os" path="res://Player/Scripts/PlayerWallSlide.gd" id="14_l0nas"]
@@ -176,9 +176,6 @@ size = Vector2(347.063, 370.5)
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_ghon7")
-airspeed = 850.0
-airResistance = 0.0
-dashDistance = 2048.0
 run_speed = 8048
 run_acceleration = 0.015
 friction = 0.15
@@ -237,10 +234,8 @@ script = ExtResource("9_5opso")
 [node name="Sliding" type="Node2D" parent="MovementStateMachine"]
 script = ExtResource("10_0cq60")
 
-[node name="WallJumping" type="Node2D" parent="MovementStateMachine"]
+[node name="Parry" type="Node2D" parent="MovementStateMachine"]
 script = ExtResource("11_fi1tf")
-walljumpHeight = 1280.0
-risingwallJumpTime = 0.8
 
 [node name="WallSliding" type="Node2D" parent="MovementStateMachine"]
 script = ExtResource("14_l0nas")
@@ -295,7 +290,9 @@ occluder = SubResource("OccluderPolygon2D_51o3i")
 [node name="AimPivot" type="Marker2D" parent="."]
 position = Vector2(0, -26)
 
-[node name="coyoteTimer" type="Timer" parent="."]
+[node name="CoyoteTimer" type="Timer" parent="."]
+
+[node name="ParryTimer" type="Timer" parent="."]
 
 [node name="dashCooldownTimer" type="Timer" parent="."]
 
@@ -337,5 +334,5 @@ position = Vector2(7.46875, 57.75)
 shape = SubResource("RectangleShape2D_na4ea")
 
 [connection signal="melee_attack" from="ActionStateMachine/Attacking" to="GrappleCast/AttackComponent" method="_on_attacking_melee_attack"]
-[connection signal="timeout" from="coyoteTimer" to="." method="coyoteTimeout"]
+[connection signal="timeout" from="CoyoteTimer" to="." method="coyoteTimeout"]
 [connection signal="timeout" from="dashCooldownTimer" to="." method="on_dash_cooldown_timer_timeout"]
