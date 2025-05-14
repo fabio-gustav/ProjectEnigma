@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://c7gb08phau5v2"]
+[gd_scene load_steps=16 format=4 uid="uid://c7gb08phau5v2"]
 
 [ext_resource type="PackedScene" uid="uid://dxxm0wcqg60f6" path="res://UI/UILayer/UILayer.tscn" id="1_e7ssd"]
 [ext_resource type="Texture2D" uid="uid://bf82kk3a4dpea" path="res://Backgrounds/grid.png" id="1_w4hom"]
@@ -36,6 +36,12 @@ point_count = 2
 [sub_resource type="Curve2D" id="Curve2D_72iej"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -32, 16, 0, 0, 0, 0, -65, -863, 0, 0, 0, 0, -114, -1856)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_w8p8h"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -5, -21, 0, 0, 0, 0, -34, -1059, 0, 0, 0, 0, -77, -2083)
 }
 point_count = 3
 
@@ -95,6 +101,14 @@ curve = SubResource("Curve2D_phyhb")
 [node name="StagedMovingPlatform" parent="Node" instance=ExtResource("9_w8p8h")]
 position = Vector2(-692, -619)
 curve = SubResource("Curve2D_72iej")
+
+[node name="StagedMovingPlatform2" parent="Node" instance=ExtResource("9_w8p8h")]
+position = Vector2(-4456, -1976)
+curve = SubResource("Curve2D_w8p8h")
+haveFloors = true
+floor1Bound = 0.33
+floor2Bound = 0.66
+floor3Bound = 1.0
 
 [node name="Platform3" type="Sprite2D" parent="Node"]
 position = Vector2(5340, -1132.11)
