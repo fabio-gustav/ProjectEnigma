@@ -1,43 +1,37 @@
 extends State
 
-class_name PlayerIdle
+@export var jump_state: State
+@export var fall_state: State
+@export var walk_state: State
+@export var parry_state: State
 
-func Enter():
-	pass
+func enter() -> void:
+	super()
+	parent.velocity.x = 0
+	parent.jump_available = true
 
-func Exit():
-	pass
+func process_input(event: InputEvent) -> State:
+	if parent.jump_buffer or Input.is_action_just_pressed("jump") :
+		parent.jump_buffer = false
+		#legs.stop()
+		#arm.stop()
+		return jump_state
+	if get_movement_input() != 0.0:
+		return walk_state
+	if parent.parry_available and Input.is_action_just_pressed("parry"):
+		#legs.stop()
+		#arm.stop()
+		return parry_state
+	return null
 
-func Update():
-	pass
-
-func physicsUpdate(_delta:float):
-	if !player.is_on_floor():
-		if player.jump_available:
-			get_tree().create_timer(player.coyoteTime).timeout.connect(player.coyoteTimeout)
-		Transitioned.emit("idle","falling")
-		return
+func process_physics(delta: float) -> State:
+	if !parent.is_on_floor():
+		#Start coyote timer
+		if parent.jump_available:
+			parent.coyote_timer.start(parent.coyoteTime)
+		return fall_state
 		
-	else:
-		player.player_look()
-		player.velocity.x  = lerp(player.velocity.x, 0.0, player.friction)
-		player.jump_available = true
-		player.coyote_timer.stop()
-		
-		if player.jump_buffer:
-			print("jump buffer jump")
-			player.jump_buffer = false
-			Transitioned.emit("idle","jumping")
-			return
-		
-		if get_input() != 0.0:
-			Transitioned.emit("idle","running")
-			return
-		
-	if Input.is_action_just_pressed("jump"):
-		if player.jump_available:
-			Transitioned.emit("idle","jumping")
-			return
-			
-	#if Input.is_action_pressed("slide") and abs(player.velocity.x) >= 0.001:
-		#Transitioned.emit("running","sliding")
+	parent.velocity.x  = lerp(parent.velocity.x, 0.0, parent.friction) #calculate friction
+	parent.jump_available = true 
+	parent.coyote_timer.stop()
+	return null

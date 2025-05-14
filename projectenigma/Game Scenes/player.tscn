@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://iq0r13bt8ah7"]
+[gd_scene load_steps=46 format=3 uid="uid://iq0r13bt8ah7"]
 
 [ext_resource type="Script" uid="uid://cyuaeve0r54at" path="res://Player/Scripts/player.gd" id="1_ghon7"]
 [ext_resource type="Script" uid="uid://b8tn0gs0xvihj" path="res://Player/Scripts/sprite_state_machine.gd" id="2_65u56"]
@@ -9,19 +9,16 @@
 [ext_resource type="Script" uid="uid://5hhi2rcyut4s" path="res://Player/Scripts/PlayerRunning.gd" id="4_tqm3n"]
 [ext_resource type="Script" uid="uid://de3fl6c7nkprk" path="res://Player/Scripts/PlayerIdle.gd" id="4_v5iuh"]
 [ext_resource type="Script" uid="uid://cfy8gxmg8vmnj" path="res://Player/Scripts/PlayerFalling.gd" id="6_rquh8"]
-[ext_resource type="Script" uid="uid://cf1hevtctywns" path="res://Player/Scripts/PlayerIdleAction.gd" id="7_xg255"]
-[ext_resource type="Script" uid="uid://dutl1hou2tqsi" path="res://Player/Scripts/PlayerActionAttack.gd" id="8_xg255"]
 [ext_resource type="Script" uid="uid://bj3bam4mnmjts" path="res://Player/Scripts/PlayerGrapple.gd" id="9_5opso"]
 [ext_resource type="Script" uid="uid://j1mjkgb87clx" path="res://Player/Scripts/PlayerSlide.gd" id="10_0cq60"]
-[ext_resource type="Script" uid="uid://dq0fn4xni0mpw" path="res://Player/Scripts/PlayerWalljump.gd" id="11_fi1tf"]
-[ext_resource type="Script" uid="uid://bn7row8c3y82q" path="res://Player/Scripts/PlayerDash.gd" id="11_sdgqk"]
+[ext_resource type="Script" uid="uid://dq0fn4xni0mpw" path="res://Player/Scripts/PlayerParry.gd" id="11_fi1tf"]
 [ext_resource type="Script" uid="uid://bph6wl571g058" path="res://Player/Scripts/PlayerGrapplePull.gd" id="13_yg5uo"]
-[ext_resource type="Script" uid="uid://cmv12v0s7v0os" path="res://Player/Scripts/PlayerWallSlide.gd" id="14_l0nas"]
 [ext_resource type="Script" uid="uid://cvgn18t4vsj1o" path="res://Game Scenes/PlayerWalking.gd" id="18_ql7fn"]
 [ext_resource type="Texture2D" uid="uid://cjeyyge0rgcex" path="res://Player/Sprites/Grapple_Point_Arrow.png" id="19_4pi5e"]
 [ext_resource type="PackedScene" uid="uid://bpxbab0acltj7" path="res://Player/playercamera.tscn" id="19_pmhtr"]
 [ext_resource type="Texture2D" uid="uid://br7x7vsic3cj7" path="res://Player/Sprites/Legs_Walk.png" id="19_ql7fn"]
 [ext_resource type="Texture2D" uid="uid://da20swppcg4dl" path="res://Player/Sprites/Body_Base.png" id="20_xg255"]
+[ext_resource type="Script" uid="uid://dg4fh66i0576y" path="res://Game Scenes/player_movment_component.gd" id="21_8x1nu"]
 [ext_resource type="Texture2D" uid="uid://cnax402duofa5" path="res://Player/Sprites/Cane_Walk_Texture.png" id="21_58dwp"]
 [ext_resource type="PackedScene" uid="uid://uklk3qd88hbn" path="res://Components/Attack_Component/Attack_Component.tscn" id="23_58dwp"]
 
@@ -176,10 +173,8 @@ size = Vector2(347.063, 370.5)
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_ghon7")
-airspeed = 550.0
-airResistance = 0.05
-dashDistance = 2048.0
-run_acceleration = 0.1
+run_speed = 8048
+run_acceleration = 0.015
 friction = 0.15
 swing_speed = 0.1
 
@@ -202,59 +197,71 @@ shape = SubResource("CapsuleShape2D_cjmbv")
 [node name="SpriteStateMachine" type="Node" parent="."]
 script = ExtResource("2_65u56")
 
-[node name="ActionStateMachine" type="Node2D" parent="."]
-script = ExtResource("3_ngsr7")
-
-[node name="Idle" type="Node" parent="ActionStateMachine"]
-script = ExtResource("7_xg255")
-
-[node name="Attacking" type="Node" parent="ActionStateMachine"]
-script = ExtResource("8_xg255")
-
 [node name="MovementStateMachine" type="Node2D" parent="." node_paths=PackedStringArray("intitialState")]
 script = ExtResource("3_ngsr7")
 intitialState = NodePath("Idle")
 
-[node name="Running" type="Node2D" parent="MovementStateMachine"]
+[node name="Running" type="Node2D" parent="MovementStateMachine" node_paths=PackedStringArray("jump_state", "fall_state", "idle_state", "parry_state", "slide_state", "walk_state")]
 script = ExtResource("4_tqm3n")
+jump_state = NodePath("../Jumping")
+fall_state = NodePath("../Falling")
+idle_state = NodePath("../Idle")
+parry_state = NodePath("../Parry")
+slide_state = NodePath("../Sliding")
+walk_state = NodePath("../Walking")
 
-[node name="Jumping" type="Node2D" parent="MovementStateMachine"]
+[node name="Jumping" type="Node2D" parent="MovementStateMachine" node_paths=PackedStringArray("grapple_state", "fall_state", "parry_state")]
 script = ExtResource("4_fp44l")
+grapple_state = NodePath("../Grappling")
+fall_state = NodePath("../Falling")
+parry_state = NodePath("../Parry")
 
-[node name="Idle" type="Node2D" parent="MovementStateMachine"]
+[node name="Idle" type="Node2D" parent="MovementStateMachine" node_paths=PackedStringArray("jump_state", "fall_state", "walk_state", "parry_state")]
 script = ExtResource("4_v5iuh")
+jump_state = NodePath("../Jumping")
+fall_state = NodePath("../Falling")
+walk_state = NodePath("../Walking")
+parry_state = NodePath("../Parry")
 
-[node name="Falling" type="Node2D" parent="MovementStateMachine"]
+[node name="Falling" type="Node2D" parent="MovementStateMachine" node_paths=PackedStringArray("grapple_state", "parry_state", "idle_state", "jump_state")]
 script = ExtResource("6_rquh8")
+grapple_state = NodePath("../Grappling")
+parry_state = NodePath("../Parry")
+idle_state = NodePath("../Idle")
+jump_state = NodePath("../Jumping")
 
-[node name="Dashing" type="Node2D" parent="MovementStateMachine"]
-script = ExtResource("11_sdgqk")
-
-[node name="Grappling" type="Node2D" parent="MovementStateMachine"]
+[node name="Grappling" type="Node2D" parent="MovementStateMachine" node_paths=PackedStringArray("fall_state", "grapple_pull_state", "jump_state", "idle_state")]
 script = ExtResource("9_5opso")
+fall_state = NodePath("../Falling")
+grapple_pull_state = NodePath("../GrapplePulling")
+jump_state = NodePath("../Jumping")
+idle_state = NodePath("../Idle")
 
-[node name="Sliding" type="Node2D" parent="MovementStateMachine"]
+[node name="Sliding" type="Node2D" parent="MovementStateMachine" node_paths=PackedStringArray("idle_state", "walk_state", "fall_state", "jump_state")]
 script = ExtResource("10_0cq60")
+idle_state = NodePath("../Idle")
+walk_state = NodePath("../Walking")
+fall_state = NodePath("../Falling")
+jump_state = NodePath("../Jumping")
 
-[node name="WallJumping" type="Node2D" parent="MovementStateMachine"]
+[node name="Parry" type="Node2D" parent="MovementStateMachine" node_paths=PackedStringArray("grapple_state", "fall_state", "parry_state")]
 script = ExtResource("11_fi1tf")
-walljumpHeight = 1280.0
-risingwallJumpTime = 0.8
+grapple_state = NodePath("../Grappling")
+fall_state = NodePath("../Falling")
+parry_state = NodePath(".")
 
-[node name="WallSliding" type="Node2D" parent="MovementStateMachine"]
-script = ExtResource("14_l0nas")
-
-[node name="WallCheckLeft" type="RayCast2D" parent="MovementStateMachine/WallSliding"]
-target_position = Vector2(-126, 0)
-
-[node name="WallCheckRight" type="RayCast2D" parent="MovementStateMachine/WallSliding"]
-target_position = Vector2(139, 0)
-
-[node name="GrapplePulling" type="Node2D" parent="MovementStateMachine"]
+[node name="GrapplePulling" type="Node2D" parent="MovementStateMachine" node_paths=PackedStringArray("fall_state")]
 script = ExtResource("13_yg5uo")
+fall_state = NodePath("../Falling")
 
-[node name="Walking" type="Node2D" parent="MovementStateMachine"]
+[node name="Walking" type="Node2D" parent="MovementStateMachine" node_paths=PackedStringArray("jump_state", "fall_state", "idle_state", "parry_state", "slide_state", "run_state")]
 script = ExtResource("18_ql7fn")
+jump_state = NodePath("../Jumping")
+fall_state = NodePath("../Falling")
+idle_state = NodePath("../Idle")
+parry_state = NodePath("../Parry")
+slide_state = NodePath("../Sliding")
+run_state = NodePath("../Running")
 
 [node name="PlayerSprite" type="Node2D" parent="."]
 
@@ -294,7 +301,11 @@ occluder = SubResource("OccluderPolygon2D_51o3i")
 [node name="AimPivot" type="Marker2D" parent="."]
 position = Vector2(0, -26)
 
-[node name="coyoteTimer" type="Timer" parent="."]
+[node name="CoyoteTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ParryTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="dashCooldownTimer" type="Timer" parent="."]
 
@@ -335,6 +346,9 @@ collision_mask = 0
 position = Vector2(7.46875, 57.75)
 shape = SubResource("RectangleShape2D_na4ea")
 
-[connection signal="melee_attack" from="ActionStateMachine/Attacking" to="GrappleCast/AttackComponent" method="_on_attacking_melee_attack"]
-[connection signal="timeout" from="coyoteTimer" to="." method="coyoteTimeout"]
+[node name="PlayerMovmentComponent" type="Node2D" parent="."]
+script = ExtResource("21_8x1nu")
+
+[connection signal="timeout" from="CoyoteTimer" to="." method="coyoteTimeout"]
+[connection signal="timeout" from="ParryTimer" to="." method="parry_timeout"]
 [connection signal="timeout" from="dashCooldownTimer" to="." method="on_dash_cooldown_timer_timeout"]

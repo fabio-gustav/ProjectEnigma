@@ -4,16 +4,18 @@ extends State
 @export var fall_state: State
 @export var parry_state: State
 
-@onready var jumpVelocity:float
 @onready var jumpGravity:float
 
 func init() -> void:
-	jumpVelocity = ((2.0 * parent.jumpHeight) / parent.risingJumpTime) * -1.0
 	jumpGravity = ((-2.0 * parent.jumpHeight) / (parent.risingJumpTime * parent.risingJumpTime)) * -1.0
 
 func enter():
 	super()
-	parent.velocity.y += jumpVelocity
+	var direction = parent.player_look()
+	if parent.velocity.length() < (6000-parent.velocity.length()):	
+		parent.velocity = (((-1*direction) * parent.velocity.length()) + ((-1*direction) * 6000))
+	else:
+		parent.velocity = ((-1*direction) * parent.velocity.length())
 	parent.jump_available = false
 	
 func exit():

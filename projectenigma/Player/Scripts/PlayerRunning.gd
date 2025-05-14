@@ -1,48 +1,49 @@
 extends State
 
-class_name PlayerRunning
+@export var jump_state: State
+@export var fall_state: State
+@export var idle_state: State
+@export var parry_state: State
+@export var slide_state: State
+@export var walk_state: State
 
 
-func Enter():
-	legs.play("Running")
-	arm.play("Running")
+func enter():
+	super()
+	#legs.play("Running")
+	#arm.play("Running")
 
-func Exit():
-	legs.stop()
-	arm.stop()
-	Transitioned.emit("running","idle")
-
-func Update():
+func exit():
+	#legs.stop()
+	#arm.stop()
 	pass
 
-func physicsUpdate(_delta:float):
-	if Input.is_action_just_pressed("jump"):
-		if player.jump_available:
-			legs.stop()
-			arm.stop()
-			Transitioned.emit("idle","jumping")
-			return
-		
-	if !player.is_on_floor():
-		legs.stop()
-		arm.stop()
-		Transitioned.emit("running","falling")
-		return
+func process_input(event: InputEvent) -> State:
+	if parent.jump_buffer or Input.is_action_just_pressed("jump") :
+		parent.jump_buffer = false
+		#legs.stop()
+		#arm.stop()
+		return jump_state
+	if Input.is_action_pressed("slide"):
+		return slide_state
+	if parent.parry_available and Input.is_action_just_pressed("parry"):
+		#legs.stop()
+		#arm.stop()
+		return parry_state
+	return null
+
+func process_physics(delta: float) -> State:
+	parent.velocity.x = lerp(parent.velocity.x,(get_movement_input()*parent.run_speed),parent.run_acceleration)
+	#parent.move_and_slide()
+	if !parent.is_on_floor():
+		#Start coyote timer
+		if parent.jump_available:
+			parent.coyote_timer.start(parent.coyoteTime)
+		return fall_state
 	
-	if Input.is_action_pressed("slide") and abs(player.velocity.x) >= 0.01:
-		legs.stop()
-		arm.stop()
-		Transitioned.emit("running","sliding")
-		return
-		
-	player.velocity.x = lerp(player.velocity.x,(get_input()*player.run_speed),player.run_acceleration)
-	#print(player.velocity.x)
-	
-	if abs(player.velocity.x) <= player.walk_speed:
-		legs.stop()
-		arm.stop()
-		Transitioned.emit("running","walking")
-		return
-	
-	if get_input() == 0.0:
-		Exit()
+
+	if abs(parent.velocity.x) < parent.walk_speed:
+		#legs.stop()
+		#arm.stop()
+		return walk_state
+	return null
