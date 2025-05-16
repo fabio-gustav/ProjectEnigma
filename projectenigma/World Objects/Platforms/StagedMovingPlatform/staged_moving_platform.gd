@@ -72,9 +72,6 @@ func standardMovement():
 	
 func floorMovement():
 	#floor handler
-	print(path.progress_ratio)
-	print(currentFloor)
-	print(floors[currentFloor])
 	if(floors[currentFloor] != 1.00):
 		if(path.progress_ratio >= floors[currentFloor+1]):
 			animation.pause()
