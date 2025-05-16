@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dcxjjekbbatwn"]
 
-[ext_resource type="Script" uid="uid://l8lba1niy2n1" path="res://World Objects/Platforms/Staged_Moving_Platform/staged_moving_platform.gd" id="1_7upas"]
+[ext_resource type="Script" uid="uid://l8lba1niy2n1" path="res://World Objects/Platforms/StagedMovingPlatform/staged_moving_platform.gd" id="1_7upas"]
 [ext_resource type="Texture2D" uid="uid://dwhsstjo776j6" path="res://World Objects/Platforms/plat.png" id="2_aef5d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7upas"]
@@ -30,7 +30,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_cieq8"]
 resource_name = "back_and_forth"
 length = 2.0
-loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -96,3 +95,4 @@ libraries = {
 
 [connection signal="area_entered" from="AnimatableBody2D/Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="AnimatableBody2D/Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
