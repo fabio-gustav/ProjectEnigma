@@ -7,7 +7,6 @@ extends State
 
 func enter() -> void:
 	super()
-	parent.velocity.x = 0
 	parent.jump_available = true
 
 func process_input(event: InputEvent) -> State:
@@ -16,12 +15,8 @@ func process_input(event: InputEvent) -> State:
 		#legs.stop()
 		#arm.stop()
 		return jump_state
-	if get_movement_input() != 0.0:
+	if parent.velocity.x != 0.0 or get_movement_input() != 0.0:
 		return walk_state
-	if parent.parry_available and Input.is_action_just_pressed("parry"):
-		#legs.stop()
-		#arm.stop()
-		return parry_state
 	return null
 
 func process_physics(delta: float) -> State:

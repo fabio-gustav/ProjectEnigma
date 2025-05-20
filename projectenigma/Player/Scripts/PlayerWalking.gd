@@ -26,14 +26,12 @@ func process_input(event: InputEvent) -> State:
 		return jump_state
 	if Input.is_action_pressed("slide"):
 		return slide_state
-	if parent.parry_available and Input.is_action_just_pressed("parry"):
-		#legs.stop()
-		#arm.stop()
-		return parry_state
 	return null
 
 func process_physics(delta: float) -> State:
 	parent.velocity.x = lerp(parent.velocity.x,(get_movement_input()*parent.walk_speed),parent.acceleration)
+	if get_movement_input() == 0.0:
+		parent.velocity.x  = lerp(parent.velocity.x, 0.0, parent.friction)
 	#parent.move_and_slide()
 	if !parent.is_on_floor():
 		#Start coyote timer
