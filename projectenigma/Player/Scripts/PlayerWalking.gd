@@ -38,7 +38,8 @@ func process_physics(delta: float) -> State:
 		if parent.jump_available:
 			parent.coyote_timer.start(parent.coyoteTime)
 		return fall_state
-	
+	if parent.velocity.length() < 0.001:
+		return idle_state
 
 	if abs(parent.velocity.x) >= parent.walk_speed - 100:
 		#legs.stop()

@@ -174,9 +174,6 @@ size = Vector2(347.063, 370.5)
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_ghon7")
-run_speed = 2048
-ride_speed = 8048
-swing_speed = 0.1
 
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 65)
