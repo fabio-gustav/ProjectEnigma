@@ -4,6 +4,7 @@ extends State
 @export var walk_state: State
 @export var fall_state: State
 @export var jump_state: State
+@export var ride_state: State
 
 @onready var fallGravity:float
 @onready var floor_angle: float
@@ -20,6 +21,14 @@ func exit():
 	parent.floor_snap_length = 10.0
 
 func process_input(event: InputEvent) -> State:
+	if Input.is_action_just_pressed("parry"):
+		if PlayerVariables.energy > 0:
+			PlayerVariables.energy -= 1
+			SignalBus.emit_signal("energy_changed",PlayerVariables.energy)
+			return ride_state
+		else:
+			return null
+		return ride_state
 	if parent.jump_buffer or Input.is_action_just_pressed("jump") :
 		parent.jump_buffer = false
 		#legs.stop()

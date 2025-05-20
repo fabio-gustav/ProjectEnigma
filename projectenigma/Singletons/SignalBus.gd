@@ -17,7 +17,8 @@ signal playerVelocity(velocity)
 #called when diolog is finished playing
 signal dialog_finished()
 
-signal health_changed()
+signal health_changed(health)
 
+signal energy_changed(energy)
 #called whenever you money is changed
 signal money_changed()

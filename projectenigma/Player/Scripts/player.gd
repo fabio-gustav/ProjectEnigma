@@ -18,7 +18,7 @@ var jump_buffer:bool = false
 @export var parry_time:float = 0.2
 @export var parry_buffer_time:float = 0.1
 @onready var parry_timer: Timer = $ParryTimer
-var parry_available:bool = true
+var parry_available:bool = false
 var parry_buffer:bool = false
 
 
@@ -30,11 +30,22 @@ var dash_cool:bool = false
 
 
 #Movement Variables
-@export var acceleration = .05
-@export var walk_speed = 1042
-@export var run_speed = 2048
-@export var run_acceleration = .25
-@export var friction = .2
+@onready var is_riding: bool = false
+@onready var is_wobbling: bool = false
+@onready var wipeout: bool = false #TODO rename this in the future
+@export var wobble_time: float = 0.5
+
+
+@export var acceleration := .05
+@export var run_acceleration := .25
+@export var ride_acceleration := .01
+@export var walk_speed := 728
+@export var run_speed := 1048
+@export var ride_speed := 2048
+
+@export var friction := .2
+@export var run_friction := .1
+@export var ride_friction := .02
 
 #Grapple Variables
 @export var swing_speed:float = 64

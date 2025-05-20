@@ -23,12 +23,12 @@ func enter():
 
 func exit():
 	parent.playerGrappled = false
-	
+	parent.is_riding = true	
 
 func process_input(event: InputEvent) -> State:
-	if Input.is_action_just_pressed("grapple"):
-		return fall_state
-	if parent.jump_available and Input.is_action_just_pressed("jump"):
+	#if Input.is_action_just_pressed("grapple"):
+		#return fall_state
+	if Input.is_action_just_pressed("jump"):
 		return jump_state
 	if Input.is_action_just_pressed("grapplepull"):
 		return grapple_pull_state

@@ -13,6 +13,7 @@ func init() -> void:
 
 func enter():
 	super()
+	parent.parry_available = true
 	parent.velocity.y += jumpVelocity
 	parent.jump_available = false
 	
@@ -23,13 +24,13 @@ func exit():
 func process_input(event: InputEvent) -> State:
 	if parent.grapple_check() and Input.is_action_just_pressed("grapple"):
 		return grapple_state
-	if parent.parry_available and Input.is_action_just_pressed("parry"):
-		#legs.stop()
-		#arm.stop()
-		if parent.parry_buffer or parent.is_on_wall():
-			return parry_state
-		parent.parry_buffer = true
-		parent.get_tree().create_timer(parent.parry_buffer_time).timeout.connect(parent.on_parry_buffer_timeout)
+	#if parent.parry_available and Input.is_action_just_pressed("parry"):
+		##legs.stop()
+		##arm.stop()
+		#if parent.parry_buffer or parent.is_on_wall():
+			#return parry_state
+		#parent.parry_buffer = true
+		#parent.get_tree().create_timer(parent.parry_buffer_time).timeout.connect(parent.on_parry_buffer_timeout)
 	return null
 
 func process_physics(delta: float) -> State:

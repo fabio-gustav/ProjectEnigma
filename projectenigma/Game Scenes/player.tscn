@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://iq0r13bt8ah7"]
+[gd_scene load_steps=47 format=3 uid="uid://iq0r13bt8ah7"]
 
 [ext_resource type="Script" uid="uid://cyuaeve0r54at" path="res://Player/Scripts/player.gd" id="1_ghon7"]
 [ext_resource type="Script" uid="uid://b8tn0gs0xvihj" path="res://Player/Scripts/sprite_state_machine.gd" id="2_65u56"]
@@ -13,12 +13,13 @@
 [ext_resource type="Script" uid="uid://j1mjkgb87clx" path="res://Player/Scripts/PlayerSlide.gd" id="10_0cq60"]
 [ext_resource type="Script" uid="uid://dq0fn4xni0mpw" path="res://Player/Scripts/PlayerParry.gd" id="11_fi1tf"]
 [ext_resource type="Script" uid="uid://bph6wl571g058" path="res://Player/Scripts/PlayerGrapplePull.gd" id="13_yg5uo"]
-[ext_resource type="Script" uid="uid://cvgn18t4vsj1o" path="res://Game Scenes/PlayerWalking.gd" id="18_ql7fn"]
+[ext_resource type="Script" uid="uid://c8geld6k0ncrx" path="res://Player/Scripts/PlayerRide.gd" id="15_y5bdd"]
+[ext_resource type="Script" uid="uid://cvgn18t4vsj1o" path="res://Player/Scripts/PlayerWalking.gd" id="18_ql7fn"]
 [ext_resource type="Texture2D" uid="uid://cjeyyge0rgcex" path="res://Player/Sprites/Grapple_Point_Arrow.png" id="19_4pi5e"]
 [ext_resource type="PackedScene" uid="uid://bpxbab0acltj7" path="res://Player/playercamera.tscn" id="19_pmhtr"]
 [ext_resource type="Texture2D" uid="uid://br7x7vsic3cj7" path="res://Player/Sprites/Legs_Walk.png" id="19_ql7fn"]
 [ext_resource type="Texture2D" uid="uid://da20swppcg4dl" path="res://Player/Sprites/Body_Base.png" id="20_xg255"]
-[ext_resource type="Script" uid="uid://dg4fh66i0576y" path="res://Game Scenes/player_movment_component.gd" id="21_8x1nu"]
+[ext_resource type="Script" uid="uid://dg4fh66i0576y" path="res://Player/Scripts/player_movment_component.gd" id="21_8x1nu"]
 [ext_resource type="Texture2D" uid="uid://cnax402duofa5" path="res://Player/Sprites/Cane_Walk_Texture.png" id="21_58dwp"]
 [ext_resource type="PackedScene" uid="uid://uklk3qd88hbn" path="res://Components/Attack_Component/Attack_Component.tscn" id="23_58dwp"]
 
@@ -173,9 +174,8 @@ size = Vector2(347.063, 370.5)
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_ghon7")
-run_speed = 8048
-run_acceleration = 0.015
-friction = 0.15
+run_speed = 2048
+ride_speed = 8048
 swing_speed = 0.1
 
 [node name="collider" type="CollisionShape2D" parent="."]
@@ -201,7 +201,7 @@ script = ExtResource("2_65u56")
 script = ExtResource("3_ngsr7")
 intitialState = NodePath("Idle")
 
-[node name="Running" type="Node2D" parent="MovementStateMachine" node_paths=PackedStringArray("jump_state", "fall_state", "idle_state", "parry_state", "slide_state", "walk_state")]
+[node name="Running" type="Node2D" parent="MovementStateMachine" node_paths=PackedStringArray("jump_state", "fall_state", "idle_state", "parry_state", "slide_state", "walk_state", "ride_state")]
 script = ExtResource("4_tqm3n")
 jump_state = NodePath("../Jumping")
 fall_state = NodePath("../Falling")
@@ -209,6 +209,7 @@ idle_state = NodePath("../Idle")
 parry_state = NodePath("../Parry")
 slide_state = NodePath("../Sliding")
 walk_state = NodePath("../Walking")
+ride_state = NodePath("../Ride")
 
 [node name="Jumping" type="Node2D" parent="MovementStateMachine" node_paths=PackedStringArray("grapple_state", "fall_state", "parry_state")]
 script = ExtResource("4_fp44l")
@@ -223,12 +224,13 @@ fall_state = NodePath("../Falling")
 walk_state = NodePath("../Walking")
 parry_state = NodePath("../Parry")
 
-[node name="Falling" type="Node2D" parent="MovementStateMachine" node_paths=PackedStringArray("grapple_state", "parry_state", "idle_state", "jump_state")]
+[node name="Falling" type="Node2D" parent="MovementStateMachine" node_paths=PackedStringArray("grapple_state", "parry_state", "idle_state", "jump_state", "ride_state")]
 script = ExtResource("6_rquh8")
 grapple_state = NodePath("../Grappling")
 parry_state = NodePath("../Parry")
 idle_state = NodePath("../Idle")
 jump_state = NodePath("../Jumping")
+ride_state = NodePath("../Ride")
 
 [node name="Grappling" type="Node2D" parent="MovementStateMachine" node_paths=PackedStringArray("fall_state", "grapple_pull_state", "jump_state", "idle_state")]
 script = ExtResource("9_5opso")
@@ -237,18 +239,18 @@ grapple_pull_state = NodePath("../GrapplePulling")
 jump_state = NodePath("../Jumping")
 idle_state = NodePath("../Idle")
 
-[node name="Sliding" type="Node2D" parent="MovementStateMachine" node_paths=PackedStringArray("idle_state", "walk_state", "fall_state", "jump_state")]
+[node name="Sliding" type="Node2D" parent="MovementStateMachine" node_paths=PackedStringArray("idle_state", "walk_state", "fall_state", "jump_state", "ride_state")]
 script = ExtResource("10_0cq60")
 idle_state = NodePath("../Idle")
 walk_state = NodePath("../Walking")
 fall_state = NodePath("../Falling")
 jump_state = NodePath("../Jumping")
+ride_state = NodePath("../Ride")
 
-[node name="Parry" type="Node2D" parent="MovementStateMachine" node_paths=PackedStringArray("grapple_state", "fall_state", "parry_state")]
+[node name="Parry" type="Node2D" parent="MovementStateMachine" node_paths=PackedStringArray("grapple_state", "fall_state")]
 script = ExtResource("11_fi1tf")
 grapple_state = NodePath("../Grappling")
 fall_state = NodePath("../Falling")
-parry_state = NodePath(".")
 
 [node name="GrapplePulling" type="Node2D" parent="MovementStateMachine" node_paths=PackedStringArray("fall_state")]
 script = ExtResource("13_yg5uo")
@@ -261,6 +263,14 @@ fall_state = NodePath("../Falling")
 idle_state = NodePath("../Idle")
 parry_state = NodePath("../Parry")
 slide_state = NodePath("../Sliding")
+run_state = NodePath("../Running")
+
+[node name="Ride" type="Node2D" parent="MovementStateMachine" node_paths=PackedStringArray("jump_state", "fall_state", "idle_state", "parry_state", "run_state")]
+script = ExtResource("15_y5bdd")
+jump_state = NodePath("../Jumping")
+fall_state = NodePath("../Falling")
+idle_state = NodePath("../Idle")
+parry_state = NodePath("../Parry")
 run_state = NodePath("../Running")
 
 [node name="PlayerSprite" type="Node2D" parent="."]
