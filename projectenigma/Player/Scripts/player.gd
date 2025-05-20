@@ -40,15 +40,15 @@ var dash_cool:bool = false
 @export var run_acceleration := .25
 @export var ride_acceleration := .01
 @export var walk_speed := 728
-@export var run_speed := 1048
-@export var ride_speed := 2048
+@export var run_speed := 2048
+@export var ride_speed := 8048
 
 @export var friction := .2
 @export var run_friction := .1
 @export var ride_friction := .02
 
 #Grapple Variables
-@export var swing_speed:float = 64
+@export var swing_speed:float = 0.1
 @export var slide_friction:float = 0.01
 @export var grapple_pull:float = 1024
 @export var grapple_pull_speed:float = 800

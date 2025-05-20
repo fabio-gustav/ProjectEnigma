@@ -15,7 +15,7 @@ func process_input(event: InputEvent) -> State:
 		#legs.stop()
 		#arm.stop()
 		return jump_state
-	if parent.velocity.x != 0.0 or get_movement_input() != 0.0:
+	if parent.velocity.abs().x >= 0.0001 or get_movement_input() != 0.0:
 		return walk_state
 	return null
 
