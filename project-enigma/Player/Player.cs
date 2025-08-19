@@ -35,6 +35,8 @@ public partial class Player : CharacterBody2D
    private bool _jumpBuffer = false;
 
 
+   private Texture2D _marker = GD.Load<Texture2D>("res://Player/Sprites/Grapple_Point_Dot.png");
+   
    private Sprite2D _grappleIcon = null;
    private StaticBody2D _grappleTarget = null;
    private RayCast2D _grappleCast = null;
@@ -45,5 +47,72 @@ public partial class Player : CharacterBody2D
    {
       _grappleCast = GetNode<RayCast2D>("GrappleCast");
       _coyoteTimer = new Timer();
+
+      FloorMaxAngle = Mathf.DegToRad(80.0f);
+      FloorSnapLength = 10.0f;
+      FloorStopOnSlope = false;
+
+      _grappleIcon = new Sprite2D();
+      _grappleIcon.Visible = false;
+      _grappleIcon.Position = GlobalPosition;
+      _grappleIcon.Texture = _marker;
+      _grappleIcon.Scale = new Vector2(0.4f, 0.4f);
+      //Might need deferred call here
+      AddSibling(_grappleIcon);
    }
+
+   private void grapple_check()
+   {
+      _playerGrappled = true;
+      GodotObject grappleCollider = _grappleCast.GetCollider();
+      //Check for staticbody
+      if (grappleCollider is StaticBody2D)
+      {
+         if (((StaticBody2D)grappleCollider).CollisionLayer == 1 && _grappleTarget != grappleCollider)
+         {
+            _grappleIcon.Position = ((StaticBody2D)grappleCollider).Position;
+            _grappleIcon.Visible = true;
+            if (!_playerGrappled)
+            {
+               _grappleTarget = (StaticBody2D)grappleCollider;
+            }
+         }
+         else if (!_playerGrappled)
+         {
+            _grappleTarget = null;
+            _grappleIcon.Visible = false;
+         }
+      }
+   }
+
+   private void CoyoteTimeout()
+   {
+      _jumpAvailable = false;
+   }
+
+   private void JumpBufferTimeout()
+   {
+      _jumpBuffer = false;
+   }
+
+   //private void DashCooldownTimeout()
+
+   private Vector2 PlayerLook()
+   {
+      return Input.GetVector("Left", "Right", "Up", "Down");
+   }
+
+   //public void Death()
+   //{
+      //SignalBus.emit_signal("SceneTransition", "res://GameScenes/bettertestlevel.tscn");
+   //}
+   
+   public override void _PhysicsProcess(double delta)
+   {
+      grapple_check();
+      _grappleCast.LookAt((10*PlayerLook())+GlobalPosition);
+      MoveAndSlide();
+   }
+   
+   
 }
