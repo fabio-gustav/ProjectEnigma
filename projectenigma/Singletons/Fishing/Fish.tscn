@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cuxsbsuia28m4"]
-
-[ext_resource type="Script" uid="uid://dsrfw23lumvoj" path="res://Singletons/Fishing/fish.gd" id="1_117xg"]
-
-[node name="Fish" type="Node"]
-script = ExtResource("1_117xg")

@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dk5ggfxqxnyr2"]
-
-[ext_resource type="Script" uid="uid://brc28uyewwa56" path="res://Singletons/Fishing/fishing_manager.gd" id="1_oautk"]
-
-[node name="FishingManager" type="Node"]
-script = ExtResource("1_oautk")
