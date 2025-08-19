@@ -15,6 +15,10 @@ run/main_scene="uid://bqgg3mfv3sdlg"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SignalBus="*res://SignalBus.cs"
+
 [dotnet]
 
 project/assembly_name="Project Enigma"

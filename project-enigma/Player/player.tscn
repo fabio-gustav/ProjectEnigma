@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bqgg3mfv3sdlg"]
+[gd_scene load_steps=3 format=3 uid="uid://bqgg3mfv3sdlg"]
 
 [ext_resource type="Script" uid="uid://ceu4vsundxotx" path="res://Player/Player.cs" id="1_l8h54"]
+[ext_resource type="Script" uid="uid://xhc0mds78jvs" path="res://Player/MoneyComponent.cs" id="2_4ntmi"]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_l8h54")
@@ -8,6 +9,7 @@ script = ExtResource("1_l8h54")
 [node name="Collider" type="CollisionShape2D" parent="."]
 
 [node name="MoneyComponent" type="Node" parent="."]
+script = ExtResource("2_4ntmi")
 
 [node name="HealthComponent" type="Node" parent="."]
 
