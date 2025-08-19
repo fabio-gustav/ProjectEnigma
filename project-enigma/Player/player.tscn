@@ -1,17 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqgg3mfv3sdlg"]
+[gd_scene load_steps=4 format=3 uid="uid://bqgg3mfv3sdlg"]
 
 [ext_resource type="Script" uid="uid://ceu4vsundxotx" path="res://Player/Player.cs" id="1_l8h54"]
-[ext_resource type="Script" uid="uid://xhc0mds78jvs" path="res://Player/MoneyComponent.cs" id="2_4ntmi"]
+[ext_resource type="PackedScene" uid="uid://bxq0ktkymhtkr" path="res://Components/money_component.tscn" id="2_4ntmi"]
+[ext_resource type="PackedScene" uid="uid://ngq8shkce1hd" path="res://Components/health_component.tscn" id="3_btcbx"]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_l8h54")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 
-[node name="MoneyComponent" type="Node" parent="."]
-script = ExtResource("2_4ntmi")
+[node name="MoneyComponent" parent="." instance=ExtResource("2_4ntmi")]
 
-[node name="HealthComponent" type="Node" parent="."]
+[node name="HealthComponent" parent="." instance=ExtResource("3_btcbx")]
 
 [node name="HitboxComponent" type="Area2D" parent="."]
 

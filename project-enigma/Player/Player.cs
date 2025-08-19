@@ -102,10 +102,11 @@ public partial class Player : CharacterBody2D
       return Input.GetVector("Left", "Right", "Up", "Down");
    }
 
-   //public void Death()
-   //{
-      //SignalBus.emit_signal("SceneTransition", "res://GameScenes/bettertestlevel.tscn");
-   //}
+   public void Death()
+   {
+      //TODO Change signal to scene transition
+      GetNode<SignalBus>("/root/PlayerVariables").EmitSignal(SignalBus.SignalName.HealthChanged);
+   }
    
    public override void _PhysicsProcess(double delta)
    {
