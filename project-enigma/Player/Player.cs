@@ -41,7 +41,7 @@ public partial class Player : CharacterBody2D
    private StaticBody2D _grappleTarget = null;
    private RayCast2D _grappleCast = null;
    private Timer _coyoteTimer = null;
-   private AnimationPlayer _playerSprite = null;
+   public AnimationPlayer PlayerSprite = null;
    
    public override void _Ready()
    {
