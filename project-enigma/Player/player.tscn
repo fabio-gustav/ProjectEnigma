@@ -1,13 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://bqgg3mfv3sdlg"]
+[gd_scene load_steps=11 format=3 uid="uid://bqgg3mfv3sdlg"]
 
 [ext_resource type="Script" uid="uid://ceu4vsundxotx" path="res://Player/Player.cs" id="1_l8h54"]
 [ext_resource type="PackedScene" uid="uid://bxq0ktkymhtkr" path="res://Components/money_component.tscn" id="2_4ntmi"]
 [ext_resource type="PackedScene" uid="uid://ngq8shkce1hd" path="res://Components/health_component.tscn" id="3_btcbx"]
 [ext_resource type="PackedScene" uid="uid://ciqx84bvpvqid" path="res://Components/hitbox_component.tscn" id="4_gwnis"]
-[ext_resource type="Script" uid="uid://cyjhublpfkp6g" path="res://Player/SpriteStateMachine.cs" id="5_k53q1"]
-[ext_resource type="Script" uid="uid://duwho00jwlr83" path="res://Player/ActionStateMachine.cs" id="6_fhl08"]
-[ext_resource type="Script" uid="uid://b7q7o311td2by" path="res://Player/MovementStateMachine.cs" id="7_vtle1"]
-[ext_resource type="Script" uid="uid://blmny4w1sukpc" path="res://Player/AttackComponent.cs" id="8_od3ui"]
+[ext_resource type="Script" uid="uid://cyjhublpfkp6g" path="res://StateMachines/SpriteStateMachine.cs" id="5_k53q1"]
+[ext_resource type="Script" uid="uid://duwho00jwlr83" path="res://StateMachines/ActionStateMachine.cs" id="6_fhl08"]
+[ext_resource type="Script" uid="uid://b7q7o311td2by" path="res://StateMachines/MovementStateMachine.cs" id="7_vtle1"]
+[ext_resource type="Script" uid="uid://d1y85smp3tsj4" path="res://Player/PlayerIdle.cs" id="8_00tjw"]
+[ext_resource type="Script" uid="uid://blmny4w1sukpc" path="res://Components/AttackComponent.cs" id="8_od3ui"]
+[ext_resource type="Script" uid="uid://d0hon0bvhddmt" path="res://Player/PlayerRunning.cs" id="9_x3vf3"]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_l8h54")
@@ -29,6 +31,12 @@ script = ExtResource("6_fhl08")
 
 [node name="MovementStateMachine" type="Node" parent="."]
 script = ExtResource("7_vtle1")
+
+[node name="Idle" type="Node" parent="MovementStateMachine"]
+script = ExtResource("8_00tjw")
+
+[node name="Node" type="Node" parent="MovementStateMachine"]
+script = ExtResource("9_x3vf3")
 
 [node name="PlayerSprite" type="Node2D" parent="."]
 

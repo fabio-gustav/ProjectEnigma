@@ -19,7 +19,7 @@ public partial class Player : CharacterBody2D
    [Export] public double AirResistance { get; set; } = 0.2;
    [Export] public double DashDistance { get; set; } = 0.2;
    [Export] public double Speed { get; set; } = 0.2;
-   [Export] public double Friction { get; set; } = 0.2;
+   [Export] public float Friction { get; set; } = 0.2f;
    [Export] public double SwingSpeed { get; set; } = 0.2;
    [Export] public double SlideFriction { get; set; } = 0.2;
    [Export] public double GrapplePull { get; set; } = 0.2;
@@ -31,8 +31,8 @@ public partial class Player : CharacterBody2D
     */
 
    private bool _playerGrappled = false;
-   private bool _jumpAvailable = false;
-   private bool _jumpBuffer = false;
+   public bool _jumpAvailable = false;
+   public bool _jumpBuffer = false;
 
 
    private Texture2D _marker = GD.Load<Texture2D>("res://Player/Sprites/Grapple_Point_Dot.png");
@@ -40,14 +40,14 @@ public partial class Player : CharacterBody2D
    private Sprite2D _grappleIcon = null;
    private StaticBody2D _grappleTarget = null;
    private RayCast2D _grappleCast = null;
-   private Timer _coyoteTimer = null;
+   public Timer _coyoteTimer = null;
    public AnimationPlayer PlayerSprite = null;
    
    public override void _Ready()
    {
       _grappleCast = GetNode<RayCast2D>("GrappleCast");
       _coyoteTimer = new Timer();
-
+      _coyoteTimer.Timeout += CoyoteTimeout;
       FloorMaxAngle = Mathf.DegToRad(80.0f);
       FloorSnapLength = 10.0f;
       FloorStopOnSlope = false;
@@ -85,7 +85,7 @@ public partial class Player : CharacterBody2D
       }
    }
 
-   private void CoyoteTimeout()
+   public void CoyoteTimeout()
    {
       _jumpAvailable = false;
    }
@@ -97,7 +97,7 @@ public partial class Player : CharacterBody2D
 
    //private void DashCooldownTimeout()
 
-   private Vector2 PlayerLook()
+   public Vector2 PlayerLook()
    {
       return Input.GetVector("Left", "Right", "Up", "Down");
    }

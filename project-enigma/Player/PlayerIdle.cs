@@ -1,0 +1,47 @@
+using Godot;
+using System;
+
+public partial class PlayerIdle : State
+{
+    [Export] public State JumpState { get; set; } = null;
+    [Export] public State WalkState { get; set; } = null;
+    [Export] public State FallState { get; set; } = null;
+    public override void Enter()
+    {
+        Player._jumpAvailable = true;
+    }
+
+    public override State ProcessInput(InputEvent @event)
+    {
+        if (Player._jumpBuffer || @event.IsActionPressed("jump"))
+        {
+            Player._jumpBuffer = false;
+            return JumpState;
+        }
+
+        if (Player.Velocity.Abs().X >= 0.00001 || GetInput() != 0.0)
+        {
+            return WalkState;
+        }
+
+        return null;
+    }
+
+    public override State PhysicsUpdate(double delta)
+    {
+        if (!Player.IsOnFloor())
+        {
+            if (Player._jumpAvailable)
+            {
+                Player._coyoteTimer.Start(Player.CoyoteTime);
+            }
+            return FallState;
+        }
+        
+        Player.PlayerLook();
+        Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, 0.0f, Player.Friction),Player.Velocity.Y);
+        Player._jumpAvailable = true;
+        Player._coyoteTimer.Stop();
+        return null;
+    }
+}

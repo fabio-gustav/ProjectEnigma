@@ -3,22 +3,34 @@ using System;
 
 public partial class State : Node
 {
-    private Player _player = null;
-    
-    [Signal]
-    public delegate void StateTransitionEventHandler(String newState);
+    protected Player Player = null;
 
     public override void _Ready()
     {
-        _player = GetParent().GetParent<Player>();
+        Player = GetParent().GetParent<Player>();
     }
 
-    public void Enter() {}
+    public virtual void Enter() {}
     
-    public void Exit() {}
+    public virtual void Exit() {}
+
+    public virtual State ProcessInput(InputEvent @event)
+    {
+        return null;
+    }
+
+    public virtual State ProcessFrame(double delta)
+    {
+        return null;
+    }
     
-    public void Update(double delta) {}
-    
-    public void PhysicsUpdate(double delta) {}
-    
+    public virtual State PhysicsUpdate(double delta)
+    {
+        return null;
+    }
+
+    public float GetInput()
+    {
+        return Input.GetAxis("Left", "Right");
+    }
 }
