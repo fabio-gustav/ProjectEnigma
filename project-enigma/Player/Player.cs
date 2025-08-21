@@ -30,7 +30,7 @@ public partial class Player : CharacterBody2D
     * Local Variables
     */
 
-   private bool _playerGrappled = false;
+   public bool _playerGrappled = false;
    public bool _jumpAvailable = false;
    public bool _jumpBuffer = false;
 
@@ -38,7 +38,7 @@ public partial class Player : CharacterBody2D
    private Texture2D _marker = GD.Load<Texture2D>("res://Player/Sprites/Grapple_Point_Dot.png");
    
    private Sprite2D _grappleIcon = null;
-   private StaticBody2D _grappleTarget = null;
+   public StaticBody2D _grappleTarget = null;
    private RayCast2D _grappleCast = null;
    public Timer _coyoteTimer = null;
    public Timer JumpBufferTimer = null;

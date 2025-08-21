@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bqgg3mfv3sdlg"]
+[gd_scene load_steps=14 format=3 uid="uid://bqgg3mfv3sdlg"]
 
 [ext_resource type="Script" uid="uid://ceu4vsundxotx" path="res://Player/Player.cs" id="1_l8h54"]
 [ext_resource type="PackedScene" uid="uid://bxq0ktkymhtkr" path="res://Components/money_component.tscn" id="2_4ntmi"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://blmny4w1sukpc" path="res://Components/AttackComponent.cs" id="8_od3ui"]
 [ext_resource type="Script" uid="uid://d0hon0bvhddmt" path="res://Player/PlayerRunning.cs" id="9_x3vf3"]
 [ext_resource type="Script" uid="uid://bo82jwf72l6yp" path="res://Player/PlayerJumping.cs" id="10_apopc"]
+[ext_resource type="Script" uid="uid://br5o35htcfdws" path="res://Player/PlayerFalling.cs" id="11_5htga"]
+[ext_resource type="Script" uid="uid://v82m18cf7uvf" path="res://Player/PlayerGrappling.cs" id="12_p5o4e"]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_l8h54")
@@ -30,17 +32,32 @@ script = ExtResource("5_k53q1")
 [node name="ActionStateMachine" type="Node" parent="."]
 script = ExtResource("6_fhl08")
 
-[node name="MovementStateMachine" type="Node" parent="."]
+[node name="MovementStateMachine" type="Node" parent="." node_paths=PackedStringArray("InitialState")]
 script = ExtResource("7_vtle1")
+InitialState = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="MovementStateMachine"]
+[node name="Idle" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("JumpState", "WalkState", "FallState")]
 script = ExtResource("8_00tjw")
+JumpState = NodePath("../Jumping")
+WalkState = NodePath("../Running")
+FallState = NodePath("../Falling")
 
-[node name="Running" type="Node" parent="MovementStateMachine"]
+[node name="Running" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("JumpState", "IdleState")]
 script = ExtResource("9_x3vf3")
+JumpState = NodePath("../Jumping")
+IdleState = NodePath("../Idle")
 
-[node name="Jumping" type="Node" parent="MovementStateMachine"]
+[node name="Jumping" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("FallState")]
 script = ExtResource("10_apopc")
+FallState = NodePath("../Falling")
+
+[node name="Falling" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("IdleState", "JumpState")]
+script = ExtResource("11_5htga")
+IdleState = NodePath("../Idle")
+JumpState = NodePath("../Jumping")
+
+[node name="Grappling" type="Node" parent="MovementStateMachine"]
+script = ExtResource("12_p5o4e")
 
 [node name="PlayerSprite" type="Node2D" parent="."]
 
