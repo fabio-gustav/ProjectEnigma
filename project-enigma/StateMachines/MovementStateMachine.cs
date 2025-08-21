@@ -15,7 +15,7 @@ public partial class MovementStateMachine : Node
         {
             if (child is State)
             {
-                return;
+                ((State)child).Init();
             }
         }
 

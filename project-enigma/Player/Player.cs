@@ -9,16 +9,16 @@ public partial class Player : CharacterBody2D
    [Export] public double CoyoteTime { get; set; } = 0.2;
    [Export] public double JumpBufferTime { get; set; } = 0.1;
    [Export] public double DashCoolDown { get; set; } = 0.5;
-   [Export] public double Acceleration { get; set; } = 0.25;
+   [Export] public float Acceleration { get; set; } = 0.25f;
    
-   [Export] public double JumpHeight { get; set; } = 0.2;
+   [Export] public float JumpHeight { get; set; } = 0.2f;
    
-   [Export] public double RisingJumpTime { get; set; } = 0.2;
-   [Export] public double FallingJumpTime { get; set; } = 0.2;
-   [Export] public double AirSpeed { get; set; } = 0.2;
+   [Export] public float RisingJumpTime { get; set; } = 0.2f;
+   [Export] public float FallingJumpTime { get; set; } = 0.2f;
+   [Export] public float AirSpeed { get; set; } = 0.2f;
    [Export] public double AirResistance { get; set; } = 0.2;
    [Export] public double DashDistance { get; set; } = 0.2;
-   [Export] public double Speed { get; set; } = 0.2;
+   [Export] public float Speed { get; set; } = 0.2f;
    [Export] public float Friction { get; set; } = 0.2f;
    [Export] public double SwingSpeed { get; set; } = 0.2;
    [Export] public double SlideFriction { get; set; } = 0.2;
@@ -41,13 +41,16 @@ public partial class Player : CharacterBody2D
    private StaticBody2D _grappleTarget = null;
    private RayCast2D _grappleCast = null;
    public Timer _coyoteTimer = null;
+   public Timer JumpBufferTimer = null;
    public AnimationPlayer PlayerSprite = null;
    
    public override void _Ready()
    {
       _grappleCast = GetNode<RayCast2D>("GrappleCast");
       _coyoteTimer = new Timer();
+      JumpBufferTimer = new Timer();
       _coyoteTimer.Timeout += CoyoteTimeout;
+      JumpBufferTimer.Timeout += JumpBufferTimeout;
       FloorMaxAngle = Mathf.DegToRad(80.0f);
       FloorSnapLength = 10.0f;
       FloorStopOnSlope = false;
@@ -61,9 +64,8 @@ public partial class Player : CharacterBody2D
       AddSibling(_grappleIcon);
    }
 
-   private void grapple_check()
+   public bool GrappleCheck()
    {
-      _playerGrappled = true;
       GodotObject grappleCollider = _grappleCast.GetCollider();
       //Check for staticbody
       if (grappleCollider is StaticBody2D)
@@ -76,13 +78,16 @@ public partial class Player : CharacterBody2D
             {
                _grappleTarget = (StaticBody2D)grappleCollider;
             }
+
+            return true;
          }
-         else if (!_playerGrappled)
+         if (!_playerGrappled)
          {
             _grappleTarget = null;
             _grappleIcon.Visible = false;
          }
       }
+      return false;
    }
 
    public void CoyoteTimeout()
@@ -110,7 +115,7 @@ public partial class Player : CharacterBody2D
    
    public override void _PhysicsProcess(double delta)
    {
-      grapple_check();
+      GrappleCheck();
       _grappleCast.LookAt((10*PlayerLook())+GlobalPosition);
       MoveAndSlide();
    }

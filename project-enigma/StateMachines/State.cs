@@ -9,6 +9,8 @@ public partial class State : Node
     {
         Player = GetParent().GetParent<Player>();
     }
+    
+    public virtual void Init() {}
 
     public virtual void Enter() {}
     

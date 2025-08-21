@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bqgg3mfv3sdlg"]
+[gd_scene load_steps=12 format=3 uid="uid://bqgg3mfv3sdlg"]
 
 [ext_resource type="Script" uid="uid://ceu4vsundxotx" path="res://Player/Player.cs" id="1_l8h54"]
 [ext_resource type="PackedScene" uid="uid://bxq0ktkymhtkr" path="res://Components/money_component.tscn" id="2_4ntmi"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://d1y85smp3tsj4" path="res://Player/PlayerIdle.cs" id="8_00tjw"]
 [ext_resource type="Script" uid="uid://blmny4w1sukpc" path="res://Components/AttackComponent.cs" id="8_od3ui"]
 [ext_resource type="Script" uid="uid://d0hon0bvhddmt" path="res://Player/PlayerRunning.cs" id="9_x3vf3"]
+[ext_resource type="Script" uid="uid://bo82jwf72l6yp" path="res://Player/PlayerJumping.cs" id="10_apopc"]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_l8h54")
@@ -35,8 +36,11 @@ script = ExtResource("7_vtle1")
 [node name="Idle" type="Node" parent="MovementStateMachine"]
 script = ExtResource("8_00tjw")
 
-[node name="Node" type="Node" parent="MovementStateMachine"]
+[node name="Running" type="Node" parent="MovementStateMachine"]
 script = ExtResource("9_x3vf3")
+
+[node name="Jumping" type="Node" parent="MovementStateMachine"]
+script = ExtResource("10_apopc")
 
 [node name="PlayerSprite" type="Node2D" parent="."]
 

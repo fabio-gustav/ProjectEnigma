@@ -31,6 +31,7 @@ public partial class PlayerIdle : State
     {
         if (!Player.IsOnFloor())
         {
+            //This should only be needed in fall state, but I'm going to test before I delete it
             if (Player._jumpAvailable)
             {
                 Player._coyoteTimer.Start(Player.CoyoteTime);
