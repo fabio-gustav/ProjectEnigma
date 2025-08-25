@@ -33,6 +33,6 @@ public partial class State : Node
 
     public float GetInput()
     {
-        return Input.GetAxis("Left", "Right");
+        return Input.GetAxis("left", "right");
     }
 }

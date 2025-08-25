@@ -35,7 +35,7 @@ public partial class Player : CharacterBody2D
    public bool _jumpBuffer = false;
 
 
-   private Texture2D _marker = GD.Load<Texture2D>("res://Player/Sprites/Grapple_Point_Dot.png");
+   private Texture2D _marker = GD.Load<Texture2D>("res://Player/Assets/Grapple_Point_Dot.png");
    
    private Sprite2D _grappleIcon = null;
    public StaticBody2D _grappleTarget = null;
@@ -43,9 +43,11 @@ public partial class Player : CharacterBody2D
    public Timer _coyoteTimer = null;
    public Timer JumpBufferTimer = null;
    public AnimationPlayer PlayerSprite = null;
+   private MovementStateMachine _stateMachine = null;
    
    public override void _Ready()
    {
+      _stateMachine = GetNode<MovementStateMachine>("MovementStateMachine");
       _grappleCast = GetNode<RayCast2D>("GrappleCast");
       _coyoteTimer = new Timer();
       JumpBufferTimer = new Timer();
@@ -61,7 +63,9 @@ public partial class Player : CharacterBody2D
       _grappleIcon.Texture = _marker;
       _grappleIcon.Scale = new Vector2(0.4f, 0.4f);
       //Might need deferred call here
-      AddSibling(_grappleIcon);
+      AddChild(_grappleIcon);
+      
+      _stateMachine.Init();
    }
 
    public bool GrappleCheck()
@@ -104,7 +108,7 @@ public partial class Player : CharacterBody2D
 
    public Vector2 PlayerLook()
    {
-      return Input.GetVector("Left", "Right", "Up", "Down");
+      return Input.GetVector("left", "right", "up", "down");
    }
 
    public void Death()
@@ -115,10 +119,19 @@ public partial class Player : CharacterBody2D
    
    public override void _PhysicsProcess(double delta)
    {
+      _stateMachine.ProcessPhysics(delta);
       GrappleCheck();
       _grappleCast.LookAt((10*PlayerLook())+GlobalPosition);
       MoveAndSlide();
    }
-   
-   
+
+   public override void _Process(double delta)
+   {
+      _stateMachine.ProcessFrame(delta);
+   }
+
+   public override void _UnhandledInput(InputEvent @event)
+   {
+      _stateMachine.ProcessInput(@event);
+   }
 }

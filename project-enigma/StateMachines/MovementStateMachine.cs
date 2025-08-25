@@ -9,7 +9,7 @@ public partial class MovementStateMachine : Node
     //Dictionary of states with a key value of the state name
     private State _currentState = null;
 
-    public override void _Ready()
+    public void Init()
     {
         foreach (Node child in GetChildren())
         {

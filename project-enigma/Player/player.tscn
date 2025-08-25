@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bqgg3mfv3sdlg"]
+[gd_scene load_steps=21 format=3 uid="uid://bqgg3mfv3sdlg"]
 
 [ext_resource type="Script" uid="uid://ceu4vsundxotx" path="res://Player/Player.cs" id="1_l8h54"]
 [ext_resource type="PackedScene" uid="uid://bxq0ktkymhtkr" path="res://Components/money_component.tscn" id="2_4ntmi"]
@@ -13,11 +13,30 @@
 [ext_resource type="Script" uid="uid://bo82jwf72l6yp" path="res://Player/PlayerJumping.cs" id="10_apopc"]
 [ext_resource type="Script" uid="uid://br5o35htcfdws" path="res://Player/PlayerFalling.cs" id="11_5htga"]
 [ext_resource type="Script" uid="uid://v82m18cf7uvf" path="res://Player/PlayerGrappling.cs" id="12_p5o4e"]
+[ext_resource type="Texture2D" uid="uid://ds2ung0x77eww" path="res://Player/Assets/Body_Base.png" id="13_lfmf2"]
+[ext_resource type="Texture2D" uid="uid://dsti06r37xaic" path="res://Player/Assets/Legs_Walk.png" id="14_pisgm"]
+[ext_resource type="Texture2D" uid="uid://car88vg1mdehw" path="res://Player/Assets/Cane_Walk_Texture.png" id="15_b1ygp"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o28un"]
+radius = 117.0
+height = 722.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n471f"]
+size = Vector2(224, 631)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7emwf"]
+size = Vector2(362, 152.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hshwv"]
+size = Vector2(961, 825)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_l8h54")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-2, 235)
+shape = SubResource("CapsuleShape2D_o28un")
 
 [node name="MoneyComponent" parent="." instance=ExtResource("2_4ntmi")]
 
@@ -25,6 +44,10 @@ script = ExtResource("1_l8h54")
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("HealthComponent") instance=ExtResource("4_gwnis")]
 HealthComponent = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(-16, 228.5)
+shape = SubResource("RectangleShape2D_n471f")
 
 [node name="SpriteStateMachine" type="Node" parent="."]
 script = ExtResource("5_k53q1")
@@ -56,22 +79,47 @@ script = ExtResource("11_5htga")
 IdleState = NodePath("../Idle")
 JumpState = NodePath("../Jumping")
 
-[node name="Grappling" type="Node" parent="MovementStateMachine"]
+[node name="Grappling" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("FallState", "IdleState", "JumpState")]
 script = ExtResource("12_p5o4e")
+FallState = NodePath("../Falling")
+IdleState = NodePath("../Idle")
+JumpState = NodePath("../Jumping")
 
 [node name="PlayerSprite" type="Node2D" parent="."]
 
 [node name="Torso" type="Sprite2D" parent="PlayerSprite"]
+texture = ExtResource("13_lfmf2")
 
 [node name="Legs" type="Sprite2D" parent="PlayerSprite"]
+position = Vector2(26, 365)
+texture = ExtResource("14_pisgm")
+hframes = 8
+
+[node name="Arm" type="Sprite2D" parent="PlayerSprite"]
+position = Vector2(-110, 284)
+texture = ExtResource("15_b1ygp")
+hframes = 8
 
 [node name="Marker2D" type="Marker2D" parent="."]
+gizmo_extents = 0.0
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
+[node name="GrappleCast" type="RayCast2D" parent="."]
 
-[node name="AttackComponent" type="Area2D" parent="RayCast2D"]
+[node name="AttackComponent" type="Area2D" parent="GrappleCast"]
 script = ExtResource("8_od3ui")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrappleCast/AttackComponent"]
+visible = false
+position = Vector2(394, 63)
+shape = SubResource("RectangleShape2D_7emwf")
+debug_color = Color(0.95443, 0.0951466, 0.482466, 0.42)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="InteractionArea" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(-4, 187)
+shape = SubResource("RectangleShape2D_hshwv")
+debug_color = Color(0.204465, 0.640625, 1.92523e-07, 0.42)

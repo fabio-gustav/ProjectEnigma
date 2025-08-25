@@ -13,6 +13,7 @@ public partial class PlayerIdle : State
 
     public override State ProcessInput(InputEvent @event)
     {
+        GD.Print(GetInput());
         if (Player._jumpBuffer || @event.IsActionPressed("jump"))
         {
             Player._jumpBuffer = false;
