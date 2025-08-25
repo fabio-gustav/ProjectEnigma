@@ -1,0 +1,71 @@
+[gd_scene load_steps=2 format=3 uid="uid://mex8l83iaqcx"]
+
+[ext_resource type="Script" uid="uid://epc1gvijwumb" path="res://UI/PauseMenu/PauseMenu.cs" id="1_3oydc"]
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_3oydc")
+
+[node name="Menus" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MainPause" type="Control" parent="Menus"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Resume" type="Button" parent="Menus/MainPause"]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Options" type="Button" parent="Menus/MainPause"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="ReturnToTitle" type="Button" parent="Menus/MainPause"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="QuitGame" type="Button" parent="Menus/MainPause"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="OptionsMenu" type="Control" parent="Menus"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="optionsToMain" type="Button" parent="Menus/OptionsMenu"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="SoundSettings" type="Button" parent="Menus/OptionsMenu"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="VisualSettings" type="Button" parent="Menus/OptionsMenu"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Controls" type="Button" parent="Menus/OptionsMenu"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Debug" type="Button" parent="Menus/OptionsMenu"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[connection signal="pressed" from="Menus/MainPause/Resume" to="." method="Resume"]
+[connection signal="pressed" from="Menus/MainPause/Options" to="." method="Options"]
+[connection signal="pressed" from="Menus/MainPause/ReturnToTitle" to="." method="ReturnToTitle"]
+[connection signal="pressed" from="Menus/MainPause/QuitGame" to="." method="QuitGame"]
