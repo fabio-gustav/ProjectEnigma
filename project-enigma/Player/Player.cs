@@ -64,6 +64,8 @@ public partial class Player : CharacterBody2D
       _grappleIcon.Scale = new Vector2(0.4f, 0.4f);
       //Might need deferred call here
       AddChild(_grappleIcon);
+      AddChild(_coyoteTimer);
+      AddChild(JumpBufferTimer);
       
       _stateMachine.Init();
    }
