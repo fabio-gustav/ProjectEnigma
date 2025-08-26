@@ -19,7 +19,6 @@ public partial class PauseMenu : Control
     private Button _controls = null;
     private Button _debug = null;
 
-
     //flags
     private bool opened = false;
     private int selection = 0;
@@ -29,41 +28,42 @@ public partial class PauseMenu : Control
     private Button[] optionsButtons = null;
     private Button[] activeButtons = null;
 
+    private Control activeMenu = null;
+    private Control mainMenu = null;
+    private Control optionsMenu = null;
 
     public override void _Ready()
     {
         //main pause menu
-        _resume = GetNode<Button>("%Resume");
-        _options = GetNode<Button>("%Options");
-        _returnToTitle = GetNode<Button>("%ReturnToTitle");
-        _quitGame = GetNode<Button>("%QuitGame");
+        _resume = GetNode<Button>("Menus/MainPause/Resume");
+        _options = GetNode<Button>("Menus/MainPause/Options");
+        _returnToTitle = GetNode<Button>("Menus/MainPause/ReturnToTitle");
+        _quitGame = GetNode<Button>("Menus/MainPause/QuitGame");
 
         //options menu
-        _optionsToMain = GetNode<Button>("%optionsToMain");
-        _soundSettings = GetNode<Button>("%soundSettings");
-        _visualSettings = GetNode<Button>("%visualSettings");
-        _controls = GetNode<Button>("%Controls");
-        _debug = GetNode<Button>("%Debug");
-
+        _optionsToMain = GetNode<Button>("Menus/OptionsMenu/optionsToMain");
+        _soundSettings = GetNode<Button>("Menus/OptionsMenu/SoundSettings");
+        _visualSettings = GetNode<Button>("Menus/OptionsMenu/VisualSettings");
+        _controls = GetNode<Button>("Menus/OptionsMenu/Controls");
+        _debug = GetNode<Button>("Menus/OptionsMenu/Debug");
 
         opened = false;
         selection = 0;
 
         mainButtons = [_resume, _options, _returnToTitle, _quitGame];
         optionsButtons = [_optionsToMain, _soundSettings, _visualSettings, _controls, _debug];
-
         activeButtons = mainButtons;
 
+        menus = GetNode<Control>("Menus");
         base._Ready();
     }
 
-
-
-    public override void _Process(double delta)
+    //I implemented this function stupidly, maybe fix later if it matters
+    public override void _Input(InputEvent @event)
     {
-        if (Input.IsActionJustPressed("pause"))
+        if (Input.IsActionPressed("pause"))
         {
-            swap();
+            Swap();
         }
         if (opened)
         {
@@ -76,28 +76,27 @@ public partial class PauseMenu : Control
                 Select(1);
             }
             if (Input.IsActionJustPressed("jump"))
-            {//temporary button, change later
-                activeButtons[selection].ButtonPressed = true;
+            {
+                activeButtons[selection].EmitSignal("pressed");
             }
         }
-
-        base._Process(delta);
+        base._Input(@event);
     }
 
 
-    //swaps whether or not game is paused
-    private void swap()
+    //Swaps whether or not game is paused
+    private void Swap()
     {
         opened = !opened;
         if (opened)
         {
             SubMenu(mainButtons);
-            menus.Visible = true;
+            menus.Show();
             GetTree().Paused = true;
         }
         else
         {
-            menus.Visible = false;
+            menus.Hide();
             GetTree().Paused = false;
         }
     }
@@ -113,14 +112,14 @@ public partial class PauseMenu : Control
         {
             return;
         }
-        //need to add color selection
+        activeButtons[selection].AddThemeColorOverride("font_color", new Color(1, 1, 1));
         selection += upOrDown;
-        //need to add color selection
+        activeButtons[selection].AddThemeColorOverride("font_color", new Color(1, 1, 0));
     }
 
     private void SubMenu(Button[] menu)
     {
-        //need to add color selection
+        activeButtons[selection].AddThemeColorOverride("font_color", new Color(1, 1, 1));
         selection = 0;
         foreach (Button b in activeButtons)
         {
@@ -131,7 +130,7 @@ public partial class PauseMenu : Control
         {
             b.Show();
         }
-        //need to add color selection
+        activeButtons[selection].AddThemeColorOverride("font_color", new Color(1, 1, 0));
 
     }
 
@@ -140,7 +139,7 @@ public partial class PauseMenu : Control
     //button functions
     private void Resume()
     {
-        swap();
+        Swap();
     }
 
     private void Options()
@@ -152,11 +151,17 @@ public partial class PauseMenu : Control
     {
         //do later
     }
-    
 
     private void QuitGame()
     {
         GetTree().Quit();
     }
+
+    //options menu functions
+    private void OptionsToMain()
+    {
+        SubMenu(mainButtons);
+    }
+    
 
 }

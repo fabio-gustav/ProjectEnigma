@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://epc1gvijwumb" path="res://UI/PauseMenu/PauseMenu.cs" id="1_3oydc"]
 
 [node name="PauseMenu" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_3oydc")
@@ -17,23 +18,40 @@ layout_mode = 3
 anchors_preset = 0
 
 [node name="Resume" type="Button" parent="Menus/MainPause"]
-offset_right = 8.0
-offset_bottom = 8.0
+visible = false
+layout_mode = 0
+offset_left = 450.0
+offset_top = 100.0
+offset_right = 700.0
+offset_bottom = 150.0
+text = "Resume"
 
 [node name="Options" type="Button" parent="Menus/MainPause"]
+visible = false
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 450.0
+offset_top = 200.0
+offset_right = 700.0
+offset_bottom = 250.0
+text = "Options"
 
 [node name="ReturnToTitle" type="Button" parent="Menus/MainPause"]
+visible = false
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 450.0
+offset_top = 300.0
+offset_right = 700.0
+offset_bottom = 350.0
+text = "Return to Title"
 
 [node name="QuitGame" type="Button" parent="Menus/MainPause"]
+visible = false
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 450.0
+offset_top = 400.0
+offset_right = 700.0
+offset_bottom = 450.0
+text = "Quit Game"
 
 [node name="OptionsMenu" type="Control" parent="Menus"]
 anchors_preset = 0
@@ -41,31 +59,52 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="optionsToMain" type="Button" parent="Menus/OptionsMenu"]
+visible = false
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 450.0
+offset_top = 100.0
+offset_right = 700.0
+offset_bottom = 150.0
+text = "Back"
 
 [node name="SoundSettings" type="Button" parent="Menus/OptionsMenu"]
+visible = false
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 450.0
+offset_top = 200.0
+offset_right = 700.0
+offset_bottom = 250.0
+text = "Sound Settings"
 
 [node name="VisualSettings" type="Button" parent="Menus/OptionsMenu"]
+visible = false
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 450.0
+offset_top = 300.0
+offset_right = 700.0
+offset_bottom = 350.0
+text = "Visual Settings"
 
 [node name="Controls" type="Button" parent="Menus/OptionsMenu"]
+visible = false
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 450.0
+offset_top = 400.0
+offset_right = 700.0
+offset_bottom = 450.0
+text = "Controls"
 
 [node name="Debug" type="Button" parent="Menus/OptionsMenu"]
+visible = false
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 450.0
+offset_top = 500.0
+offset_right = 700.0
+offset_bottom = 550.0
+text = "Debug"
 
 [connection signal="pressed" from="Menus/MainPause/Resume" to="." method="Resume"]
 [connection signal="pressed" from="Menus/MainPause/Options" to="." method="Options"]
 [connection signal="pressed" from="Menus/MainPause/ReturnToTitle" to="." method="ReturnToTitle"]
 [connection signal="pressed" from="Menus/MainPause/QuitGame" to="." method="QuitGame"]
+[connection signal="pressed" from="Menus/OptionsMenu/optionsToMain" to="." method="OptionsToMain"]

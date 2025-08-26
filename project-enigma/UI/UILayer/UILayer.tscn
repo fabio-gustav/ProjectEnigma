@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://dljvff3nhb6ya"]
+[gd_scene load_steps=3 format=3 uid="uid://b53cfcwrjaq5h"]
 
-[node name="UiLayer" type="Node"]
+[ext_resource type="PackedScene" uid="uid://mex8l83iaqcx" path="res://UI/PauseMenu/PauseMenu.tscn" id="1_mjrdf"]
+[ext_resource type="PackedScene" uid="uid://c5u0wd4st3g2w" path="res://UI/UILayer/StaticCamera.tscn" id="1_n0wwi"]
+
+[node name="UILayer" type="CanvasLayer"]
+
+[node name="StaticCamera" parent="." instance=ExtResource("1_n0wwi")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("1_mjrdf")]
