@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Project Enigma"
-run/main_scene="uid://c0tb3ku7eyd8q"
+run/main_scene="uid://ck8x0hhhif37p"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 
 [autoload]
