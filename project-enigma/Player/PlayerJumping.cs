@@ -26,6 +26,8 @@ public partial class PlayerJumping : State
     public override void Exit()
     {
         Player.Velocity = new Vector2(Player.Velocity.X, 0.0f);
+        _jumpGravity = ((-2.0f * Player.JumpHeight) / (Player.RisingJumpTime * Player.RisingJumpTime)) * -1.0f;
+        
     }
 
     public override State ProcessInput(InputEvent @event)
@@ -42,7 +44,7 @@ public partial class PlayerJumping : State
     public override State PhysicsUpdate(double delta)
     {
         //Acceleration needs to be fixed, also I'm getting rid of AirResistance because it is dumb and stupid
-        Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, Player.AirSpeed*GetInput(), Player.Acceleration), Player.Velocity.Y + (float)(_jumpGravity * delta));
+        Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, (Player.AirSpeed*GetInput())+Player.Velocity.X, Player.Acceleration), Player.Velocity.Y + (float)(_jumpGravity * delta));
 
         if (Player.Velocity.Y >= 0.0f)
         {

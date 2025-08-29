@@ -18,24 +18,36 @@
 [ext_resource type="Texture2D" uid="uid://car88vg1mdehw" path="res://Player/Assets/Cane_Walk_Texture.png" id="15_b1ygp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o28un"]
-radius = 117.0
-height = 722.0
+radius = 62.0
+height = 272.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n471f"]
-size = Vector2(224, 631)
+size = Vector2(135, 299)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7emwf"]
 size = Vector2(362, 152.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hshwv"]
-size = Vector2(961, 825)
+size = Vector2(961, 587.5)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_l8h54")
+Acceleration = 0.3
+JumpHeight = 768.0
+RisingJumpTime = 0.4
+FallingJumpTime = 0.3
+AirSpeed = 150.0
+AirResistance = 0.005
+DashDistance = 2048.0
+Speed = 1542.0
+SwingSpeed = 0.1
+SlideFriction = 0.01
+GrapplePull = 1024.0
+WallSlideGravity = 5500.0
+GrapplePullSpeed = 800.0
 
 [node name="Collider" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-2, 235)
+position = Vector2(-1, 32)
 shape = SubResource("CapsuleShape2D_o28un")
 
 [node name="MoneyComponent" parent="." instance=ExtResource("2_4ntmi")]
@@ -43,10 +55,10 @@ shape = SubResource("CapsuleShape2D_o28un")
 [node name="HealthComponent" parent="." instance=ExtResource("3_btcbx")]
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("HealthComponent") instance=ExtResource("4_gwnis")]
+visible = false
 HealthComponent = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(-16, 228.5)
 shape = SubResource("RectangleShape2D_n471f")
 
 [node name="SpriteStateMachine" type="Node" parent="."]
@@ -88,15 +100,19 @@ JumpState = NodePath("../Jumping")
 [node name="PlayerSprite" type="Node2D" parent="."]
 
 [node name="Torso" type="Sprite2D" parent="PlayerSprite"]
+position = Vector2(0, -60)
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("13_lfmf2")
 
 [node name="Legs" type="Sprite2D" parent="PlayerSprite"]
-position = Vector2(26, 365)
+position = Vector2(5.96046e-08, 83)
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("14_pisgm")
 hframes = 8
 
 [node name="Arm" type="Sprite2D" parent="PlayerSprite"]
-position = Vector2(-110, 284)
+position = Vector2(-47, 52)
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("15_b1ygp")
 hframes = 8
 
@@ -117,9 +133,8 @@ debug_color = Color(0.95443, 0.0951466, 0.482466, 0.42)
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="InteractionArea" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
-position = Vector2(-4, 187)
+position = Vector2(0, -122)
 shape = SubResource("RectangleShape2D_hshwv")
 debug_color = Color(0.204465, 0.640625, 1.92523e-07, 0.42)

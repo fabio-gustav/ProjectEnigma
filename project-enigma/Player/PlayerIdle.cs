@@ -9,11 +9,11 @@ public partial class PlayerIdle : State
     public override void Enter()
     {
         Player._jumpAvailable = true;
+        Player.Velocity = new Vector2(Player.Velocity.X, 0.0f);
     }
 
     public override State ProcessInput(InputEvent @event)
     {
-        GD.Print(GetInput());
         if (Player._jumpBuffer || @event.IsActionPressed("jump"))
         {
             Player._jumpBuffer = false;

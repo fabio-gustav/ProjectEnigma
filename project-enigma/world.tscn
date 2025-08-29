@@ -2,14 +2,20 @@
 
 [ext_resource type="PackedScene" uid="uid://bqgg3mfv3sdlg" path="res://Player/player.tscn" id="1_f3sb7"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gv5m4"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3sb7"]
+size = Vector2(9555, 238.5)
 
 [node name="World" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.2, 0.2)
+process_callback = 0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(113, 648)
-shape = SubResource("WorldBoundaryShape2D_gv5m4")
+position = Vector2(-82.5, 2585.75)
+shape = SubResource("RectangleShape2D_f3sb7")
+one_way_collision = true
 
 [node name="Player" parent="." instance=ExtResource("1_f3sb7")]

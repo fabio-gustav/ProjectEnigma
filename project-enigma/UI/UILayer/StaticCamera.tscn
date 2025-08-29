@@ -1,3 +1,3 @@
-[gd_scene format=3 uid="uid://c5u0wd4st3g2w"]
+[gd_scene load_steps=0 format=3 uid="uid://c5u0wd4st3g2w"]
 
 [node name="StaticCamera" type="Camera2D"]
