@@ -77,9 +77,10 @@ JumpState = NodePath("../Jumping")
 WalkState = NodePath("../Running")
 FallState = NodePath("../Falling")
 
-[node name="Running" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("JumpState", "IdleState")]
+[node name="Running" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("JumpState", "FallState", "IdleState")]
 script = ExtResource("9_x3vf3")
 JumpState = NodePath("../Jumping")
+FallState = NodePath("../Falling")
 IdleState = NodePath("../Idle")
 
 [node name="Jumping" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("FallState")]
@@ -133,6 +134,7 @@ debug_color = Color(0.95443, 0.0951466, 0.482466, 0.42)
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="InteractionArea" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 position = Vector2(0, -122)

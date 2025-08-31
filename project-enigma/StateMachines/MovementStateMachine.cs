@@ -28,7 +28,7 @@ public partial class MovementStateMachine : Node
 
     public void ChangeState(State newState)
     {
-        //GD.Print(VAR);
+        GD.Print("Transition from " + _currentState.ToString() + " to " + newState.ToString());
         if (_currentState != null)
         {
             _currentState.Exit();

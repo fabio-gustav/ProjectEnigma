@@ -20,7 +20,7 @@ public partial class PlayerIdle : State
             return JumpState;
         }
 
-        if (Player.Velocity.Abs().X >= 0.00001 || GetInput() != 0.0)
+        if (Player.Velocity.Abs().X >= 0.001f || GetInput() != 0.0)
         {
             return WalkState;
         }

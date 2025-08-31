@@ -46,6 +46,11 @@ public partial class PlayerRunning : State
 
             return FallState;
         }
+
+        if (Player.Velocity.Abs().X < 0.001f)
+        {
+            return IdleState;
+        }
         
           /*
            * if abs(parent.velocity.x) < parent.walk_speed:

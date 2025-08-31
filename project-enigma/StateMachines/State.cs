@@ -35,4 +35,9 @@ public partial class State : Node
     {
         return Input.GetAxis("left", "right");
     }
+
+    public override string ToString()
+    {
+        return Name;
+    }
 }
