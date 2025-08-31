@@ -49,7 +49,7 @@ public partial class PlayerFalling : State
 
     public override State PhysicsUpdate(double delta)
     {
-        Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, Player.AirSpeed*GetInput()+Player.Velocity.X, Player.Acceleration), Player.Velocity.Y + (float)(_fallGravity * delta));
+        Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, Mathf.Clamp((Player.AirSpeed*GetInput())+Player.Velocity.X,-Player.Speed,Player.Speed), Player.Acceleration), Player.Velocity.Y + (float)(_fallGravity * delta));
 
         if (Player.IsOnFloor())
         {

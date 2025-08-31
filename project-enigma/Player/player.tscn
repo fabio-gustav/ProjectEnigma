@@ -36,7 +36,7 @@ Acceleration = 0.3
 JumpHeight = 768.0
 RisingJumpTime = 0.4
 FallingJumpTime = 0.3
-AirSpeed = 150.0
+AirSpeed = 1500.0
 AirResistance = 0.005
 DashDistance = 2048.0
 Speed = 1542.0
@@ -98,7 +98,7 @@ FallState = NodePath("../Falling")
 IdleState = NodePath("../Idle")
 JumpState = NodePath("../Jumping")
 
-[node name="PlayerSprite" type="Node2D" parent="."]
+[node name="PlayerSprite" type="AnimationPlayer" parent="."]
 
 [node name="Torso" type="Sprite2D" parent="PlayerSprite"]
 position = Vector2(0, -60)
