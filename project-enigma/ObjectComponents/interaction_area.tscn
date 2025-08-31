@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://csuf3tag2h7l1"]
+
+[ext_resource type="Script" uid="uid://bgwwd7akf4to4" path="res://ObjectComponents/InteractionArea.cs" id="1_kws7m"]
+
+[node name="InteractionArea" type="Area2D"]
+script = ExtResource("1_kws7m")
