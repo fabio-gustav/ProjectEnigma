@@ -42,7 +42,7 @@ public partial class Player : CharacterBody2D
    private RayCast2D _grappleCast = null;
    public Timer _coyoteTimer = null;
    public Timer JumpBufferTimer = null;
-   public AnimationPlayer PlayerSprite = null;
+   public PlayerSprite PlayerSprite = null;
    private MovementStateMachine _stateMachine = null;
    
    public override void _Ready()
@@ -57,6 +57,8 @@ public partial class Player : CharacterBody2D
       FloorSnapLength = 10.0f;
       FloorStopOnSlope = false;
 
+      PlayerSprite = GetNode<PlayerSprite>("PlayerSprite");
+      
       _grappleIcon = new Sprite2D();
       _grappleIcon.Visible = false;
       _grappleIcon.Position = GlobalPosition;

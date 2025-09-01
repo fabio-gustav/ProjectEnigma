@@ -22,6 +22,8 @@ public partial class PlayerFalling : State
         {
             Player._coyoteTimer.Start(Player.CoyoteTime);
         }
+        
+        Player.PlayerSprite.PlayBodyAnimation("Falling");
     }
 
     public override State ProcessInput(InputEvent @event)

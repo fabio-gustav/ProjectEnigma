@@ -11,6 +11,11 @@ public partial class PlayerRunning : State
     [Export] public State SlideState { get; set; } = null;
     [Export] public State ParryState { get; set; } = null;
 
+    public override void Enter()
+    {
+        Player.PlayerSprite.PlayBodyAnimation("Running");
+    }
+
     public override State ProcessInput(InputEvent @event)
     {
         if (Player._jumpBuffer || @event.IsActionPressed("jump"))
