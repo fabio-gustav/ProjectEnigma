@@ -42,7 +42,7 @@ public partial class PlayerRunning : State
         if (Player.IsRiding)
         {
             //Movement for ride state
-            Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, Player.Speed*GetInput(), Player.Acceleration),Player.Velocity.Y);
+            Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, Player.RideSpeed*GetInput(), Player.RideAcceleration),Player.Velocity.Y);
         }
         else
         {
@@ -53,7 +53,15 @@ public partial class PlayerRunning : State
         
         if (GetInput() == 0.0f)
         {
-            Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, 0.0f, Player.Friction),Player.Velocity.Y);
+            if (Player.IsRiding)
+            {
+                Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, 0.0f, Player.RideFriction),Player.Velocity.Y);
+            }
+            else
+            {
+                Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, 0.0f, Player.Friction),Player.Velocity.Y);
+            }
+            
         }
 
         if (!Player.IsOnFloor())
@@ -69,6 +77,7 @@ public partial class PlayerRunning : State
 
         if (Player.Velocity.Abs().X < 0.001f)
         {
+            Player.IsRiding = false;
             return IdleState;
         } 
         return null;
