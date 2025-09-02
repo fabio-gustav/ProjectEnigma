@@ -137,14 +137,13 @@ size = Vector2(961, 587.5)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_l8h54")
-Acceleration = 0.3
+Speed = 1542.0
 JumpHeight = 768.0
+Acceleration = 0.3
 RisingJumpTime = 0.4
 FallingJumpTime = 0.3
 AirSpeed = 1500.0
-AirResistance = 0.005
 DashDistance = 2048.0
-Speed = 1542.0
 SwingSpeed = 0.1
 SlideFriction = 0.01
 GrapplePull = 1024.0

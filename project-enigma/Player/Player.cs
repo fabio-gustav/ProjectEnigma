@@ -5,27 +5,57 @@ public partial class Player : CharacterBody2D
 {
    /*
     * Export Variables
+    *
+    * Common Movement
+    */
+   [Export] public float Acceleration { get; set; } = 0.25f;
+   [Export] public float RideAcceleration { get; set; } = 0.25f;
+   
+   
+   
+   
+   /*
+    * Jump Stuff
+    */
+   [Export] public float RisingJumpTime { get; set; } = 0.2f;
+   [Export] public float FallingJumpTime { get; set; } = 0.2f;
+   [Export] public float JumpHeight { get; set; } = 0.2f;
+   [Export] public float RideRisingJumpTime { get; set; } = 0.2f;
+   [Export] public float RideFallingJumpTime { get; set; } = 0.2f;
+   [Export] public float RideJumpHeight { get; set; } = 0.2f;
+   [Export] public double DashDistance { get; set; } = 0.2;
+   [Export] public double WallSlideGravity { get; set; } = 0.2;
+   
+   /*
+    * Top Speeds
+    */
+   [Export] public float Speed { get; set; } = 0.2f;
+   [Export] public float AirSpeed { get; set; } = 0.2f;
+   [Export] public float RideSpeed { get; set; } = 0.2f;
+   [Export] public double SwingSpeed { get; set; } = 0.2;
+   
+   /*
+    * Resistance
+    */
+   [Export] public float Friction { get; set; } = 0.2f;
+   [Export] public double SlideFriction { get; set; } = 0.2;
+   [Export] public float RideFriction { get; set; } = 0.2f;
+   
+   
+   
+   /*
+    * Grapple Stuff
+    */
+   [Export] public double GrapplePull { get; set; } = 0.2;
+   [Export] public double GrapplePullSpeed { get; set; } = 0.2;
+   
+   
+   /*
+    * Timers and Things
     */
    [Export] public double CoyoteTime { get; set; } = 0.2;
    [Export] public double JumpBufferTime { get; set; } = 0.1;
    [Export] public double DashCoolDown { get; set; } = 0.5;
-   [Export] public float Acceleration { get; set; } = 0.25f;
-   
-   [Export] public float JumpHeight { get; set; } = 0.2f;
-   
-   [Export] public float RisingJumpTime { get; set; } = 0.2f;
-   [Export] public float FallingJumpTime { get; set; } = 0.2f;
-   [Export] public float AirSpeed { get; set; } = 0.2f;
-   [Export] public double AirResistance { get; set; } = 0.2;
-   [Export] public double DashDistance { get; set; } = 0.2;
-   [Export] public float Speed { get; set; } = 0.2f;
-   [Export] public float Friction { get; set; } = 0.2f;
-   [Export] public double SwingSpeed { get; set; } = 0.2;
-   [Export] public double SlideFriction { get; set; } = 0.2;
-   [Export] public double GrapplePull { get; set; } = 0.2;
-   [Export] public double WallSlideGravity { get; set; } = 0.2;
-   [Export] public double GrapplePullSpeed { get; set; } = 0.2;
-
    /*
     * Local Variables
     */
@@ -44,6 +74,7 @@ public partial class Player : CharacterBody2D
    public Timer JumpBufferTimer = null;
    public PlayerSprite PlayerSprite = null;
    private MovementStateMachine _stateMachine = null;
+   public bool IsRiding;
    
    public override void _Ready()
    {
@@ -56,6 +87,7 @@ public partial class Player : CharacterBody2D
       FloorMaxAngle = Mathf.DegToRad(80.0f);
       FloorSnapLength = 10.0f;
       FloorStopOnSlope = false;
+      IsRiding = false;
 
       PlayerSprite = GetNode<PlayerSprite>("PlayerSprite");
       
