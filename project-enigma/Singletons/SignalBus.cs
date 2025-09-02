@@ -7,7 +7,10 @@ public partial class SignalBus : Node
     public delegate void ChangeMoneyEventHandler(int money);
     [Signal]
     public delegate void MoneyChangedEventHandler(int money);
-    
+
     [Signal]
     public delegate void HealthChangedEventHandler(int health);
+
+    [Signal]
+    public delegate void PlayerStateChangeDebugEventHandler(State state);
 }

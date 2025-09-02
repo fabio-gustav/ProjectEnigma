@@ -61,7 +61,7 @@ public partial class PauseMenu : Control
     //I implemented this function stupidly, maybe fix later if it matters
     public override void _Input(InputEvent @event)
     {
-        if (Input.IsActionPressed("pause"))
+        if (Input.IsActionJustPressed("pause"))
         {
             Swap();
         }
