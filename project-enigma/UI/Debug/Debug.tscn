@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://iymvxfq4kiyo"]
+
+[ext_resource type="Script" uid="uid://dwai4p0b0vgqx" path="res://UI/Debug/Debug.cs" id="1_513p1"]
+
+[node name="Debug" type="Control"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -8.0
+offset_right = 8.0
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_513p1")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 2
+offset_top = -174.0
+offset_right = 287.0
+offset_bottom = 8.0
+text = "AAAAAAAAAA"
