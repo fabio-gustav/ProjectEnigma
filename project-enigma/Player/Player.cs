@@ -32,6 +32,7 @@ public partial class Player : CharacterBody2D
    [Export] public float Speed { get; set; } = 0.2f;
    [Export] public float AirSpeed { get; set; } = 0.2f;
    [Export] public float RideSpeed { get; set; } = 0.2f;
+   [Export] public float RideAirSpeed { get; set; } = 0.2f;
    [Export] public double SwingSpeed { get; set; } = 0.2;
    
    /*
