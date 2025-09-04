@@ -8,6 +8,7 @@ public partial class PlayerFalling : State
     [Export] public State IdleState { get; set; } = null;
     [Export] public State JumpState { get; set; } = null;
     [Export] public State RideState { get; set; } = null;
+    [Export] public State RunState { get; set; } = null;
 
     private float _fallGravity = 0.0f;
 
@@ -55,6 +56,10 @@ public partial class PlayerFalling : State
 
         if (Player.IsOnFloor())
         {
+            if (GetInput() != 0.0f)
+            {
+                return RunState;
+            }
             //Ride State Logic goes here eventually
             return IdleState;
         }

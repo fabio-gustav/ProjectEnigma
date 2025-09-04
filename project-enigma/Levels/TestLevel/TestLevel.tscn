@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://ck8x0hhhif37p"]
+[gd_scene load_steps=9 format=3 uid="uid://ck8x0hhhif37p"]
 
 [ext_resource type="PackedScene" uid="uid://bqgg3mfv3sdlg" path="res://Player/player.tscn" id="1_8a0p6"]
 [ext_resource type="PackedScene" uid="uid://b53cfcwrjaq5h" path="res://UI/UILayer/UILayer.tscn" id="1_h5s4c"]
 [ext_resource type="Texture2D" uid="uid://canfy5jh2d5cm" path="res://Levels/TestLevel/Art/256Engima_Grid.png" id="1_iriom"]
+[ext_resource type="PackedScene" uid="uid://cj18bm1lutttq" path="res://grapple_node.tscn" id="4_ccra0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f3sb7"]
 size = Vector2(99909, 333.5)
@@ -172,3 +173,12 @@ position = Vector2(10673, 17836)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D19"]
 position = Vector2(-64342, -22738)
 shape = SubResource("RectangleShape2D_b7glj")
+
+[node name="GrappleNode" parent="." instance=ExtResource("4_ccra0")]
+position = Vector2(2380, -500)
+
+[node name="GrappleNode2" parent="." instance=ExtResource("4_ccra0")]
+position = Vector2(4691, -674)
+
+[node name="GrappleNode3" parent="." instance=ExtResource("4_ccra0")]
+position = Vector2(10219, -921)
