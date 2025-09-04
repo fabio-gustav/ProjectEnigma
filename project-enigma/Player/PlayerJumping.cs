@@ -26,11 +26,11 @@ public partial class PlayerJumping : State
 
         if (Player.IsRiding)
         {
-            Player.Velocity = new Vector2(Player.Velocity.X, Player.Velocity.Y + _ridingJumpVelocity);
+            Player.Velocity = new Vector2(Player.Velocity.X, _ridingJumpVelocity);
         }
         else
         {
-            Player.Velocity = new Vector2(Player.Velocity.X, Player.Velocity.Y + _jumpVelocity);
+            Player.Velocity = new Vector2(Player.Velocity.X, _jumpVelocity);
         }
         
         Player._jumpAvailable = false;
