@@ -64,84 +64,72 @@ shape = SubResource("RectangleShape2D_iriom")
 position = Vector2(2609, 1124)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D4"]
-position = Vector2(19.75, 3)
 shape = SubResource("RectangleShape2D_iriom")
 
 [node name="StaticBody2D5" type="StaticBody2D" parent="Platforms"]
 position = Vector2(3866, 1128)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D5"]
-position = Vector2(28.375, 3)
 shape = SubResource("RectangleShape2D_iriom")
 
 [node name="StaticBody2D6" type="StaticBody2D" parent="Platforms"]
 position = Vector2(5399, 1130)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D6"]
-position = Vector2(32, 3)
 shape = SubResource("RectangleShape2D_iriom")
 
 [node name="StaticBody2D7" type="StaticBody2D" parent="Platforms"]
 position = Vector2(7191, 1132)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D7"]
-position = Vector2(28.375, 3)
 shape = SubResource("RectangleShape2D_iriom")
 
 [node name="StaticBody2D8" type="StaticBody2D" parent="Platforms"]
 position = Vector2(9242, 1128)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D8"]
-position = Vector2(28.375, 3)
 shape = SubResource("RectangleShape2D_iriom")
 
 [node name="StaticBody2D9" type="StaticBody2D" parent="Platforms"]
 position = Vector2(10527, 872)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D9"]
-position = Vector2(28.375, 3)
 shape = SubResource("RectangleShape2D_iriom")
 
 [node name="StaticBody2D10" type="StaticBody2D" parent="Platforms"]
 position = Vector2(11812, 361)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D10"]
-position = Vector2(28.375, 3)
 shape = SubResource("RectangleShape2D_iriom")
 
 [node name="StaticBody2D11" type="StaticBody2D" parent="Platforms"]
 position = Vector2(12828, -406)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D11"]
-position = Vector2(28.375, 3)
 shape = SubResource("RectangleShape2D_iriom")
 
 [node name="StaticBody2D12" type="StaticBody2D" parent="Platforms"]
 position = Vector2(13857, -1422)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D12"]
-position = Vector2(28.375, 3)
 shape = SubResource("RectangleShape2D_iriom")
 
 [node name="StaticBody2D13" type="StaticBody2D" parent="Platforms"]
 position = Vector2(14360, -661)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D13"]
-position = Vector2(28.375, 3)
 shape = SubResource("RectangleShape2D_iriom")
 
 [node name="StaticBody2D14" type="StaticBody2D" parent="Platforms"]
 position = Vector2(16149, -923)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D14"]
-position = Vector2(28.375, 3)
 shape = SubResource("RectangleShape2D_iriom")
 
 [node name="StaticBody2D15" type="StaticBody2D" parent="Platforms"]
 position = Vector2(17687, -1428)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D15"]
-position = Vector2(28.375, 3)
 shape = SubResource("RectangleShape2D_iriom")
 
 [node name="Walls" type="Node2D" parent="."]
