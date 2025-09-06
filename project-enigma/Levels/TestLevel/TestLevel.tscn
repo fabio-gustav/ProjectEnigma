@@ -1,12 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://ck8x0hhhif37p"]
+[gd_scene load_steps=10 format=3 uid="uid://ck8x0hhhif37p"]
 
 [ext_resource type="PackedScene" uid="uid://bqgg3mfv3sdlg" path="res://Player/player.tscn" id="1_8a0p6"]
 [ext_resource type="PackedScene" uid="uid://b53cfcwrjaq5h" path="res://UI/UILayer/UILayer.tscn" id="1_h5s4c"]
 [ext_resource type="Texture2D" uid="uid://canfy5jh2d5cm" path="res://Levels/TestLevel/Art/256Engima_Grid.png" id="1_iriom"]
 [ext_resource type="PackedScene" uid="uid://cj18bm1lutttq" path="res://grapple_node.tscn" id="4_ccra0"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3sb7"]
-size = Vector2(99909, 333.5)
+[ext_resource type="PackedScene" uid="uid://buq5j4wq2m7j0" path="res://platform.tscn" id="4_htab2"]
+[ext_resource type="PackedScene" uid="uid://bapqtpx7jiojh" path="res://small_platform.tscn" id="5_i1cjp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iriom"]
 size = Vector2(1014, 133)
@@ -39,21 +38,10 @@ stretch_mode = 1
 
 [node name="Platforms" type="Node2D" parent="."]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Platforms"]
-collision_layer = 2
+[node name="StaticBody2D" parent="Platforms" instance=ExtResource("4_htab2")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D"]
-position = Vector2(-4089, 2251)
-shape = SubResource("RectangleShape2D_f3sb7")
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="Platforms"]
-position = Vector2(1071, 1646)
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D2"]
-position = Vector2(8, 3)
-shape = SubResource("RectangleShape2D_iriom")
+[node name="StaticBody2D2" parent="Platforms" instance=ExtResource("5_i1cjp")]
+position = Vector2(-12355, 708)
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Platforms"]
 position = Vector2(1861, 1383)
@@ -176,3 +164,5 @@ position = Vector2(-7513, -710)
 
 [node name="GrappleNode3" parent="." instance=ExtResource("4_ccra0")]
 position = Vector2(10219, -921)
+
+[editable path="Platforms/StaticBody2D2"]

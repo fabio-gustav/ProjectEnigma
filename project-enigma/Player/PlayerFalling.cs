@@ -54,13 +54,14 @@ public partial class PlayerFalling : State
     {
         if (Player.IsRiding)
         {
-            //float.Lerp(Player.Velocity.X, Mathf.Clamp((Player.RideAirSpeed*GetInput())+Player.Velocity.X,-Player.RideSpeed,Player.RideSpeed), Player.RideAcceleration)
-            Player.Velocity = new Vector2(Player.Velocity.X, Player.Velocity.Y + (float)(_fallGravity * delta));
+            //Need to clamp the airmovement input without limiting max air speed
+            //float.Lerp(Player.Velocity.X, Mathf.Clamp((Player.RideAirSpeed*GetInput())+Player.Velocity.X,Player.Velocity.X-Player.RideSpeed,Player.Velocity.X + Player.RideSpeed), Player.RideAcceleration)
+            Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, (Player.RideAirSpeed*GetInput())+Player.Velocity.X, Player.RideAcceleration), Player.Velocity.Y + (float)(_fallGravity * delta));
         }
         else
         {
-            //float.Lerp(Player.Velocity.X, Mathf.Clamp((Player.AirSpeed*GetInput())+Player.Velocity.X,-Player.Speed,Player.Speed), Player.Acceleration)
-            Player.Velocity = new Vector2(Player.Velocity.X, Player.Velocity.Y + (float)(_fallGravity * delta));
+            //float.Lerp(Player.Velocity.X, Mathf.Clamp((Player.AirSpeed*GetInput())+Player.Velocity.X, Player.Velocity.X-Player.Speed, Player.Velocity.X + Player.Speed), Player.Acceleration)
+            Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, (Player.AirSpeed*GetInput())+Player.Velocity.X, Player.Acceleration), Player.Velocity.Y + (float)(_fallGravity * delta));
         }
         
         
