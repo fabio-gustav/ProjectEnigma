@@ -52,7 +52,7 @@ public partial class PlayerGrappling : State
     {
         Player.Velocity = new Vector2(Player.Velocity.X, Player.Velocity.Y + (float)(_fallGravity * delta));
         Swing(delta);
-        //Player.velocity *= 0.98;
+        Player.Velocity *= 0.98f;
 
         if (Player.IsOnFloor())
         {
@@ -89,7 +89,7 @@ public partial class PlayerGrappling : State
             Player.Velocity += Player.Velocity.Normalized() * (float)(Player.SwingSpeed * radius.Length());
         }
         
-        if (Input.IsActionPressed("right") && Player.Velocity.X < 0)
+        if (Input.IsActionPressed("left") && Player.Velocity.X < 0)
         {
             Player.Velocity += Player.Velocity.Normalized() * (float)(Player.SwingSpeed * radius.Length());
         }

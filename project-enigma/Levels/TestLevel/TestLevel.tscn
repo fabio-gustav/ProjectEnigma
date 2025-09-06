@@ -40,14 +40,16 @@ stretch_mode = 1
 [node name="Platforms" type="Node2D" parent="."]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Platforms"]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D"]
-position = Vector2(-4089.5, 2299.75)
+position = Vector2(-4089, 2251)
 shape = SubResource("RectangleShape2D_f3sb7")
-one_way_collision = true
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Platforms"]
 position = Vector2(1071, 1646)
+collision_layer = 2
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D2"]
 position = Vector2(8, 3)
@@ -55,6 +57,8 @@ shape = SubResource("RectangleShape2D_iriom")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Platforms"]
 position = Vector2(1861, 1383)
+collision_layer = 2
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D3"]
 position = Vector2(8, 3)
@@ -62,6 +66,8 @@ shape = SubResource("RectangleShape2D_iriom")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="Platforms"]
 position = Vector2(2609, 1124)
+collision_layer = 2
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D4"]
 shape = SubResource("RectangleShape2D_iriom")
@@ -163,10 +169,10 @@ position = Vector2(-64342, -22738)
 shape = SubResource("RectangleShape2D_b7glj")
 
 [node name="GrappleNode" parent="." instance=ExtResource("4_ccra0")]
-position = Vector2(2380, -500)
+position = Vector2(-4031, -1036)
 
 [node name="GrappleNode2" parent="." instance=ExtResource("4_ccra0")]
-position = Vector2(4691, -674)
+position = Vector2(-7513, -710)
 
 [node name="GrappleNode3" parent="." instance=ExtResource("4_ccra0")]
 position = Vector2(10219, -921)

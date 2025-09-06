@@ -38,7 +38,7 @@ public partial class PlayerJumping : State
 
     public override void Exit()
     {
-        Player.Velocity = new Vector2(Player.Velocity.X, 0.0f);
+        //Player.Velocity = new Vector2(Player.Velocity.X, 0.0f);
         _jumpGravity = ((-2.0f * Player.JumpHeight) / (Player.RisingJumpTime * Player.RisingJumpTime)) * -1.0f;
         _ridingJumpGravity = ((-2.0f * Player.RideJumpHeight) / (Player.RideRisingJumpTime * Player.RideRisingJumpTime)) * -1.0f;
     }
@@ -46,6 +46,7 @@ public partial class PlayerJumping : State
     public override State ProcessInput(InputEvent @event)
     {
         //fix this name later
+        //GD.Print(Player.GrappleCheck());
         if (Player.GrappleCheck() && @event.IsActionPressed("grapple"))
         {
             return GrappleState;
@@ -59,11 +60,13 @@ public partial class PlayerJumping : State
 
         if (Player.IsRiding)
         {
-            Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, Mathf.Clamp((Player.RideAirSpeed*GetInput())+Player.Velocity.X,-Player.RideSpeed,Player.RideSpeed), Player.Acceleration), Player.Velocity.Y + (float)(_jumpGravity * delta));
+            //float.Lerp(Player.Velocity.X, Mathf.Clamp((Player.RideAirSpeed*GetInput())+Player.Velocity.X,-Player.RideSpeed,Player.RideSpeed), Player.RideAcceleration)
+            Player.Velocity = new Vector2(Player.Velocity.X, Player.Velocity.Y + (float)(_jumpGravity * delta));
         }
         else
         {
-            Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, Mathf.Clamp((Player.AirSpeed*GetInput())+Player.Velocity.X,-Player.Speed,Player.Speed), Player.Acceleration), Player.Velocity.Y + (float)(_jumpGravity * delta));
+            //float.Lerp(Player.Velocity.X, Mathf.Clamp((Player.AirSpeed*GetInput())+Player.Velocity.X,-Player.Speed,Player.Speed), Player.Acceleration)
+            Player.Velocity = new Vector2(Player.Velocity.X, Player.Velocity.Y + (float)(_jumpGravity * delta));
         }
         //Acceleration needs to be fixed, also I'm getting rid of AirResistance because it is dumb and stupid
         

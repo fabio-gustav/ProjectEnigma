@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bqgg3mfv3sdlg"]
+[gd_scene load_steps=35 format=3 uid="uid://bqgg3mfv3sdlg"]
 
 [ext_resource type="Script" uid="uid://ceu4vsundxotx" path="res://Player/Player.cs" id="1_l8h54"]
 [ext_resource type="PackedScene" uid="uid://bxq0ktkymhtkr" path="res://Components/money_component.tscn" id="2_4ntmi"]
@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://c4568gfyrc2qm" path="res://Player/Sprite Sheets/GunR.png" id="22_j2n6q"]
 [ext_resource type="Texture2D" uid="uid://baa1j225hi26x" path="res://Player/Sprite Sheets/GunUR.png" id="23_c6x0f"]
 [ext_resource type="Texture2D" uid="uid://b4u1u2mwlorbe" path="res://Player/Sprite Sheets/GunU.png" id="24_jp1hh"]
+[ext_resource type="Texture2D" uid="uid://0ru7po8a1a67" path="res://Grapple_Point_Arrow.png" id="26_sm0op"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o28un"]
 radius = 124.0
@@ -136,15 +137,16 @@ size = Vector2(362, 152.5)
 size = Vector2(961, 587.5)
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 2
 script = ExtResource("1_l8h54")
 Acceleration = 0.3
 RideAcceleration = 0.15
 RisingJumpTime = 0.4
 FallingJumpTime = 0.3
-JumpHeight = 768.0
+JumpHeight = 1024.0
 RideRisingJumpTime = 0.4
 RideFallingJumpTime = 0.3
-RideJumpHeight = 768.0
+RideJumpHeight = 1024.0
 DashDistance = 2048.0
 WallSlideGravity = 5500.0
 Speed = 1542.0
@@ -194,12 +196,14 @@ JumpState = NodePath("../Jumping")
 FallState = NodePath("../Falling")
 IdleState = NodePath("../Idle")
 
-[node name="Jumping" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("FallState")]
+[node name="Jumping" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("GrappleState", "FallState")]
 script = ExtResource("10_apopc")
+GrappleState = NodePath("../Grappling")
 FallState = NodePath("../Falling")
 
-[node name="Falling" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("IdleState", "JumpState", "RunState")]
+[node name="Falling" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("GrappleState", "IdleState", "JumpState", "RunState")]
 script = ExtResource("11_5htga")
+GrappleState = NodePath("../Grappling")
 IdleState = NodePath("../Idle")
 JumpState = NodePath("../Jumping")
 RunState = NodePath("../Running")
@@ -234,6 +238,15 @@ animation = &"Idle"
 gizmo_extents = 0.0
 
 [node name="GrappleCast" type="RayCast2D" parent="."]
+target_position = Vector2(8000, 0)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Sprite2D" type="Sprite2D" parent="GrappleCast"]
+position = Vector2(550, 0)
+rotation = 1.5708
+texture = ExtResource("26_sm0op")
 
 [node name="AttackComponent" type="Area2D" parent="GrappleCast"]
 script = ExtResource("8_od3ui")
@@ -243,8 +256,6 @@ visible = false
 position = Vector2(394, 63)
 shape = SubResource("RectangleShape2D_7emwf")
 debug_color = Color(0.95443, 0.0951466, 0.482466, 0.42)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="InteractionArea" type="Area2D" parent="."]
 visible = false
