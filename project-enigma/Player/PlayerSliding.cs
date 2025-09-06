@@ -9,7 +9,7 @@ public partial class PlayerSliding : State
     [Export] public State FallState { get; set; } = null;
     public override void Enter()
     {
-        GD.Print("Sliding");
+        //GD.Print("Sliding");
         Player._jumpAvailable = true;
         //Player.PlayerSprite.PlayBodyAnimation("Slide");
     }

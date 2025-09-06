@@ -4,7 +4,6 @@ using System;
 public partial class PlayerRunning : State
 {
     [Export] public State JumpState { get; set; } = null;
-    [Export] public State WalkState { get; set; } = null;
     [Export] public State FallState { get; set; } = null;
     [Export] public State IdleState { get; set; } = null;
     [Export] public State SlideState { get; set; } = null;

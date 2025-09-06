@@ -7,7 +7,6 @@ public partial class PlayerFalling : State
     [Export] public State ParryState { get; set; } = null;
     [Export] public State IdleState { get; set; } = null;
     [Export] public State JumpState { get; set; } = null;
-    [Export] public State RideState { get; set; } = null;
     [Export] public State RunState { get; set; } = null;
 
     private float _fallGravity = 0.0f;

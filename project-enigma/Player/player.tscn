@@ -140,7 +140,7 @@ size = Vector2(961, 587.5)
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 2
 script = ExtResource("1_l8h54")
-Acceleration = 5.0
+Acceleration = 9.0
 RideAcceleration = 0.15
 RisingJumpTime = 0.4
 FallingJumpTime = 0.3
@@ -155,7 +155,7 @@ AirSpeed = 256.0
 RideSpeed = 4500.0
 RideAirSpeed = 1500.0
 SwingSpeed = 0.1
-Friction = 4.0
+Friction = 6.0
 SlideFriction = 0.01
 RideFriction = 0.08
 GrapplePull = 1024.0
@@ -186,10 +186,10 @@ script = ExtResource("6_fhl08")
 script = ExtResource("7_vtle1")
 InitialState = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("JumpState", "WalkState", "FallState")]
+[node name="Idle" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("JumpState", "RunState", "FallState")]
 script = ExtResource("8_00tjw")
 JumpState = NodePath("../Jumping")
-WalkState = NodePath("../Running")
+RunState = NodePath("../Running")
 FallState = NodePath("../Falling")
 
 [node name="Running" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("JumpState", "FallState", "IdleState", "SlideState")]

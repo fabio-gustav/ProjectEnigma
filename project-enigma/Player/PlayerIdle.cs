@@ -4,7 +4,7 @@ using System;
 public partial class PlayerIdle : State
 {
     [Export] public State JumpState { get; set; } = null;
-    [Export] public State WalkState { get; set; } = null;
+    [Export] public State RunState { get; set; } = null;
     [Export] public State FallState { get; set; } = null;
     public override void Enter()
     {
@@ -23,7 +23,7 @@ public partial class PlayerIdle : State
 
         if (Mathf.Abs(GetInput()) > 0.2f)
         {
-            return WalkState;
+            return RunState;
         }
 
         return null;
