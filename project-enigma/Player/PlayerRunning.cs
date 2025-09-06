@@ -39,11 +39,11 @@ public partial class PlayerRunning : State
         if (Player.IsRiding)
         {
             //Movement for ride state
-            Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, Player.RideSpeed*GetInput(), Player.RideAcceleration),Player.Velocity.Y);
+            Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, Player.RideSpeed*GetInput(), Player.RideAcceleration*(float)delta),Player.Velocity.Y);
         }
         else
         {
-            Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, Player.Speed*GetInput(), Player.Acceleration),Player.Velocity.Y);
+            Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, Player.Speed*GetInput(), Player.Acceleration*(float)delta),Player.Velocity.Y);
         }
         
         if (Input.IsActionPressed("slide"))
@@ -51,15 +51,15 @@ public partial class PlayerRunning : State
             return SlideState;
         }
         
-        if (GetInput() == 0.0f)
+        if (Mathf.Abs(GetInput()) < 0.2f)
         {
             if (Player.IsRiding)
             {
-                Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, 0.0f, Player.RideFriction),Player.Velocity.Y);
+                Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, 0.0f, Player.RideFriction*(float)delta),Player.Velocity.Y);
             }
             else
             {
-                Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, 0.0f, Player.Friction),Player.Velocity.Y);
+                Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, 0.0f, Player.Friction*(float)delta),Player.Velocity.Y);
             }
             
         }
@@ -75,7 +75,8 @@ public partial class PlayerRunning : State
             return FallState;
         }
 
-        if (Player.Velocity.Abs().X < 0.001f)
+        //Float here basically controls our deadzone
+        if (Player.Velocity.Abs().X < 40.0f)
         {
             Player.IsRiding = false;
             return IdleState;

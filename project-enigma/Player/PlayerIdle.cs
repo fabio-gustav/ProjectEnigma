@@ -21,7 +21,7 @@ public partial class PlayerIdle : State
             return JumpState;
         }
 
-        if (Player.Velocity.Abs().X >= 0.001f || GetInput() != 0.0)
+        if (Mathf.Abs(GetInput()) > 0.2f)
         {
             return WalkState;
         }
@@ -42,7 +42,7 @@ public partial class PlayerIdle : State
         }
         
         Player.PlayerLook();
-        Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, 0.0f, Player.Friction),Player.Velocity.Y);
+        Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, 0.0f, Player.Friction*(float)delta),Player.Velocity.Y);
         Player._jumpAvailable = true;
         Player._coyoteTimer.Stop();
         return null;
