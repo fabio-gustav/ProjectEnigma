@@ -4,10 +4,19 @@ using System;
 public partial class State : Node
 {
     protected Player Player = null;
+    protected CharacterBody2D GenericCharacter = null;
 
     public override void _Ready()
     {
-        Player = GetParent().GetParent<Player>();
+        if (GetParent().GetParent() is Player)
+        {
+            Player = GetParent().GetParent<Player>();
+        }
+        else
+        {
+            GenericCharacter = GetParent().GetParent<CharacterBody2D>();
+        }
+        
     }
     
     public virtual void Init() {}
