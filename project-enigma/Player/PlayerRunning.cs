@@ -23,10 +23,7 @@ public partial class PlayerRunning : State
             return JumpState;
         }
 
-        if (@event.IsActionPressed("slide"))
-        {
-            return SlideState;
-        }
+        
 
         if (@event.IsActionPressed("energy"))
         {
@@ -49,7 +46,10 @@ public partial class PlayerRunning : State
             Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, Player.Speed*GetInput(), Player.Acceleration),Player.Velocity.Y);
         }
         
-        
+        if (Input.IsActionPressed("slide"))
+        {
+            return SlideState;
+        }
         
         if (GetInput() == 0.0f)
         {

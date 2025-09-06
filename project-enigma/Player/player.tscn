@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bqgg3mfv3sdlg"]
+[gd_scene load_steps=36 format=3 uid="uid://bqgg3mfv3sdlg"]
 
 [ext_resource type="Script" uid="uid://ceu4vsundxotx" path="res://Player/Player.cs" id="1_l8h54"]
 [ext_resource type="PackedScene" uid="uid://bxq0ktkymhtkr" path="res://Components/money_component.tscn" id="2_4ntmi"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://br5o35htcfdws" path="res://Player/PlayerFalling.cs" id="11_5htga"]
 [ext_resource type="Script" uid="uid://v82m18cf7uvf" path="res://Player/PlayerGrappling.cs" id="12_p5o4e"]
 [ext_resource type="Script" uid="uid://cp66ape1basl5" path="res://Player/PlayerSprite.cs" id="13_8viyr"]
+[ext_resource type="Script" uid="uid://dbrj43vrp8gwe" path="res://Player/PlayerSliding.cs" id="13_76lrf"]
 [ext_resource type="Texture2D" uid="uid://dh1lmh70801ry" path="res://Player/Sprite Sheets/Falling.png" id="13_qemgg"]
 [ext_resource type="Texture2D" uid="uid://dr5ewplkfnb33" path="res://Player/Sprite Sheets/Base.png" id="14_8viyr"]
 [ext_resource type="Texture2D" uid="uid://dillvhsa5b7u7" path="res://Player/Sprite Sheets/Run1.png" id="15_sm0op"]
@@ -150,7 +151,7 @@ RideJumpHeight = 1024.0
 DashDistance = 2048.0
 WallSlideGravity = 5500.0
 Speed = 3500.0
-AirSpeed = 1500.0
+AirSpeed = 256.0
 RideSpeed = 4500.0
 RideAirSpeed = 1500.0
 SwingSpeed = 0.1
@@ -190,11 +191,12 @@ JumpState = NodePath("../Jumping")
 WalkState = NodePath("../Running")
 FallState = NodePath("../Falling")
 
-[node name="Running" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("JumpState", "FallState", "IdleState")]
+[node name="Running" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("JumpState", "FallState", "IdleState", "SlideState")]
 script = ExtResource("9_x3vf3")
 JumpState = NodePath("../Jumping")
 FallState = NodePath("../Falling")
 IdleState = NodePath("../Idle")
+SlideState = NodePath("../Sliding")
 
 [node name="Jumping" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("GrappleState", "FallState")]
 script = ExtResource("10_apopc")
@@ -213,6 +215,12 @@ script = ExtResource("12_p5o4e")
 FallState = NodePath("../Falling")
 IdleState = NodePath("../Idle")
 JumpState = NodePath("../Jumping")
+
+[node name="Sliding" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("JumpState", "RunState", "FallState")]
+script = ExtResource("13_76lrf")
+JumpState = NodePath("../Jumping")
+RunState = NodePath("../Running")
+FallState = NodePath("../Falling")
 
 [node name="PlayerSprite" type="Node2D" parent="."]
 script = ExtResource("13_8viyr")

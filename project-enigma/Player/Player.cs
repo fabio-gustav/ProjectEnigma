@@ -39,7 +39,7 @@ public partial class Player : CharacterBody2D
 	* Resistance
 	*/
    [Export] public float Friction { get; set; } = 0.2f;
-   [Export] public double SlideFriction { get; set; } = 0.2;
+   [Export] public float SlideFriction { get; set; } = 0.2f;
    [Export] public float RideFriction { get; set; } = 0.2f;
    
    
