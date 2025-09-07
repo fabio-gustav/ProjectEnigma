@@ -4,10 +4,8 @@ using System;
 public partial class PlayerRunning : State
 {
     [Export] public State JumpState { get; set; } = null;
-    [Export] public State WalkState { get; set; } = null;
     [Export] public State FallState { get; set; } = null;
     [Export] public State IdleState { get; set; } = null;
-    [Export] public State RideState { get; set; } = null;
     [Export] public State SlideState { get; set; } = null;
     [Export] public State ParryState { get; set; } = null;
 
@@ -24,9 +22,12 @@ public partial class PlayerRunning : State
             return JumpState;
         }
 
-        if (@event.IsActionPressed("slide"))
+        
+
+        if (@event.IsActionPressed("energy"))
         {
-            return SlideState;
+            //spend energy logic
+            Player.IsRiding = true;
         }
 
         return null;
@@ -34,11 +35,32 @@ public partial class PlayerRunning : State
 
     public override State PhysicsUpdate(double delta)
     {
-        Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, Player.Speed*GetInput(), Player.Acceleration),Player.Velocity.Y);
-
-        if (GetInput() == 0.0)
+        if (Player.IsRiding)
         {
-            Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, 0.0f, Player.Friction),Player.Velocity.Y);
+            //Movement for ride state
+            Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, Player.RideSpeed*GetInput(), Player.RideAcceleration*(float)delta),Player.Velocity.Y);
+        }
+        else
+        {
+            Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, Player.Speed*GetInput(), Player.Acceleration*(float)delta),Player.Velocity.Y);
+        }
+        
+        if (Input.IsActionPressed("slide"))
+        {
+            return SlideState;
+        }
+        
+        if (Mathf.Abs(GetInput()) < 0.2f)
+        {
+            if (Player.IsRiding)
+            {
+                Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, 0.0f, Player.RideFriction*(float)delta),Player.Velocity.Y);
+            }
+            else
+            {
+                Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, 0.0f, Player.Friction*(float)delta),Player.Velocity.Y);
+            }
+            
         }
 
         if (!Player.IsOnFloor())
@@ -52,21 +74,12 @@ public partial class PlayerRunning : State
             return FallState;
         }
 
-        if (Player.Velocity.Abs().X < 0.001f)
+        //Float here basically controls our deadzone
+        if (Player.Velocity.Abs().X < 40.0f)
         {
+            Player.IsRiding = false;
             return IdleState;
-        }
-        
-          /*
-           * if abs(parent.velocity.x) < parent.walk_speed:
-		    #legs.stop()
-		    #arm.stop()
-		    return walk_state
-	        if abs(parent.velocity.x) > parent.run_speed - 400:
-		    ##legs.stop()
-		    ##arm.stop()
-		    #return surf_state
-           */
-      return null;
+        } 
+        return null;
     }
 }

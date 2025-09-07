@@ -1,3 +1,4 @@
+
 [gd_scene load_steps=35 format=3 uid="uid://bqgg3mfv3sdlg"]
 
 [ext_resource type="Script" uid="uid://ceu4vsundxotx" path="res://Player/Player.cs" id="1_l8h54"]
@@ -14,6 +15,7 @@
 [ext_resource type="Script" uid="uid://br5o35htcfdws" path="res://Player/PlayerFalling.cs" id="11_5htga"]
 [ext_resource type="Script" uid="uid://v82m18cf7uvf" path="res://Player/PlayerGrappling.cs" id="12_p5o4e"]
 [ext_resource type="Script" uid="uid://cp66ape1basl5" path="res://Player/PlayerSprite.cs" id="13_8viyr"]
+[ext_resource type="Script" uid="uid://dbrj43vrp8gwe" path="res://Player/PlayerSliding.cs" id="13_76lrf"]
 [ext_resource type="Texture2D" uid="uid://dh1lmh70801ry" path="res://Player/Sprite Sheets/Falling.png" id="13_qemgg"]
 [ext_resource type="Texture2D" uid="uid://dr5ewplkfnb33" path="res://Player/Sprite Sheets/Base.png" id="14_8viyr"]
 [ext_resource type="Texture2D" uid="uid://dillvhsa5b7u7" path="res://Player/Sprite Sheets/Run1.png" id="15_sm0op"]
@@ -26,7 +28,10 @@
 [ext_resource type="Texture2D" uid="uid://c4568gfyrc2qm" path="res://Player/Sprite Sheets/GunR.png" id="22_j2n6q"]
 [ext_resource type="Texture2D" uid="uid://baa1j225hi26x" path="res://Player/Sprite Sheets/GunUR.png" id="23_c6x0f"]
 [ext_resource type="Texture2D" uid="uid://b4u1u2mwlorbe" path="res://Player/Sprite Sheets/GunU.png" id="24_jp1hh"]
+
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="27_sm0op"]
+
+
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o28un"]
 radius = 124.0
@@ -137,19 +142,27 @@ size = Vector2(362, 152.5)
 size = Vector2(961, 587.5)
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 2
 script = ExtResource("1_l8h54")
-Acceleration = 0.3
-JumpHeight = 768.0
+Acceleration = 9.0
+RideAcceleration = 0.15
 RisingJumpTime = 0.4
 FallingJumpTime = 0.3
-AirSpeed = 1500.0
-AirResistance = 0.005
+JumpHeight = 1024.0
+RideRisingJumpTime = 0.4
+RideFallingJumpTime = 0.3
+RideJumpHeight = 1024.0
 DashDistance = 2048.0
-Speed = 1542.0
-SwingSpeed = 0.1
-SlideFriction = 0.01
-GrapplePull = 1024.0
 WallSlideGravity = 5500.0
+Speed = 3500.0
+AirSpeed = 256.0
+RideSpeed = 4500.0
+RideAirSpeed = 1500.0
+SwingSpeed = 0.1
+Friction = 6.0
+SlideFriction = 0.01
+RideFriction = 0.08
+GrapplePull = 1024.0
 GrapplePullSpeed = 800.0
 
 [node name="Collider" type="CollisionShape2D" parent="."]
@@ -176,33 +189,44 @@ script = ExtResource("6_fhl08")
 [node name="MovementStateMachine" type="Node" parent="." node_paths=PackedStringArray("InitialState")]
 script = ExtResource("7_vtle1")
 InitialState = NodePath("Idle")
+IsThisNodePlayer = true
 
-[node name="Idle" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("JumpState", "WalkState", "FallState")]
+[node name="Idle" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("JumpState", "RunState", "FallState")]
 script = ExtResource("8_00tjw")
 JumpState = NodePath("../Jumping")
-WalkState = NodePath("../Running")
+RunState = NodePath("../Running")
 FallState = NodePath("../Falling")
 
-[node name="Running" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("JumpState", "FallState", "IdleState")]
+[node name="Running" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("JumpState", "FallState", "IdleState", "SlideState")]
 script = ExtResource("9_x3vf3")
 JumpState = NodePath("../Jumping")
 FallState = NodePath("../Falling")
 IdleState = NodePath("../Idle")
+SlideState = NodePath("../Sliding")
 
-[node name="Jumping" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("FallState")]
+[node name="Jumping" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("GrappleState", "FallState")]
 script = ExtResource("10_apopc")
+GrappleState = NodePath("../Grappling")
 FallState = NodePath("../Falling")
 
-[node name="Falling" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("IdleState", "JumpState")]
+[node name="Falling" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("GrappleState", "IdleState", "JumpState", "RunState")]
 script = ExtResource("11_5htga")
+GrappleState = NodePath("../Grappling")
 IdleState = NodePath("../Idle")
 JumpState = NodePath("../Jumping")
+RunState = NodePath("../Running")
 
 [node name="Grappling" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("FallState", "IdleState", "JumpState")]
 script = ExtResource("12_p5o4e")
 FallState = NodePath("../Falling")
 IdleState = NodePath("../Idle")
 JumpState = NodePath("../Jumping")
+
+[node name="Sliding" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("JumpState", "RunState", "FallState")]
+script = ExtResource("13_76lrf")
+JumpState = NodePath("../Jumping")
+RunState = NodePath("../Running")
+FallState = NodePath("../Falling")
 
 [node name="PlayerSprite" type="Node2D" parent="."]
 script = ExtResource("13_8viyr")
@@ -228,6 +252,15 @@ animation = &"Idle"
 gizmo_extents = 0.0
 
 [node name="GrappleCast" type="RayCast2D" parent="."]
+target_position = Vector2(8000, 0)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Sprite2D" type="Sprite2D" parent="GrappleCast"]
+position = Vector2(550, 0)
+rotation = 1.5708
+texture = ExtResource("26_sm0op")
 
 [node name="AttackComponent" type="Area2D" parent="GrappleCast"]
 script = ExtResource("8_od3ui")
@@ -237,8 +270,6 @@ visible = false
 position = Vector2(394, 63)
 shape = SubResource("RectangleShape2D_7emwf")
 debug_color = Color(0.95443, 0.0951466, 0.482466, 0.42)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="InteractionArea" type="Area2D" parent="."]
 visible = false

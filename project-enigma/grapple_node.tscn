@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cj18bm1lutttq"]
+
+[ext_resource type="Texture2D" uid="uid://hdepwtunyj25" path="res://grapple (1).png" id="1_lb6ns"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4xotw"]
+radius = 1136.07
+
+[node name="GrappleNode" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 6
+texture = ExtResource("1_lb6ns")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_4xotw")

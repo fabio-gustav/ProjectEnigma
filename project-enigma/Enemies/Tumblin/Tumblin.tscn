@@ -1,0 +1,57 @@
+[gd_scene load_steps=10 format=3 uid="uid://cia557k6nxlpy"]
+
+[ext_resource type="Script" uid="uid://cy7mwf6onph8s" path="res://Enemies/Tumblin/Tumblin.cs" id="1_pwjjn"]
+[ext_resource type="Texture2D" uid="uid://hdepwtunyj25" path="res://grapple (1).png" id="1_tmm4a"]
+[ext_resource type="PackedScene" uid="uid://ngq8shkce1hd" path="res://Components/health_component.tscn" id="2_y3une"]
+[ext_resource type="PackedScene" uid="uid://ciqx84bvpvqid" path="res://Components/hitbox_component.tscn" id="3_lnvne"]
+[ext_resource type="Script" uid="uid://b7q7o311td2by" path="res://StateMachines/MovementStateMachine.cs" id="4_pwjjn"]
+[ext_resource type="Script" uid="uid://b411wbj67yk5a" path="res://Enemies/Tumblin/TumblinFalling.cs" id="6_1m01d"]
+[ext_resource type="Script" uid="uid://cy1jsrr6ydk41" path="res://Enemies/Tumblin/TumblinJumping.cs" id="7_dpwc3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1m01d"]
+radius = 36.0139
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8j8ey"]
+radius = 33.0606
+
+[node name="Tumblin" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_pwjjn")
+Speed = 2048.0
+AirSpeed = 1024.0
+Acceleration = 9.0
+RisingJumpTime = 0.4
+FallingJumpTime = 0.5
+JumpHeight = 512.0
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_y3une")]
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("HealthComponent") instance=ExtResource("3_lnvne")]
+scale = Vector2(5, 5)
+HealthComponent = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_1m01d")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+scale = Vector2(5, 5)
+shape = SubResource("CircleShape2D_8j8ey")
+
+[node name="Sprite" type="Node2D" parent="."]
+
+[node name="TEMPSPRITECHANGELATER" type="Sprite2D" parent="Sprite"]
+scale = Vector2(5, 5)
+texture = ExtResource("1_tmm4a")
+
+[node name="MovementStateMachine" type="Node" parent="." node_paths=PackedStringArray("InitialState")]
+script = ExtResource("4_pwjjn")
+InitialState = NodePath("TumblinFalling")
+
+[node name="TumblinFalling" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("TumblinJumpingState")]
+script = ExtResource("6_1m01d")
+TumblinJumpingState = NodePath("../TumblinJumping")
+
+[node name="TumblinJumping" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("TumblinFallingState")]
+script = ExtResource("7_dpwc3")
+TumblinFallingState = NodePath("../TumblinFalling")

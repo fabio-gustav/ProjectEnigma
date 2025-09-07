@@ -1,12 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://ck8x0hhhif37p"]
+
+[gd_scene load_steps=11 format=3 uid="uid://ck8x0hhhif37p"]
 
 [ext_resource type="PackedScene" uid="uid://bqgg3mfv3sdlg" path="res://Player/player.tscn" id="1_8a0p6"]
 [ext_resource type="PackedScene" uid="uid://b53cfcwrjaq5h" path="res://UI/UILayer/UILayer.tscn" id="1_h5s4c"]
 [ext_resource type="Texture2D" uid="uid://canfy5jh2d5cm" path="res://Levels/TestLevel/Art/256Engima_Grid.png" id="1_iriom"]
-[ext_resource type="PackedScene" uid="uid://ctjrfrakffxwv" path="res://Components/camera_manager.tscn" id="4_ccra0"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3sb7"]
-size = Vector2(99909, 333.5)
+[ext_resource type="PackedScene" uid="uid://cj18bm1lutttq" path="res://grapple_node.tscn" id="4_ccra0"]
+[ext_resource type="PackedScene" uid="uid://buq5j4wq2m7j0" path="res://platform.tscn" id="4_htab2"]
+[ext_resource type="PackedScene" uid="uid://bapqtpx7jiojh" path="res://small_platform.tscn" id="5_i1cjp"]
+[ext_resource type="PackedScene" uid="uid://cia557k6nxlpy" path="res://Enemies/Tumblin/Tumblin.tscn" id="6_i1cjp"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iriom"]
 size = Vector2(1014, 133)
@@ -35,22 +38,15 @@ stretch_mode = 1
 
 [node name="Platforms" type="Node2D" parent="."]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Platforms"]
+[node name="StaticBody2D" parent="Platforms" instance=ExtResource("4_htab2")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D"]
-position = Vector2(-4089.5, 2299.75)
-shape = SubResource("RectangleShape2D_f3sb7")
-one_way_collision = true
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="Platforms"]
-position = Vector2(1071, 1646)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D2"]
-position = Vector2(8, 3)
-shape = SubResource("RectangleShape2D_iriom")
+[node name="StaticBody2D2" parent="Platforms" instance=ExtResource("5_i1cjp")]
+position = Vector2(-12355, 708)
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Platforms"]
 position = Vector2(1861, 1383)
+collision_layer = 2
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D3"]
 position = Vector2(8, 3)
@@ -58,87 +54,94 @@ shape = SubResource("RectangleShape2D_iriom")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="Platforms"]
 position = Vector2(2609, 1124)
+collision_layer = 2
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D4"]
-position = Vector2(19.75, 3)
 shape = SubResource("RectangleShape2D_iriom")
 
 [node name="StaticBody2D5" type="StaticBody2D" parent="Platforms"]
 position = Vector2(3866, 1128)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D5"]
-position = Vector2(28.375, 3)
 shape = SubResource("RectangleShape2D_iriom")
 
 [node name="StaticBody2D6" type="StaticBody2D" parent="Platforms"]
 position = Vector2(5399, 1130)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D6"]
-position = Vector2(32, 3)
 shape = SubResource("RectangleShape2D_iriom")
 
 [node name="StaticBody2D7" type="StaticBody2D" parent="Platforms"]
 position = Vector2(7191, 1132)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D7"]
-position = Vector2(28.375, 3)
 shape = SubResource("RectangleShape2D_iriom")
 
 [node name="StaticBody2D8" type="StaticBody2D" parent="Platforms"]
 position = Vector2(9242, 1128)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D8"]
-position = Vector2(28.375, 3)
 shape = SubResource("RectangleShape2D_iriom")
 
 [node name="StaticBody2D9" type="StaticBody2D" parent="Platforms"]
 position = Vector2(10527, 872)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D9"]
-position = Vector2(28.375, 3)
 shape = SubResource("RectangleShape2D_iriom")
 
 [node name="StaticBody2D10" type="StaticBody2D" parent="Platforms"]
 position = Vector2(11812, 361)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D10"]
-position = Vector2(28.375, 3)
 shape = SubResource("RectangleShape2D_iriom")
 
 [node name="StaticBody2D11" type="StaticBody2D" parent="Platforms"]
 position = Vector2(12828, -406)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D11"]
-position = Vector2(28.375, 3)
 shape = SubResource("RectangleShape2D_iriom")
 
 [node name="StaticBody2D12" type="StaticBody2D" parent="Platforms"]
 position = Vector2(13857, -1422)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D12"]
-position = Vector2(28.375, 3)
 shape = SubResource("RectangleShape2D_iriom")
 
 [node name="StaticBody2D13" type="StaticBody2D" parent="Platforms"]
 position = Vector2(14360, -661)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D13"]
-position = Vector2(28.375, 3)
 shape = SubResource("RectangleShape2D_iriom")
 
 [node name="StaticBody2D14" type="StaticBody2D" parent="Platforms"]
 position = Vector2(16149, -923)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D14"]
-position = Vector2(28.375, 3)
 shape = SubResource("RectangleShape2D_iriom")
 
 [node name="StaticBody2D15" type="StaticBody2D" parent="Platforms"]
 position = Vector2(17687, -1428)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D15"]
-position = Vector2(28.375, 3)
 shape = SubResource("RectangleShape2D_iriom")
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Tumblin" parent="Enemies" instance=ExtResource("6_i1cjp")]
+position = Vector2(2763, 1678)
+
+[node name="Tumblin2" parent="Enemies" instance=ExtResource("6_i1cjp")]
+position = Vector2(-3510, 1649)
+
+[node name="Tumblin3" parent="Enemies" instance=ExtResource("6_i1cjp")]
+position = Vector2(-2021, 898)
+
+[node name="Tumblin4" parent="Enemies" instance=ExtResource("6_i1cjp")]
+position = Vector2(1567, 1065)
+
+[node name="Tumblin5" parent="Enemies" instance=ExtResource("6_i1cjp")]
+position = Vector2(-1246, 1827)
 
 [node name="Walls" type="Node2D" parent="."]
 
@@ -170,4 +173,15 @@ position = Vector2(10673, 17836)
 position = Vector2(-64342, -22738)
 shape = SubResource("RectangleShape2D_b7glj")
 
-[node name="CameraManager" parent="." instance=ExtResource("4_ccra0")]
+
+[node name="GrappleNode" parent="." instance=ExtResource("4_ccra0")]
+position = Vector2(-4031, -1036)
+
+[node name="GrappleNode2" parent="." instance=ExtResource("4_ccra0")]
+position = Vector2(-7513, -710)
+
+[node name="GrappleNode3" parent="." instance=ExtResource("4_ccra0")]
+position = Vector2(10219, -921)
+
+[editable path="Platforms/StaticBody2D2"]
+

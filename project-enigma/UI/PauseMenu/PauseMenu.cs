@@ -17,7 +17,6 @@ public partial class PauseMenu : Control
     private Button _soundSettings = null;
     private Button _visualSettings = null;
     private Button _controls = null;
-    private Button _debug = null;
 
     //flags
     private bool opened = false;
@@ -45,13 +44,12 @@ public partial class PauseMenu : Control
         _soundSettings = GetNode<Button>("Menus/OptionsMenu/SoundSettings");
         _visualSettings = GetNode<Button>("Menus/OptionsMenu/VisualSettings");
         _controls = GetNode<Button>("Menus/OptionsMenu/Controls");
-        _debug = GetNode<Button>("Menus/OptionsMenu/Debug");
 
         opened = false;
         selection = 0;
 
         mainButtons = [_resume, _options, _returnToTitle, _quitGame];
-        optionsButtons = [_optionsToMain, _soundSettings, _visualSettings, _controls, _debug];
+        optionsButtons = [_optionsToMain, _soundSettings, _visualSettings, _controls];
         activeButtons = mainButtons;
 
         menus = GetNode<Control>("Menus");
@@ -61,7 +59,7 @@ public partial class PauseMenu : Control
     //I implemented this function stupidly, maybe fix later if it matters
     public override void _Input(InputEvent @event)
     {
-        if (Input.IsActionPressed("pause"))
+        if (Input.IsActionJustPressed("pause"))
         {
             Swap();
         }
