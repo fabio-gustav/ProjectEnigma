@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://ck8x0hhhif37p"]
+[gd_scene load_steps=15 format=3 uid="uid://ck8x0hhhif37p"]
 
 [ext_resource type="PackedScene" uid="uid://bqgg3mfv3sdlg" path="res://Player/player.tscn" id="1_8a0p6"]
 [ext_resource type="PackedScene" uid="uid://b53cfcwrjaq5h" path="res://UI/UILayer/UILayer.tscn" id="1_h5s4c"]
 [ext_resource type="Texture2D" uid="uid://canfy5jh2d5cm" path="res://Levels/TestLevel/Art/256Engima_Grid.png" id="1_iriom"]
+[ext_resource type="Script" uid="uid://f6h3kadkl408" path="res://CameraManager.cs" id="4_ccra0"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="5_htab2"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_i1cjp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f3sb7"]
 size = Vector2(99909, 333.5)
@@ -16,14 +19,28 @@ size = Vector2(161, 910)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b7glj"]
 size = Vector2(593.5, 14042)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_htab2"]
+size = Vector2(150, 4604)
+
+[sub_resource type="Resource" id="Resource_lcgk1"]
+script = ExtResource("6_i1cjp")
+duration = 1.0
+transition = 1
+ease = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1cjp"]
+size = Vector2(140, 9058)
+
+[sub_resource type="Resource" id="Resource_htab2"]
+script = ExtResource("6_i1cjp")
+duration = 1.0
+transition = 4
+ease = 2
+
 [node name="World" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_8a0p6")]
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(0.2, 0.2)
-process_callback = 0
-position_smoothing_enabled = true
+position = Vector2(1, 2)
 
 [node name="UILayer" parent="." instance=ExtResource("1_h5s4c")]
 
@@ -172,3 +189,38 @@ position = Vector2(10673, 17836)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D19"]
 position = Vector2(-64342, -22738)
 shape = SubResource("RectangleShape2D_b7glj")
+
+[node name="CameraManager" type="Node" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("4_ccra0")
+player = NodePath("../Player")
+
+[node name="CameraNodes" type="StaticBody2D" parent="CameraManager"]
+
+[node name="zone0-1" type="Area2D" parent="CameraManager/CameraNodes"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraManager/CameraNodes/zone0-1"]
+position = Vector2(-1903, 672)
+shape = SubResource("RectangleShape2D_htab2")
+
+[node name="PhantomCamera2D" type="Node2D" parent="CameraManager/CameraNodes/zone0-1" groups=["Cameras"]]
+position = Vector2(-6041, 386)
+script = ExtResource("5_htab2")
+zoom = Vector2(0.1, 0.1)
+tween_resource = SubResource("Resource_lcgk1")
+metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
+
+[node name="zone1-2" type="Area2D" parent="CameraManager/CameraNodes"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraManager/CameraNodes/zone1-2"]
+position = Vector2(3831, 253)
+shape = SubResource("RectangleShape2D_i1cjp")
+
+[node name="PhantomCamera2D" type="Node2D" parent="CameraManager/CameraNodes/zone1-2/CollisionShape2D" groups=["Cameras"]]
+position = Vector2(-2229, -260)
+script = ExtResource("5_htab2")
+zoom = Vector2(0.12, 0.12)
+tween_resource = SubResource("Resource_htab2")
+metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
+
+[connection signal="body_entered" from="CameraManager/CameraNodes/zone0-1" to="CameraManager" method="OnZone01BodyEntered"]
+[connection signal="body_entered" from="CameraManager/CameraNodes/zone1-2" to="CameraManager" method="OnZone12BodyEntered"]
