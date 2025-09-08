@@ -1,5 +1,4 @@
-
-[gd_scene load_steps=35 format=3 uid="uid://bqgg3mfv3sdlg"]
+[gd_scene load_steps=36 format=3 uid="uid://bqgg3mfv3sdlg"]
 
 [ext_resource type="Script" uid="uid://ceu4vsundxotx" path="res://Player/Player.cs" id="1_l8h54"]
 [ext_resource type="PackedScene" uid="uid://bxq0ktkymhtkr" path="res://Components/money_component.tscn" id="2_4ntmi"]
@@ -28,10 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://c4568gfyrc2qm" path="res://Player/Sprite Sheets/GunR.png" id="22_j2n6q"]
 [ext_resource type="Texture2D" uid="uid://baa1j225hi26x" path="res://Player/Sprite Sheets/GunUR.png" id="23_c6x0f"]
 [ext_resource type="Texture2D" uid="uid://b4u1u2mwlorbe" path="res://Player/Sprite Sheets/GunU.png" id="24_jp1hh"]
-
-[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="27_sm0op"]
-
-
+[ext_resource type="Texture2D" uid="uid://0ru7po8a1a67" path="res://Grapple_Point_Arrow.png" id="26_sm0op"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o28un"]
 radius = 124.0
@@ -278,12 +274,3 @@ visible = false
 position = Vector2(0, -122)
 shape = SubResource("RectangleShape2D_hshwv")
 debug_color = Color(0.204465, 0.640625, 1.92523e-07, 0.42)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-21, 0)
-
-[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
-process_priority = 300
-process_physics_priority = 300
-script = ExtResource("27_sm0op")
-metadata/_custom_type_script = "uid://bd046eokvcnu2"
