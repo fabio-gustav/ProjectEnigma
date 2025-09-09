@@ -27,6 +27,7 @@ public partial class PlayerRunning : State
         if (@event.IsActionPressed("energy"))
         {
             //spend energy logic
+            GetNode<SignalBus>("/root/SignalBus").EmitSignal(SignalBus.SignalName.PlayerRideStateDebug, Player.IsRiding);
             Player.IsRiding = true;
         }
 

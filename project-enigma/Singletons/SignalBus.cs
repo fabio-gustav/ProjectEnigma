@@ -13,4 +13,7 @@ public partial class SignalBus : Node
 
     [Signal]
     public delegate void PlayerStateChangeDebugEventHandler(State state);
+    
+    [Signal]
+    public delegate void PlayerRideStateDebugEventHandler(bool riding);
 }

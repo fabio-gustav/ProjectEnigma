@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public partial class MovementStateMachine : Node
 {
     [Export] public State InitialState { get; set; } = null;
-    [Export] public bool IsThisNodePlayer = false;
 
     //Dictionary of states with a key value of the state name
     private State _currentState = null;
@@ -30,7 +29,7 @@ public partial class MovementStateMachine : Node
     public void ChangeState(State newState)
     {
         GD.Print("Transition from " + _currentState.ToString() + " to " + newState.ToString());
-        if (IsThisNodePlayer)
+        if (GetParent() is Player)
         {
             GetNode<SignalBus>("/root/SignalBus").EmitSignal(SignalBus.SignalName.PlayerStateChangeDebug, newState);
         }
