@@ -179,10 +179,12 @@ script = ExtResource("6_fhl08")
 [node name="MovementStateMachine" type="Node" parent="." node_paths=PackedStringArray("InitialState")]
 script = ExtResource("7_vtle1")
 InitialState = NodePath("Idle")
+IsThisNodePlayer = true
 
-[node name="Idle" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("JumpState", "FallState")]
+[node name="Idle" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("JumpState", "RunState", "FallState")]
 script = ExtResource("8_00tjw")
 JumpState = NodePath("../Jumping")
+RunState = NodePath("../Running")
 FallState = NodePath("../Falling")
 
 [node name="Running" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("JumpState", "FallState", "IdleState", "SlideState")]
@@ -197,11 +199,12 @@ script = ExtResource("10_apopc")
 GrappleState = NodePath("../Grappling")
 FallState = NodePath("../Falling")
 
-[node name="Falling" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("GrappleState", "IdleState", "JumpState")]
+[node name="Falling" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("GrappleState", "IdleState", "JumpState", "RunState")]
 script = ExtResource("11_5htga")
 GrappleState = NodePath("../Grappling")
 IdleState = NodePath("../Idle")
 JumpState = NodePath("../Jumping")
+RunState = NodePath("../Running")
 
 [node name="Grappling" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("FallState", "IdleState", "JumpState")]
 script = ExtResource("12_p5o4e")
