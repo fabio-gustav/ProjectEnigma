@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://ck8x0hhhif37p"]
+[gd_scene load_steps=13 format=3 uid="uid://ck8x0hhhif37p"]
 
 [ext_resource type="PackedScene" uid="uid://bqgg3mfv3sdlg" path="res://Player/player.tscn" id="1_8a0p6"]
 [ext_resource type="PackedScene" uid="uid://b53cfcwrjaq5h" path="res://UI/UILayer/UILayer.tscn" id="1_h5s4c"]
 [ext_resource type="Texture2D" uid="uid://canfy5jh2d5cm" path="res://Levels/TestLevel/Art/256Engima_Grid.png" id="1_iriom"]
-[ext_resource type="PackedScene" uid="uid://cj18bm1lutttq" path="res://grapple_node.tscn" id="4_ccra0"]
-[ext_resource type="PackedScene" uid="uid://buq5j4wq2m7j0" path="res://platform.tscn" id="4_htab2"]
-[ext_resource type="PackedScene" uid="uid://bapqtpx7jiojh" path="res://small_platform.tscn" id="5_i1cjp"]
+[ext_resource type="PackedScene" path="res://grapple_node.tscn" id="4_ccra0"]
+[ext_resource type="PackedScene" path="res://platform.tscn" id="4_htab2"]
+[ext_resource type="PackedScene" path="res://small_platform.tscn" id="5_i1cjp"]
 [ext_resource type="PackedScene" uid="uid://cia557k6nxlpy" path="res://Enemies/Tumblin/Tumblin.tscn" id="6_i1cjp"]
+[ext_resource type="PackedScene" uid="uid://d28kack7rhrcn" path="res://Camera/camera_manager.tscn" id="8_lcgk1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iriom"]
 size = Vector2(1014, 133)
@@ -16,6 +17,9 @@ size = Vector2(161, 910)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b7glj"]
 size = Vector2(593.5, 14042)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lcgk1"]
+size = Vector2(166.75, 2408)
 
 [node name="World" type="Node2D"]
 
@@ -179,4 +183,29 @@ position = Vector2(-7513, -710)
 [node name="GrappleNode3" parent="." instance=ExtResource("4_ccra0")]
 position = Vector2(10219, -921)
 
+[node name="CameraManager" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_lcgk1")]
+player = NodePath("../Player")
+
+[node name="CollisionShape2D" parent="CameraManager/CameraNodes/zone0-1" index="0"]
+position = Vector2(4513, 54.5)
+
+[node name="PhantomCamera2D" parent="CameraManager/CameraNodes/zone0-1" index="1"]
+position = Vector2(-262, 668)
+zoom = Vector2(0.2, 0.2)
+
+[node name="CollisionShape2D" parent="CameraManager/CameraNodes/zone1-2" index="0"]
+position = Vector2(8373.38, 908)
+shape = SubResource("RectangleShape2D_lcgk1")
+
+[node name="PhantomCamera2D" parent="CameraManager/CameraNodes/zone1-2" index="1" node_paths=PackedStringArray("follow_target")]
+top_level = true
+position = Vector2(1, 2)
+follow_mode = 2
+follow_target = NodePath("../../../../Player")
+zoom = Vector2(0.3, 0.3)
+
+[connection signal="body_entered" from="CameraManager/CameraNodes/zone0-1" to="CameraManager" method="OnZone01BodyEntered"]
+[connection signal="body_entered" from="CameraManager/CameraNodes/zone1-2" to="CameraManager" method="OnZone12BodyEntered"]
+
 [editable path="Platforms/StaticBody2D2"]
+[editable path="CameraManager"]

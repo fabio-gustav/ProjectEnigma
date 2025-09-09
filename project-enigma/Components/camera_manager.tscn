@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://ctjrfrakffxwv"]
 
-[ext_resource type="Script" uid="uid://f6h3kadkl408" path="res://CameraManager.cs" id="1_tcegc"]
+[ext_resource type="Script" uid="uid://f6h3kadkl408" path="res://Camera/CameraManager.cs" id="1_tcegc"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_1c3v7"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_32gmf"]
 

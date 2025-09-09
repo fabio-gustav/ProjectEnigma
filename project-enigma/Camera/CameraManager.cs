@@ -9,7 +9,7 @@ public partial class CameraManager : Node
     [Export] CharacterBody2D player;
 
 
-    private int current_camera_zone = 1;
+    private int current_camera_zone = 0;
 
     void Update_camera()
     {
@@ -30,6 +30,7 @@ public partial class CameraManager : Node
                 camNum++;
             }
         }
+        GD.Print(current_camera_zone);
     }
 
     void Update_current_zone(CharacterBody2D body, int zone_a, int zone_b)

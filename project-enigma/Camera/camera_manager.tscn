@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://d28kack7rhrcn"]
+
+[ext_resource type="Script" uid="uid://f6h3kadkl408" path="res://Camera/CameraManager.cs" id="1_7jd54"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_pa6bx"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_2htap"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nnxk2"]
+size = Vector2(94, 4257)
+
+[sub_resource type="Resource" id="Resource_jqtoa"]
+script = ExtResource("3_2htap")
+duration = 1.0
+transition = 1
+ease = 0
+
+[sub_resource type="Resource" id="Resource_br0cr"]
+script = ExtResource("3_2htap")
+duration = 1.0
+transition = 0
+ease = 2
+
+[node name="CameraManager" type="Node"]
+script = ExtResource("1_7jd54")
+
+[node name="CameraNodes" type="StaticBody2D" parent="."]
+
+[node name="zone0-1" type="Area2D" parent="CameraNodes"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraNodes/zone0-1"]
+position = Vector2(-1497, 136)
+shape = SubResource("RectangleShape2D_nnxk2")
+
+[node name="PhantomCamera2D" type="Node2D" parent="CameraNodes/zone0-1" groups=["Cameras"]]
+top_level = true
+script = ExtResource("2_pa6bx")
+follow_mode = 2
+tween_resource = SubResource("Resource_jqtoa")
+metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
+
+[node name="zone1-2" type="Area2D" parent="CameraNodes"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraNodes/zone1-2"]
+
+[node name="PhantomCamera2D" type="Node2D" parent="CameraNodes/zone1-2" groups=["Cameras"]]
+script = ExtResource("2_pa6bx")
+tween_resource = SubResource("Resource_br0cr")
+metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
