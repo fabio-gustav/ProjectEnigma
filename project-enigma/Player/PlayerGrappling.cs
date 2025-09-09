@@ -24,6 +24,7 @@ public partial class PlayerGrappling : State
         Player._playerGrappled = true;
         _targetPosition = Player._grappleTarget.GlobalPosition;
         _ropeLength = Player.GlobalPosition.DistanceTo(_targetPosition);
+        Player.PlayerSprite.PlayAnimation("Swing");
     }
 
     public override void Exit()

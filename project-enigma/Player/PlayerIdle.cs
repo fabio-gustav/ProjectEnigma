@@ -10,7 +10,7 @@ public partial class PlayerIdle : State
     {
         Player._jumpAvailable = true;
         Player.Velocity = new Vector2(Player.Velocity.X, 0.0f);
-        Player.PlayerSprite.PlayBodyAnimation("Idle");
+        Player.PlayerSprite.PlayAnimation("Idle");
     }
 
     public override State ProcessInput(InputEvent @event)

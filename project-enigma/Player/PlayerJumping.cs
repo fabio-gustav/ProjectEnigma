@@ -18,6 +18,7 @@ public partial class PlayerJumping : State
         _jumpGravity = ((-2.0f * Player.JumpHeight) / (Player.RisingJumpTime * Player.RisingJumpTime)) * -1.0f;
         _ridingJumpVelocity = ((2.0f * Player.RideJumpHeight) / Player.RideRisingJumpTime) * -1.0f;
         _ridingJumpGravity = ((-2.0f * Player.RideJumpHeight) / (Player.RideRisingJumpTime * Player.RideRisingJumpTime)) * -1.0f;
+        
     }
 
     public override void Enter()
@@ -34,6 +35,7 @@ public partial class PlayerJumping : State
         }
         
         Player._jumpAvailable = false;
+        Player.PlayerSprite.PlayAnimation("Jump");
     }
 
     public override void Exit()

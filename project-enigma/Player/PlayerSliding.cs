@@ -11,7 +11,7 @@ public partial class PlayerSliding : State
     {
         //GD.Print("Sliding");
         Player._jumpAvailable = true;
-        //Player.PlayerSprite.PlayBodyAnimation("Slide");
+        Player.PlayerSprite.PlayAnimation("Slide");
     }
 
     public override State ProcessInput(InputEvent @event)

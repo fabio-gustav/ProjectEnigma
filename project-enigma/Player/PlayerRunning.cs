@@ -11,7 +11,7 @@ public partial class PlayerRunning : State
 
     public override void Enter()
     {
-        Player.PlayerSprite.PlayBodyAnimation("Running");
+        Player.PlayerSprite.PlayAnimation("Run");
     }
 
     public override State ProcessInput(InputEvent @event)

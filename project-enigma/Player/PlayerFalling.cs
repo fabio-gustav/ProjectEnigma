@@ -23,7 +23,7 @@ public partial class PlayerFalling : State
             Player._coyoteTimer.Start(Player.CoyoteTime);
         }
         
-        Player.PlayerSprite.PlayBodyAnimation("Falling");
+        Player.PlayerSprite.PlayAnimation("Fall");
     }
 
     public override State ProcessInput(InputEvent @event)
