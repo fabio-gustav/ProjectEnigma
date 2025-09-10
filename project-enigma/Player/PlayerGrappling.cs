@@ -24,7 +24,7 @@ public partial class PlayerGrappling : State
         Player._playerGrappled = true;
         _targetPosition = Player._grappleTarget.GlobalPosition;
         _ropeLength = Player.GlobalPosition.DistanceTo(_targetPosition);
-        Player.PlayerSprite.PlayAnimation("Swing");
+        
     }
 
     public override void Exit()
@@ -93,6 +93,15 @@ public partial class PlayerGrappling : State
         if (Input.IsActionPressed("left") && Player.Velocity.X < 0)
         {
             Player.Velocity += Player.Velocity.Normalized() * (float)(Player.SwingSpeed * radius.Length());
+        }
+
+        if (Player.GlobalPosition.X > Player._grappleTarget.GlobalPosition.X)
+        {
+            
+        }
+        else
+        {
+            Player.PlayerSprite.PlayAnimation("SwingDown");
         }
     }
 }

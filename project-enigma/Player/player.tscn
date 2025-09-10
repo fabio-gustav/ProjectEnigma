@@ -45,69 +45,6 @@ height = 826.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n471f"]
 size = Vector2(135, 299)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_6eb1q"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("15_qs4pp")
-}],
-"loop": true,
-"name": &"Fall",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("15_i4o1l")
-}],
-"loop": true,
-"name": &"Idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("17_iyprq")
-}],
-"loop": true,
-"name": &"Jump",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("16_j2n6q")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_c6x0f")
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_jp1hh")
-}, {
-"duration": 1.0,
-"texture": ExtResource("19_qs4pp")
-}],
-"loop": true,
-"name": &"Run",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("20_iyprq")
-}],
-"loop": true,
-"name": &"Slide",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("21_f4lon")
-}, {
-"duration": 1.0,
-"texture": ExtResource("22_8ynux")
-}],
-"loop": true,
-"name": &"Swing",
-"speed": 5.0
-}]
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_wvbyc"]
 animations = [{
 "frames": [{
@@ -162,12 +99,85 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("29_6rl0i")
+}],
+"loop": true,
+"name": &"SwingDown",
+"speed": 5.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": ExtResource("30_7x5p2")
 }],
 "loop": true,
-"name": &"Swing",
+"name": &"SwingUp",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6eb1q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_qs4pp")
+}],
+"loop": true,
+"name": &"Fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_i4o1l")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_iyprq")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_j2n6q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_c6x0f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_jp1hh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_qs4pp")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_iyprq")
+}],
+"loop": true,
+"name": &"Slide",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_f4lon")
+}],
+"loop": true,
+"name": &"SwingDown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_8ynux")
+}],
+"loop": true,
+"name": &"SwingUp",
 "speed": 5.0
 }]
 
@@ -259,13 +269,13 @@ FallState = NodePath("../Falling")
 [node name="PlayerSprite" type="Node2D" parent="."]
 script = ExtResource("13_8viyr")
 
-[node name="Top" type="AnimatedSprite2D" parent="PlayerSprite"]
-sprite_frames = SubResource("SpriteFrames_6eb1q")
-animation = &"Jump"
-
 [node name="Bottom" type="AnimatedSprite2D" parent="PlayerSprite"]
 sprite_frames = SubResource("SpriteFrames_wvbyc")
-animation = &"Idle"
+animation = &"SwingUp"
+
+[node name="Top" type="AnimatedSprite2D" parent="PlayerSprite"]
+sprite_frames = SubResource("SpriteFrames_6eb1q")
+animation = &"SwingUp"
 
 [node name="Marker2D" type="Marker2D" parent="."]
 gizmo_extents = 0.0
