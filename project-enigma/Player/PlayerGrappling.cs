@@ -97,7 +97,7 @@ public partial class PlayerGrappling : State
 
         if (Player.GlobalPosition.X > Player._grappleTarget.GlobalPosition.X)
         {
-            
+            Player.PlayerSprite.PlayAnimation("SwingUp");
         }
         else
         {

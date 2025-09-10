@@ -35,7 +35,14 @@ public partial class PlayerJumping : State
         }
         
         Player._jumpAvailable = false;
-        Player.PlayerSprite.PlayAnimation("Jump");
+        if (Player.IsRiding)
+        {
+            Player.PlayerSprite.PlayAnimation("Jump");
+        }
+        else
+        {
+            Player.PlayerSprite.PlayAnimation("Jump");
+        }
     }
 
     public override void Exit()

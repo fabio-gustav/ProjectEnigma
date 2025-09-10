@@ -11,7 +11,15 @@ public partial class PlayerRunning : State
 
     public override void Enter()
     {
-        Player.PlayerSprite.PlayAnimation("Run");
+        if (Player.IsRiding)
+        {
+            Player.PlayerSprite.PlayAnimation("Run");
+        }
+        else
+        {
+            Player.PlayerSprite.PlayAnimation("Run");
+        }
+        
     }
 
     public override State ProcessInput(InputEvent @event)
@@ -29,6 +37,7 @@ public partial class PlayerRunning : State
             //spend energy logic
             GetNode<SignalBus>("/root/SignalBus").EmitSignal(SignalBus.SignalName.PlayerRideStateDebug, Player.IsRiding);
             Player.IsRiding = true;
+            return this;
         }
 
         return null;
