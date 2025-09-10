@@ -75,12 +75,14 @@ public partial class Player : CharacterBody2D
    public Timer JumpBufferTimer = null;
    public PlayerSprite PlayerSprite = null;
    private MovementStateMachine _stateMachine = null;
+   public Area2D ParryTarget = null;
    public bool IsRiding;
    
    public override void _Ready()
    {
 	  _stateMachine = GetNode<MovementStateMachine>("MovementStateMachine");
 	  _grappleCast = GetNode<RayCast2D>("GrappleCast");
+	  ParryTarget = GetNode<Area2D>("ParryArea");
 	  _coyoteTimer = new Timer();
 	  JumpBufferTimer = new Timer();
 	  _coyoteTimer.Timeout += CoyoteTimeout;
