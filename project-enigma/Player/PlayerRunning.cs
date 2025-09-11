@@ -8,6 +8,7 @@ public partial class PlayerRunning : State
     [Export] public State IdleState { get; set; } = null;
     [Export] public State SlideState { get; set; } = null;
     [Export] public State ParryState { get; set; } = null;
+    [Export] public State WallSlideState { get; set; } = null;
 
     public override void Enter()
     {
@@ -19,7 +20,7 @@ public partial class PlayerRunning : State
         {
             Player.PlayerSprite.PlayAnimation("Run");
         }
-        
+
     }
 
     public override State ProcessInput(InputEvent @event)
@@ -47,6 +48,7 @@ public partial class PlayerRunning : State
     {
         if (Player.IsRiding)
         {
+            
             //Movement for ride state
             Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, Player.RideSpeed*GetInput(), Player.RideAcceleration*(float)delta),Player.Velocity.Y);
         }
@@ -73,6 +75,12 @@ public partial class PlayerRunning : State
             
         }
 
+        //GD.Print(Player.GetFloorNormal());
+        if (Player.IsRiding && Player.WallCheck())
+        {
+            //return WallSlideState;
+        }
+        
         if (!Player.IsOnFloor())
         {
             //Check is possibly redundant

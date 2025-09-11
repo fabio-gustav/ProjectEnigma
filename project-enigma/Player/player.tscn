@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://bqgg3mfv3sdlg"]
+[gd_scene load_steps=60 format=3 uid="uid://bqgg3mfv3sdlg"]
 
 [ext_resource type="Script" uid="uid://ceu4vsundxotx" path="res://Player/Player.cs" id="1_l8h54"]
 [ext_resource type="PackedScene" uid="uid://bxq0ktkymhtkr" path="res://Components/money_component.tscn" id="2_4ntmi"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://cp66ape1basl5" path="res://Player/PlayerSprite.cs" id="13_8viyr"]
 [ext_resource type="Script" uid="uid://dbrj43vrp8gwe" path="res://Player/PlayerSliding.cs" id="13_76lrf"]
 [ext_resource type="Script" uid="uid://julotbanrell" path="res://Player/PlayerParrying.cs" id="14_iyprq"]
+[ext_resource type="Script" uid="uid://0yk5r06lxl1p" path="res://Player/PlayerWallSlide.cs" id="15_f4lon"]
 [ext_resource type="Texture2D" uid="uid://6kl64k22wr8v" path="res://Player/Sprite Sheets/ThreeFrames/Top/Idle.png" id="15_i4o1l"]
 [ext_resource type="Texture2D" uid="uid://s6cuqqdpp2ak" path="res://Player/Sprite Sheets/ThreeFrames/Top/Falling.png" id="15_qs4pp"]
 [ext_resource type="Texture2D" uid="uid://dx2qn4vuwupjn" path="res://Player/Sprite Sheets/ThreeFrames/Top/Run1.png" id="16_j2n6q"]
@@ -1472,13 +1473,14 @@ JumpState = NodePath("../Jumping")
 RunState = NodePath("../Running")
 FallState = NodePath("../Falling")
 
-[node name="Running" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("JumpState", "FallState", "IdleState", "SlideState", "ParryState")]
+[node name="Running" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("JumpState", "FallState", "IdleState", "SlideState", "ParryState", "WallSlideState")]
 script = ExtResource("9_x3vf3")
 JumpState = NodePath("../Jumping")
 FallState = NodePath("../Falling")
 IdleState = NodePath("../Idle")
 SlideState = NodePath("../Sliding")
 ParryState = NodePath("../Parrying")
+WallSlideState = NodePath("../WallSlide")
 
 [node name="Jumping" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("GrappleState", "ParryState", "FallState")]
 script = ExtResource("10_apopc")
@@ -1510,6 +1512,10 @@ FallState = NodePath("../Falling")
 script = ExtResource("14_iyprq")
 GrappleState = NodePath("../Grappling")
 FallState = NodePath("../Falling")
+
+[node name="WallSlide" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("IdleState")]
+script = ExtResource("15_f4lon")
+IdleState = NodePath("../Idle")
 
 [node name="PlayerSprite" type="Node2D" parent="."]
 script = ExtResource("13_8viyr")
@@ -1568,7 +1574,18 @@ script = ExtResource("27_sm0op")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="ParryArea" type="Area2D" parent="."]
+visible = false
 collision_mask = 10
 
 [node name="ParryCollider" type="CollisionShape2D" parent="ParryArea"]
 shape = SubResource("CapsuleShape2D_qs4pp")
+
+[node name="WallCheck" type="Node2D" parent="."]
+
+[node name="RightCheck" type="RayCast2D" parent="WallCheck"]
+target_position = Vector2(384, 0)
+collision_mask = 32
+
+[node name="LeftCheck" type="RayCast2D" parent="WallCheck"]
+target_position = Vector2(-384, 0)
+collision_mask = 32
