@@ -73,7 +73,7 @@ public partial class PlayerRunning : State
             
             Player.ApplyFloorSnap();
         
-            GD.Print(Player.RotationDegrees);
+            //GD.Print(Player.RotationDegrees);
             Player.Velocity = Player.Velocity.Lerp(Player.Velocity.Abs().Normalized() * (Player.RideSpeed * GetInput()), Player.RideAcceleration*(float)delta);
             
             //Movement for ride state

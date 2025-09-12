@@ -21,6 +21,11 @@ public partial class PlayerSliding : State
         }
     }
 
+    public override void Exit()
+    {
+        Player.PlayerSprite.Rotation = 0.0f;
+    }
+
     public override State ProcessInput(InputEvent @event)
     {
         if (Player._jumpBuffer || @event.IsActionPressed("jump"))
@@ -35,6 +40,21 @@ public partial class PlayerSliding : State
     public override State PhysicsUpdate(double delta)
     {
 
+        Vector2 floorNormal = Player.GetFloorNormal();
+        Player.PlayerSprite.Rotation = Player.GetFloorAngle() * -Player.PlayerSprite.Top.Scale.Y;
+        //GD.Print("Floor: " + (floorNormal.X < 0).ToString());
+        //GD.Print("Flip: " + Player.Scale.Y);
+        if (floorNormal.X < 0 && Player.PlayerSprite.Top.Scale.Y > 0)
+        {
+            Player.PlayerSprite.Rotation = Player.GetFloorAngle() * -Player.Scale.Y;
+        }
+        else
+        {
+            Player.PlayerSprite.Rotation = Player.GetFloorAngle() * Player.Scale.Y;
+        }
+            
+        Player.ApplyFloorSnap();
+        
         if (!Input.IsActionPressed("slide"))
         {
             return RunState;

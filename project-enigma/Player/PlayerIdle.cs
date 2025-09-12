@@ -41,7 +41,7 @@ public partial class PlayerIdle : State
             {
                 Player._coyoteTimer.Start(Player.CoyoteTime);
             }
-            //return FallState;
+            return FallState;
         }
         
         Player.PlayerLook();
