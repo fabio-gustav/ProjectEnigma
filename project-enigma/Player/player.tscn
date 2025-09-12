@@ -40,9 +40,9 @@
 [ext_resource type="Texture2D" uid="uid://dkc65qctbrqt4" path="res://Player/Sprite Sheets/ThreeFrames/Bottom/Swing1.png" id="29_6rl0i"]
 [ext_resource type="Texture2D" uid="uid://k8ok14nk4c3l" path="res://Player/Sprite Sheets/ThreeFrames/Bottom/Swing2.png" id="30_7x5p2"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o28un"]
-radius = 124.0
-height = 828.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f4lon"]
+radius = 48.0
+height = 416.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n471f"]
 size = Vector2(135, 299)
@@ -109,7 +109,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2(-86, 84)]
+"values": [Vector2(-40, 416)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -121,7 +121,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [-0.561996]
+"values": [1.5708]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -210,7 +210,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2(0, 74)]
+"values": [Vector2(16, 440)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -222,7 +222,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0.0]
+"values": [1.5708]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -513,7 +513,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2(-42, 70)]
+"values": [Vector2(-144, 400)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -525,7 +525,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0.385718]
+"values": [1.5708]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -612,7 +612,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2(0, 74)]
+"values": [Vector2(8, 440)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -624,7 +624,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0.0]
+"values": [1.5708]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -713,7 +713,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2(26, 150)]
+"values": [Vector2(-80, 440)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -725,7 +725,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0.74002]
+"values": [1.5708]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -1443,8 +1443,9 @@ GrapplePull = 1024.0
 GrapplePullSpeed = 800.0
 
 [node name="Collider" type="CollisionShape2D" parent="."]
-position = Vector2(0, 74)
-shape = SubResource("CapsuleShape2D_o28un")
+position = Vector2(8, 440)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_f4lon")
 
 [node name="MoneyComponent" parent="." instance=ExtResource("2_4ntmi")]
 

@@ -95,7 +95,7 @@ public partial class Player : CharacterBody2D
 	  JumpBufferTimer.Timeout += JumpBufferTimeout;
 	  Collider = GetNode<CollisionShape2D>("Collider");
 	  //FloorMaxAngle = Mathf.DegToRad(89.9f);
-	  FloorSnapLength = 10.0f;
+	  FloorSnapLength = 120.0f;
 	  FloorStopOnSlope = false;
 	  IsRiding = false;
 	  
