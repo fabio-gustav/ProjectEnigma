@@ -7,6 +7,14 @@ public partial class PlayerSliding : State
     [Export] public State JumpState { get; set; } = null;
     [Export] public State RunState { get; set; } = null;
     [Export] public State FallState { get; set; } = null;
+    
+    private float _fallGravity = 0.0f;
+    
+    public override void Init()
+    {
+        _fallGravity = ((-2.0f * Player.JumpHeight) / (Player.FallingJumpTime * Player.FallingJumpTime)) * -1.0f;
+    }
+    
     public override void Enter()
     {
         //GD.Print("Sliding");
@@ -72,6 +80,9 @@ public partial class PlayerSliding : State
         
         Player.PlayerLook();
         Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, 0.0f, Player.SlideFriction),Player.Velocity.Y);
+        Player.Velocity = new Vector2(Player.Velocity.X + Player.GetFloorNormal().X, Player.Velocity.Y + (float)(_fallGravity*30 * delta) + Player.GetFloorNormal().Y);
+        //Player.Velocity = Player.Velocity + (_fallGravity * (float)delta) * Player.GetFloorNormal().Normalized();
+        GD.Print(Player.Velocity);
         Player._jumpAvailable = true;
         Player._coyoteTimer.Stop();
         return null;
