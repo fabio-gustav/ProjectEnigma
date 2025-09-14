@@ -30,7 +30,7 @@ public partial class PlayerGrappling : State
     public override void Exit()
     {
         Player._playerGrappled = false;
-        //Player._isRiding = true;
+        Player.IsRiding = true;
     }
 
     public override State ProcessInput(InputEvent @event)

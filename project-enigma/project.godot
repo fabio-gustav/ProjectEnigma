@@ -108,3 +108,4 @@ parry={
 2d_physics/layer_4="Enemy"
 2d_physics/layer_5="Interact"
 2d_physics/layer_6="SlideWall"
+2d_physics/layer_7="Parry"

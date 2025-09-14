@@ -82,7 +82,7 @@ public partial class PlayerSliding : State
         Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, 0.0f, Player.SlideFriction),Player.Velocity.Y);
         Player.Velocity = new Vector2(Player.Velocity.X + Player.GetFloorNormal().X, Player.Velocity.Y + (float)(_fallGravity*30 * delta) + Player.GetFloorNormal().Y);
         //Player.Velocity = Player.Velocity + (_fallGravity * (float)delta) * Player.GetFloorNormal().Normalized();
-        GD.Print(Player.Velocity);
+        //GD.Print(Player.Velocity);
         Player._jumpAvailable = true;
         Player._coyoteTimer.Stop();
         return null;
