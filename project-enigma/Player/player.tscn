@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://bqgg3mfv3sdlg"]
+[gd_scene load_steps=61 format=3 uid="uid://bqgg3mfv3sdlg"]
 
 [ext_resource type="Script" uid="uid://ceu4vsundxotx" path="res://Player/Player.cs" id="1_l8h54"]
 [ext_resource type="PackedScene" uid="uid://bxq0ktkymhtkr" path="res://Components/money_component.tscn" id="2_4ntmi"]
@@ -39,6 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://q3325jk6dx6e" path="res://Player/Sprite Sheets/ThreeFrames/Bottom/Slide.png" id="28_1l10g"]
 [ext_resource type="Texture2D" uid="uid://dkc65qctbrqt4" path="res://Player/Sprite Sheets/ThreeFrames/Bottom/Swing1.png" id="29_6rl0i"]
 [ext_resource type="Texture2D" uid="uid://k8ok14nk4c3l" path="res://Player/Sprite Sheets/ThreeFrames/Bottom/Swing2.png" id="30_7x5p2"]
+[ext_resource type="PackedScene" uid="uid://pja1ap3qr7fr" path="res://ObjectComponents/interaction_manager.tscn" id="37_8ynux"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f4lon"]
 radius = 48.0
@@ -1408,11 +1409,11 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d30e8"]
+size = Vector2(1946, 1080)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7emwf"]
 size = Vector2(362, 152.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hshwv"]
-size = Vector2(961, 587.5)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qs4pp"]
 radius = 346.0
@@ -1539,6 +1540,11 @@ animation = &"Idle"
 [node name="Marker2D" type="Marker2D" parent="."]
 gizmo_extents = 0.0
 
+[node name="Interaction Manager" parent="." instance=ExtResource("37_8ynux")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction Manager"]
+shape = SubResource("RectangleShape2D_d30e8")
+
 [node name="GrappleCast" type="RayCast2D" parent="."]
 target_position = Vector2(8000, 0)
 collision_mask = 4
@@ -1558,14 +1564,6 @@ visible = false
 position = Vector2(394, 63)
 shape = SubResource("RectangleShape2D_7emwf")
 debug_color = Color(0.95443, 0.0951466, 0.482466, 0.42)
-
-[node name="InteractionArea" type="Area2D" parent="."]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
-position = Vector2(0, -122)
-shape = SubResource("RectangleShape2D_hshwv")
-debug_color = Color(0.204465, 0.640625, 1.92523e-07, 0.42)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
