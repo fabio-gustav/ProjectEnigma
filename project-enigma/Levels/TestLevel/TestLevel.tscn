@@ -26,7 +26,7 @@ size = Vector2(590, 6973)
 size = Vector2(4097, 579)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_viv4i"]
-size = Vector2(4245, 513)
+size = Vector2(5631.62, 513)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1w17m"]
 size = Vector2(6456, 298)
@@ -105,13 +105,6 @@ position = Vector2(10673, 17836)
 position = Vector2(-64342, -22738)
 shape = SubResource("RectangleShape2D_b7glj")
 
-[node name="Wall2" parent="Walls" instance=ExtResource("9_xlfkq")]
-position = Vector2(-6230, 245)
-
-[node name="CollisionShape2D" parent="Walls/Wall2" index="0"]
-rotation = 0.698132
-shape = SubResource("RectangleShape2D_xlfkq")
-
 [node name="Wall3" parent="Walls" instance=ExtResource("9_xlfkq")]
 position = Vector2(2655, 379)
 rotation = -0.698132
@@ -135,10 +128,10 @@ rotation = 0.523599
 shape = SubResource("RectangleShape2D_l3m76")
 
 [node name="Wall5" parent="Walls" instance=ExtResource("9_xlfkq")]
-position = Vector2(14933, 862)
+position = Vector2(13932, 805)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls/Wall5"]
-position = Vector2(4388, 286)
+position = Vector2(4955.93, -111.667)
 rotation = -0.610865
 shape = SubResource("RectangleShape2D_viv4i")
 
@@ -201,7 +194,6 @@ follow_damping = true
 [connection signal="body_entered" from="CameraManager/CameraNodes/zone1-2" to="CameraManager" method="OnZone12BodyEntered"]
 
 [editable path="Platforms/StaticBody2D2"]
-[editable path="Walls/Wall2"]
 [editable path="Walls/Wall3"]
 [editable path="Walls/Wall"]
 [editable path="CameraManager"]

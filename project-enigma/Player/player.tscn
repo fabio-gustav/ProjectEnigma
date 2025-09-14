@@ -1438,7 +1438,7 @@ RideAirSpeed = 256.0
 SwingSpeed = 0.1
 Friction = 6.0
 SlideFriction = 0.01
-RideFriction = 2.0
+RideFriction = 0.5
 GrapplePull = 1024.0
 GrapplePullSpeed = 800.0
 
@@ -1509,10 +1509,11 @@ JumpState = NodePath("../Jumping")
 RunState = NodePath("../Running")
 FallState = NodePath("../Falling")
 
-[node name="Parrying" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("GrappleState", "FallState")]
+[node name="Parrying" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("GrappleState", "FallState", "RunState")]
 script = ExtResource("14_iyprq")
 GrappleState = NodePath("../Grappling")
 FallState = NodePath("../Falling")
+RunState = NodePath("../Running")
 
 [node name="WallSlide" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("IdleState")]
 script = ExtResource("15_f4lon")

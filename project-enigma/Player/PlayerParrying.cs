@@ -6,18 +6,14 @@ public partial class PlayerParrying : State
 
     [Export] public State GrappleState { get; set; } = null;
     [Export] public State FallState { get; set; } = null;
+    [Export] public State RunState { get; set; } = null;
     
     private PhysicsBody2D _parryTarget;
     private CollisionShape2D _parryCollider;
     private KinematicCollision2D _parryCollision;
     private Vector2 _reflection;
-    private float _ridingJumpGravity;
     private bool _hasParried = false;
     
-    public override void Init()
-    {
-        _ridingJumpGravity = ((-2.0f * Player.RideJumpHeight) / (Player.RideRisingJumpTime * Player.RideRisingJumpTime)) * -1.0f;
-    }
     
     public override void Enter()
     {
@@ -33,17 +29,8 @@ public partial class PlayerParrying : State
     public override State PhysicsUpdate(double delta)
     {
 
-        Player.Velocity = new Vector2(Player.Velocity.X, Player.Velocity.Y + (float)(_ridingJumpGravity * delta));
-        
-        _parryCollision = Player.MoveAndCollide(Player.Velocity);
+        Player.Velocity = -Player.Velocity;
 
-        if (_parryCollision != null && _parryCollision.GetCollider() == _parryCollider)
-        {
-            _reflection = Player.Velocity.Bounce(_parryCollision.GetNormal());
-            Player.Velocity = _reflection;
-            _hasParried = true;
-        }
-
-        return null;
+        return RunState;
     }
 }

@@ -36,7 +36,10 @@ public partial class PlayerRunning : State
             return JumpState;
         }
 
-        
+        if (Player.ParryTarget.HasOverlappingBodies() && @event.IsActionPressed("parry"))
+        {
+            return ParryState;
+        }
 
         if (@event.IsActionPressed("energy"))
         {
