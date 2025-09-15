@@ -9,11 +9,21 @@ public partial class TumblinFalling : State
     Tumblin Tumblin = null;
     private float _fallGravity = 0.0f;
 
-    public override void Init()
+    public override void _Ready()
     {
+        base._Ready();
         Tumblin = (Tumblin)GenericCharacter;
         _fallGravity = ((-2.0f * Tumblin.JumpHeight) / (Tumblin.FallingJumpTime * Tumblin.FallingJumpTime)) * -1.0f;
     }
+
+
+
+
+    public override void Init()
+    {
+        
+    }
+        
 
     public override void Enter()
     {
