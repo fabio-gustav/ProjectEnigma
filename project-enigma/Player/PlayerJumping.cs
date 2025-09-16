@@ -37,7 +37,7 @@ public partial class PlayerJumping : State
         Player._jumpAvailable = false;
         if (Player.IsRiding)
         {
-            Player.PlayerSprite.PlayAnimation("Jump");
+            Player.PlayerSprite.PlayAnimation("RideJump");
         }
         else
         {

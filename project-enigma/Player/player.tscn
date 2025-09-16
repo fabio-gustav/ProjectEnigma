@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://bqgg3mfv3sdlg"]
+[gd_scene load_steps=66 format=3 uid="uid://bqgg3mfv3sdlg"]
 
 [ext_resource type="Script" uid="uid://ceu4vsundxotx" path="res://Player/Player.cs" id="1_l8h54"]
 [ext_resource type="PackedScene" uid="uid://bxq0ktkymhtkr" path="res://Components/money_component.tscn" id="2_4ntmi"]
@@ -24,6 +24,8 @@
 [ext_resource type="Texture2D" uid="uid://dubrevqhlpw5r" path="res://Player/Sprite Sheets/ThreeFrames/Top/Rising.png" id="17_iyprq"]
 [ext_resource type="Texture2D" uid="uid://jwxikyhtmvnt" path="res://Player/Sprite Sheets/ThreeFrames/Top/Run3.png" id="18_jp1hh"]
 [ext_resource type="Texture2D" uid="uid://dgmm47efy38f" path="res://Player/Sprite Sheets/ThreeFrames/Top/Run4.png" id="19_qs4pp"]
+[ext_resource type="Texture2D" uid="uid://byvf56exrftrp" path="res://Player/Sprite Sheets/ThreeFrames/Bottom/Ride2 (1).png" id="20_6pogt"]
+[ext_resource type="Texture2D" uid="uid://b2o5xr3fb8r51" path="res://Player/Sprite Sheets/ThreeFrames/Bottom/RideJump.png" id="20_ie76m"]
 [ext_resource type="Texture2D" uid="uid://7x04ss78yifq" path="res://Player/Sprite Sheets/ThreeFrames/Top/Slide.png" id="20_iyprq"]
 [ext_resource type="Texture2D" uid="uid://c076sw8oco21j" path="res://Player/Sprite Sheets/ThreeFrames/Top/Swing1.png" id="21_f4lon"]
 [ext_resource type="Texture2D" uid="uid://dys44oa360qai" path="res://Player/Sprite Sheets/ThreeFrames/Top/Swing2.png" id="22_8ynux"]
@@ -39,6 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://q3325jk6dx6e" path="res://Player/Sprite Sheets/ThreeFrames/Bottom/Slide.png" id="28_1l10g"]
 [ext_resource type="Texture2D" uid="uid://dkc65qctbrqt4" path="res://Player/Sprite Sheets/ThreeFrames/Bottom/Swing1.png" id="29_6rl0i"]
 [ext_resource type="Texture2D" uid="uid://k8ok14nk4c3l" path="res://Player/Sprite Sheets/ThreeFrames/Bottom/Swing2.png" id="30_7x5p2"]
+[ext_resource type="Texture2D" uid="uid://bn6ti1euttpim" path="res://Player/Sprite Sheets/ThreeFrames/Top/Ride2.png" id="31_ie76m"]
 [ext_resource type="PackedScene" uid="uid://pja1ap3qr7fr" path="res://ObjectComponents/interaction_manager.tscn" id="37_8ynux"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f4lon"]
@@ -638,6 +641,106 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [Vector2(0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PlayerSprite/Bottom:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6eb1q"]
+resource_name = "RideRun"
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite/Top:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprite/Bottom:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"RideRun"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerSprite/Bottom:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerSprite/Top:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"RideRun"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Collider:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(8, 440)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Collider:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.5708]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PlayerSprite/Top:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(-140, 0)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -1257,6 +1360,107 @@ tracks/7/keys = {
 "values": [Vector2(0, 224)]
 }
 
+[sub_resource type="Animation" id="Animation_wvbyc"]
+resource_name = "RideJump"
+length = 0.001
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite/Top:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprite/Bottom:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"RideJump"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerSprite/Bottom:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerSprite/Top:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"RideRun"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Collider:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(-144, 400)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Collider:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.5708]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PlayerSprite/Top:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(-140, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PlayerSprite/Bottom:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(140, 96)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f4lon"]
 _data = {
 &"Fall": SubResource("Animation_maysp"),
@@ -1265,6 +1469,8 @@ _data = {
 &"Idle_to_Run": SubResource("Animation_8ynux"),
 &"Jump": SubResource("Animation_dy65m"),
 &"RESET": SubResource("Animation_iyprq"),
+&"RideJump": SubResource("Animation_wvbyc"),
+&"RideRun": SubResource("Animation_6eb1q"),
 &"Run": SubResource("Animation_d30e8"),
 &"Run_to_Jump": SubResource("Animation_ie76m"),
 &"Run_to_Slide": SubResource("Animation_qs4pp"),
@@ -1297,6 +1503,22 @@ animations = [{
 }],
 "loop": true,
 "name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_ie76m")
+}],
+"loop": true,
+"name": &"RideJump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_6pogt")
+}],
+"loop": true,
+"name": &"RideRun",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1365,6 +1587,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("31_ie76m")
+}],
+"loop": true,
+"name": &"RideRun",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1541,6 +1771,7 @@ animation = &"Idle"
 gizmo_extents = 0.0
 
 [node name="Interaction Manager" parent="." instance=ExtResource("37_8ynux")]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction Manager"]
 shape = SubResource("RectangleShape2D_d30e8")
@@ -1574,6 +1805,7 @@ script = ExtResource("27_sm0op")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="ParryArea" type="Area2D" parent="."]
+visible = false
 collision_mask = 64
 
 [node name="ParryCollider" type="CollisionShape2D" parent="ParryArea"]

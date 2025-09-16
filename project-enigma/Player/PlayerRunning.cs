@@ -14,7 +14,7 @@ public partial class PlayerRunning : State
     {
         if (Player.IsRiding)
         {
-            Player.PlayerSprite.PlayAnimation("Run");
+            Player.PlayerSprite.PlayAnimation("RideRun");
         }
         else
         {
