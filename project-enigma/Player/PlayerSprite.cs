@@ -4,42 +4,44 @@ using System;
 public partial class PlayerSprite : Node2D
 {
     
-    public AnimatedSprite2D Head;
-    public AnimatedSprite2D Body;
-    public AnimatedSprite2D Arm;
+    public AnimatedSprite2D Top;
+    public AnimatedSprite2D Bottom;
+    private AnimationPlayer _animationPlayer;
+    private CollisionShape2D _collider;
     private Player _player;
 
     public override void _Ready()
     {
-        Head = GetNode<AnimatedSprite2D>("Head");
-        Body = GetNode<AnimatedSprite2D>("Body");
-        Arm = GetNode<AnimatedSprite2D>("Arm");
+        Top = GetNode<AnimatedSprite2D>("Top");
+        Bottom = GetNode<AnimatedSprite2D>("Bottom");
+        _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+        _collider = GetNode<CollisionShape2D>("../Collider");
         _player = GetParent<Player>();
     }
 
-    public void PlayHeadAnimation(string anim)
+    public void PlayAnimation(string anim)
     {
-        Head.Play(anim);
+        _animationPlayer.Play(anim);
     }
     
-    public void PlayBodyAnimation(string anim)
-    {
-        Body.Play(anim);
-    }
-
     public override void _PhysicsProcess(double delta)
     {
-        if (_player.Velocity.X < 0.0f && !Head.FlipH)
+        if (_player.Velocity.X < 0.0f)
         {
-            Head.FlipH = true;
-            Body.FlipH = true;
-            Arm.FlipH = true;
+            //Top.FlipH = true;
+            //Bottom.FlipH = true;
+            _player.Scale = new Vector2(1, -1);
+            _player.RotationDegrees = 180;
+            //GD.Print("PlayerScale: " + _player.Scale);
+            
         }
-        else if (_player.Velocity.X >= 0.0f && Head.FlipH)
+        else
         {
-            Head.FlipH = false;
-            Body.FlipH = false;
-            Arm.FlipH = false;
+            //Top.FlipH = false;
+            //Bottom.FlipH = false;
+            _player.Scale = new Vector2(1, 1);
+            _player.RotationDegrees = 0;
+            
         }
     }
 }

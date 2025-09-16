@@ -75,21 +75,30 @@ public partial class Player : CharacterBody2D
    public Timer JumpBufferTimer = null;
    public PlayerSprite PlayerSprite = null;
    private MovementStateMachine _stateMachine = null;
+   public Area2D ParryTarget = null;
+   public CollisionShape2D Collider = null;
+   public RayCast2D LeftCheck = null;
+   public RayCast2D RightCheck = null;
    public bool IsRiding;
    
    public override void _Ready()
    {
+	   //SetFloorMaxAngle(1.74533f);
 	  _stateMachine = GetNode<MovementStateMachine>("MovementStateMachine");
 	  _grappleCast = GetNode<RayCast2D>("GrappleCast");
+	  LeftCheck = GetNode<RayCast2D>("WallCheck/LeftCheck");
+	  RightCheck = GetNode<RayCast2D>("WallCheck/RightCheck");
+	  ParryTarget = GetNode<Area2D>("ParryArea");
 	  _coyoteTimer = new Timer();
 	  JumpBufferTimer = new Timer();
 	  _coyoteTimer.Timeout += CoyoteTimeout;
 	  JumpBufferTimer.Timeout += JumpBufferTimeout;
-	  FloorMaxAngle = Mathf.DegToRad(80.0f);
-	  FloorSnapLength = 10.0f;
+	  Collider = GetNode<CollisionShape2D>("Collider");
+	  //FloorMaxAngle = Mathf.DegToRad(89.9f);
+	  FloorSnapLength = 120.0f;
 	  FloorStopOnSlope = false;
 	  IsRiding = false;
-
+	  
 	  PlayerSprite = GetNode<PlayerSprite>("PlayerSprite");
 	  
 	  _grappleIcon = new Sprite2D();
@@ -171,10 +180,13 @@ public partial class Player : CharacterBody2D
    
    public override void _PhysicsProcess(double delta)
    {
+	   
+	   //GD.Print(IsOnWall());
 	  _stateMachine.ProcessPhysics(delta);
 	  GrappleCheck();
 	  _grappleCast.LookAt((10*PlayerLook())+ Position);
 	  MoveAndSlide();
+	  
    }
 
    public override void _Process(double delta)
@@ -186,6 +198,16 @@ public partial class Player : CharacterBody2D
    {
 	  _stateMachine.ProcessInput(@event);
    }
-   
+
+   public bool WallCheck()
+   {
+	   if (LeftCheck.IsColliding() || RightCheck.IsColliding())
+	   {
+		   //GD.Print("Wall Check Passed");
+		   return true;
+	   }
+
+	   return false;
+   }
    
 }

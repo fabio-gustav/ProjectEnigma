@@ -23,7 +23,14 @@ public partial class PlayerFalling : State
             Player._coyoteTimer.Start(Player.CoyoteTime);
         }
         
-        Player.PlayerSprite.PlayBodyAnimation("Falling");
+        if (Player.IsRiding)
+        {
+            Player.PlayerSprite.PlayAnimation("Fall");
+        }
+        else
+        {
+            Player.PlayerSprite.PlayAnimation("Fall");
+        }
     }
 
     public override State ProcessInput(InputEvent @event)

@@ -10,7 +10,7 @@ public partial class PlayerIdle : State
     {
         Player._jumpAvailable = true;
         Player.Velocity = new Vector2(Player.Velocity.X, 0.0f);
-        Player.PlayerSprite.PlayBodyAnimation("Idle");
+        Player.PlayerSprite.PlayAnimation("Idle");
     }
 
     public override State ProcessInput(InputEvent @event)
@@ -31,6 +31,9 @@ public partial class PlayerIdle : State
 
     public override State PhysicsUpdate(double delta)
     {
+
+        
+        
         if (!Player.IsOnFloor())
         {
             //This should only be needed in fall state, but I'm going to test before I delete it

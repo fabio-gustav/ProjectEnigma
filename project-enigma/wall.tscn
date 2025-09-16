@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://u2ukv6ajjhyr"]
+
+[node name="Wall" type="StaticBody2D"]
+collision_layer = 34

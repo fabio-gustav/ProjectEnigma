@@ -28,7 +28,7 @@ public partial class MovementStateMachine : Node
 
     public void ChangeState(State newState)
     {
-        GD.Print("Transition from " + _currentState.ToString() + " to " + newState.ToString());
+        //GD.Print("Transition from " + _currentState.ToString() + " to " + newState.ToString());
         if (GetParent() is Player)
         {
             GetNode<SignalBus>("/root/SignalBus").EmitSignal(SignalBus.SignalName.PlayerStateChangeDebug, newState);
