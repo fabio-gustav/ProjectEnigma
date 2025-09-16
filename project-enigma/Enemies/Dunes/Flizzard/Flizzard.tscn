@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://cte4cbn7rr68l"]
+
+[ext_resource type="Script" uid="uid://bfaadxpexm1op" path="res://Enemies/Dunes/Flizzard/Flizzard.cs" id="1_aa1px"]
+[ext_resource type="PackedScene" uid="uid://ngq8shkce1hd" path="res://Components/health_component.tscn" id="2_4dn2x"]
+[ext_resource type="PackedScene" uid="uid://ciqx84bvpvqid" path="res://Components/hitbox_component.tscn" id="3_5wa3i"]
+[ext_resource type="Texture2D" uid="uid://b7f1opvftb1ic" path="res://Enemies/Dunes/Flizzard/GoodSprite.png" id="4_aa1px"]
+[ext_resource type="Script" uid="uid://b7q7o311td2by" path="res://StateMachines/MovementStateMachine.cs" id="5_t3r7d"]
+[ext_resource type="Script" uid="uid://dx7hlps2sv6cw" path="res://Enemies/Dunes/Flizzard/Patrol.cs" id="6_4dn2x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1m01d"]
+radius = 36.0139
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8j8ey"]
+radius = 33.0606
+
+[sub_resource type="Curve2D" id="Curve2D_4dn2x"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 268, -4, 0, 0, 0, 0, 800, -2, 0, 0, 0, 0, 1481, -6, 0, 0, 0, 0, 1831, 26, 0, 0, 0, 0, 1906, 129, 0, 0, 0, 0, 1901, 194, 0, 0, 0, 0, 1880, 236, 0, 0, 0, 0, 1822, 275, 0, 0, 0, 0, 1646, 286, 0, 0, 0, 0, 1398, 275, 0, 0, 0, 0, 997, 286, 0, 0, 0, 0, 697, 269, 0, 0, 0, 0, 420, 275, 0, 0, 0, 0, 133, 273, 0, 0, 0, 0, 2, 202, 0, 0, 0, 0, -6, 86, 0, 0, 0, 0, 60, 31, 0, 0, 0, 0, 122, 1, 0, 0, 0, 0, 268, -4)
+}
+point_count = 19
+
+[node name="Flizzard" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1_aa1px")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_4dn2x")]
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("HealthComponent") instance=ExtResource("3_5wa3i")]
+scale = Vector2(5, 5)
+collision_layer = 8
+HealthComponent = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_1m01d")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+scale = Vector2(5, 5)
+shape = SubResource("CircleShape2D_8j8ey")
+
+[node name="Sprite" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="Sprite"]
+scale = Vector2(5, 5)
+texture = ExtResource("4_aa1px")
+
+[node name="PatrolRoute" type="Path2D" parent="."]
+curve = SubResource("Curve2D_4dn2x")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="PatrolRoute"]
+position = Vector2(268, -4)
+rotation = 0.00375938
+
+[node name="Tracer" type="Node2D" parent="PatrolRoute/PathFollow2D"]
+
+[node name="MovementStateMachine" type="Node" parent="." node_paths=PackedStringArray("InitialState")]
+script = ExtResource("5_t3r7d")
+InitialState = NodePath("Patrol")
+
+[node name="Patrol" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("Path")]
+script = ExtResource("6_4dn2x")
+Path = NodePath("../../PatrolRoute")

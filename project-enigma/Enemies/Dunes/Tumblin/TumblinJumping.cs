@@ -9,12 +9,22 @@ public partial class TumblinJumping : State
     private float _jumpVelocity = 0.0f;
     private float _jumpGravity = 0.0f;
 
-    public override void Init()
-    {   
+    public override void _Ready()
+    {
+        base._Ready();
         Tumblin = (Tumblin)GenericCharacter;
         _jumpVelocity = ((2.0f * Tumblin.JumpHeight) / Tumblin.RisingJumpTime) * -1.0f;
-        _jumpGravity = ((-2.0f * Tumblin.JumpHeight) / (Tumblin.RisingJumpTime * Tumblin.RisingJumpTime)) * -1.0f;
+        _jumpGravity = ((-2.0f * Tumblin.JumpHeight) / (Tumblin.RisingJumpTime * Tumblin.RisingJumpTime)) * -1.0f; 
+        
     }
+
+
+
+    public override void Init()
+    {
+        
+    }
+        
 
     public override void Enter()
     {
