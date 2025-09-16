@@ -1416,7 +1416,7 @@ size = Vector2(1946, 1080)
 size = Vector2(362, 152.5)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qs4pp"]
-radius = 346.0
+radius = 591.0
 height = 1284.0
 
 [node name="Player" type="CharacterBody2D"]
@@ -1439,7 +1439,7 @@ RideAirSpeed = 256.0
 SwingSpeed = 0.1
 Friction = 6.0
 SlideFriction = 0.01
-RideFriction = 0.5
+RideFriction = 0.1
 GrapplePull = 1024.0
 GrapplePullSpeed = 800.0
 
@@ -1574,7 +1574,6 @@ script = ExtResource("27_sm0op")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="ParryArea" type="Area2D" parent="."]
-visible = false
 collision_mask = 64
 
 [node name="ParryCollider" type="CollisionShape2D" parent="ParryArea"]
