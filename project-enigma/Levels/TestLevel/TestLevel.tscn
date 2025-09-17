@@ -146,6 +146,7 @@ follow_mode = 2
 follow_target = NodePath("../../../../Player")
 zoom = Vector2(0.2, 0.2)
 follow_damping = true
+follow_damping_value = Vector2(0.1, 4)
 
 [node name="TerryTheTumblin" parent="." instance=ExtResource("9_7gk6b")]
 position = Vector2(-6280, 1775)

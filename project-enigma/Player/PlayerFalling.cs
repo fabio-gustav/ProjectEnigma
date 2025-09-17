@@ -25,7 +25,7 @@ public partial class PlayerFalling : State
         
         if (Player.IsRiding)
         {
-            Player.PlayerSprite.PlayAnimation("Fall");
+            Player.PlayerSprite.PlayAnimation("RideJump");
         }
         else
         {
