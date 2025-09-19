@@ -32,6 +32,17 @@ public partial class PlayerWallSlide : State
         wallStickTimer.Start();
 
     }
+    
+    public override State ProcessInput(InputEvent @event)
+    {
+
+        if (@event.IsActionPressed("jump"))
+        {
+            return WallJumpState;
+        }
+
+        return null;
+    }
 
     public override State PhysicsUpdate(double delta)
     {
@@ -42,7 +53,7 @@ public partial class PlayerWallSlide : State
         else
         {
             Player.Velocity = new Vector2(0.00f, 0.00f);
-        }   
+        }
 
         if (Player.IsOnFloor())
         {
