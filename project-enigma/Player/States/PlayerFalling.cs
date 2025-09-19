@@ -8,6 +8,7 @@ public partial class PlayerFalling : State
     [Export] public State IdleState { get; set; } = null;
     [Export] public State JumpState { get; set; } = null;
     [Export] public State RunState { get; set; } = null;
+    [Export] public State WallSlideState { get; set; } = null;
 
     private float _fallGravity = 0.0f;
 
@@ -69,8 +70,10 @@ public partial class PlayerFalling : State
             //float.Lerp(Player.Velocity.X, Mathf.Clamp((Player.AirSpeed*GetInput())+Player.Velocity.X, Player.Velocity.X-Player.Speed, Player.Velocity.X + Player.Speed), Player.Acceleration)
             Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, (Player.AirSpeed*GetInput())+Player.Velocity.X, Player.Acceleration*(float)delta), Player.Velocity.Y + (float)(_fallGravity * delta));
         }
-        
-        
+
+
+
+
         if (Player.IsOnFloor())
         {
             if (GetInput() != 0.0f)
@@ -79,6 +82,13 @@ public partial class PlayerFalling : State
             }
             //Ride State Logic goes here eventually
             return IdleState;
+        }
+        else//not on floor, checking for wallslide input
+        {
+            if (Player.WallCheck())
+            {
+                return WallSlideState;
+            }
         }
 
         return null;
