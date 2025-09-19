@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://bqgg3mfv3sdlg"]
+[gd_scene load_steps=67 format=3 uid="uid://bqgg3mfv3sdlg"]
 
 [ext_resource type="Script" uid="uid://ceu4vsundxotx" path="res://Player/Player.cs" id="1_l8h54"]
 [ext_resource type="PackedScene" uid="uid://bxq0ktkymhtkr" path="res://Components/money_component.tscn" id="2_4ntmi"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://0yk5r06lxl1p" path="res://Player/PlayerWallSlide.cs" id="15_f4lon"]
 [ext_resource type="Texture2D" uid="uid://6kl64k22wr8v" path="res://Player/Sprite Sheets/ThreeFrames/Top/Idle.png" id="15_i4o1l"]
 [ext_resource type="Texture2D" uid="uid://s6cuqqdpp2ak" path="res://Player/Sprite Sheets/ThreeFrames/Top/Falling.png" id="15_qs4pp"]
+[ext_resource type="Script" uid="uid://b7ccx6qufgxjp" path="res://Player/WallJump.cs" id="16_dy65m"]
 [ext_resource type="Texture2D" uid="uid://dx2qn4vuwupjn" path="res://Player/Sprite Sheets/ThreeFrames/Top/Run1.png" id="16_j2n6q"]
 [ext_resource type="Texture2D" uid="uid://s1j360hj7n2b" path="res://Player/Sprite Sheets/ThreeFrames/Top/Run2.png" id="17_c6x0f"]
 [ext_resource type="Texture2D" uid="uid://dubrevqhlpw5r" path="res://Player/Sprite Sheets/ThreeFrames/Top/Rising.png" id="17_iyprq"]
@@ -1747,9 +1748,16 @@ GrappleState = NodePath("../Grappling")
 FallState = NodePath("../Falling")
 RunState = NodePath("../Running")
 
-[node name="WallSlide" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("IdleState")]
+[node name="WallSlide" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("IdleState", "WallJumpState")]
 script = ExtResource("15_f4lon")
 IdleState = NodePath("../Idle")
+WallJumpState = NodePath("../WallJump")
+
+[node name="WallJump" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("GrappleState", "ParryState", "FallState")]
+script = ExtResource("16_dy65m")
+GrappleState = NodePath("../Grappling")
+ParryState = NodePath("../Parrying")
+FallState = NodePath("../Falling")
 
 [node name="PlayerSprite" type="Node2D" parent="."]
 script = ExtResource("13_8viyr")

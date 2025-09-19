@@ -87,7 +87,6 @@ public partial class PlayerFalling : State
         {
             if (Player.WallCheck())
             {
-                GD.Print("sus");
                 return WallSlideState;
             }
         }
