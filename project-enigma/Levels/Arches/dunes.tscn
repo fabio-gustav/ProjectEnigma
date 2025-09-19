@@ -1,0 +1,92 @@
+[gd_scene load_steps=11 format=3 uid="uid://b4h0a6bqp101v"]
+
+[ext_resource type="PackedScene" uid="uid://ckdyouxku2wp1" path="res://ObjectComponents/camera_manager.tscn" id="1_fxggw"]
+[ext_resource type="PackedScene" uid="uid://bqgg3mfv3sdlg" path="res://Player/player.tscn" id="2_u0tvy"]
+[ext_resource type="PackedScene" uid="uid://b53cfcwrjaq5h" path="res://UI/UILayer/UILayer.tscn" id="3_dux4h"]
+[ext_resource type="Texture2D" uid="uid://canfy5jh2d5cm" path="res://Levels/TestLevel/Art/256Engima_Grid.png" id="4_asx7m"]
+[ext_resource type="PackedScene" uid="uid://u2ukv6ajjhyr" path="res://wall.tscn" id="5_pruts"]
+[ext_resource type="PackedScene" uid="uid://cte4cbn7rr68l" path="res://Enemies/Dunes/Flizzard/Flizzard.tscn" id="5_u0tvy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_itugf"]
+size = Vector2(625.25, 6167.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dux4h"]
+size = Vector2(3530.75, 703.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u0tvy"]
+size = Vector2(9328.69, 242)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15rje"]
+size = Vector2(35770.5, 412)
+
+[node name="World" type="Node2D"]
+
+[node name="CameraManager" parent="." instance=ExtResource("1_fxggw")]
+
+[node name="zone0-1" parent="CameraManager/CameraNodes" index="0"]
+position = Vector2(-14971, -51)
+
+[node name="PhantomCamera2D" parent="CameraManager/CameraNodes/zone0-1" index="1" node_paths=PackedStringArray("follow_target")]
+top_level = true
+position = Vector2(8, -3373)
+follow_mode = 2
+follow_target = NodePath("../../../../Player")
+zoom = Vector2(0.2, 0.2)
+follow_offset = Vector2(0, -2048)
+follow_damping = true
+follow_damping_value = Vector2(0.1, 2.3)
+
+[node name="zone1-2" parent="CameraManager/CameraNodes" index="1"]
+position = Vector2(-15980, -38)
+
+[node name="Player" parent="." instance=ExtResource("2_u0tvy")]
+position = Vector2(8, -1325)
+FallingJumpTime = 0.4
+AirSpeed = 50.0
+
+[node name="UILayer" parent="." instance=ExtResource("3_dux4h")]
+
+[node name="BackgroundGrid" type="TextureRect" parent="."]
+z_index = -4096
+offset_left = -53342.0
+offset_top = -23062.0
+offset_right = 45721.0
+offset_bottom = 33518.0
+texture = ExtResource("4_asx7m")
+stretch_mode = 1
+
+[node name="Amogus" type="Node2D" parent="."]
+position = Vector2(8, -1325)
+
+[node name="Flizzard" parent="Amogus" instance=ExtResource("5_u0tvy")]
+position = Vector2(4644, 218)
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="Wall" parent="Walls" instance=ExtResource("5_pruts")]
+collision_layer = 98
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall"]
+position = Vector2(-3966, -3068)
+shape = SubResource("RectangleShape2D_itugf")
+
+[node name="Wall4" parent="Walls" instance=ExtResource("5_pruts")]
+collision_layer = 98
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall4"]
+position = Vector2(9170, -2)
+shape = SubResource("RectangleShape2D_dux4h")
+
+[node name="Wall3" parent="Walls" instance=ExtResource("5_pruts")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall3"]
+position = Vector2(363.656, -6186)
+shape = SubResource("RectangleShape2D_u0tvy")
+
+[node name="Wall2" parent="Walls" instance=ExtResource("5_pruts")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall2"]
+position = Vector2(13359, 583)
+shape = SubResource("RectangleShape2D_15rje")
+
+[editable path="CameraManager"]

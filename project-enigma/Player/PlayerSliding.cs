@@ -32,6 +32,7 @@ public partial class PlayerSliding : State
     public override void Exit()
     {
         Player.PlayerSprite.Rotation = 0.0f;
+        Player.IsRiding = false;
     }
 
     public override State ProcessInput(InputEvent @event)

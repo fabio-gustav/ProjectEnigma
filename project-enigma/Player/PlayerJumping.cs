@@ -37,7 +37,7 @@ public partial class PlayerJumping : State
         Player._jumpAvailable = false;
         if (Player.IsRiding)
         {
-            Player.PlayerSprite.PlayAnimation("Jump");
+            Player.PlayerSprite.PlayAnimation("RideJump");
         }
         else
         {
@@ -75,7 +75,7 @@ public partial class PlayerJumping : State
         else
         {
             //float.Lerp(Player.Velocity.X, Mathf.Clamp((Player.AirSpeed*GetInput())+Player.Velocity.X,-Player.Speed,Player.Speed), Player.Acceleration)
-            Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, (Player.AirSpeed*GetInput())+Player.Velocity.X, Player.Acceleration*(float)delta), Player.Velocity.Y + (float)(_jumpGravity * delta));
+            Player.Velocity = new Vector2(Player.Velocity.X + Player.AirSpeed*GetInput(), Player.Velocity.Y + (float)(_jumpGravity * delta));
         }
         //Acceleration needs to be fixed, also I'm getting rid of AirResistance because it is dumb and stupid
         
