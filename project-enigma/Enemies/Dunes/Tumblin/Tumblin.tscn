@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://cia557k6nxlpy"]
 
 [ext_resource type="Script" uid="uid://cy7mwf6onph8s" path="res://Enemies/Dunes/Tumblin/Tumblin.cs" id="1_pwjjn"]
-[ext_resource type="Texture2D" uid="uid://hdepwtunyj25" path="res://grapple (1).png" id="1_tmm4a"]
+[ext_resource type="Texture2D" uid="uid://hdepwtunyj25" path="res://WorldObjects/Assets/grapple_node.png" id="1_tmm4a"]
 [ext_resource type="PackedScene" uid="uid://ngq8shkce1hd" path="res://Components/health_component.tscn" id="2_y3une"]
 [ext_resource type="PackedScene" uid="uid://ciqx84bvpvqid" path="res://Components/hitbox_component.tscn" id="3_lnvne"]
 [ext_resource type="Script" uid="uid://b7q7o311td2by" path="res://StateMachines/MovementStateMachine.cs" id="4_pwjjn"]

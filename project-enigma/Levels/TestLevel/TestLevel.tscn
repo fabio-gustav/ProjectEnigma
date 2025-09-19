@@ -3,12 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://bqgg3mfv3sdlg" path="res://Player/player.tscn" id="1_8a0p6"]
 [ext_resource type="PackedScene" uid="uid://b53cfcwrjaq5h" path="res://UI/UILayer/UILayer.tscn" id="1_h5s4c"]
 [ext_resource type="Texture2D" uid="uid://canfy5jh2d5cm" path="res://Levels/TestLevel/Art/256Engima_Grid.png" id="1_iriom"]
-[ext_resource type="PackedScene" uid="uid://cj18bm1lutttq" path="res://grapple_node.tscn" id="4_ccra0"]
-[ext_resource type="PackedScene" uid="uid://buq5j4wq2m7j0" path="res://platform.tscn" id="4_htab2"]
+[ext_resource type="PackedScene" uid="uid://cj18bm1lutttq" path="res://WorldObjects/grapple_node.tscn" id="4_ccra0"]
+[ext_resource type="PackedScene" uid="uid://buq5j4wq2m7j0" path="res://WorldObjects/platform.tscn" id="4_htab2"]
 [ext_resource type="PackedScene" uid="uid://cia557k6nxlpy" path="res://Enemies/Dunes/Tumblin/Tumblin.tscn" id="6_i1cjp"]
 [ext_resource type="PackedScene" uid="uid://d28kack7rhrcn" path="res://Camera/camera_manager.tscn" id="8_lcgk1"]
 [ext_resource type="PackedScene" uid="uid://b5e8qgafl1hxk" path="res://UI/terry_the_tumblin.tscn" id="9_7gk6b"]
-[ext_resource type="PackedScene" uid="uid://u2ukv6ajjhyr" path="res://wall.tscn" id="9_xlfkq"]
+[ext_resource type="PackedScene" uid="uid://u2ukv6ajjhyr" path="res://WorldObjects/wall.tscn" id="9_xlfkq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xlfkq"]
 size = Vector2(3303.5, 269)

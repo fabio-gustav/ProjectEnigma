@@ -70,6 +70,19 @@ project/assembly_name="Project Enigma"
 
 enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/rmsmartshape/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://Enemies/": "orange",
+"res://Levels/": "blue",
+"res://Player/": "red",
+"res://Singletons/": "purple",
+"res://StateMachines/": "gray",
+"res://UI/": "green",
+"res://WorldObjects/": "orange",
+"res://WorldObjects/Assets/": "red"
+}
+
 [input]
 
 left={
@@ -160,3 +173,7 @@ interact={
 2d_physics/layer_5="Interact"
 2d_physics/layer_6="SlideWall"
 2d_physics/layer_7="Parry"
+
+[physics]
+
+common/physics_interpolation=true

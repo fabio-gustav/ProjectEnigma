@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b5e8qgafl1hxk"]
 
 [ext_resource type="PackedScene" uid="uid://csuf3tag2h7l1" path="res://Components/interaction_component.tscn" id="1_pyqqt"]
-[ext_resource type="Texture2D" uid="uid://hdepwtunyj25" path="res://grapple (1).png" id="2_11dx1"]
+[ext_resource type="Texture2D" uid="uid://hdepwtunyj25" path="res://WorldObjects/Assets/grapple_node.png" id="2_11dx1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ysh17"]
 radius = 131.137

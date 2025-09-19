@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ba81mhl3bngw4" path="res://Enemies/EnemyBaseClass/EnemyTemplate/EnemyTemplate.cs" id="1_4ogpd"]
 [ext_resource type="PackedScene" uid="uid://ngq8shkce1hd" path="res://Components/health_component.tscn" id="2_ur7l6"]
 [ext_resource type="PackedScene" uid="uid://ciqx84bvpvqid" path="res://Components/hitbox_component.tscn" id="3_tlmvw"]
-[ext_resource type="Texture2D" uid="uid://hdepwtunyj25" path="res://grapple (1).png" id="4_pje01"]
+[ext_resource type="Texture2D" uid="uid://hdepwtunyj25" path="res://WorldObjects/Assets/grapple_node.png" id="4_pje01"]
 [ext_resource type="Script" uid="uid://b7q7o311td2by" path="res://StateMachines/MovementStateMachine.cs" id="5_led8s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1m01d"]

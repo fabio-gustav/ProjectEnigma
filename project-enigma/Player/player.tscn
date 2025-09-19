@@ -7,16 +7,16 @@
 [ext_resource type="Script" uid="uid://cyjhublpfkp6g" path="res://StateMachines/SpriteStateMachine.cs" id="5_k53q1"]
 [ext_resource type="Script" uid="uid://duwho00jwlr83" path="res://StateMachines/ActionStateMachine.cs" id="6_fhl08"]
 [ext_resource type="Script" uid="uid://b7q7o311td2by" path="res://StateMachines/MovementStateMachine.cs" id="7_vtle1"]
-[ext_resource type="Script" uid="uid://d1y85smp3tsj4" path="res://Player/PlayerIdle.cs" id="8_00tjw"]
+[ext_resource type="Script" uid="uid://d1y85smp3tsj4" path="res://Player/States/PlayerIdle.cs" id="8_00tjw"]
 [ext_resource type="Script" uid="uid://blmny4w1sukpc" path="res://Components/AttackComponent.cs" id="8_od3ui"]
-[ext_resource type="Script" uid="uid://d0hon0bvhddmt" path="res://Player/PlayerRunning.cs" id="9_x3vf3"]
-[ext_resource type="Script" uid="uid://bo82jwf72l6yp" path="res://Player/PlayerJumping.cs" id="10_apopc"]
-[ext_resource type="Script" uid="uid://br5o35htcfdws" path="res://Player/PlayerFalling.cs" id="11_5htga"]
-[ext_resource type="Script" uid="uid://v82m18cf7uvf" path="res://Player/PlayerGrappling.cs" id="12_p5o4e"]
+[ext_resource type="Script" uid="uid://d0hon0bvhddmt" path="res://Player/States/PlayerRunning.cs" id="9_x3vf3"]
+[ext_resource type="Script" uid="uid://bo82jwf72l6yp" path="res://Player/States/PlayerJumping.cs" id="10_apopc"]
+[ext_resource type="Script" uid="uid://br5o35htcfdws" path="res://Player/States/PlayerFalling.cs" id="11_5htga"]
+[ext_resource type="Script" uid="uid://v82m18cf7uvf" path="res://Player/States/PlayerGrappling.cs" id="12_p5o4e"]
 [ext_resource type="Script" uid="uid://cp66ape1basl5" path="res://Player/PlayerSprite.cs" id="13_8viyr"]
-[ext_resource type="Script" uid="uid://dbrj43vrp8gwe" path="res://Player/PlayerSliding.cs" id="13_76lrf"]
-[ext_resource type="Script" uid="uid://julotbanrell" path="res://Player/PlayerParrying.cs" id="14_iyprq"]
-[ext_resource type="Script" uid="uid://0yk5r06lxl1p" path="res://Player/PlayerWallSlide.cs" id="15_f4lon"]
+[ext_resource type="Script" uid="uid://dbrj43vrp8gwe" path="res://Player/States/PlayerSliding.cs" id="13_76lrf"]
+[ext_resource type="Script" uid="uid://julotbanrell" path="res://Player/States/PlayerParrying.cs" id="14_iyprq"]
+[ext_resource type="Script" uid="uid://0yk5r06lxl1p" path="res://Player/States/PlayerWallSlide.cs" id="15_f4lon"]
 [ext_resource type="Texture2D" uid="uid://6kl64k22wr8v" path="res://Player/Sprite Sheets/ThreeFrames/Top/Idle.png" id="15_i4o1l"]
 [ext_resource type="Texture2D" uid="uid://s6cuqqdpp2ak" path="res://Player/Sprite Sheets/ThreeFrames/Top/Falling.png" id="15_qs4pp"]
 [ext_resource type="Texture2D" uid="uid://dx2qn4vuwupjn" path="res://Player/Sprite Sheets/ThreeFrames/Top/Run1.png" id="16_j2n6q"]
@@ -42,10 +42,10 @@
 [ext_resource type="Texture2D" uid="uid://dkc65qctbrqt4" path="res://Player/Sprite Sheets/ThreeFrames/Bottom/Swing1.png" id="29_6rl0i"]
 [ext_resource type="Texture2D" uid="uid://k8ok14nk4c3l" path="res://Player/Sprite Sheets/ThreeFrames/Bottom/Swing2.png" id="30_7x5p2"]
 [ext_resource type="Texture2D" uid="uid://bn6ti1euttpim" path="res://Player/Sprite Sheets/ThreeFrames/Top/Ride2.png" id="31_ie76m"]
-[ext_resource type="PackedScene" uid="uid://pja1ap3qr7fr" path="res://ObjectComponents/interaction_manager.tscn" id="37_8ynux"]
+[ext_resource type="PackedScene" uid="uid://pja1ap3qr7fr" path="res://Player/interaction_manager.tscn" id="37_8ynux"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f4lon"]
-radius = 48.0
+radius = 79.0
 height = 416.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n471f"]
@@ -1777,7 +1777,7 @@ visible = false
 shape = SubResource("RectangleShape2D_d30e8")
 
 [node name="GrappleCast" type="RayCast2D" parent="."]
-target_position = Vector2(8000, 0)
+target_position = Vector2(3000, 0)
 collision_mask = 4
 collide_with_areas = true
 collide_with_bodies = false
