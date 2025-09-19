@@ -1720,13 +1720,14 @@ GrappleState = NodePath("../Grappling")
 ParryState = NodePath("../Parrying")
 FallState = NodePath("../Falling")
 
-[node name="Falling" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("GrappleState", "ParryState", "IdleState", "JumpState", "RunState")]
+[node name="Falling" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("GrappleState", "ParryState", "IdleState", "JumpState", "RunState", "WallSlideState")]
 script = ExtResource("11_5htga")
 GrappleState = NodePath("../Grappling")
 ParryState = NodePath("../Parrying")
 IdleState = NodePath("../Idle")
 JumpState = NodePath("../Jumping")
 RunState = NodePath("../Running")
+WallSlideState = NodePath("../WallSlide")
 
 [node name="Grappling" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("FallState", "IdleState", "JumpState")]
 script = ExtResource("12_p5o4e")
