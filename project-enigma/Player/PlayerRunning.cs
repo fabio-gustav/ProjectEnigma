@@ -108,11 +108,6 @@ public partial class PlayerRunning : State
             
         }
 
-        //GD.Print(Player.GetFloorNormal());
-        if (Player.IsRiding && Player.WallCheck())
-        {
-            //return WallSlideState;
-        }
         
         if (!Player.IsOnFloor())
         {

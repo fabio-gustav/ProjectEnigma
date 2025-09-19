@@ -57,13 +57,16 @@ public partial class Player : CharacterBody2D
    [Export] public double CoyoteTime { get; set; } = 0.2;
    [Export] public double JumpBufferTime { get; set; } = 0.1;
    [Export] public double DashCoolDown { get; set; } = 0.5;
-   /*
-	* Local Variables
+   
+   [Export] public float wallStickWaitTime { get; set; } = 0.5f;
+	/*
+	   * Local Variables
 	*/
 
-   public bool _playerGrappled = false;
-   public bool _jumpAvailable = false;
-   public bool _jumpBuffer = false;
+	public bool wallStuck;
+	public bool _playerGrappled = false;
+	public bool _jumpAvailable = false;
+	public bool _jumpBuffer = false;
 
 
    private Texture2D _marker = GD.Load<Texture2D>("res://Player/Assets/Grapple_Point_Dot.png");
