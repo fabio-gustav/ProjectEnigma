@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cj18bm1lutttq" path="res://WorldObjects/grapple_node.tscn" id="4_ccra0"]
 [ext_resource type="PackedScene" uid="uid://buq5j4wq2m7j0" path="res://WorldObjects/platform.tscn" id="4_htab2"]
 [ext_resource type="PackedScene" uid="uid://cia557k6nxlpy" path="res://Enemies/Dunes/Tumblin/Tumblin.tscn" id="6_i1cjp"]
-[ext_resource type="PackedScene" uid="uid://d28kack7rhrcn" path="res://Camera/camera_manager.tscn" id="8_lcgk1"]
+[ext_resource type="PackedScene" uid="uid://ckdyouxku2wp1" path="res://Camera/camera_manager.tscn" id="8_lcgk1"]
 [ext_resource type="PackedScene" uid="uid://b5e8qgafl1hxk" path="res://UI/terry_the_tumblin.tscn" id="9_7gk6b"]
 [ext_resource type="PackedScene" uid="uid://u2ukv6ajjhyr" path="res://WorldObjects/wall.tscn" id="9_xlfkq"]
 
@@ -133,25 +133,12 @@ position = Vector2(4513, 54.5)
 
 [node name="PhantomCamera2D" parent="CameraManager/CameraNodes/zone0-1" index="1"]
 position = Vector2(-262, 668)
-zoom = Vector2(0.1, 0.1)
 
 [node name="CollisionShape2D" parent="CameraManager/CameraNodes/zone1-2" index="0"]
 position = Vector2(8373.38, 908)
 shape = SubResource("RectangleShape2D_lcgk1")
 
-[node name="PhantomCamera2D" parent="CameraManager/CameraNodes/zone1-2" index="1" node_paths=PackedStringArray("follow_target")]
-top_level = true
-position = Vector2(-2403, 1152)
-follow_mode = 2
-follow_target = NodePath("../../../../Player")
-zoom = Vector2(0.2, 0.2)
-follow_damping = true
-follow_damping_value = Vector2(0.1, 4)
-
 [node name="TerryTheTumblin" parent="." instance=ExtResource("9_7gk6b")]
 position = Vector2(-6280, 1775)
-
-[connection signal="body_entered" from="CameraManager/CameraNodes/zone0-1" to="CameraManager" method="OnZone01BodyEntered"]
-[connection signal="body_entered" from="CameraManager/CameraNodes/zone1-2" to="CameraManager" method="OnZone12BodyEntered"]
 
 [editable path="CameraManager"]

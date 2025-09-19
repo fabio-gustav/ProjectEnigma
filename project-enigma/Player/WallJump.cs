@@ -37,8 +37,8 @@ public partial class WallJump : State
 
     public override void Init()
     {
-        _jumpVelocity = ((2.0f * Player.JumpHeight) / Player.RisingJumpTime) * -1.0f;
-        _jumpGravity = ((-2.0f * Player.JumpHeight) / (Player.RisingJumpTime * Player.RisingJumpTime)) * -1.0f;
+        _jumpVelocity = ((2.0f * Player.WallJumpHeight) / Player.RisingJumpTime) * -1.0f;
+        _jumpGravity = ((-2.0f * Player.WallJumpHeight) / (Player.RisingJumpTime * Player.RisingJumpTime)) * -1.0f;
         _ridingJumpVelocity = ((2.0f * Player.RideJumpHeight) / Player.RideRisingJumpTime) * -1.0f;
         _ridingJumpGravity = ((-2.0f * Player.RideJumpHeight) / (Player.RideRisingJumpTime * Player.RideRisingJumpTime)) * -1.0f;
         rightCheck = GetNode<RayCast2D>("../../WallCheck/RightCheck");
@@ -58,7 +58,7 @@ public partial class WallJump : State
         const float AngleChange = (float)Math.PI / 6;
         if (side == 1)
         {
-            Player.Velocity = new Vector2(Player.Velocity.X, _ridingJumpVelocity).Rotated(AngleChange);
+            Player.Velocity = new Vector2(Player.Velocity.X, _jumpVelocity).Rotated(AngleChange);
         }
         if (side == 2)
         {

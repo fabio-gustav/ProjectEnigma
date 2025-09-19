@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://bqgg3mfv3sdlg"]
+[gd_scene load_steps=68 format=3 uid="uid://bqgg3mfv3sdlg"]
 
 [ext_resource type="Script" uid="uid://ceu4vsundxotx" path="res://Player/Player.cs" id="1_l8h54"]
 [ext_resource type="PackedScene" uid="uid://bxq0ktkymhtkr" path="res://Components/money_component.tscn" id="2_4ntmi"]
@@ -48,6 +48,10 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f4lon"]
 radius = 79.0
 height = 416.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dy65m"]
+radius = 95.0
+height = 604.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n471f"]
 size = Vector2(135, 299)
@@ -1656,15 +1660,16 @@ script = ExtResource("1_l8h54")
 Acceleration = 9.0
 RideAcceleration = 2.0
 RisingJumpTime = 0.5
-FallingJumpTime = 0.3
+FallingJumpTime = 0.4
 JumpHeight = 1536.0
+WallJumpHeight = 2000.0
 RideRisingJumpTime = 0.4
 RideFallingJumpTime = 0.3
 RideJumpHeight = 1024.0
 DashDistance = 2048.0
 WallSlideGravity = 5500.0
 Speed = 3500.0
-AirSpeed = 256.0
+AirSpeed = 50.0
 RideSpeed = 10000.0
 RideAirSpeed = 256.0
 SwingSpeed = 0.1
@@ -1678,6 +1683,10 @@ GrapplePullSpeed = 800.0
 position = Vector2(8, 440)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_f4lon")
+
+[node name="Collider2" type="CollisionShape2D" parent="."]
+position = Vector2(-16, 91)
+shape = SubResource("CapsuleShape2D_dy65m")
 
 [node name="MoneyComponent" parent="." instance=ExtResource("2_4ntmi")]
 
@@ -1824,8 +1833,8 @@ shape = SubResource("CapsuleShape2D_qs4pp")
 
 [node name="RightCheck" type="RayCast2D" parent="WallCheck"]
 target_position = Vector2(384, 0)
-collision_mask = 32
+collision_mask = 2
 
 [node name="LeftCheck" type="RayCast2D" parent="WallCheck"]
 target_position = Vector2(-384, 0)
-collision_mask = 32
+collision_mask = 2

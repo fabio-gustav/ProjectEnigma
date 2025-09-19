@@ -20,6 +20,7 @@ public partial class Player : CharacterBody2D
    [Export] public float RisingJumpTime { get; set; } = 0.2f;
    [Export] public float FallingJumpTime { get; set; } = 0.2f;
    [Export] public float JumpHeight { get; set; } = 0.2f;
+   [Export] public float WallJumpHeight { get; set; } = 0.2f;
    [Export] public float RideRisingJumpTime { get; set; } = 0.2f;
    [Export] public float RideFallingJumpTime { get; set; } = 0.2f;
    [Export] public float RideJumpHeight { get; set; } = 0.2f;

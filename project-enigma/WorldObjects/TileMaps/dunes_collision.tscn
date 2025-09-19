@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://lc5dm58dnd0y"]
+
+[ext_resource type="TileSet" uid="uid://bqkr1lfpvgi0n" path="res://WorldObjects/TileMaps/dunes_collision.tres" id="1_mmd8t"]
+
+[node name="DunesCollision" type="TileMapLayer"]
+tile_set = ExtResource("1_mmd8t")
