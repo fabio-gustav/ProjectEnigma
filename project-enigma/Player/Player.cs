@@ -83,6 +83,8 @@ public partial class Player : CharacterBody2D
    public CollisionShape2D Collider = null;
    public RayCast2D LeftCheck = null;
    public RayCast2D RightCheck = null;
+   public RayCast2D LeftGroundCheck = null;
+   public RayCast2D RightGroundCheck = null;
    public bool IsRiding;
    
    public override void _Ready()
@@ -92,6 +94,8 @@ public partial class Player : CharacterBody2D
 	  _grappleCast = GetNode<RayCast2D>("GrappleCast");
 	  LeftCheck = GetNode<RayCast2D>("WallCheck/LeftCheck");
 	  RightCheck = GetNode<RayCast2D>("WallCheck/RightCheck");
+	  LeftGroundCheck = GetNode<RayCast2D>("GroundCheck/LeftGroundCheck");
+	  RightGroundCheck = GetNode<RayCast2D>("GroundCheck/RightGroundCheck");
 	  ParryTarget = GetNode<Area2D>("ParryArea");
 	  _coyoteTimer = new Timer();
 	  JumpBufferTimer = new Timer();
@@ -212,6 +216,22 @@ public partial class Player : CharacterBody2D
 	   }
 
 	   return false;
+   }
+
+   public float GetAvgFloorAngle()
+   {
+	   //GD.Print(LeftGroundCheck.IsColliding() && RightGroundCheck.IsColliding());
+	   if (LeftGroundCheck.IsColliding() && RightGroundCheck.IsColliding())
+	   {
+		   Vector2 left = LeftGroundCheck.GetCollisionPoint();
+		   Vector2 right = RightGroundCheck.GetCollisionPoint();
+		   //GD.Print((right.Y - left.Y)/distance);
+		   float theta = MathF.Atan2(right.Y - left.Y, right.X - left.X);
+
+		   return theta;
+	   }
+
+	   return 0.0f;
    }
    
 }

@@ -26,22 +26,19 @@ public partial class PlayerSprite : Node2D
     
     public override void _PhysicsProcess(double delta)
     {
-        if (_player.Velocity.X < 0.0f)
+        if (_player.Velocity.X < -0.0f)
         {
             //Top.FlipH = true;
             //Bottom.FlipH = true;
-            _player.Scale = new Vector2(1, -1);
-            _player.RotationDegrees = 180;
+            Scale = new Vector2(-1, 1);
             //GD.Print("PlayerScale: " + _player.Scale);
             
         }
-        else
+        if (_player.Velocity.X > 0.1f)
         {
             //Top.FlipH = false;
             //Bottom.FlipH = false;
-            _player.Scale = new Vector2(1, 1);
-            _player.RotationDegrees = 0;
-            
+            Scale = new Vector2(1, 1);
         }
     }
 }

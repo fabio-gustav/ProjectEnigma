@@ -27,10 +27,13 @@ public partial class PlayerSliding : State
         {
             Player.PlayerSprite.PlayAnimation("Slide");
         }
+
+        Player.FloorStopOnSlope = false;
     }
 
     public override void Exit()
     {
+        Player.FloorStopOnSlope = true;
         Player.PlayerSprite.Rotation = 0.0f;
         Player.IsRiding = false;
     }
@@ -50,18 +53,19 @@ public partial class PlayerSliding : State
     {
 
         Vector2 floorNormal = Player.GetFloorNormal();
-        Player.PlayerSprite.Rotation = Player.GetFloorAngle() * -Player.PlayerSprite.Top.Scale.Y;
-        //GD.Print("Floor: " + (floorNormal.X < 0).ToString());
+        //Player.PlayerSprite.Rotation = Player.GetAvgFloorAngle() * -Player.PlayerSprite.Top.Scale.Y;
+        //GD.Print(Player.GetAvgFloorAngle());
         //GD.Print("Flip: " + Player.Scale.Y);
-        if (floorNormal.X < 0 && Player.PlayerSprite.Top.Scale.Y > 0)
+        //&& Player.PlayerSprite.Top.Scale.Y > 0
+        if (floorNormal.X < 0)
         {
-            Player.PlayerSprite.Rotation = Player.GetFloorAngle() * -Player.Scale.Y;
+            Player.PlayerSprite.Rotation = Player.GetAvgFloorAngle();
         }
         else
         {
-            Player.PlayerSprite.Rotation = Player.GetFloorAngle() * Player.Scale.Y;
+            Player.PlayerSprite.Rotation = Player.GetAvgFloorAngle();
         }
-            
+        
         Player.ApplyFloorSnap();
         
         if (!Input.IsActionPressed("slide"))
@@ -78,13 +82,18 @@ public partial class PlayerSliding : State
             }
             return FallState;
         }
-        
+
+
+        //GD.Print(Player.GetAvgFloorAngle());
         Player.PlayerLook();
-        Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, 0.0f, Player.SlideFriction),Player.Velocity.Y);
-        Player.Velocity = new Vector2(Player.Velocity.X + Player.GetFloorNormal().X, Player.Velocity.Y + (float)(_fallGravity * delta) + Player.GetFloorNormal().Y);
+        //Needs to be in both directions
+        //Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, 0.0f, Player.SlideFriction),Player.Velocity.Y);
+        Player.Velocity += float.Sin(Player.GetAvgFloorAngle())*(float)(_fallGravity * delta) * Vector2.FromAngle(Player.GetAvgFloorAngle());
+        //Player.Velocity = new Vector2(Player.Velocity.X + float.Sin(Player.GetFloorAngle()*(float)(_fallGravity * delta)), Player.Velocity.Y + float.Cos(Player.GetFloorAngle()*(float)(_fallGravity * delta)));
         //Player.Velocity = Player.Velocity + (_fallGravity * (float)delta) * Player.GetFloorNormal().Normalized();
         //GD.Print(Player.Velocity);
         Player._jumpAvailable = true;
+       
         Player._coyoteTimer.Stop();
         return null;
     }

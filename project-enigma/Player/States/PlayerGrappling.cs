@@ -85,14 +85,17 @@ public partial class PlayerGrappling : State
 
         Player.Velocity += (_targetPosition - Player.GlobalPosition).Normalized() * (float)(delta * 15000);
         //Is 2nd condition needed?
-        if (Input.IsActionPressed("right") && Player.Velocity.X > 0)
+        if (Player.GlobalPosition.Y > Player._grappleTarget.GlobalPosition.Y)
         {
-            Player.Velocity += Player.Velocity.Normalized() * (float)(Player.SwingSpeed * radius.Length());
-        }
+            if (Input.IsActionPressed("right") && Player.Velocity.X > 0)
+            {
+                Player.Velocity += Player.Velocity.Normalized() * (float)(Player.SwingSpeed * radius.Length());
+            }
         
-        if (Input.IsActionPressed("left") && Player.Velocity.X < 0)
-        {
-            Player.Velocity += Player.Velocity.Normalized() * (float)(Player.SwingSpeed * radius.Length());
+            if (Input.IsActionPressed("left") && Player.Velocity.X < 0)
+            {
+                Player.Velocity += Player.Velocity.Normalized() * (float)(Player.SwingSpeed * radius.Length());
+            }
         }
 
         if (Player.GlobalPosition.X > Player._grappleTarget.GlobalPosition.X)

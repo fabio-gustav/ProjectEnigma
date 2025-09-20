@@ -85,6 +85,7 @@ public partial class PlayerRunning : State
         else
         {
             Player.Velocity = new Vector2(float.Lerp(Player.Velocity.X, Player.Speed*GetInput(), Player.Acceleration*(float)delta),Player.Velocity.Y);
+            //GD.Print(Player.Velocity);
         }
         
         if (Input.IsActionPressed("slide"))

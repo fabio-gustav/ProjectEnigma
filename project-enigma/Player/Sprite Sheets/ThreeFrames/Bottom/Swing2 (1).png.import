@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bb244fia4jqij"
-path="res://.godot/imported/Swing2.png-967f10d72be17e7d0d7c046f35e27c74.ctex"
+uid="uid://dxxu08u4d0roy"
+path="res://.godot/imported/Swing2 (1).png-4b87f9db55ae80a5397a565f0b93974c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Sprite Sheets/ThreeFrames/Top/Swing2.png"
-dest_files=["res://.godot/imported/Swing2.png-967f10d72be17e7d0d7c046f35e27c74.ctex"]
+source_file="res://Player/Sprite Sheets/ThreeFrames/Bottom/Swing2 (1).png"
+dest_files=["res://.godot/imported/Swing2 (1).png-4b87f9db55ae80a5397a565f0b93974c.ctex"]
 
 [params]
 
